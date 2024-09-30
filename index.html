@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Bikash Kumar Malik's Portfolio</title>
+</head>
+<body>
+    <header>
+        <h1>Greetings!</h1>
+        <h2>Welcome to my portfolio</h2>
+        <nav>
+            <ul class="pill-menu">
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#experience">Work Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact Me</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>My name is Bikash Kumar Malik, and I am your regular salaryman. I stay in Haldia, West Bengal, and I completed my Bachelor's degree in 2018. I have been working for over 5 years now in the customer support and client management industry.</p>
+    </section>
+
+    <section id="experience">
+        <h2>Work Experience</h2>
+        <p><strong>Subject Matter Expert at 31 West Global Services</strong></p>
+        <p>Duration: 07/2021 - 08/2024</p>
+        <p>Location: Haldia, West Bengal, India</p>
+        <p><strong>About 31 West:</strong> 31West is a leading provider of Outsourced Customer Support & Technology Consulting Services.</p>
+        <ul>
+            <li>Perform extensive research and analysis</li>
+            <li>Conduct training and education</li>
+            <li>Provide consultation</li>
+            <li>Resolve production issues</li>
+        </ul>
+    </section>
+
+    <section id="skills">
+        <h2>My Skills</h2>
+        <p>Here are some of my key skills:</p>
+        <ul>
+            <li>Client Communication</li>
+            <li>Process Optimization</li>
+            <li>SOP Development</li>
+            <li>Training and Development</li>
+        </ul>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>If you'd like to get in touch, feel free to reach out via email at <a href="mailto:your-email@example.com">your-email@example.com</a>.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Bikash Kumar Malik</p>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        const links = document.querySelectorAll('nav a');
+
+        links.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent default anchor click behavior
+                const targetId = this.getAttribute('href'); // Get the href attribute
+                const targetSection = document.querySelector(targetId); // Find the target section
+                targetSection.scrollIntoView({ behavior: 'smooth' }); // Smooth scroll to the section
+            });
+        });
+    </script>
+</body>
+</html>

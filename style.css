@@ -1,0 +1,82 @@
+body {
+    font-family: 'Google Sans', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    padding: 60px 0;
+    background-color: #ff9800; /* Bright orange background */
+    color: white;
+    position: relative;
+    z-index: 1;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 80px;
+    margin: 0;
+}
+
+h2 {
+    font-size: 40px; /* Subject Matter Expert is half the size of the name */
+    margin: 20px 0 60px 0; /* Increased space between the title and pills */
+    font-weight: bold;
+}
+
+section {
+    text-align: center;
+    padding: 80px 20px;
+    height: 100vh; /* Full viewport height for each section */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align content towards the top */
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #ff9800; /* Same bright orange background */
+    color: white;
+    position: relative;
+    z-index: 1;
+}
+
+.pill-menu {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Center the pills */
+    margin-bottom: 150px; /* Further lower the pills by increasing margin */
+    max-width: 100%;
+}
+
+.pill-menu li {
+    margin: 0 15px; /* Set horizontal space between pills to 15px */
+}
+
+.pill-menu a {
+    background-color: white;
+    color: #ff9800; /* Original font color */
+    padding: 15px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s, color 0.3s; /* Add color transition */
+    font-size: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Initial shadow */
+}
+
+/* Hover effect for popping pills */
+.pill-menu a:hover {
+    background-color: #f0f0f0; /* Light grey on hover */
+    transform: translateY(-5px); /* Slight upward movement to simulate pop-up effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increase shadow depth on hover */
+    color: #ff5722; /* Brighter font color on hover */
+}
