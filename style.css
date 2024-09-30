@@ -80,3 +80,36 @@ footer {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increase shadow depth on hover */
     color: #ff5722; /* Brighter font color on hover */
 }
+
+/* About Me Section Background */
+.about-me {
+    background-color: #333; /* Dark grey background */
+    color: #ff9800; /* Bright orange font color */
+    text-align: center; /* Center the text */
+    padding: 50px 20px; /* Add padding to the section */
+}
+
+/* About Me Content */
+.about-me-content {
+    background-color: rgba(255, 152, 0, 0.2); /* Light orange background for contrast */
+    width: 80%; /* Set width to make it narrower */
+    max-width: 600px; /* Maximum width for better responsiveness */
+    padding: 20px 30px; /* Add top/bottom padding and side padding */
+    margin: 0 auto; /* Center align the content */
+}
+
+/* Heading */
+.about-me h2 {
+    font-size: 60px; /* Increase font size for the About Me heading */
+    color: #ff9800; /* Bright orange color for the heading */
+}
+
+/* Paragraphs */
+.about-me p {
+    font-size: 20px; /* Increased font size for paragraph */
+    color: #ff9800; /* Use bright orange color for paragraph text */
+    text-align: justify; /* Justify the paragraph text */
+    margin: 10px 0; /* Add space between each paragraph */
+}
+
+
