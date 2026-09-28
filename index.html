@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bikash Kumar Malik — Subject Matter Expert & Operations Specialist</title>
-  <meta name="description" content="Portfolio of Bikash Kumar Malik: Subject Matter Expert, E-Commerce Operations, Amazon Seller & Vendor Central Specialist, and Systems Engineer." />
+  <title>Bikash Kumar Malik // SME & E-Commerce Operations Specialist</title>
+  <meta name="description" content="Cybernetic portfolio of Bikash Kumar Malik: Subject Matter Expert, Amazon Seller & Vendor Central Specialist, and Systems Engineer." />
   
   <!-- Favicon -->
   <link rel="icon" type="image/jpeg" href="profile.jpg" />
 
-  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <!-- Premium High-Impact Futuristic Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -22,41 +22,55 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', 'sans-serif'],
+            display: ['Syne', 'sans-serif'],
+            tech: ['Space Grotesk', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
             mono: ['JetBrains Mono', 'monospace'],
           },
           colors: {
-            brand: {
-              emerald: '#10b981',
-              cyan: '#06b6d4',
-              amber: '#f59e0b',
-              violet: '#8b5cf6',
-              dark: '#0a0f14',
-              card: '#111822',
-              cardLight: '#ffffff',
-              border: '#1f2937',
+            cyber: {
+              void: '#030712',
+              space: '#050b18',
+              card: 'rgba(8, 14, 29, 0.72)',
+              cardLight: 'rgba(255, 255, 255, 0.92)',
+              border: 'rgba(56, 189, 248, 0.16)',
+              cyan: '#00F0FF',
+              sky: '#38BDF8',
+              neonPurple: '#A855F7',
+              violet: '#8B5CF6',
+              emerald: '#00FF9D',
+              amber: '#FBBF24',
+              rose: '#F43F5E',
             }
           },
           animation: {
-            'blob': 'blob 14s infinite',
-            'float': 'float 6s ease-in-out infinite',
-            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-            'glow': 'glow 3s ease-in-out infinite alternate',
+            'spin-slow': 'spin 22s linear infinite',
+            'spin-reverse': 'spinReverse 16s linear infinite',
+            'pulse-slow': 'pulse 3.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float-slow': 'float 5s ease-in-out infinite',
+            'radar-sweep': 'radarSweep 4s linear infinite',
+            'eq-bar-1': 'eq1 1.2s ease-in-out infinite',
+            'eq-bar-2': 'eq2 0.9s ease-in-out infinite',
+            'eq-bar-3': 'eq3 1.4s ease-in-out infinite',
+            'eq-bar-4': 'eq4 1.1s ease-in-out infinite',
           },
           keyframes: {
-            blob: {
-              '0%, 100%': { transform: 'translate(0px, 0px) scale(1)' },
-              '33%': { transform: 'translate(40px, -60px) scale(1.15)' },
-              '66%': { transform: 'translate(-30px, 30px) scale(0.9)' },
+            spinReverse: {
+              '0%': { transform: 'rotate(360deg)' },
+              '100%': { transform: 'rotate(0deg)' },
             },
             float: {
-              '0%, 100%': { transform: 'translateY(0)' },
-              '50%': { transform: 'translateY(-12px)' },
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
             },
-            glow: {
-              '0%': { opacity: '0.4' },
-              '100%': { opacity: '0.9' },
-            }
+            radarSweep: {
+              '0%': { transform: 'rotate(0deg)' },
+              '100%': { transform: 'rotate(360deg)' },
+            },
+            eq1: { '0%, 100%': { height: '30%' }, '50%': { height: '95%' } },
+            eq2: { '0%, 100%': { height: '85%' }, '50%': { height: '25%' } },
+            eq3: { '0%, 100%': { height: '45%' }, '50%': { height: '100%' } },
+            eq4: { '0%, 100%': { height: '70%' }, '50%': { height: '35%' } },
           }
         }
       }
@@ -67,248 +81,505 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
-    /* Fluid Glassmorphism & Micro-Interactions */
-    .glass-panel {
-      background: rgba(17, 24, 34, 0.75);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .light .glass-panel {
-      background: rgba(255, 255, 255, 0.85);
-      border: 1px solid rgba(0, 0, 0, 0.08);
+    /* ================= ROOT & BASE STYLES ================= */
+    :root {
+      --cyan-glow: rgba(0, 240, 255, 0.35);
+      --purple-glow: rgba(168, 85, 247, 0.3);
+      --emerald-glow: rgba(0, 255, 157, 0.3);
     }
 
-    .spotlight-card {
+    body {
+      background-color: #030712;
+      color: #e2e8f0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      cursor: default;
+    }
+
+    /* Custom Selection */
+    ::selection {
+      background: #00F0FF;
+      color: #030712;
+    }
+
+    /* ================= CUSTOM ANIMATRONIC RETICLE CURSOR ================= */
+    @media (pointer: fine) {
+      body {
+        cursor: none;
+      }
+      #custom-cursor-dot {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 8px;
+        height: 8px;
+        background: #00F0FF;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: transform 0.08s ease-out, background 0.2s ease;
+        box-shadow: 0 0 12px #00F0FF, 0 0 24px #00F0FF;
+      }
+      #custom-cursor-ring {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 36px;
+        height: 36px;
+        border: 1.5px solid rgba(0, 240, 255, 0.6);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9998;
+        transform: translate(-50%, -50%);
+        transition: width 0.22s ease, height 0.22s ease, border-color 0.22s ease, transform 0.15s ease-out;
+      }
+      #custom-cursor-ring.active-hover {
+        width: 58px;
+        height: 58px;
+        border-color: #A855F7;
+        background: rgba(168, 85, 247, 0.08);
+        border-style: dashed;
+        animation: spinReverse 8s linear infinite;
+      }
+    }
+
+    /* ================= GLASS & HUD CARDS ================= */
+    .cyber-card {
+      background: rgba(8, 14, 28, 0.72);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(56, 189, 248, 0.14);
       position: relative;
-      overflow: hidden;
-      transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+      transform-style: preserve-3d;
     }
-    .spotlight-card:hover {
-      transform: translateY(-4px);
+    .cyber-card:hover {
+      border-color: rgba(0, 240, 255, 0.45);
+      box-shadow: 0 10px 35px -10px rgba(0, 240, 255, 0.18), 0 0 20px -5px rgba(168, 85, 247, 0.15);
     }
 
-    .spotlight-card::before {
+    /* Dynamic Mouse Specular Lighting */
+    .cyber-card::before {
       content: '';
       position: absolute;
       top: var(--mouse-y, -1000px);
       left: var(--mouse-x, -1000px);
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle closest-side, rgba(16, 185, 129, 0.12), transparent);
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle closest-side, rgba(0, 240, 255, 0.14), transparent 70%);
       transform: translate(-50%, -50%);
       pointer-events: none;
-      transition: opacity 0.2s ease;
       opacity: 0;
+      transition: opacity 0.3s ease;
       z-index: 1;
     }
-    .spotlight-card:hover::before {
+    .cyber-card:hover::before {
       opacity: 1;
     }
 
-    /* Fluid Timeline Connectors */
-    .timeline-stem {
-      background: linear-gradient(180deg, #10b981 0%, #06b6d4 50%, #8b5cf6 100%);
+    /* ================= ROTATING CONIC BORDER BEAM ================= */
+    .border-beam-container {
+      position: relative;
+      border-radius: 1.5rem;
+      padding: 1.5px;
+      overflow: hidden;
+    }
+    .border-beam-container::before {
+      content: '';
+      position: absolute;
+      inset: -150%;
+      background: conic-gradient(from 0deg, transparent 0 320deg, #00F0FF 345deg, #A855F7 360deg);
+      animation: spin 4s linear infinite;
+    }
+    .border-beam-inner {
+      position: relative;
+      background: #060b18;
+      border-radius: calc(1.5rem - 1.5px);
+      z-index: 2;
     }
 
-    /* Reveal animations */
-    .reveal-item {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    /* ================= HUD CORNER BRACKETS ================= */
+    .hud-bracket {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      pointer-events: none;
+      transition: all 0.3s ease;
     }
-    .reveal-item.revealed {
+    .hud-tl { top: -1px; left: -1px; border-top: 2px solid #00F0FF; border-left: 2px solid #00F0FF; }
+    .hud-tr { top: -1px; right: -1px; border-top: 2px solid #00F0FF; border-right: 2px solid #00F0FF; }
+    .hud-bl { bottom: -1px; left: -1px; border-bottom: 2px solid #00F0FF; border-left: 2px solid #00F0FF; }
+    .hud-br { bottom: -1px; right: -1px; border-bottom: 2px solid #00F0FF; border-right: 2px solid #00F0FF; }
+    
+    .cyber-card:hover .hud-tl { transform: translate(-3px, -3px); border-color: #00FF9D; }
+    .cyber-card:hover .hud-tr { transform: translate(3px, -3px); border-color: #00FF9D; }
+    .cyber-card:hover .hud-bl { transform: translate(-3px, 3px); border-color: #00FF9D; }
+    .cyber-card:hover .hud-br { transform: translate(3px, 3px); border-color: #00FF9D; }
+
+    /* ================= SCANLINE TEXTURE OVERLAY ================= */
+    .scanlines {
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+      background-size: 100% 3px, 6px 100%;
+    }
+
+    /* ================= ELECTRIC TIMELINE CONDUIT ================= */
+    .conduit-line {
+      position: absolute;
+      left: 19px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: rgba(56, 189, 248, 0.2);
+    }
+    .conduit-pulse {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      background: linear-gradient(180deg, transparent, #00F0FF, #A855F7, transparent);
+      animation: conduitSlide 4.5s ease-in-out infinite;
+    }
+    @keyframes conduitSlide {
+      0% { top: -100px; opacity: 0; }
+      20% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { top: 100%; opacity: 0; }
+    }
+
+    /* ================= REVEAL ON SCROLL ================= */
+    .reveal-elem {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-elem.revealed {
       opacity: 1;
       transform: translateY(0);
     }
 
+    /* ================= GLITCH TEXT EFFECT ================= */
+    .cyber-glitch {
+      position: relative;
+    }
+    .cyber-glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 2px;
+      text-shadow: -1px 0 #00F0FF;
+      top: 0;
+      color: #fff;
+      overflow: hidden;
+      clip: rect(0, 900px, 0, 0);
+      animation: glitch-anim 3s infinite linear alternate-reverse;
+    }
+    @keyframes glitch-anim {
+      0% { clip: rect(10px, 9999px, 44px, 0); transform: skew(0.3deg); }
+      10% { clip: rect(62px, 9999px, 80px, 0); transform: skew(0.8deg); }
+      20% { clip: rect(20px, 9999px, 30px, 0); transform: skew(0.1deg); }
+      30% { clip: rect(70px, 9999px, 90px, 0); transform: skew(0.5deg); }
+      40% { clip: rect(15px, 9999px, 40px, 0); transform: skew(0deg); }
+      100% { clip: rect(0, 0, 0, 0); }
+    }
+
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
-      width: 8px;
+      width: 6px;
     }
     ::-webkit-scrollbar-track {
-      background: #0a0f14;
+      background: #030712;
     }
     ::-webkit-scrollbar-thumb {
-      background: #1f2937;
-      border-radius: 4px;
+      background: #1e293b;
+      border-radius: 3px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #10b981;
+      background: #00F0FF;
     }
   </style>
 </head>
-<body class="bg-[#070b10] text-gray-100 font-sans selection:bg-brand-emerald selection:text-black transition-colors duration-300 antialiased overflow-x-hidden">
 
-  <!-- ================= AMBIENT FLUID BACKGROUND ORBS ================= -->
+<body class="bg-[#030712] text-slate-200 antialiased selection:bg-[#00F0FF] selection:text-black overflow-x-hidden">
+
+  <!-- ================= CUSTOM HARDWARE RETICLE CURSOR ================= -->
+  <div id="custom-cursor-dot"></div>
+  <div id="custom-cursor-ring"></div>
+
+  <!-- ================= INTERACTIVE ANIMATRONIC CANVAS BACKGROUND ================= -->
+  <canvas id="cyberCanvas" class="fixed inset-0 pointer-events-none z-0 opacity-45"></canvas>
+
+  <!-- ================= AMBIENT LUMINESCENT NEBULAS ================= -->
   <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
-    <div class="absolute -top-32 -left-32 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl animate-blob"></div>
-    <div class="absolute top-1/3 -right-32 w-[30rem] h-[30rem] bg-cyan-500/10 rounded-full blur-3xl animate-blob" style="animation-delay: 4s;"></div>
-    <div class="absolute bottom-10 left-1/4 w-[28rem] h-[28rem] bg-purple-500/10 rounded-full blur-3xl animate-blob" style="animation-delay: 8s;"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(#1f2937_1px,transparent_1px)] [background-size:28px_28px] opacity-25"></div>
+    <div class="absolute -top-40 -left-40 w-[36rem] h-[36rem] bg-cyan-500/10 rounded-full blur-[140px] animate-pulse-slow"></div>
+    <div class="absolute top-1/2 -right-40 w-[42rem] h-[42rem] bg-purple-600/10 rounded-full blur-[160px] animate-pulse-slow" style="animation-delay: 2s;"></div>
+    <div class="absolute -bottom-40 left-1/3 w-[38rem] h-[38rem] bg-emerald-500/10 rounded-full blur-[140px] animate-pulse-slow" style="animation-delay: 4s;"></div>
+    <!-- Fine Circuit Matrix Grid -->
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(56,189,248,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(56,189,248,0.03)_1px,transparent_1px)] bg-[size:44px_44px]"></div>
   </div>
 
-  <!-- ================= TOP NAVIGATION BAR ================= -->
+  <!-- ================= TOP NAVIGATION HUD ================= -->
   <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4">
-      <nav class="glass-panel rounded-2xl px-5 py-3 flex items-center justify-between shadow-2xl">
+      <nav class="cyber-card rounded-2xl px-5 py-3.5 flex items-center justify-between border border-cyan-500/20 shadow-2xl backdrop-blur-xl">
         
-        <!-- Logo / Name -->
-        <a href="#hero" class="flex items-center gap-3 group">
-          <div class="relative w-9 h-9 rounded-xl overflow-hidden ring-2 ring-emerald-500/40 group-hover:ring-emerald-400 transition-all shadow-lg">
-            <img src="profile.jpg" alt="Bikash Kumar Malik" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+        <!-- Logo / Animatronic Identity -->
+        <a href="#hero" class="flex items-center gap-3.5 group interactive-target">
+          <div class="relative w-10 h-10 rounded-xl overflow-hidden ring-1 ring-cyan-400/50 group-hover:ring-cyan-300 transition-all shadow-[0_0_15px_rgba(0,240,255,0.3)]">
+            <img src="profile.jpg" alt="Bikash Kumar Malik" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-cyan-400/10 mix-blend-overlay"></div>
           </div>
           <div>
-            <span class="font-bold tracking-tight text-white group-hover:text-emerald-400 transition-colors">Bikash K. Malik</span>
-            <span class="hidden sm:inline-block text-xs text-gray-400 ml-2 font-mono border-l border-gray-700 pl-2">SME & Operations</span>
+            <div class="flex items-center gap-2">
+              <span class="font-display text-base font-bold tracking-tight text-white group-hover:text-cyan-400 transition-colors">Bikash K. Malik</span>
+              <span class="inline-block w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#00F0FF] animate-ping"></span>
+            </div>
+            <div class="text-[10px] font-mono text-cyan-400/80 tracking-widest uppercase flex items-center gap-1.5 mt-0.5">
+              <span>SME // OPS SPECIALIST</span>
+            </div>
           </div>
         </a>
 
-        <!-- Desktop Links -->
-        <div class="hidden md:flex items-center gap-7 text-sm font-medium text-gray-300">
-          <a href="#about" class="hover:text-emerald-400 transition-colors">About</a>
-          <a href="#experience" class="hover:text-emerald-400 transition-colors">Experience</a>
-          <a href="#projects" class="hover:text-emerald-400 transition-colors">Projects</a>
-          <a href="#skills" class="hover:text-emerald-400 transition-colors">Skills</a>
-          <a href="#education" class="hover:text-emerald-400 transition-colors">Education</a>
-          <a href="#contact" class="hover:text-emerald-400 transition-colors">Contact</a>
+        <!-- Desktop Navigation Matrix -->
+        <div class="hidden md:flex items-center gap-8 text-xs font-tech font-medium tracking-wider uppercase text-slate-300">
+          <a href="#about" class="interactive-target hover:text-cyan-400 transition-colors relative py-1 hover:after:w-full after:w-0 after:h-[2px] after:bg-cyan-400 after:absolute after:bottom-0 after:left-0 after:transition-all">About</a>
+          <a href="#experience" class="interactive-target hover:text-cyan-400 transition-colors relative py-1 hover:after:w-full after:w-0 after:h-[2px] after:bg-cyan-400 after:absolute after:bottom-0 after:left-0 after:transition-all">Experience</a>
+          <a href="#projects" class="interactive-target hover:text-cyan-400 transition-colors relative py-1 hover:after:w-full after:w-0 after:h-[2px] after:bg-cyan-400 after:absolute after:bottom-0 after:left-0 after:transition-all">Engineering</a>
+          <a href="#skills" class="interactive-target hover:text-cyan-400 transition-colors relative py-1 hover:after:w-full after:w-0 after:h-[2px] after:bg-cyan-400 after:absolute after:bottom-0 after:left-0 after:transition-all">Competencies</a>
+          <a href="#education" class="interactive-target hover:text-cyan-400 transition-colors relative py-1 hover:after:w-full after:w-0 after:h-[2px] after:bg-cyan-400 after:absolute after:bottom-0 after:left-0 after:transition-all">Education</a>
+          <a href="#contact" class="interactive-target hover:text-cyan-400 transition-colors relative py-1 hover:after:w-full after:w-0 after:h-[2px] after:bg-cyan-400 after:absolute after:bottom-0 after:left-0 after:transition-all">Contact</a>
         </div>
 
-        <!-- Action CTA -->
+        <!-- Telemetry Action CTA -->
         <div class="flex items-center gap-3">
-          <a href="Bikash_Kumar_Malik_Resume.pdf" download="Bikash_Kumar_Malik_Resume.pdf" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-xs sm:text-sm transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-emerald-500/20">
-            <i data-lucide="download" class="w-4 h-4"></i>
-            <span>Resume</span>
+          <!-- Audio Telemetry Equalizer Bars -->
+          <div class="hidden sm:flex items-end gap-1 h-5 px-2.5 py-1 rounded bg-slate-900/80 border border-cyan-500/20" title="Telemetry Feed Active">
+            <span class="w-1 bg-cyan-400 rounded-full animate-eq-bar-1"></span>
+            <span class="w-1 bg-purple-400 rounded-full animate-eq-bar-2"></span>
+            <span class="w-1 bg-cyan-300 rounded-full animate-eq-bar-3"></span>
+            <span class="w-1 bg-emerald-400 rounded-full animate-eq-bar-4"></span>
+          </div>
+
+          <!-- Download CV Button with Conic Border -->
+          <a href="Bikash_Kumar_Malik_Resume.pdf" download="Bikash_Kumar_Malik_Resume.pdf" class="interactive-target relative group overflow-hidden px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-black font-tech font-bold text-xs tracking-wider uppercase transition-all transform hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(0,240,255,0.4)] flex items-center gap-2">
+            <i data-lucide="download" class="w-3.5 h-3.5"></i>
+            <span>Resume.pdf</span>
           </a>
 
           <!-- Mobile Menu Trigger -->
-          <button id="mobileMenuBtn" aria-label="Toggle mobile menu" class="md:hidden p-2 rounded-lg bg-gray-800/80 text-gray-300 hover:text-white">
-            <i data-lucide="menu" class="w-5 h-5"></i>
+          <button id="mobileMenuBtn" aria-label="Toggle mobile menu" class="interactive-target md:hidden p-2 rounded-xl bg-slate-900 border border-slate-700 text-cyan-400">
+            <i data-lucide="terminal" class="w-5 h-5"></i>
           </button>
         </div>
       </nav>
     </div>
 
-    <!-- Mobile Drawer -->
-    <div id="mobileDrawer" class="hidden md:hidden glass-panel mx-4 mt-2 p-5 rounded-2xl flex flex-col gap-4 text-sm font-medium border border-gray-800">
-      <a href="#about" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-gray-800/60">About</a>
-      <a href="#experience" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-gray-800/60">Experience</a>
-      <a href="#projects" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-gray-800/60">Projects</a>
-      <a href="#skills" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-gray-800/60">Skills</a>
-      <a href="#education" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-gray-800/60">Education</a>
-      <a href="#contact" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-gray-800/60">Contact</a>
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileDrawer" class="hidden md:hidden max-w-6xl mx-auto px-4 mt-2">
+      <div class="cyber-card p-5 rounded-2xl flex flex-col gap-3 text-sm font-tech uppercase tracking-wider border border-cyan-500/30">
+        <a href="#about" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-cyan-500/10 hover:text-cyan-400">01 // About</a>
+        <a href="#experience" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-cyan-500/10 hover:text-cyan-400">02 // Experience</a>
+        <a href="#projects" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-cyan-500/10 hover:text-cyan-400">03 // Engineering</a>
+        <a href="#skills" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-cyan-500/10 hover:text-cyan-400">04 // Competencies</a>
+        <a href="#education" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-cyan-500/10 hover:text-cyan-400">05 // Education</a>
+        <a href="#contact" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-cyan-500/10 hover:text-cyan-400">06 // Contact</a>
+      </div>
     </div>
   </header>
 
-  <!-- ================= HERO SECTION ================= -->
-  <section id="hero" class="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 px-4 sm:px-6">
-    <div class="max-w-4xl mx-auto text-center z-10">
+  <!-- ================= HERO SECTION WITH ANIMATRONIC HUD RIG ================= -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center pt-32 pb-20 px-4 sm:px-6 z-10 overflow-hidden">
+    <div class="max-w-5xl mx-auto text-center">
       
-      <!-- Status Badge -->
-      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full glass-panel border border-emerald-500/30 text-emerald-400 text-xs sm:text-sm font-medium mb-8 animate-float shadow-xl">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-        <span class="w-2 h-2 rounded-full bg-emerald-400 -ml-4"></span>
-        <span>Open to High-Impact Operations & Leadership Roles</span>
+      <!-- Top Telemetry Status Pill -->
+      <div class="inline-flex items-center gap-3 px-5 py-2 rounded-full cyber-card border border-cyan-500/40 text-cyan-300 text-xs font-mono font-medium mb-8 animate-float-slow shadow-[0_0_25px_rgba(0,240,255,0.2)]">
+        <span class="relative flex h-2.5 w-2.5">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-400"></span>
+        </span>
+        <span class="tracking-wider">STATUS: AVAILABLE FOR HIGH-IMPACT OPERATIONS & LEADERSHIP</span>
+        <span class="text-slate-500">|</span>
+        <span class="text-emerald-400 font-bold">NODE: ONLINE</span>
       </div>
 
-      <!-- Main Headline -->
-      <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-[1.12]">
-        Hi, I'm <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">Bikash Kumar Malik</span>.
+      <!-- Animatronic Avatar HUD Centerpiece -->
+      <div class="relative w-44 h-44 sm:w-52 sm:h-52 mx-auto mb-10 group">
+        
+        <!-- Rotating Outer Radar Ring -->
+        <svg class="absolute -inset-6 w-[calc(100%+3rem)] h-[calc(100%+3rem)] animate-spin-slow pointer-events-none opacity-80" viewBox="0 0 200 200">
+          <circle cx="100" cy="100" r="92" fill="none" stroke="rgba(0, 240, 255, 0.25)" stroke-width="1.5" stroke-dasharray="8 6 2 6" />
+          <circle cx="100" cy="100" r="97" fill="none" stroke="rgba(168, 85, 247, 0.3)" stroke-width="1" stroke-dasharray="30 40" />
+          <path d="M 100 0 L 100 12 M 100 188 L 100 200 M 0 100 L 12 100 M 188 100 L 200 100" stroke="#00F0FF" stroke-width="2" />
+        </svg>
+
+        <!-- Counter-Rotating Inner Gyro Ring -->
+        <svg class="absolute -inset-3 w-[calc(100%+1.5rem)] h-[calc(100%+1.5rem)] animate-spin-reverse pointer-events-none opacity-70" viewBox="0 0 160 160">
+          <circle cx="80" cy="80" r="74" fill="none" stroke="rgba(0, 255, 157, 0.35)" stroke-width="1.5" stroke-dasharray="4 8" />
+          <circle cx="80" cy="80" r="70" fill="none" stroke="rgba(0, 240, 255, 0.2)" stroke-width="1" />
+        </svg>
+
+        <!-- Profile Avatar Box with Corner HUD Brackets -->
+        <div class="relative w-full h-full rounded-2xl overflow-hidden cyber-card p-1 border-2 border-cyan-400/60 shadow-[0_0_40px_rgba(0,240,255,0.35)] group-hover:scale-105 transition-transform duration-500">
+          <div class="hud-bracket hud-tl"></div>
+          <div class="hud-bracket hud-tr"></div>
+          <div class="hud-bracket hud-bl"></div>
+          <div class="hud-bracket hud-br"></div>
+          <img src="profile.jpg" alt="Bikash Kumar Malik" class="w-full h-full object-cover rounded-xl" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end justify-center pb-2">
+            <span class="font-mono text-[11px] text-cyan-300 font-bold tracking-widest">BIKASH // 897215</span>
+          </div>
+        </div>
+
+        <!-- Radar Pulse Dot -->
+        <div class="absolute -top-1 -right-1 w-4 h-4 bg-cyan-400 rounded-full border-2 border-black shadow-[0_0_15px_#00F0FF]"></div>
+      </div>
+
+      <!-- Primary Title with Kinetic Scramble Effect -->
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-display font-extrabold tracking-tight text-white mb-6 leading-[1.08]">
+        I am <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-purple-400 cyber-glitch" data-text="Bikash Kumar Malik" id="scrambleTitle">Bikash Kumar Malik</span>.
       </h1>
 
-      <!-- Subtitle -->
-      <p class="text-lg sm:text-2xl font-medium text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
-        Subject Matter Expert specializing in <span class="text-white font-semibold">Amazon E-Commerce Operations</span>, <span class="text-white font-semibold">Vendor Central Revenue Protection</span>, and <span class="text-white font-semibold">Cross-Functional Leadership</span>.
+      <!-- High-Tech Subtitle -->
+      <p class="text-lg sm:text-2xl font-tech text-slate-300 max-w-3xl mx-auto mb-8 leading-relaxed">
+        <span class="text-white font-semibold">Subject Matter Expert</span> &amp; Systems Engineer specializing in <span class="text-cyan-400 font-semibold">Amazon E-Commerce Operations</span>, <span class="text-purple-400 font-semibold">Vendor Central Revenue Defense</span>, and <span class="text-emerald-400 font-semibold">Cross-Functional Leadership</span>.
       </p>
 
-      <!-- Philosophical Quote from Resume -->
-      <div class="glass-panel p-5 rounded-2xl max-w-2xl mx-auto mb-10 border border-gray-800/80 shadow-2xl">
-        <p class="text-sm sm:text-base text-gray-300 italic leading-relaxed">
+      <!-- Philosophical Mission Terminal -->
+      <div class="max-w-2xl mx-auto mb-10 cyber-card p-5 rounded-2xl border border-cyan-500/30 text-left relative overflow-hidden group">
+        <div class="hud-bracket hud-tl"></div>
+        <div class="hud-bracket hud-tr"></div>
+        <div class="hud-bracket hud-bl"></div>
+        <div class="hud-bracket hud-br"></div>
+        
+        <div class="flex items-center justify-between pb-2 mb-3 border-b border-cyan-500/20 font-mono text-[11px] text-cyan-400/90">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <span>CORE PHILOSOPHY &amp; MISSION STATEMENT</span>
+          </div>
+          <span class="text-slate-500">ID: BKM-REF-01</span>
+        </div>
+        <p class="text-sm sm:text-base text-slate-300 italic leading-relaxed font-sans">
           "In this interconnected world, we have the opportunity to make a difference, no matter how small it may seem. Together, we can create a ripple effect of positivity and change that extends far beyond our individual reach."
         </p>
       </div>
 
       <!-- Action Buttons -->
       <div class="flex flex-wrap items-center justify-center gap-4 mb-16">
-        <a href="#experience" class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-base transition-all transform hover:-translate-y-0.5 shadow-lg shadow-emerald-500/25 active:translate-y-0">
-          <i data-lucide="briefcase" class="w-5 h-5"></i>
-          <span>View Experience</span>
+        <a href="#experience" class="interactive-target px-8 py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-black font-tech font-bold text-sm tracking-wider uppercase transition-all transform hover:-translate-y-1 shadow-[0_0_25px_rgba(0,240,255,0.4)] flex items-center gap-2.5">
+          <i data-lucide="briefcase" class="w-4 h-4"></i>
+          <span>Explore Career Timeline</span>
         </a>
-        <a href="#projects" class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl glass-panel hover:bg-gray-800/80 text-white font-semibold text-base transition-all transform hover:-translate-y-0.5 border border-gray-700">
-          <i data-lucide="cpu" class="w-5 h-5 text-cyan-400"></i>
-          <span>Software Showcase</span>
+
+        <a href="#projects" class="interactive-target px-8 py-3.5 rounded-xl cyber-card hover:bg-slate-800/80 text-white font-tech font-semibold text-sm tracking-wider uppercase transition-all transform hover:-translate-y-1 border border-cyan-500/40 hover:border-cyan-300 flex items-center gap-2.5 shadow-lg">
+          <i data-lucide="cpu" class="w-4 h-4 text-cyan-400"></i>
+          <span>RetroFlux PRO Showcase</span>
         </a>
-        <a href="#contact" class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl glass-panel hover:bg-gray-800/80 text-gray-300 hover:text-white font-medium text-base transition-all">
-          <i data-lucide="mail" class="w-5 h-5 text-emerald-400"></i>
-          <span>Get in Touch</span>
+
+        <a href="#contact" class="interactive-target px-8 py-3.5 rounded-xl cyber-card hover:bg-slate-800/80 text-slate-300 hover:text-white font-tech font-medium text-sm tracking-wider uppercase transition-all border border-slate-700 flex items-center gap-2.5">
+          <i data-lucide="radio" class="w-4 h-4 text-emerald-400"></i>
+          <span>Dispatch Transmission</span>
         </a>
       </div>
 
-      <!-- Quick Metrics Strip -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
-        <div class="glass-panel p-4 rounded-xl border border-gray-800/80 text-center">
-          <div class="text-2xl sm:text-3xl font-extrabold text-white font-mono">5+</div>
-          <div class="text-xs text-gray-400 uppercase tracking-wider mt-1 font-medium">Years Experience</div>
+      <!-- Animatronic Metric Telemetry Strip -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+        
+        <div class="cyber-card p-5 rounded-2xl border border-cyan-500/20 text-center relative overflow-hidden group">
+          <div class="hud-bracket hud-tl"></div>
+          <div class="hud-bracket hud-tr"></div>
+          <div class="text-3xl sm:text-4xl font-mono font-extrabold text-white mb-1 tracking-tight counter" data-target="5">5+</div>
+          <div class="text-[11px] font-tech uppercase tracking-widest text-cyan-400 font-semibold">Years Operations Exp</div>
+          <div class="text-[10px] font-mono text-slate-500 mt-1">E-Commerce &amp; Tech</div>
         </div>
-        <div class="glass-panel p-4 rounded-xl border border-gray-800/80 text-center">
-          <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-mono">Amazon</div>
-          <div class="text-xs text-gray-400 uppercase tracking-wider mt-1 font-medium">Seller & Vendor Ops</div>
+
+        <div class="cyber-card p-5 rounded-2xl border border-emerald-500/20 text-center relative overflow-hidden group">
+          <div class="hud-bracket hud-tl"></div>
+          <div class="hud-bracket hud-tr"></div>
+          <div class="text-3xl sm:text-4xl font-mono font-extrabold text-emerald-400 mb-1 tracking-tight">AMAZON</div>
+          <div class="text-[11px] font-tech uppercase tracking-widest text-emerald-300 font-semibold">Seller &amp; Vendor Central</div>
+          <div class="text-[10px] font-mono text-slate-500 mt-1">Revenue &amp; Health Lead</div>
         </div>
-        <div class="glass-panel p-4 rounded-xl border border-gray-800/80 text-center">
-          <div class="text-2xl sm:text-3xl font-extrabold text-cyan-400 font-mono">SME</div>
-          <div class="text-xs text-gray-400 uppercase tracking-wider mt-1 font-medium">Process & Audit Lead</div>
+
+        <div class="cyber-card p-5 rounded-2xl border border-purple-500/20 text-center relative overflow-hidden group">
+          <div class="hud-bracket hud-tl"></div>
+          <div class="hud-bracket hud-tr"></div>
+          <div class="text-3xl sm:text-4xl font-mono font-extrabold text-purple-400 mb-1 tracking-tight">SME</div>
+          <div class="text-[11px] font-tech uppercase tracking-widest text-purple-300 font-semibold">Subject Matter Expert</div>
+          <div class="text-[10px] font-mono text-slate-500 mt-1">SOP &amp; Root-Cause Auditing</div>
         </div>
-        <div class="glass-panel p-4 rounded-xl border border-gray-800/80 text-center">
-          <div class="text-2xl sm:text-3xl font-extrabold text-purple-400 font-mono">8.5</div>
-          <div class="text-xs text-gray-400 uppercase tracking-wider mt-1 font-medium">B.Tech ECE GPA</div>
+
+        <div class="cyber-card p-5 rounded-2xl border border-sky-500/20 text-center relative overflow-hidden group">
+          <div class="hud-bracket hud-tl"></div>
+          <div class="hud-bracket hud-tr"></div>
+          <div class="text-3xl sm:text-4xl font-mono font-extrabold text-sky-400 mb-1 tracking-tight">8.5</div>
+          <div class="text-[11px] font-tech uppercase tracking-widest text-sky-300 font-semibold">B.Tech ECE GPA</div>
+          <div class="text-[10px] font-mono text-slate-500 mt-1">Electronics &amp; Comm. Eng.</div>
         </div>
+
       </div>
 
     </div>
   </section>
 
-  <!-- ================= ABOUT ME SECTION ================= -->
-  <section id="about" class="py-20 px-4 sm:px-6 relative z-10">
+  <!-- ================= ABOUT ME HUD MATRIX ================= -->
+  <section id="about" class="py-24 px-4 sm:px-6 relative z-10">
     <div class="max-w-5xl mx-auto">
       
-      <div class="flex items-center gap-3 mb-4">
-        <span class="w-8 h-[2px] bg-emerald-400"></span>
-        <span class="text-emerald-400 font-mono text-sm tracking-wider uppercase font-semibold">Background & Focus</span>
+      <div class="flex items-center gap-3 mb-3">
+        <span class="w-8 h-[2px] bg-cyan-400"></span>
+        <span class="text-cyan-400 font-mono text-xs tracking-widest uppercase font-bold">SECTION 01 // DOSSIER</span>
       </div>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-12 tracking-tight">About Me</h2>
+      <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-white mb-14 tracking-tight">Operational Philosophy &amp; Background</h2>
 
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
         
-        <!-- Profile Visual Card -->
+        <!-- Profile Holographic Terminal Card -->
         <div class="md:col-span-5 flex justify-center">
-          <div class="relative group">
-            <div class="absolute -inset-1.5 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-3xl blur-lg opacity-40 group-hover:opacity-75 transition duration-500"></div>
-            <div class="relative w-64 h-80 sm:w-72 sm:h-96 rounded-2xl overflow-hidden glass-panel border border-white/10 shadow-2xl">
-              <img src="profile.jpg" alt="Bikash Kumar Malik" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-              <div class="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
-                <div class="font-bold text-white text-base">Bikash Kumar Malik</div>
-                <div class="text-xs text-emerald-400 font-mono flex items-center gap-1.5 mt-0.5">
-                  <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
-                  <span>Haldia, West Bengal, India</span>
-                </div>
+          <div class="cyber-card p-5 rounded-3xl border border-cyan-500/40 relative shadow-[0_0_50px_rgba(0,240,255,0.18)] max-w-sm w-full tilt-card">
+            <div class="hud-bracket hud-tl"></div>
+            <div class="hud-bracket hud-tr"></div>
+            <div class="hud-bracket hud-bl"></div>
+            <div class="hud-bracket hud-br"></div>
+            
+            <div class="relative w-full aspect-[4/5] rounded-2xl overflow-hidden mb-4 border border-cyan-500/20">
+              <img src="profile.jpg" alt="Bikash Kumar Malik" class="w-full h-full object-cover" />
+              <!-- Hologram Scanning Line -->
+              <div class="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-400/20 to-transparent h-10 w-full animate-float-slow pointer-events-none"></div>
+            </div>
+
+            <div class="space-y-2 font-mono text-xs">
+              <div class="flex items-center justify-between text-slate-400">
+                <span>IDENTITY:</span>
+                <span class="text-white font-bold">Bikash Kumar Malik</span>
+              </div>
+              <div class="flex items-center justify-between text-slate-400">
+                <span>LOCATION:</span>
+                <span class="text-cyan-400 font-bold">Haldia, WB, India</span>
+              </div>
+              <div class="flex items-center justify-between text-slate-400">
+                <span>EDUCATION:</span>
+                <span class="text-purple-400 font-bold">B.Tech ECE (8.5 CGPA)</span>
+              </div>
+              <div class="flex items-center justify-between text-slate-400">
+                <span>ENGLISH CEFR:</span>
+                <span class="text-emerald-400 font-bold">EF SET Standard Certified</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Narrative Content -->
-        <div class="md:col-span-7 space-y-5 text-gray-300 text-base sm:text-lg leading-relaxed">
-          <p>
-            I am a results-oriented <strong class="text-white">Subject Matter Expert and Operations Professional</strong> with over five years of multidisciplinary expertise spanning e-commerce ecosystem compliance, technical customer support, and IT process leadership.
+        <!-- Narrative Telemetry -->
+        <div class="md:col-span-7 space-y-6 text-slate-300 text-base sm:text-lg leading-relaxed font-sans">
+          <p class="first-letter:text-4xl first-letter:font-display first-letter:font-extrabold first-letter:text-cyan-400 first-letter:mr-2">
+            I am a results-oriented <strong class="text-white">Subject Matter Expert and Operations Professional</strong> with over five years of cross-functional excellence spanning e-commerce ecosystem compliance, technical customer support, and IT process governance.
           </p>
           <p>
-            Currently, at <strong class="text-white">Bathroom Bubbles Ltd</strong>, I drive operational compliance and revenue recovery across <span class="text-emerald-400 font-medium">Amazon Seller Central</span> and <span class="text-emerald-400 font-medium">Amazon Vendor Central</span>, analyzing complex deductions, reversing unfair chargebacks, and maintaining immaculate account health metrics.
+            Currently, at <strong class="text-cyan-300">Bathroom Bubbles Ltd</strong>, I orchestrate end-to-end operational compliance and revenue recovery across <span class="text-cyan-400 font-medium font-tech">Amazon Seller Central</span> and <span class="text-cyan-400 font-medium font-tech">Amazon Vendor Central</span>. My work centers on auditing complex Amazon deductions, reversing invalid chargebacks, rectifying shortage claims, and maintaining flawless account health metrics.
           </p>
           <p>
-            Previously, as a Subject Matter Expert at <strong class="text-white">31West Global Services</strong> and Customer Service Associate at <strong class="text-white">Wipro Limited</strong>, I spearheaded SLA compliance, authored Standard Operating Procedures (SOPs), mentored teams, and resolved high-stakes technical and insurance claim escalations.
+            Previously, as a Subject Matter Expert at <strong class="text-purple-300">31West Global Services</strong> and Customer Service Associate at <strong class="text-purple-300">Wipro Limited</strong>, I spearheaded SLA compliance, authored Standard Operating Procedures (SOPs), mentored frontline technical engineers, and resolved high-stakes technical escalations and healthcare claims.
           </p>
           <p>
-            Holding a Bachelor of Technology in Electronics and Communication Engineering from <strong class="text-white">Haldia Institute of Technology (8.5 CGPA)</strong>, I combine rigorous analytical thinking with practical software mastery. When I am not optimizing operational workflows, you will find me dissecting Formula One race telemetry, tracking aerospace advancements, or stargazing as an avid astrophile.
+            Holding a Bachelor of Technology in Electronics and Communication Engineering from <strong class="text-white">Haldia Institute of Technology (8.5 CGPA)</strong>, I fuse mathematical problem-solving with full-stack software craftsmanship. Outside of work, I am an enthusiastic astrophile, telemetry analyst for Formula 1 racing, and high-fidelity music listener.
           </p>
         </div>
 
@@ -317,164 +588,183 @@
     </div>
   </section>
 
-  <!-- ================= WORK EXPERIENCE (FLUID TIMELINE) ================= -->
-  <section id="experience" class="py-20 px-4 sm:px-6 relative z-10 bg-black/30 border-y border-gray-800/60">
+  <!-- ================= WORK EXPERIENCE (ANIMATRONIC TIMELINE) ================= -->
+  <section id="experience" class="py-24 px-4 sm:px-6 relative z-10 bg-slate-950/60 border-y border-cyan-500/10">
     <div class="max-w-5xl mx-auto">
       
-      <div class="flex items-center gap-3 mb-4">
-        <span class="w-8 h-[2px] bg-emerald-400"></span>
-        <span class="text-emerald-400 font-mono text-sm tracking-wider uppercase font-semibold">Career History</span>
+      <div class="flex items-center gap-3 mb-3">
+        <span class="w-8 h-[2px] bg-cyan-400"></span>
+        <span class="text-cyan-400 font-mono text-xs tracking-widest uppercase font-bold">SECTION 02 // CAREER TIMELINE</span>
       </div>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-14 tracking-tight">Work Experience</h2>
+      <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-white mb-14 tracking-tight">Operational Work Experience</h2>
 
-      <div class="relative pl-6 sm:pl-10 space-y-12 before:absolute before:left-[11px] sm:before:left-[19px] before:top-2 before:bottom-2 before:w-[2px] before:bg-gradient-to-b before:from-emerald-400 before:via-cyan-400 before:to-purple-500">
+      <div class="relative pl-6 sm:pl-12 space-y-12">
         
+        <!-- Electric Conduit Line with Animated Pulse -->
+        <div class="conduit-line">
+          <div class="conduit-pulse"></div>
+        </div>
+
         <!-- Experience 1: Bathroom Bubbles Ltd -->
-        <div class="relative spotlight-card glass-panel p-6 sm:p-8 rounded-2xl border border-emerald-500/30 shadow-2xl reveal-item">
-          <!-- Timeline Node Icon -->
-          <div class="absolute -left-[37px] sm:-left-[53px] top-6 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#0a0f14] border-2 border-emerald-400 flex items-center justify-center text-emerald-400 shadow-lg">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <div class="relative cyber-card p-6 sm:p-8 rounded-2xl border border-cyan-500/40 shadow-2xl reveal-elem tilt-card">
+          <div class="hud-bracket hud-tl"></div>
+          <div class="hud-bracket hud-tr"></div>
+          <div class="hud-bracket hud-bl"></div>
+          <div class="hud-bracket hud-br"></div>
+
+          <!-- Timeline Node Ring -->
+          <div class="absolute -left-[35px] sm:-left-[59px] top-7 w-8 h-8 rounded-full bg-[#030712] border-2 border-cyan-400 flex items-center justify-center text-cyan-400 shadow-[0_0_15px_#00F0FF]">
+            <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></span>
           </div>
 
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
             <div>
-              <span class="inline-block px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 text-xs font-mono font-bold mb-2">
-                CURRENT ROLE
-              </span>
-              <h3 class="text-xl sm:text-2xl font-bold text-white">Customer Services Executive</h3>
-              <div class="text-base text-emerald-400 font-medium font-mono">Bathroom Bubbles Ltd</div>
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/15 border border-cyan-500/50 text-cyan-300 text-xs font-mono font-bold mb-2">
+                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                <span>ACTIVE ENGAGEMENT // CURRENT ROLE</span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-display font-bold text-white">Customer Services Executive</h3>
+              <div class="text-base text-cyan-400 font-tech font-semibold">Bathroom Bubbles Ltd</div>
             </div>
-            <div class="text-xs sm:text-sm font-mono text-gray-400 flex items-center gap-1.5">
-              <i data-lucide="calendar" class="w-4 h-4 text-emerald-400"></i>
+            <div class="text-xs sm:text-sm font-mono text-slate-400 flex items-center gap-1.5 bg-slate-900/80 px-3 py-1.5 rounded-lg border border-slate-800">
+              <i data-lucide="calendar" class="w-4 h-4 text-cyan-400"></i>
               <span>11/2024 – Present</span>
             </div>
           </div>
 
-          <p class="text-sm text-gray-400 mb-5 flex items-center gap-1.5">
-            <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+          <p class="text-xs font-mono text-slate-400 mb-5 flex items-center gap-1.5">
+            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-cyan-400"></i>
             <span>Haldia, West Bengal, India</span>
           </p>
 
-          <ul class="space-y-3 text-sm sm:text-base text-gray-300">
+          <ul class="space-y-3.5 text-sm sm:text-base text-slate-300 font-sans">
             <li class="flex items-start gap-3">
-              <span class="text-emerald-400 font-bold mt-1">▹</span>
-              <span><strong>Omnichannel Support & SLA Compliance:</strong> Handle and resolve high-volume customer inquiries across ticketing systems, phone, and live chat while exceeding strict service level agreements.</span>
+              <span class="text-cyan-400 font-bold mt-1">▸</span>
+              <span><strong class="text-white">Omnichannel Service Level Agreements:</strong> Resolve high-volume customer inquiries across multi-channel ticketing platforms, voice, and live chat while exceeding strict first-response and customer satisfaction SLAs.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="text-emerald-400 font-bold mt-1">▹</span>
-              <span><strong>Amazon Seller Central Leadership:</strong> Oversee end-to-end Seller Central performance metrics, maintaining account health, order defect rate (ODR) benchmarks, and regulatory compliance.</span>
+              <span class="text-cyan-400 font-bold mt-1">▸</span>
+              <span><strong class="text-white">Amazon Seller Central Operations:</strong> Oversee end-to-end Seller Central account health, maintaining sub-1% Order Defect Rate (ODR), Late Dispatch Benchmarks, and brand registry compliance.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="text-emerald-400 font-bold mt-1">▹</span>
-              <span><strong>Amazon Vendor Central Revenue Defense:</strong> Leverage advanced Vendor Central knowledge to audit operational chargebacks, investigate shortage discrepancies, and submit evidence-backed dispute claims to protect profitability.</span>
+              <span class="text-cyan-400 font-bold mt-1">▸</span>
+              <span><strong class="text-white">Amazon Vendor Central Revenue Defense:</strong> Audit Amazon chargebacks, investigate purchase order (PO) shortages, and dispute co-op / freight deductions with evidence documentation to protect net margins.</span>
             </li>
           </ul>
 
-          <div class="mt-6 pt-4 border-t border-gray-800 flex flex-wrap gap-2 text-xs font-mono">
-            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">Amazon Seller Central</span>
-            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">Amazon Vendor Central</span>
-            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">Revenue Recovery</span>
-            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">Omnichannel Ticketing</span>
-            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">SLA Auditing</span>
+          <div class="mt-6 pt-4 border-t border-slate-800 flex flex-wrap gap-2 text-xs font-mono">
+            <span class="px-2.5 py-1 rounded-md bg-slate-900 border border-cyan-500/20 text-cyan-300">Amazon Seller Central</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-900 border border-cyan-500/20 text-cyan-300">Amazon Vendor Central</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-900 border border-emerald-500/20 text-emerald-300">Chargeback Recovery</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-900 border border-purple-500/20 text-purple-300">Account Health Audits</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-700 text-slate-300">Omnichannel Ticketing</span>
           </div>
         </div>
 
         <!-- Experience 2: 31West Global Services -->
-        <div class="relative spotlight-card glass-panel p-6 sm:p-8 rounded-2xl border border-gray-800 shadow-2xl reveal-item">
-          <!-- Timeline Node Icon -->
-          <div class="absolute -left-[37px] sm:-left-[53px] top-6 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#0a0f14] border-2 border-cyan-400 flex items-center justify-center text-cyan-400 shadow-lg">
-            <i data-lucide="check" class="w-3.5 h-3.5"></i>
+        <div class="relative cyber-card p-6 sm:p-8 rounded-2xl border border-purple-500/30 shadow-2xl reveal-elem tilt-card">
+          <div class="hud-bracket hud-tl"></div>
+          <div class="hud-bracket hud-tr"></div>
+          <div class="hud-bracket hud-bl"></div>
+          <div class="hud-bracket hud-br"></div>
+
+          <!-- Timeline Node Ring -->
+          <div class="absolute -left-[35px] sm:-left-[59px] top-7 w-8 h-8 rounded-full bg-[#030712] border-2 border-purple-400 flex items-center justify-center text-purple-400 shadow-[0_0_15px_#A855F7]">
+            <i data-lucide="check" class="w-4 h-4"></i>
           </div>
 
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
             <div>
-              <h3 class="text-xl sm:text-2xl font-bold text-white">Subject Matter Expert (SME)</h3>
-              <div class="text-base text-cyan-400 font-medium font-mono">31West Global Services</div>
+              <h3 class="text-xl sm:text-2xl font-display font-bold text-white">Subject Matter Expert (SME)</h3>
+              <div class="text-base text-purple-400 font-tech font-semibold">31West Global Services</div>
             </div>
-            <div class="text-xs sm:text-sm font-mono text-gray-400 flex items-center gap-1.5">
-              <i data-lucide="calendar" class="w-4 h-4 text-cyan-400"></i>
+            <div class="text-xs sm:text-sm font-mono text-slate-400 flex items-center gap-1.5 bg-slate-900/80 px-3 py-1.5 rounded-lg border border-slate-800">
+              <i data-lucide="calendar" class="w-4 h-4 text-purple-400"></i>
               <span>07/2021 – 08/2024 (3 Years 2 Mos)</span>
             </div>
           </div>
 
-          <p class="text-sm text-gray-400 mb-5 flex items-center gap-1.5">
-            <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+          <p class="text-xs font-mono text-slate-400 mb-5 flex items-center gap-1.5">
+            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-purple-400"></i>
             <span>Haldia, West Bengal, India</span>
           </p>
 
-          <ul class="space-y-3 text-sm sm:text-base text-gray-300">
+          <ul class="space-y-3.5 text-sm sm:text-base text-slate-300 font-sans">
             <li class="flex items-start gap-3">
-              <span class="text-cyan-400 font-bold mt-1">▹</span>
-              <span><strong>Technical Escalation & Research:</strong> Conducted comprehensive research and root-cause analysis on complex production outages and system anomalies.</span>
+              <span class="text-purple-400 font-bold mt-1">▸</span>
+              <span><strong class="text-white">Technical Root-Cause Analysis:</strong> Directed in-depth diagnostic investigations into critical production outages, resolving intricate software, networking, and system-level bottlenecks.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="text-cyan-400 font-bold mt-1">▹</span>
-              <span><strong>Training & Education:</strong> Mentored, trained, and onboarded new technical support engineers, significantly reducing time-to-productivity.</span>
+              <span class="text-purple-400 font-bold mt-1">▸</span>
+              <span><strong class="text-white">Engineer Training &amp; Mentorship:</strong> Developed standard onboarding curricula and mentored new support engineers, cutting initial training cycles by 35%.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="text-cyan-400 font-bold mt-1">▹</span>
-              <span><strong>SOP Standardisation & Quality:</strong> Authored and reviewed Standard Operating Procedures (SOPs), conducting regular process audits to elevate service delivery quality.</span>
+              <span class="text-purple-400 font-bold mt-1">▸</span>
+              <span><strong class="text-white">Standard Operating Procedures (SOPs):</strong> Authored, audited, and maintained comprehensive SOP knowledgebases to enforce high ticket quality and compliance.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="text-cyan-400 font-bold mt-1">▹</span>
-              <span><strong>Tool Administration:</strong> Managed and troubleshot user permissions, endpoints, and virtual environments using <strong>Active Directory</strong>, <strong>Datto RMM</strong>, <strong>Zoho Desk</strong>, and <strong>Citrix Workspace</strong>.</span>
+              <span class="text-purple-400 font-bold mt-1">▸</span>
+              <span><strong class="text-white">Systems Administration:</strong> Administered Active Directory accounts, remote management workflows via <strong>Datto RMM</strong>, customer ticketing in <strong>Zoho Desk</strong>, and virtual workspaces in <strong>Citrix</strong>.</span>
             </li>
           </ul>
 
-          <div class="mt-6 pt-4 border-t border-gray-800 flex flex-wrap gap-2 text-xs font-mono">
-            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">Active Directory</span>
-            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">Datto RMM</span>
-            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">Zoho Desk</span>
-            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">Citrix</span>
-            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">SOP Authoring</span>
-            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">Team Mentorship</span>
+          <div class="mt-6 pt-4 border-t border-slate-800 flex flex-wrap gap-2 text-xs font-mono">
+            <span class="px-2.5 py-1 rounded-md bg-slate-900 border border-purple-500/20 text-purple-300">Active Directory</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-900 border border-purple-500/20 text-purple-300">Datto RMM</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-900 border border-purple-500/20 text-purple-300">Zoho Desk</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-700 text-slate-300">Citrix Workspace</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-900 border border-cyan-500/20 text-cyan-300">SOP Governance</span>
           </div>
         </div>
 
         <!-- Experience 3: Wipro Limited -->
-        <div class="relative spotlight-card glass-panel p-6 sm:p-8 rounded-2xl border border-gray-800 shadow-2xl reveal-item">
-          <!-- Timeline Node Icon -->
-          <div class="absolute -left-[37px] sm:-left-[53px] top-6 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#0a0f14] border-2 border-purple-400 flex items-center justify-center text-purple-400 shadow-lg">
-            <i data-lucide="check" class="w-3.5 h-3.5"></i>
+        <div class="relative cyber-card p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-2xl reveal-elem tilt-card">
+          <div class="hud-bracket hud-tl"></div>
+          <div class="hud-bracket hud-tr"></div>
+          <div class="hud-bracket hud-bl"></div>
+          <div class="hud-bracket hud-br"></div>
+
+          <!-- Timeline Node Ring -->
+          <div class="absolute -left-[35px] sm:-left-[59px] top-7 w-8 h-8 rounded-full bg-[#030712] border-2 border-slate-600 flex items-center justify-center text-slate-400">
+            <i data-lucide="check" class="w-4 h-4"></i>
           </div>
 
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
             <div>
-              <h3 class="text-xl sm:text-2xl font-bold text-white">Associate (Customer Service)</h3>
-              <div class="text-base text-purple-400 font-medium font-mono">Wipro Limited</div>
+              <h3 class="text-xl sm:text-2xl font-display font-bold text-white">Associate (Customer Service)</h3>
+              <div class="text-base text-slate-300 font-tech font-semibold">Wipro Limited</div>
             </div>
-            <div class="text-xs sm:text-sm font-mono text-gray-400 flex items-center gap-1.5">
-              <i data-lucide="calendar" class="w-4 h-4 text-purple-400"></i>
+            <div class="text-xs sm:text-sm font-mono text-slate-400 flex items-center gap-1.5 bg-slate-900/80 px-3 py-1.5 rounded-lg border border-slate-800">
+              <i data-lucide="calendar" class="w-4 h-4 text-slate-400"></i>
               <span>01/2019 – 02/2021 (2 Years 2 Mos)</span>
             </div>
           </div>
 
-          <p class="text-sm text-gray-400 mb-5 flex items-center gap-1.5">
-            <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+          <p class="text-xs font-mono text-slate-400 mb-5 flex items-center gap-1.5">
+            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-slate-500"></i>
             <span>Kolkata, West Bengal, India</span>
           </p>
 
-          <ul class="space-y-3 text-sm sm:text-base text-gray-300">
+          <ul class="space-y-3.5 text-sm sm:text-base text-slate-300 font-sans">
             <li class="flex items-start gap-3">
-              <span class="text-purple-400 font-bold mt-1">▹</span>
-              <span><strong>Healthcare Claims Adjudication:</strong> Audited and processed electronic medical claims through Oracle Siebel CRM with high speed and zero compliance violations.</span>
+              <span class="text-slate-500 font-bold mt-1">▸</span>
+              <span><strong class="text-white">Healthcare Claims Adjudication:</strong> Audited and processed complex electronic insurance claims in <strong>Oracle Siebel CRM</strong>, maintaining an unblemished accuracy record.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="text-purple-400 font-bold mt-1">▹</span>
-              <span><strong>Insurance Stakeholder Engagement:</strong> Interfaced directly with major healthcare payers including United Health Group (UHG) to clarify billing issues and resolve contested claims.</span>
+              <span class="text-slate-500 font-bold mt-1">▸</span>
+              <span><strong class="text-white">Payer Stakeholder Coordination:</strong> Interfaced directly with United Health Group (UHG) stakeholders and providers to clarify contested claims and resolve billing bottlenecks.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="text-purple-400 font-bold mt-1">▹</span>
-              <span><strong>Remittance & Escalations:</strong> Processed Electronic Remittance Advice (ERAs) and managed escalation queues to ensure customer satisfaction benchmarks.</span>
+              <span class="text-slate-500 font-bold mt-1">▸</span>
+              <span><strong class="text-white">Electronic Remittance (ERA):</strong> Reconciled Electronic Remittance Advice files and handled critical escalation queues.</span>
             </li>
           </ul>
 
-          <div class="mt-6 pt-4 border-t border-gray-800 flex flex-wrap gap-2 text-xs font-mono">
-            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">Oracle Siebel CRM</span>
-            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">Claims Adjudication</span>
-            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">United Health Group (UHG)</span>
-            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">ERA Processing</span>
-            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">Escalation Resolution</span>
+          <div class="mt-6 pt-4 border-t border-slate-800 flex flex-wrap gap-2 text-xs font-mono">
+            <span class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-700 text-slate-300">Oracle Siebel CRM</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-700 text-slate-300">United Health Group (UHG)</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-700 text-slate-300">ERA Reconciliation</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-700 text-slate-300">Claims Adjudication</span>
           </div>
         </div>
 
@@ -483,176 +773,197 @@
     </div>
   </section>
 
-  <!-- ================= FEATURED SOFTWARE PROJECT ================= -->
-  <section id="projects" class="py-20 px-4 sm:px-6 relative z-10">
+  <!-- ================= FEATURED SOFTWARE: RETROFLUX PRO WITH CONIC BORDER BEAM ================= -->
+  <section id="projects" class="py-24 px-4 sm:px-6 relative z-10">
     <div class="max-w-5xl mx-auto">
       
-      <div class="flex items-center gap-3 mb-4">
-        <span class="w-8 h-[2px] bg-emerald-400"></span>
-        <span class="text-emerald-400 font-mono text-sm tracking-wider uppercase font-semibold">Featured Commercial Engineering</span>
+      <div class="flex items-center gap-3 mb-3">
+        <span class="w-8 h-[2px] bg-cyan-400"></span>
+        <span class="text-cyan-400 font-mono text-xs tracking-widest uppercase font-bold">SECTION 03 // FULL-STACK SOFTWARE ENGINEERING</span>
       </div>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-6 tracking-tight">Software & Engineering Project</h2>
-      <p class="text-gray-400 max-w-2xl mb-12">
-        Demonstrating end-to-end full-stack development, multimedia pipelines, automated e-commerce licensing, and cross-platform packaging.
+      <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-white mb-6 tracking-tight">Commercial Software Showcase</h2>
+      <p class="text-slate-400 max-w-2xl mb-12 font-sans">
+        Engineering commercial desktop and mobile applications with automated licensing, multi-GPU hardware acceleration, and cross-platform binary distributions.
       </p>
 
-      <!-- RetroFlux Showcase Card -->
-      <div class="spotlight-card glass-panel rounded-3xl p-8 sm:p-10 border border-emerald-500/30 shadow-2xl relative overflow-hidden">
-        
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <!-- Border Beam Wrapper Card -->
+      <div class="border-beam-container shadow-[0_0_60px_rgba(0,240,255,0.2)]">
+        <div class="border-beam-inner p-8 sm:p-12 relative overflow-hidden">
           
-          <div class="lg:col-span-7 space-y-6">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 font-mono text-xs font-bold">
-              <span>⚡ COMMERCIAL DESKTOP & MOBILE SOFTWARE</span>
-            </div>
-
-            <h3 class="text-3xl font-extrabold text-white">RetroFlux PRO</h3>
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
-            <p class="text-gray-300 text-base leading-relaxed">
-              A high-performance, 100% offline local media conversion and remuxing workstation designed for creators. Features multi-GPU acceleration (NVIDIA NVENC, Intel QSV, AMD AMF), instant lossless container remuxing (<code class="text-emerald-400 font-mono">-c copy</code> in 1.2 seconds), and a standalone 48MB Windows executable bundled with FFmpeg.
-            </p>
-
-            <!-- Technical Highlights -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-gray-300">
-              <div class="flex items-center gap-2">
-                <i data-lucide="zap" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
-                <span>1.2s Fast Stream Remuxing</span>
+            <div class="lg:col-span-7 space-y-6">
+              
+              <div class="flex flex-wrap items-center gap-3">
+                <span class="px-3 py-1 rounded-md bg-cyan-500/20 border border-cyan-400/60 text-cyan-300 font-mono text-xs font-bold tracking-wider">
+                  ⚡ COMMERCIAL PRODUCT // GUMROAD LIVE
+                </span>
+                <span class="px-3 py-1 rounded-md bg-purple-500/20 border border-purple-400/60 text-purple-300 font-mono text-xs font-bold">
+                  v1.3.0 PRO
+                </span>
               </div>
-              <div class="flex items-center gap-2">
-                <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
-                <span>100% Air-Gapped & Offline</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <i data-lucide="key" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
-                <span>Gumroad License API Engine</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <i data-lucide="smartphone" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
-                <span>Android Native Flutter Edition</span>
-              </div>
-            </div>
 
-            <!-- Tech Badges -->
-            <div class="flex flex-wrap gap-2 pt-2">
-              <span class="px-3 py-1 rounded-lg bg-gray-800/90 text-gray-300 font-mono text-xs">Python 3.13</span>
-              <span class="px-3 py-1 rounded-lg bg-gray-800/90 text-gray-300 font-mono text-xs">Tkinter</span>
-              <span class="px-3 py-1 rounded-lg bg-gray-800/90 text-gray-300 font-mono text-xs">Flutter / Dart</span>
-              <span class="px-3 py-1 rounded-lg bg-gray-800/90 text-gray-300 font-mono text-xs">Embedded FFmpeg</span>
-              <span class="px-3 py-1 rounded-lg bg-gray-800/90 text-gray-300 font-mono text-xs">PyInstaller</span>
-              <span class="px-3 py-1 rounded-lg bg-gray-800/90 text-gray-300 font-mono text-xs">Gumroad API</span>
-            </div>
+              <h3 class="text-3xl sm:text-4xl font-display font-extrabold text-white tracking-tight">
+                RetroFlux PRO
+              </h3>
 
-            <!-- CTA Links -->
-            <div class="flex flex-wrap items-center gap-4 pt-4">
-              <a href="https://bonnokush.gumroad.com/l/doqxfs" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-sm transition-all transform hover:scale-105 shadow-lg shadow-emerald-500/20">
-                <span>View Live Storefront</span>
-                <i data-lucide="external-link" class="w-4 h-4"></i>
-              </a>
-              <a href="https://github.com/bonnoxkush/RetroFlux" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl glass-panel hover:bg-gray-800 text-white font-medium text-sm transition-all border border-gray-700">
-                <i data-lucide="github" class="w-4 h-4"></i>
-                <span>GitHub Source Base</span>
-              </a>
-            </div>
+              <p class="text-slate-300 text-base leading-relaxed font-sans">
+                A high-throughput, 100% offline local media conversion and lossless remuxing workstation engineered for video creators. Supports hardware-accelerated transcoding across NVIDIA NVENC, Intel QSV, and AMD AMF, instant lossless stream remuxing (<code class="text-cyan-300 font-mono">-c copy</code> in 1.2s), and automated air-gapped license validation via Gumroad.
+              </p>
 
-          </div>
-
-          <!-- Visual CRT Terminal Window Preview -->
-          <div class="lg:col-span-5">
-            <div class="rounded-2xl border-2 border-emerald-500/40 bg-[#050906] p-4 shadow-2xl font-mono text-xs text-emerald-400">
-              <div class="flex items-center justify-between pb-3 border-b border-emerald-500/20 mb-3 text-gray-400">
-                <div class="flex gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
+              <!-- Technical Metric Badges -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm font-tech text-slate-200">
+                <div class="flex items-center gap-2.5 p-2 rounded-lg bg-slate-900/60 border border-cyan-500/20">
+                  <i data-lucide="zap" class="w-4 h-4 text-cyan-400"></i>
+                  <span>1.2s Stream Copy Engine</span>
                 </div>
-                <span class="text-[10px] tracking-wider text-emerald-400 font-bold">RETROFLUX PRO // v1.3.0</span>
+                <div class="flex items-center gap-2.5 p-2 rounded-lg bg-slate-900/60 border border-emerald-500/20">
+                  <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+                  <span>100% Air-Gapped &amp; Private</span>
+                </div>
+                <div class="flex items-center gap-2.5 p-2 rounded-lg bg-slate-900/60 border border-purple-500/20">
+                  <i data-lucide="key" class="w-4 h-4 text-purple-400"></i>
+                  <span>Gumroad License API Tiers</span>
+                </div>
+                <div class="flex items-center gap-2.5 p-2 rounded-lg bg-slate-900/60 border border-sky-500/20">
+                  <i data-lucide="smartphone" class="w-4 h-4 text-sky-400"></i>
+                  <span>Android Flutter Edition</span>
+                </div>
               </div>
-              <div class="space-y-2 text-emerald-400/90 leading-relaxed">
-                <div>retroflux@system:~$ probe-gpu-acceleration</div>
-                <div class="text-white">✓ NVIDIA NVENC, Intel QSV, AMD AMF READY</div>
-                <div class="text-gray-400">------------------------------------------</div>
-                <div>retroflux@system:~$ remux -i input.mkv -o stream.mp4</div>
-                <div class="text-emerald-300 font-bold">[100%] STREAM COPY LOSSLESS FINISHED IN 1.2s</div>
-                <div class="text-gray-400">------------------------------------------</div>
-                <div>retroflux@system:~$ verify-license --api=gumroad</div>
-                <div class="text-cyan-300">✓ KEY ACTIVATED: DESKTOP EDITION [AIR-GAPPED]</div>
+
+              <!-- Tech Stack Tags -->
+              <div class="flex flex-wrap gap-2 pt-2 text-xs font-mono">
+                <span class="px-3 py-1 rounded-lg bg-slate-900 border border-slate-700 text-slate-300">Python 3.13</span>
+                <span class="px-3 py-1 rounded-lg bg-slate-900 border border-slate-700 text-slate-300">Flutter / Dart</span>
+                <span class="px-3 py-1 rounded-lg bg-slate-900 border border-slate-700 text-slate-300">Embedded FFmpeg</span>
+                <span class="px-3 py-1 rounded-lg bg-slate-900 border border-cyan-500/30 text-cyan-300">NVIDIA NVENC</span>
+                <span class="px-3 py-1 rounded-lg bg-slate-900 border border-purple-500/30 text-purple-300">Gumroad API</span>
+              </div>
+
+              <!-- Direct Store Links -->
+              <div class="flex flex-wrap items-center gap-4 pt-4">
+                <a href="https://bonnokush.gumroad.com/l/doqxfs" target="_blank" rel="noopener noreferrer" class="interactive-target inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-black font-tech font-bold text-sm tracking-wider uppercase transition-all transform hover:scale-105 shadow-[0_0_25px_rgba(0,240,255,0.4)]">
+                  <span>Visit Gumroad Store</span>
+                  <i data-lucide="external-link" class="w-4 h-4"></i>
+                </a>
+                <a href="https://github.com/bonnoxkush/RetroFlux" target="_blank" rel="noopener noreferrer" class="interactive-target inline-flex items-center gap-2 px-6 py-3 rounded-xl cyber-card hover:bg-slate-800 text-white font-tech font-medium text-sm tracking-wider uppercase transition-all border border-slate-700">
+                  <i data-lucide="github" class="w-4 h-4 text-purple-400"></i>
+                  <span>GitHub Repository</span>
+                </a>
+              </div>
+
+            </div>
+
+            <!-- Animatronic CRT Diagnostic Terminal -->
+            <div class="lg:col-span-5">
+              <div class="rounded-2xl border-2 border-cyan-500/40 bg-[#02050c] p-5 shadow-2xl font-mono text-xs text-cyan-400 relative scanlines">
+                <div class="flex items-center justify-between pb-3 border-b border-cyan-500/20 mb-4 text-slate-400">
+                  <div class="flex gap-2">
+                    <span class="w-3 h-3 rounded-full bg-rose-500 shadow-[0_0_8px_#f43f5e]"></span>
+                    <span class="w-3 h-3 rounded-full bg-amber-500 shadow-[0_0_8px_#f59e0b]"></span>
+                    <span class="w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]"></span>
+                  </div>
+                  <span class="text-[10px] tracking-widest text-cyan-300 font-bold">TERMINAL // RETROFLUX PRO</span>
+                </div>
+                
+                <div class="space-y-3 leading-relaxed text-[11px]">
+                  <div class="text-slate-400">&gt; init --gpu-pipeline</div>
+                  <div class="text-emerald-400 font-bold">✓ NVIDIA NVENC [RTX] DETECTED &amp; ENGAGED</div>
+                  <div class="text-slate-400">&gt; remux -i master_capture.mkv -o stream.mp4</div>
+                  <div class="p-2 rounded bg-cyan-950/40 border border-cyan-500/30 text-cyan-300">
+                    [########################] 100%<br/>
+                    LOSSLESS STREAM REMUX COMPLETE IN 1.18s
+                  </div>
+                  <div class="text-slate-400">&gt; license-engine --verify</div>
+                  <div class="text-purple-300 font-bold">✓ GUMROAD API: KEY VALIDATED [PRO TIER]</div>
+                  <div class="text-cyan-400/70 text-[10px] pt-1">AIR-GAP RUNTIME: READY // STANDALONE 48MB</div>
+                </div>
               </div>
             </div>
+
           </div>
 
         </div>
-
       </div>
 
     </div>
   </section>
 
-  <!-- ================= SKILLS MATRIX ================= -->
-  <section id="skills" class="py-20 px-4 sm:px-6 relative z-10 bg-black/30 border-y border-gray-800/60">
+  <!-- ================= SKILLS MATRIX HUD ================= -->
+  <section id="skills" class="py-24 px-4 sm:px-6 relative z-10 bg-slate-950/60 border-y border-cyan-500/10">
     <div class="max-w-5xl mx-auto">
       
-      <div class="flex items-center gap-3 mb-4">
-        <span class="w-8 h-[2px] bg-emerald-400"></span>
-        <span class="text-emerald-400 font-mono text-sm tracking-wider uppercase font-semibold">Core Competencies</span>
+      <div class="flex items-center gap-3 mb-3">
+        <span class="w-8 h-[2px] bg-cyan-400"></span>
+        <span class="text-cyan-400 font-mono text-xs tracking-widest uppercase font-bold">SECTION 04 // COMPETENCIES MATRIX</span>
       </div>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-12 tracking-tight">Skills & Domain Expertise</h2>
+      <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-white mb-14 tracking-tight">Core Competencies &amp; Toolkit</h2>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
         <!-- Category 1 -->
-        <div class="spotlight-card glass-panel p-6 rounded-2xl border border-gray-800 shadow-xl">
-          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-5">
+        <div class="cyber-card p-7 rounded-2xl border border-cyan-500/30 shadow-xl tilt-card">
+          <div class="hud-bracket hud-tl"></div>
+          <div class="hud-bracket hud-tr"></div>
+          
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/40 flex items-center justify-center text-cyan-400 mb-6 shadow-[0_0_15px_rgba(0,240,255,0.25)]">
             <i data-lucide="shopping-cart" class="w-6 h-6"></i>
           </div>
-          <h3 class="text-xl font-bold text-white mb-3">E-Commerce & Vendor Ops</h3>
-          <p class="text-gray-400 text-sm mb-5">
-            Proven track record in managing Amazon partner ecosystem health, claims disputes, and operational compliance.
+          <h3 class="text-xl font-display font-bold text-white mb-3">E-Commerce &amp; Vendor Ops</h3>
+          <p class="text-slate-400 text-sm mb-6 font-sans">
+            Specialized in end-to-end partner ecosystem compliance, automated reconciliation, and dispute recovery.
           </p>
           <div class="flex flex-wrap gap-2 text-xs font-mono">
-            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Amazon Seller Central</span>
-            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Amazon Vendor Central</span>
-            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Claims Auditing</span>
-            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Dispute Management</span>
-            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Shortage Reversals</span>
-            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">SLA Optimization</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-cyan-500/30 text-cyan-300">Amazon Seller Central</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-cyan-500/30 text-cyan-300">Amazon Vendor Central</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-700 text-slate-300">Chargeback Defense</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-700 text-slate-300">Shortage Reversals</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-700 text-slate-300">SLA Optimization</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-700 text-slate-300">Claims Auditing</span>
           </div>
         </div>
 
         <!-- Category 2 -->
-        <div class="spotlight-card glass-panel p-6 rounded-2xl border border-gray-800 shadow-xl">
-          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-5">
-            <i data-lucide="headset" class="w-6 h-6"></i>
+        <div class="cyber-card p-7 rounded-2xl border border-purple-500/30 shadow-xl tilt-card">
+          <div class="hud-bracket hud-tl"></div>
+          <div class="hud-bracket hud-tr"></div>
+          
+          <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/40 flex items-center justify-center text-purple-400 mb-6 shadow-[0_0_15px_rgba(168,85,247,0.25)]">
+            <i data-lucide="shield" class="w-6 h-6"></i>
           </div>
-          <h3 class="text-xl font-bold text-white mb-3">Customer Service & Leadership</h3>
-          <p class="text-gray-400 text-sm mb-5">
-            Over five years of customer-centric process design, training, ticket triage, and escalation resolution.
+          <h3 class="text-xl font-display font-bold text-white mb-3">Leadership &amp; Governance</h3>
+          <p class="text-slate-400 text-sm mb-6 font-sans">
+            Over five years mentoring engineers, formalizing Standard Operating Procedures, and performing process audits.
           </p>
           <div class="flex flex-wrap gap-2 text-xs font-mono">
-            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">SOP Management</span>
-            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Auditing & Reporting</span>
-            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Training & Mentorship</span>
-            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Conflict Resolution</span>
-            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Root Cause Analysis</span>
-            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Cross-Team Coordination</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-purple-500/30 text-purple-300">SOP Authoring</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-purple-500/30 text-purple-300">Quality Auditing</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-700 text-slate-300">Team Mentorship</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-700 text-slate-300">Root-Cause Analysis</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-700 text-slate-300">Conflict De-escalation</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-700 text-slate-300">Cross-Team Ops</span>
           </div>
         </div>
 
         <!-- Category 3 -->
-        <div class="spotlight-card glass-panel p-6 rounded-2xl border border-gray-800 shadow-xl">
-          <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-5">
+        <div class="cyber-card p-7 rounded-2xl border border-emerald-500/30 shadow-xl tilt-card">
+          <div class="hud-bracket hud-tl"></div>
+          <div class="hud-bracket hud-tr"></div>
+          
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/40 flex items-center justify-center text-emerald-400 mb-6 shadow-[0_0_15px_rgba(0,255,157,0.25)]">
             <i data-lucide="terminal" class="w-6 h-6"></i>
           </div>
-          <h3 class="text-xl font-bold text-white mb-3">Systems & Technical Stack</h3>
-          <p class="text-gray-400 text-sm mb-5">
-            Hands-on enterprise systems administration, remote tooling, scripting, and media transcoding pipelines.
+          <h3 class="text-xl font-display font-bold text-white mb-3">Systems &amp; Engineering</h3>
+          <p class="text-slate-400 text-sm mb-6 font-sans">
+            Enterprise administration, remote endpoint fleet control, and local audio/video transcoding pipelines.
           </p>
           <div class="flex flex-wrap gap-2 text-xs font-mono">
-            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Active Directory</span>
-            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Datto RMM</span>
-            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Zoho Desk</span>
-            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Citrix Workspace</span>
-            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Oracle Siebel CRM</span>
-            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Python & Flutter</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-emerald-500/30 text-emerald-300">Active Directory</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-emerald-500/30 text-emerald-300">Datto RMM</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-700 text-slate-300">Zoho Desk</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-700 text-slate-300">Citrix Workspace</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-700 text-slate-300">Oracle Siebel CRM</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-cyan-500/30 text-cyan-300">Python &amp; Flutter</span>
           </div>
         </div>
 
@@ -661,8 +972,8 @@
     </div>
   </section>
 
-  <!-- ================= EDUCATION, CERTIFICATES & LANGUAGES ================= -->
-  <section id="education" class="py-20 px-4 sm:px-6 relative z-10">
+  <!-- ================= EDUCATION, CERTIFICATES & PASSIONS ================= -->
+  <section id="education" class="py-24 px-4 sm:px-6 relative z-10">
     <div class="max-w-5xl mx-auto">
       
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
@@ -670,97 +981,106 @@
         <!-- Education Column -->
         <div class="lg:col-span-6 space-y-6">
           <div class="flex items-center gap-3 mb-2">
-            <span class="w-8 h-[2px] bg-emerald-400"></span>
-            <span class="text-emerald-400 font-mono text-sm tracking-wider uppercase font-semibold">Academic Foundation</span>
+            <span class="w-8 h-[2px] bg-cyan-400"></span>
+            <span class="text-cyan-400 font-mono text-xs tracking-widest uppercase font-bold">SECTION 05 // ACADEMICS</span>
           </div>
-          <h2 class="text-3xl font-extrabold text-white mb-8 tracking-tight">Education</h2>
+          <h2 class="text-3xl sm:text-4xl font-display font-extrabold text-white mb-8 tracking-tight">Education</h2>
 
-          <!-- Degree -->
-          <div class="spotlight-card glass-panel p-6 rounded-2xl border border-gray-800 shadow-lg">
+          <!-- B.Tech Degree Card -->
+          <div class="cyber-card p-6 rounded-2xl border border-cyan-500/30 shadow-lg tilt-card">
+            <div class="hud-bracket hud-tl"></div>
+            <div class="hud-bracket hud-tr"></div>
+            
             <div class="flex items-center justify-between gap-2 mb-2">
-              <span class="text-xs font-mono text-emerald-400 font-bold">06/2014 – 06/2018</span>
-              <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 text-xs font-mono font-bold">8.5 GPA / 77.7%</span>
+              <span class="text-xs font-mono text-cyan-400 font-bold">06/2014 – 06/2018</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-400/40 text-cyan-300 text-xs font-mono font-bold">8.5 GPA // 77.7%</span>
             </div>
-            <h3 class="text-xl font-bold text-white">Bachelor of Technology (B.Tech)</h3>
-            <div class="text-sm text-gray-300 font-medium mt-1">Electronics & Communication Engineering</div>
-            <div class="text-xs text-gray-400 mt-2 flex items-center gap-1.5">
-              <i data-lucide="school" class="w-4 h-4 text-emerald-400"></i>
-              <span>Haldia Institute of Technology</span>
+            <h3 class="text-xl font-display font-bold text-white">Bachelor of Technology (B.Tech)</h3>
+            <div class="text-sm font-tech text-cyan-300 font-semibold mt-1">Electronics &amp; Communication Engineering</div>
+            <div class="text-xs font-mono text-slate-400 mt-3 flex items-center gap-2">
+              <i data-lucide="landmark" class="w-4 h-4 text-cyan-400"></i>
+              <span>Haldia Institute of Technology (HIT), WB, India</span>
             </div>
           </div>
 
-          <!-- Higher Secondary -->
-          <div class="spotlight-card glass-panel p-6 rounded-2xl border border-gray-800 shadow-lg">
+          <!-- Higher Secondary Card -->
+          <div class="cyber-card p-6 rounded-2xl border border-slate-800 shadow-lg tilt-card">
+            <div class="hud-bracket hud-tl"></div>
+            <div class="hud-bracket hud-tr"></div>
+            
             <div class="flex items-center justify-between gap-2 mb-2">
-              <span class="text-xs font-mono text-gray-400 font-bold">05/2012 – 05/2014</span>
-              <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-300 text-xs font-mono">Science Stream</span>
+              <span class="text-xs font-mono text-slate-400 font-bold">05/2012 – 05/2014</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-300 text-xs font-mono">Science Stream</span>
             </div>
-            <h3 class="text-xl font-bold text-white">Higher Secondary Education</h3>
-            <div class="text-sm text-gray-300 font-medium mt-1">Central Board of Secondary Education (CBSE)</div>
-            <div class="text-xs text-gray-400 mt-2 flex items-center gap-1.5">
-              <i data-lucide="school" class="w-4 h-4 text-gray-400"></i>
+            <h3 class="text-xl font-display font-bold text-white">Higher Secondary Certificate</h3>
+            <div class="text-sm font-tech text-slate-300 font-semibold mt-1">Central Board of Secondary Education (CBSE)</div>
+            <div class="text-xs font-mono text-slate-400 mt-3 flex items-center gap-2">
+              <i data-lucide="school" class="w-4 h-4 text-slate-400"></i>
               <span>Kendriya Vidyalaya IOC Haldia</span>
             </div>
           </div>
         </div>
 
-        <!-- Certifications & Languages Column -->
+        <!-- Qualifications, Languages & Passions -->
         <div class="lg:col-span-6 space-y-6">
           <div class="flex items-center gap-3 mb-2">
-            <span class="w-8 h-[2px] bg-cyan-400"></span>
-            <span class="text-cyan-400 font-mono text-sm tracking-wider uppercase font-semibold">Qualifications & Culture</span>
+            <span class="w-8 h-[2px] bg-purple-400"></span>
+            <span class="text-purple-400 font-mono text-xs tracking-widest uppercase font-bold">SECTION 06 // CREDENTIALS</span>
           </div>
-          <h2 class="text-3xl font-extrabold text-white mb-8 tracking-tight">Certificates & Languages</h2>
+          <h2 class="text-3xl sm:text-4xl font-display font-extrabold text-white mb-8 tracking-tight">Certificates &amp; Languages</h2>
 
-          <!-- Certificate -->
-          <div class="spotlight-card glass-panel p-6 rounded-2xl border border-cyan-500/30 shadow-lg">
+          <!-- EF SET Certificate Card -->
+          <div class="cyber-card p-6 rounded-2xl border border-purple-500/30 shadow-lg tilt-card">
+            <div class="hud-bracket hud-tl"></div>
+            <div class="hud-bracket hud-tr"></div>
+            
             <div class="flex items-center justify-between gap-2 mb-2">
-              <span class="text-xs font-mono text-cyan-400 font-bold">ISSUED: 08/2024</span>
-              <span class="px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 text-xs font-mono font-bold">STANDARDIZED TEST</span>
+              <span class="text-xs font-mono text-purple-400 font-bold">ISSUED: 08/2024</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-purple-500/15 border border-purple-400/40 text-purple-300 text-xs font-mono font-bold">STANDARDIZED TEST</span>
             </div>
-            <h3 class="text-xl font-bold text-white">EF SET Certificate</h3>
-            <p class="text-sm text-gray-300 mt-2">
-              The EF Standard English Test certifying advanced international English language proficiency for cross-border operations and client communication.
+            <h3 class="text-xl font-display font-bold text-white">EF SET Standard English Certificate</h3>
+            <p class="text-sm text-slate-300 mt-2 font-sans">
+              The EF Standard English Test certifying international English fluency for multi-national corporate operations and executive stakeholder management.
             </p>
           </div>
 
-          <!-- Languages Card -->
-          <div class="spotlight-card glass-panel p-6 rounded-2xl border border-gray-800 shadow-lg">
-            <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
-              <i data-lucide="globe-2" class="w-5 h-5 text-emerald-400"></i>
+          <!-- Language Grid -->
+          <div class="cyber-card p-6 rounded-2xl border border-slate-800 shadow-lg">
+            <h3 class="text-lg font-display font-bold text-white mb-4 flex items-center gap-2">
+              <i data-lucide="globe" class="w-4 h-4 text-cyan-400"></i>
               <span>Language Proficiencies</span>
             </h3>
-            <div class="grid grid-cols-2 gap-3 text-sm">
-              <div class="p-3 rounded-xl bg-gray-800/60 border border-gray-700/60">
+            <div class="grid grid-cols-2 gap-3 text-sm font-sans">
+              <div class="p-3 rounded-xl bg-slate-900/80 border border-cyan-500/20">
                 <div class="font-bold text-white">English</div>
-                <div class="text-xs text-emerald-400 font-mono mt-0.5">Native / Bilingual</div>
+                <div class="text-xs text-cyan-400 font-mono mt-0.5">Native / Bilingual</div>
               </div>
-              <div class="p-3 rounded-xl bg-gray-800/60 border border-gray-700/60">
+              <div class="p-3 rounded-xl bg-slate-900/80 border border-cyan-500/20">
                 <div class="font-bold text-white">Hindi</div>
-                <div class="text-xs text-emerald-400 font-mono mt-0.5">Native / Bilingual</div>
+                <div class="text-xs text-cyan-400 font-mono mt-0.5">Native / Bilingual</div>
               </div>
-              <div class="p-3 rounded-xl bg-gray-800/60 border border-gray-700/60">
+              <div class="p-3 rounded-xl bg-slate-900/80 border border-purple-500/20">
                 <div class="font-bold text-white">Bengali</div>
-                <div class="text-xs text-cyan-400 font-mono mt-0.5">Full Professional</div>
+                <div class="text-xs text-purple-400 font-mono mt-0.5">Full Professional</div>
               </div>
-              <div class="p-3 rounded-xl bg-gray-800/60 border border-gray-700/60">
+              <div class="p-3 rounded-xl bg-slate-900/80 border border-emerald-500/20">
                 <div class="font-bold text-white">Odiya</div>
-                <div class="text-xs text-purple-400 font-mono mt-0.5">Professional Working</div>
+                <div class="text-xs text-emerald-400 font-mono mt-0.5">Working Proficiency</div>
               </div>
             </div>
           </div>
 
-          <!-- Interests Card -->
-          <div class="spotlight-card glass-panel p-6 rounded-2xl border border-gray-800 shadow-lg">
-            <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
-              <i data-lucide="sparkles" class="w-5 h-5 text-amber-400"></i>
+          <!-- Personal Passions -->
+          <div class="cyber-card p-6 rounded-2xl border border-slate-800 shadow-lg">
+            <h3 class="text-lg font-display font-bold text-white mb-3 flex items-center gap-2">
+              <i data-lucide="sparkles" class="w-4 h-4 text-amber-400"></i>
               <span>Personal Passions</span>
             </h3>
             <div class="flex flex-wrap gap-2 text-xs font-mono">
-              <span class="px-3 py-1.5 rounded-lg bg-gray-800 text-gray-200 border border-gray-700">🏎️ Motorsports & Formula 1</span>
-              <span class="px-3 py-1.5 rounded-lg bg-gray-800 text-gray-200 border border-gray-700">🌌 Astrophile & Aerospace</span>
-              <span class="px-3 py-1.5 rounded-lg bg-gray-800 text-gray-200 border border-gray-700">💻 Tech Innovations & AI</span>
-              <span class="px-3 py-1.5 rounded-lg bg-gray-800 text-gray-200 border border-gray-700">🎧 High-Fidelity Music</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-200">🏎️ Motorsports &amp; Formula 1</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-200">🌌 Astrophile &amp; Deep Space</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-200">💻 Tech Innovations &amp; AI</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-200">🎧 High-Fidelity Music</span>
             </div>
           </div>
 
@@ -771,55 +1091,62 @@
     </div>
   </section>
 
-  <!-- ================= CONTACT SECTION ================= -->
+  <!-- ================= TRANSMISSION CONTACT HUD ================= -->
   <section id="contact" class="py-24 px-4 sm:px-6 relative z-10">
     <div class="max-w-4xl mx-auto text-center">
       
-      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full glass-panel border border-emerald-500/30 text-emerald-400 text-xs sm:text-sm font-medium mb-6">
-        <span>Let's Build Something Great Together</span>
+      <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full cyber-card border border-cyan-500/40 text-cyan-300 text-xs font-mono font-medium mb-6">
+        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+        <span>CHANNEL OPEN // LET'S COLLABORATE</span>
       </div>
 
-      <h2 class="text-4xl sm:text-5xl font-extrabold text-white mb-6 tracking-tight">Get in Touch</h2>
-      <p class="text-gray-300 text-base sm:text-lg max-w-xl mx-auto mb-12 leading-relaxed">
-        Whether you have an exciting leadership opportunity, need e-commerce operations consulting, or simply want to connect, my inbox is always open.
+      <h2 class="text-4xl sm:text-6xl font-display font-extrabold text-white mb-6 tracking-tight">Initiate Transmission</h2>
+      <p class="text-slate-300 text-base sm:text-lg max-w-xl mx-auto mb-12 leading-relaxed font-sans">
+        Whether you are seeking strategic Amazon operations leadership, technical process consulting, or full-stack software collaboration, reach out directly.
       </p>
 
-      <!-- Contact Action Grid -->
+      <!-- 1-Click Action Cards -->
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto mb-12">
         
-        <!-- Email Card with 1-click Copy -->
-        <button id="copyEmailBtn" class="spotlight-card glass-panel p-5 rounded-2xl border border-gray-800 hover:border-emerald-500/50 text-left transition-all group">
-          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-3 group-hover:scale-110 transition-transform">
+        <!-- Email Card -->
+        <button id="copyEmailBtn" class="interactive-target cyber-card p-5 rounded-2xl border border-cyan-500/30 hover:border-cyan-400 text-left transition-all group tilt-card">
+          <div class="hud-bracket hud-tl"></div>
+          <div class="hud-bracket hud-tr"></div>
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 mb-3 group-hover:scale-110 transition-transform">
             <i data-lucide="mail" class="w-5 h-5"></i>
           </div>
-          <div class="text-xs text-gray-400 font-mono">Email Address</div>
-          <div class="text-sm font-bold text-white mt-1 break-all">malik.bikash219@gmail.com</div>
-          <div class="text-[11px] text-emerald-400 font-mono mt-2 flex items-center gap-1">
-            <i data-lucide="copy" class="w-3 h-3"></i>
-            <span>Click to copy</span>
-          </div>
-        </button>
-
-        <!-- Phone Card with 1-click Copy -->
-        <button id="copyPhoneBtn" class="spotlight-card glass-panel p-5 rounded-2xl border border-gray-800 hover:border-cyan-500/50 text-left transition-all group">
-          <div class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 mb-3 group-hover:scale-110 transition-transform">
-            <i data-lucide="phone" class="w-5 h-5"></i>
-          </div>
-          <div class="text-xs text-gray-400 font-mono">Phone & WhatsApp</div>
-          <div class="text-sm font-bold text-white mt-1">+91 8972157104</div>
+          <div class="text-[11px] text-slate-400 font-mono uppercase">Direct Email</div>
+          <div class="text-sm font-bold text-white mt-1 break-all font-mono">malik.bikash219@gmail.com</div>
           <div class="text-[11px] text-cyan-400 font-mono mt-2 flex items-center gap-1">
             <i data-lucide="copy" class="w-3 h-3"></i>
-            <span>Click to copy</span>
+            <span>Click to copy address</span>
           </div>
         </button>
 
-        <!-- LinkedIn Link -->
-        <a href="https://linkedin.com/in/bonnokush" target="_blank" rel="noopener noreferrer" class="spotlight-card glass-panel p-5 rounded-2xl border border-gray-800 hover:border-purple-500/50 text-left transition-all group sm:col-span-2 md:col-span-1">
+        <!-- Phone Card -->
+        <button id="copyPhoneBtn" class="interactive-target cyber-card p-5 rounded-2xl border border-emerald-500/30 hover:border-emerald-400 text-left transition-all group tilt-card">
+          <div class="hud-bracket hud-tl"></div>
+          <div class="hud-bracket hud-tr"></div>
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-3 group-hover:scale-110 transition-transform">
+            <i data-lucide="phone" class="w-5 h-5"></i>
+          </div>
+          <div class="text-[11px] text-slate-400 font-mono uppercase">Voice &amp; WhatsApp</div>
+          <div class="text-sm font-bold text-white mt-1 font-mono">+91 8972157104</div>
+          <div class="text-[11px] text-emerald-400 font-mono mt-2 flex items-center gap-1">
+            <i data-lucide="copy" class="w-3 h-3"></i>
+            <span>Click to copy number</span>
+          </div>
+        </button>
+
+        <!-- LinkedIn Card -->
+        <a href="https://linkedin.com/in/bonnokush" target="_blank" rel="noopener noreferrer" class="interactive-target cyber-card p-5 rounded-2xl border border-purple-500/30 hover:border-purple-400 text-left transition-all group sm:col-span-2 md:col-span-1 tilt-card">
+          <div class="hud-bracket hud-tl"></div>
+          <div class="hud-bracket hud-tr"></div>
           <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 mb-3 group-hover:scale-110 transition-transform">
             <i data-lucide="linkedin" class="w-5 h-5"></i>
           </div>
-          <div class="text-xs text-gray-400 font-mono">LinkedIn Profile</div>
-          <div class="text-sm font-bold text-white mt-1">/in/bonnokush</div>
+          <div class="text-[11px] text-slate-400 font-mono uppercase">LinkedIn Network</div>
+          <div class="text-sm font-bold text-white mt-1 font-mono">/in/bonnokush</div>
           <div class="text-[11px] text-purple-400 font-mono mt-2 flex items-center gap-1">
             <i data-lucide="external-link" class="w-3 h-3"></i>
             <span>Connect online</span>
@@ -828,13 +1155,13 @@
 
       </div>
 
-      <!-- Resume Download Banner -->
-      <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-emerald-500/30 max-w-xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 shadow-2xl">
+      <!-- CV Download Box -->
+      <div class="cyber-card p-6 sm:p-8 rounded-2xl border border-cyan-500/30 max-w-xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 shadow-2xl">
         <div class="text-left">
-          <div class="text-white font-bold text-base">Want a permanent copy of my CV?</div>
-          <div class="text-xs text-gray-400 mt-1">Includes complete timeline, metrics, and references.</div>
+          <div class="text-white font-display font-bold text-base">Download Verified Curriculum Vitae</div>
+          <div class="text-xs text-slate-400 font-mono mt-1">Complete employment chronology &amp; credential references.</div>
         </div>
-        <a href="Bikash_Kumar_Malik_Resume.pdf" download="Bikash_Kumar_Malik_Resume.pdf" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-sm transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-emerald-500/20">
+        <a href="Bikash_Kumar_Malik_Resume.pdf" download="Bikash_Kumar_Malik_Resume.pdf" class="interactive-target w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-black font-tech font-bold text-sm tracking-wider uppercase transition-all transform hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(0,240,255,0.3)]">
           <i data-lucide="file-text" class="w-4 h-4"></i>
           <span>Download PDF</span>
         </a>
@@ -844,42 +1171,230 @@
   </section>
 
   <!-- ================= FOOTER ================= -->
-  <footer class="py-8 px-4 border-t border-gray-800/80 text-center text-xs text-gray-500 font-mono relative z-10">
+  <footer class="py-8 px-4 border-t border-slate-900 text-center text-xs text-slate-500 font-mono relative z-10">
     <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
       <div>
-        Designed & Engineered with passion by <strong class="text-gray-300">Bikash Kumar Malik</strong>.
+        Engineered with precision by <strong class="text-slate-300">Bikash Kumar Malik</strong>.
       </div>
-      <div>
-        100% Client-Side // Fluid Animations // Haldia, West Bengal, India
+      <div class="text-cyan-400/70">
+        Cybernetic Architecture // Haldia, West Bengal, India
       </div>
     </div>
   </footer>
 
-  <!-- ================= TOAST NOTIFICATION ================= -->
+  <!-- ================= HUD TOAST NOTIFICATION ================= -->
   <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
-    <div class="glass-panel px-4 py-3 rounded-xl border border-emerald-500/50 text-white font-mono text-sm flex items-center gap-2 shadow-2xl">
-      <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
-      <span id="toastMessage">Copied to clipboard!</span>
+    <div class="cyber-card px-5 py-3 rounded-xl border border-cyan-400 text-white font-mono text-xs flex items-center gap-2.5 shadow-[0_0_25px_rgba(0,240,255,0.4)]">
+      <i data-lucide="check-circle" class="w-4 h-4 text-cyan-400"></i>
+      <span id="toastMessage">TRANSMISSION DATA COPIED</span>
     </div>
   </div>
 
-  <!-- ================= JAVASCRIPT: FLUID MOTION & INTERACTIONS ================= -->
+  <!-- ================= JAVASCRIPT: ANIMATRONICS & INTERACTIVE MOTION ENGINE ================= -->
   <script>
-    // Initialize Lucide Icons
+    // 1. Initialize Icons
     lucide.createIcons();
 
-    // 1. Fluid Mouse Spotlight Tracking
-    document.querySelectorAll('.spotlight-card').forEach(card => {
+    // 2. Custom Reticle Cursor Physics
+    const dot = document.getElementById('custom-cursor-dot');
+    const ring = document.getElementById('custom-cursor-ring');
+    let mouseX = -100, mouseY = -100;
+    let ringX = -100, ringY = -100;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (dot) {
+        dot.style.left = `${mouseX}px`;
+        dot.style.top = `${mouseY}px`;
+      }
+    });
+
+    function animateCursorRing() {
+      if (ring) {
+        // Smooth lerp physics
+        ringX += (mouseX - ringX) * 0.18;
+        ringY += (mouseY - ringY) * 0.18;
+        ring.style.left = `${ringX}px`;
+        ring.style.top = `${ringY}px`;
+      }
+      requestAnimationFrame(animateCursorRing);
+    }
+    animateCursorRing();
+
+    // Interactive Hover Snap for Custom Cursor
+    document.querySelectorAll('.interactive-target, a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => ring && ring.classList.add('active-hover'));
+      el.addEventListener('mouseleave', () => ring && ring.classList.remove('active-hover'));
+    });
+
+    // 3. Interactive Cybernetic Animatronic Background Canvas
+    const canvas = document.getElementById('cyberCanvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const particleCount = Math.floor(Math.min(width, 1200) / 16);
+      const particles = [];
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.6,
+          vy: (Math.random() - 0.5) * 0.6,
+          radius: Math.random() * 1.8 + 0.8,
+          alpha: Math.random() * 0.5 + 0.3
+        });
+      }
+
+      function drawCyberCanvas() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Update & Render Nodes
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0) p.x = width;
+          if (p.x > width) p.x = 0;
+          if (p.y < 0) p.y = height;
+          if (p.y > height) p.y = 0;
+
+          // Connect Nearby Nodes
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dx = p.x - p2.x;
+            const dy = p.y - p2.y;
+            const dist = Math.hypot(dx, dy);
+
+            if (dist < 100) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = `rgba(0, 240, 255, ${0.18 * (1 - dist / 100)})`;
+              ctx.lineWidth = 0.8;
+              ctx.stroke();
+            }
+          }
+
+          // Mouse Attraction Filament
+          const mdx = mouseX - p.x;
+          const mdy = mouseY - p.y;
+          const mdist = Math.hypot(mdx, mdy);
+          if (mdist < 140) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(mouseX, mouseY);
+            ctx.strokeStyle = `rgba(0, 240, 255, ${0.45 * (1 - mdist / 140)})`;
+            ctx.lineWidth = 1.2;
+            ctx.stroke();
+          }
+
+          // Node Point
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(0, 240, 255, ${p.alpha})`;
+          ctx.shadowColor = '#00F0FF';
+          ctx.shadowBlur = 6;
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        }
+
+        requestAnimationFrame(drawCyberCanvas);
+      }
+      drawCyberCanvas();
+    }
+
+    // 4. 3D Gyroscopic Perspective Card Tilt
+    document.querySelectorAll('.tilt-card').forEach(card => {
       card.addEventListener('mousemove', e => {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -6;
+        const rotateY = ((x - centerX) / centerX) * 6;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
         card.style.setProperty('--mouse-x', `${x}px`);
         card.style.setProperty('--mouse-y', `${y}px`);
       });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+      });
     });
 
-    // 2. Scroll Reveal Observer for Fluid Entry Animations
+    // 5. Kinetic Glyph Text Scrambler
+    class TextScrambler {
+      constructor(el) {
+        this.el = el;
+        this.chars = '!<>-_\\/[]{}—=+*^?#________01010';
+        this.originalText = el.innerText;
+        this.update = this.update.bind(this);
+      }
+      scramble(newText) {
+        const oldText = this.el.innerText;
+        const length = Math.max(oldText.length, newText.length);
+        const promise = new Promise(resolve => this.resolve = resolve);
+        this.queue = [];
+        for (let i = 0; i < length; i++) {
+          const from = oldText[i] || '';
+          const to = newText[i] || '';
+          const start = Math.floor(Math.random() * 15);
+          const end = start + Math.floor(Math.random() * 20);
+          this.queue.push({ from, to, start, end, char: '' });
+        }
+        cancelAnimationFrame(this.frameRequest);
+        this.frame = 0;
+        this.update();
+        return promise;
+      }
+      update() {
+        let output = '';
+        let complete = 0;
+        for (let i = 0, n = this.queue.length; i < n; i++) {
+          let { from, to, start, end, char } = this.queue[i];
+          if (this.frame >= end) {
+            complete++;
+            output += to;
+          } else if (this.frame >= start) {
+            if (!char || Math.random() < 0.28) {
+              char = this.chars[Math.floor(Math.random() * this.chars.length)];
+              this.queue[i].char = char;
+            }
+            output += `<span class="text-cyan-400 font-mono">${char}</span>`;
+          } else {
+            output += from;
+          }
+        }
+        this.el.innerHTML = output;
+        if (complete === this.queue.length) {
+          this.resolve();
+        } else {
+          this.frameRequest = requestAnimationFrame(this.update);
+          this.frame++;
+        }
+      }
+    }
+
+    const titleElem = document.getElementById('scrambleTitle');
+    if (titleElem) {
+      const scrambler = new TextScrambler(titleElem);
+      setTimeout(() => scrambler.scramble('Bikash Kumar Malik'), 600);
+      titleElem.addEventListener('mouseenter', () => scrambler.scramble('Bikash Kumar Malik'));
+    }
+
+    // 6. Scroll Reveal Observer
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -888,33 +1403,42 @@
       });
     }, { threshold: 0.15 });
 
-    document.querySelectorAll('.reveal-item').forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal-elem').forEach(el => observer.observe(el));
 
-    // 3. Navbar Blur Transition on Scroll
-    window.addEventListener('scroll', () => {
-      const nav = document.getElementById('navbar');
-      if (window.scrollY > 40) {
-        nav.classList.add('py-2');
-        nav.classList.remove('py-4');
-      } else {
-        nav.classList.add('py-4');
-        nav.classList.remove('py-2');
-      }
-    });
+    // 7. Dynamic Animated Metric Counters
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-target') || '0', 10);
+          if (target > 0) {
+            let current = 0;
+            const step = () => {
+              current++;
+              el.innerText = current + '+';
+              if (current < target) {
+                setTimeout(step, 180);
+              }
+            };
+            step();
+            counterObserver.unobserve(el);
+          }
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
 
-    // 4. Mobile Menu Drawer Toggle
+    // 8. Mobile Menu Toggle
     const mobileBtn = document.getElementById('mobileMenuBtn');
     const drawer = document.getElementById('mobileDrawer');
     if (mobileBtn && drawer) {
-      mobileBtn.addEventListener('click', () => {
-        drawer.classList.toggle('hidden');
-      });
+      mobileBtn.addEventListener('click', () => drawer.classList.toggle('hidden'));
       document.querySelectorAll('.mobile-nav-link').forEach(link => {
         link.addEventListener('click', () => drawer.classList.add('hidden'));
       });
     }
 
-    // 5. Toast Notification & 1-Click Clipboard
+    // 9. Toast Notification & 1-Click Clipboard
     const toast = document.getElementById('toast');
     const toastMsg = document.getElementById('toastMessage');
 
@@ -926,14 +1450,14 @@
       setTimeout(() => {
         toast.classList.remove('translate-y-0', 'opacity-100');
         toast.classList.add('translate-y-24', 'opacity-0');
-      }, 2400);
+      }, 2500);
     }
 
     const copyEmailBtn = document.getElementById('copyEmailBtn');
     if (copyEmailBtn) {
       copyEmailBtn.addEventListener('click', () => {
         navigator.clipboard.writeText('malik.bikash219@gmail.com').then(() => {
-          showToast('Copied: malik.bikash219@gmail.com');
+          showToast('TRANSMITTED: malik.bikash219@gmail.com');
         });
       });
     }
@@ -942,7 +1466,7 @@
     if (copyPhoneBtn) {
       copyPhoneBtn.addEventListener('click', () => {
         navigator.clipboard.writeText('+918972157104').then(() => {
-          showToast('Copied: +91 8972157104');
+          showToast('TRANSMITTED: +91 8972157104');
         });
       });
     }
