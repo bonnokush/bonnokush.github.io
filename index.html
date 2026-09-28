@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bikash Kumar Malik — Subject Matter Expert & Operations Specialist</title>
+  <meta name="description" content="Portfolio of Bikash Kumar Malik: Subject Matter Expert, E-Commerce Operations, Amazon Seller & Vendor Central Specialist, and Systems Engineer." />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="profile.jpg" />
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              emerald: '#10b981',
+              cyan: '#06b6d4',
+              amber: '#f59e0b',
+              violet: '#8b5cf6',
+              dark: '#0a0f14',
+              card: '#111822',
+              cardLight: '#ffffff',
+              border: '#1f2937',
+            }
+          },
+          animation: {
+            'blob': 'blob 14s infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'glow': 'glow 3s ease-in-out infinite alternate',
+          },
+          keyframes: {
+            blob: {
+              '0%, 100%': { transform: 'translate(0px, 0px) scale(1)' },
+              '33%': { transform: 'translate(40px, -60px) scale(1.15)' },
+              '66%': { transform: 'translate(-30px, 30px) scale(0.9)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-12px)' },
+            },
+            glow: {
+              '0%': { opacity: '0.4' },
+              '100%': { opacity: '0.9' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Fluid Glassmorphism & Micro-Interactions */
+    .glass-panel {
+      background: rgba(17, 24, 34, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .light .glass-panel {
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .spotlight-card {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+    }
+    .spotlight-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .spotlight-card::before {
+      content: '';
+      position: absolute;
+      top: var(--mouse-y, -1000px);
+      left: var(--mouse-x, -1000px);
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle closest-side, rgba(16, 185, 129, 0.12), transparent);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      opacity: 0;
+      z-index: 1;
+    }
+    .spotlight-card:hover::before {
+      opacity: 1;
+    }
+
+    /* Fluid Timeline Connectors */
+    .timeline-stem {
+      background: linear-gradient(180deg, #10b981 0%, #06b6d4 50%, #8b5cf6 100%);
+    }
+
+    /* Reveal animations */
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-item.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a0f14;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1f2937;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #10b981;
+    }
+  </style>
+</head>
+<body class="bg-[#070b10] text-gray-100 font-sans selection:bg-brand-emerald selection:text-black transition-colors duration-300 antialiased overflow-x-hidden">
+
+  <!-- ================= AMBIENT FLUID BACKGROUND ORBS ================= -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute -top-32 -left-32 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl animate-blob"></div>
+    <div class="absolute top-1/3 -right-32 w-[30rem] h-[30rem] bg-cyan-500/10 rounded-full blur-3xl animate-blob" style="animation-delay: 4s;"></div>
+    <div class="absolute bottom-10 left-1/4 w-[28rem] h-[28rem] bg-purple-500/10 rounded-full blur-3xl animate-blob" style="animation-delay: 8s;"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(#1f2937_1px,transparent_1px)] [background-size:28px_28px] opacity-25"></div>
+  </div>
+
+  <!-- ================= TOP NAVIGATION BAR ================= -->
+  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4">
+      <nav class="glass-panel rounded-2xl px-5 py-3 flex items-center justify-between shadow-2xl">
+        
+        <!-- Logo / Name -->
+        <a href="#hero" class="flex items-center gap-3 group">
+          <div class="relative w-9 h-9 rounded-xl overflow-hidden ring-2 ring-emerald-500/40 group-hover:ring-emerald-400 transition-all shadow-lg">
+            <img src="profile.jpg" alt="Bikash Kumar Malik" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+          </div>
+          <div>
+            <span class="font-bold tracking-tight text-white group-hover:text-emerald-400 transition-colors">Bikash K. Malik</span>
+            <span class="hidden sm:inline-block text-xs text-gray-400 ml-2 font-mono border-l border-gray-700 pl-2">SME & Operations</span>
+          </div>
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden md:flex items-center gap-7 text-sm font-medium text-gray-300">
+          <a href="#about" class="hover:text-emerald-400 transition-colors">About</a>
+          <a href="#experience" class="hover:text-emerald-400 transition-colors">Experience</a>
+          <a href="#projects" class="hover:text-emerald-400 transition-colors">Projects</a>
+          <a href="#skills" class="hover:text-emerald-400 transition-colors">Skills</a>
+          <a href="#education" class="hover:text-emerald-400 transition-colors">Education</a>
+          <a href="#contact" class="hover:text-emerald-400 transition-colors">Contact</a>
+        </div>
+
+        <!-- Action CTA -->
+        <div class="flex items-center gap-3">
+          <a href="Bikash_Kumar_Malik_Resume.pdf" download="Bikash_Kumar_Malik_Resume.pdf" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-xs sm:text-sm transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-emerald-500/20">
+            <i data-lucide="download" class="w-4 h-4"></i>
+            <span>Resume</span>
+          </a>
+
+          <!-- Mobile Menu Trigger -->
+          <button id="mobileMenuBtn" aria-label="Toggle mobile menu" class="md:hidden p-2 rounded-lg bg-gray-800/80 text-gray-300 hover:text-white">
+            <i data-lucide="menu" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileDrawer" class="hidden md:hidden glass-panel mx-4 mt-2 p-5 rounded-2xl flex flex-col gap-4 text-sm font-medium border border-gray-800">
+      <a href="#about" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-gray-800/60">About</a>
+      <a href="#experience" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-gray-800/60">Experience</a>
+      <a href="#projects" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-gray-800/60">Projects</a>
+      <a href="#skills" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-gray-800/60">Skills</a>
+      <a href="#education" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-gray-800/60">Education</a>
+      <a href="#contact" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-gray-800/60">Contact</a>
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section id="hero" class="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto text-center z-10">
+      
+      <!-- Status Badge -->
+      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full glass-panel border border-emerald-500/30 text-emerald-400 text-xs sm:text-sm font-medium mb-8 animate-float shadow-xl">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <span class="w-2 h-2 rounded-full bg-emerald-400 -ml-4"></span>
+        <span>Open to High-Impact Operations & Leadership Roles</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-[1.12]">
+        Hi, I'm <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">Bikash Kumar Malik</span>.
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-lg sm:text-2xl font-medium text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+        Subject Matter Expert specializing in <span class="text-white font-semibold">Amazon E-Commerce Operations</span>, <span class="text-white font-semibold">Vendor Central Revenue Protection</span>, and <span class="text-white font-semibold">Cross-Functional Leadership</span>.
+      </p>
+
+      <!-- Philosophical Quote from Resume -->
+      <div class="glass-panel p-5 rounded-2xl max-w-2xl mx-auto mb-10 border border-gray-800/80 shadow-2xl">
+        <p class="text-sm sm:text-base text-gray-300 italic leading-relaxed">
+          "In this interconnected world, we have the opportunity to make a difference, no matter how small it may seem. Together, we can create a ripple effect of positivity and change that extends far beyond our individual reach."
+        </p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-4 mb-16">
+        <a href="#experience" class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-base transition-all transform hover:-translate-y-0.5 shadow-lg shadow-emerald-500/25 active:translate-y-0">
+          <i data-lucide="briefcase" class="w-5 h-5"></i>
+          <span>View Experience</span>
+        </a>
+        <a href="#projects" class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl glass-panel hover:bg-gray-800/80 text-white font-semibold text-base transition-all transform hover:-translate-y-0.5 border border-gray-700">
+          <i data-lucide="cpu" class="w-5 h-5 text-cyan-400"></i>
+          <span>Software Showcase</span>
+        </a>
+        <a href="#contact" class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl glass-panel hover:bg-gray-800/80 text-gray-300 hover:text-white font-medium text-base transition-all">
+          <i data-lucide="mail" class="w-5 h-5 text-emerald-400"></i>
+          <span>Get in Touch</span>
+        </a>
+      </div>
+
+      <!-- Quick Metrics Strip -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
+        <div class="glass-panel p-4 rounded-xl border border-gray-800/80 text-center">
+          <div class="text-2xl sm:text-3xl font-extrabold text-white font-mono">5+</div>
+          <div class="text-xs text-gray-400 uppercase tracking-wider mt-1 font-medium">Years Experience</div>
+        </div>
+        <div class="glass-panel p-4 rounded-xl border border-gray-800/80 text-center">
+          <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-mono">Amazon</div>
+          <div class="text-xs text-gray-400 uppercase tracking-wider mt-1 font-medium">Seller & Vendor Ops</div>
+        </div>
+        <div class="glass-panel p-4 rounded-xl border border-gray-800/80 text-center">
+          <div class="text-2xl sm:text-3xl font-extrabold text-cyan-400 font-mono">SME</div>
+          <div class="text-xs text-gray-400 uppercase tracking-wider mt-1 font-medium">Process & Audit Lead</div>
+        </div>
+        <div class="glass-panel p-4 rounded-xl border border-gray-800/80 text-center">
+          <div class="text-2xl sm:text-3xl font-extrabold text-purple-400 font-mono">8.5</div>
+          <div class="text-xs text-gray-400 uppercase tracking-wider mt-1 font-medium">B.Tech ECE GPA</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ME SECTION ================= -->
+  <section id="about" class="py-20 px-4 sm:px-6 relative z-10">
+    <div class="max-w-5xl mx-auto">
+      
+      <div class="flex items-center gap-3 mb-4">
+        <span class="w-8 h-[2px] bg-emerald-400"></span>
+        <span class="text-emerald-400 font-mono text-sm tracking-wider uppercase font-semibold">Background & Focus</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-12 tracking-tight">About Me</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        
+        <!-- Profile Visual Card -->
+        <div class="md:col-span-5 flex justify-center">
+          <div class="relative group">
+            <div class="absolute -inset-1.5 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-3xl blur-lg opacity-40 group-hover:opacity-75 transition duration-500"></div>
+            <div class="relative w-64 h-80 sm:w-72 sm:h-96 rounded-2xl overflow-hidden glass-panel border border-white/10 shadow-2xl">
+              <img src="profile.jpg" alt="Bikash Kumar Malik" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div class="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
+                <div class="font-bold text-white text-base">Bikash Kumar Malik</div>
+                <div class="text-xs text-emerald-400 font-mono flex items-center gap-1.5 mt-0.5">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+                  <span>Haldia, West Bengal, India</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Narrative Content -->
+        <div class="md:col-span-7 space-y-5 text-gray-300 text-base sm:text-lg leading-relaxed">
+          <p>
+            I am a results-oriented <strong class="text-white">Subject Matter Expert and Operations Professional</strong> with over five years of multidisciplinary expertise spanning e-commerce ecosystem compliance, technical customer support, and IT process leadership.
+          </p>
+          <p>
+            Currently, at <strong class="text-white">Bathroom Bubbles Ltd</strong>, I drive operational compliance and revenue recovery across <span class="text-emerald-400 font-medium">Amazon Seller Central</span> and <span class="text-emerald-400 font-medium">Amazon Vendor Central</span>, analyzing complex deductions, reversing unfair chargebacks, and maintaining immaculate account health metrics.
+          </p>
+          <p>
+            Previously, as a Subject Matter Expert at <strong class="text-white">31West Global Services</strong> and Customer Service Associate at <strong class="text-white">Wipro Limited</strong>, I spearheaded SLA compliance, authored Standard Operating Procedures (SOPs), mentored teams, and resolved high-stakes technical and insurance claim escalations.
+          </p>
+          <p>
+            Holding a Bachelor of Technology in Electronics and Communication Engineering from <strong class="text-white">Haldia Institute of Technology (8.5 CGPA)</strong>, I combine rigorous analytical thinking with practical software mastery. When I am not optimizing operational workflows, you will find me dissecting Formula One race telemetry, tracking aerospace advancements, or stargazing as an avid astrophile.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= WORK EXPERIENCE (FLUID TIMELINE) ================= -->
+  <section id="experience" class="py-20 px-4 sm:px-6 relative z-10 bg-black/30 border-y border-gray-800/60">
+    <div class="max-w-5xl mx-auto">
+      
+      <div class="flex items-center gap-3 mb-4">
+        <span class="w-8 h-[2px] bg-emerald-400"></span>
+        <span class="text-emerald-400 font-mono text-sm tracking-wider uppercase font-semibold">Career History</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-14 tracking-tight">Work Experience</h2>
+
+      <div class="relative pl-6 sm:pl-10 space-y-12 before:absolute before:left-[11px] sm:before:left-[19px] before:top-2 before:bottom-2 before:w-[2px] before:bg-gradient-to-b before:from-emerald-400 before:via-cyan-400 before:to-purple-500">
+        
+        <!-- Experience 1: Bathroom Bubbles Ltd -->
+        <div class="relative spotlight-card glass-panel p-6 sm:p-8 rounded-2xl border border-emerald-500/30 shadow-2xl reveal-item">
+          <!-- Timeline Node Icon -->
+          <div class="absolute -left-[37px] sm:-left-[53px] top-6 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#0a0f14] border-2 border-emerald-400 flex items-center justify-center text-emerald-400 shadow-lg">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          </div>
+
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <span class="inline-block px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 text-xs font-mono font-bold mb-2">
+                CURRENT ROLE
+              </span>
+              <h3 class="text-xl sm:text-2xl font-bold text-white">Customer Services Executive</h3>
+              <div class="text-base text-emerald-400 font-medium font-mono">Bathroom Bubbles Ltd</div>
+            </div>
+            <div class="text-xs sm:text-sm font-mono text-gray-400 flex items-center gap-1.5">
+              <i data-lucide="calendar" class="w-4 h-4 text-emerald-400"></i>
+              <span>11/2024 – Present</span>
+            </div>
+          </div>
+
+          <p class="text-sm text-gray-400 mb-5 flex items-center gap-1.5">
+            <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+            <span>Haldia, West Bengal, India</span>
+          </p>
+
+          <ul class="space-y-3 text-sm sm:text-base text-gray-300">
+            <li class="flex items-start gap-3">
+              <span class="text-emerald-400 font-bold mt-1">▹</span>
+              <span><strong>Omnichannel Support & SLA Compliance:</strong> Handle and resolve high-volume customer inquiries across ticketing systems, phone, and live chat while exceeding strict service level agreements.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-emerald-400 font-bold mt-1">▹</span>
+              <span><strong>Amazon Seller Central Leadership:</strong> Oversee end-to-end Seller Central performance metrics, maintaining account health, order defect rate (ODR) benchmarks, and regulatory compliance.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-emerald-400 font-bold mt-1">▹</span>
+              <span><strong>Amazon Vendor Central Revenue Defense:</strong> Leverage advanced Vendor Central knowledge to audit operational chargebacks, investigate shortage discrepancies, and submit evidence-backed dispute claims to protect profitability.</span>
+            </li>
+          </ul>
+
+          <div class="mt-6 pt-4 border-t border-gray-800 flex flex-wrap gap-2 text-xs font-mono">
+            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">Amazon Seller Central</span>
+            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">Amazon Vendor Central</span>
+            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">Revenue Recovery</span>
+            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">Omnichannel Ticketing</span>
+            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">SLA Auditing</span>
+          </div>
+        </div>
+
+        <!-- Experience 2: 31West Global Services -->
+        <div class="relative spotlight-card glass-panel p-6 sm:p-8 rounded-2xl border border-gray-800 shadow-2xl reveal-item">
+          <!-- Timeline Node Icon -->
+          <div class="absolute -left-[37px] sm:-left-[53px] top-6 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#0a0f14] border-2 border-cyan-400 flex items-center justify-center text-cyan-400 shadow-lg">
+            <i data-lucide="check" class="w-3.5 h-3.5"></i>
+          </div>
+
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h3 class="text-xl sm:text-2xl font-bold text-white">Subject Matter Expert (SME)</h3>
+              <div class="text-base text-cyan-400 font-medium font-mono">31West Global Services</div>
+            </div>
+            <div class="text-xs sm:text-sm font-mono text-gray-400 flex items-center gap-1.5">
+              <i data-lucide="calendar" class="w-4 h-4 text-cyan-400"></i>
+              <span>07/2021 – 08/2024 (3 Years 2 Mos)</span>
+            </div>
+          </div>
+
+          <p class="text-sm text-gray-400 mb-5 flex items-center gap-1.5">
+            <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+            <span>Haldia, West Bengal, India</span>
+          </p>
+
+          <ul class="space-y-3 text-sm sm:text-base text-gray-300">
+            <li class="flex items-start gap-3">
+              <span class="text-cyan-400 font-bold mt-1">▹</span>
+              <span><strong>Technical Escalation & Research:</strong> Conducted comprehensive research and root-cause analysis on complex production outages and system anomalies.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-cyan-400 font-bold mt-1">▹</span>
+              <span><strong>Training & Education:</strong> Mentored, trained, and onboarded new technical support engineers, significantly reducing time-to-productivity.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-cyan-400 font-bold mt-1">▹</span>
+              <span><strong>SOP Standardisation & Quality:</strong> Authored and reviewed Standard Operating Procedures (SOPs), conducting regular process audits to elevate service delivery quality.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-cyan-400 font-bold mt-1">▹</span>
+              <span><strong>Tool Administration:</strong> Managed and troubleshot user permissions, endpoints, and virtual environments using <strong>Active Directory</strong>, <strong>Datto RMM</strong>, <strong>Zoho Desk</strong>, and <strong>Citrix Workspace</strong>.</span>
+            </li>
+          </ul>
+
+          <div class="mt-6 pt-4 border-t border-gray-800 flex flex-wrap gap-2 text-xs font-mono">
+            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">Active Directory</span>
+            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">Datto RMM</span>
+            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">Zoho Desk</span>
+            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">Citrix</span>
+            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">SOP Authoring</span>
+            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">Team Mentorship</span>
+          </div>
+        </div>
+
+        <!-- Experience 3: Wipro Limited -->
+        <div class="relative spotlight-card glass-panel p-6 sm:p-8 rounded-2xl border border-gray-800 shadow-2xl reveal-item">
+          <!-- Timeline Node Icon -->
+          <div class="absolute -left-[37px] sm:-left-[53px] top-6 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#0a0f14] border-2 border-purple-400 flex items-center justify-center text-purple-400 shadow-lg">
+            <i data-lucide="check" class="w-3.5 h-3.5"></i>
+          </div>
+
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h3 class="text-xl sm:text-2xl font-bold text-white">Associate (Customer Service)</h3>
+              <div class="text-base text-purple-400 font-medium font-mono">Wipro Limited</div>
+            </div>
+            <div class="text-xs sm:text-sm font-mono text-gray-400 flex items-center gap-1.5">
+              <i data-lucide="calendar" class="w-4 h-4 text-purple-400"></i>
+              <span>01/2019 – 02/2021 (2 Years 2 Mos)</span>
+            </div>
+          </div>
+
+          <p class="text-sm text-gray-400 mb-5 flex items-center gap-1.5">
+            <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+            <span>Kolkata, West Bengal, India</span>
+          </p>
+
+          <ul class="space-y-3 text-sm sm:text-base text-gray-300">
+            <li class="flex items-start gap-3">
+              <span class="text-purple-400 font-bold mt-1">▹</span>
+              <span><strong>Healthcare Claims Adjudication:</strong> Audited and processed electronic medical claims through Oracle Siebel CRM with high speed and zero compliance violations.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-purple-400 font-bold mt-1">▹</span>
+              <span><strong>Insurance Stakeholder Engagement:</strong> Interfaced directly with major healthcare payers including United Health Group (UHG) to clarify billing issues and resolve contested claims.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-purple-400 font-bold mt-1">▹</span>
+              <span><strong>Remittance & Escalations:</strong> Processed Electronic Remittance Advice (ERAs) and managed escalation queues to ensure customer satisfaction benchmarks.</span>
+            </li>
+          </ul>
+
+          <div class="mt-6 pt-4 border-t border-gray-800 flex flex-wrap gap-2 text-xs font-mono">
+            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">Oracle Siebel CRM</span>
+            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">Claims Adjudication</span>
+            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">United Health Group (UHG)</span>
+            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">ERA Processing</span>
+            <span class="px-2.5 py-1 rounded-md bg-gray-800/80 text-gray-300">Escalation Resolution</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= FEATURED SOFTWARE PROJECT ================= -->
+  <section id="projects" class="py-20 px-4 sm:px-6 relative z-10">
+    <div class="max-w-5xl mx-auto">
+      
+      <div class="flex items-center gap-3 mb-4">
+        <span class="w-8 h-[2px] bg-emerald-400"></span>
+        <span class="text-emerald-400 font-mono text-sm tracking-wider uppercase font-semibold">Featured Commercial Engineering</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-6 tracking-tight">Software & Engineering Project</h2>
+      <p class="text-gray-400 max-w-2xl mb-12">
+        Demonstrating end-to-end full-stack development, multimedia pipelines, automated e-commerce licensing, and cross-platform packaging.
+      </p>
+
+      <!-- RetroFlux Showcase Card -->
+      <div class="spotlight-card glass-panel rounded-3xl p-8 sm:p-10 border border-emerald-500/30 shadow-2xl relative overflow-hidden">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 font-mono text-xs font-bold">
+              <span>⚡ COMMERCIAL DESKTOP & MOBILE SOFTWARE</span>
+            </div>
+
+            <h3 class="text-3xl font-extrabold text-white">RetroFlux PRO</h3>
+            
+            <p class="text-gray-300 text-base leading-relaxed">
+              A high-performance, 100% offline local media conversion and remuxing workstation designed for creators. Features multi-GPU acceleration (NVIDIA NVENC, Intel QSV, AMD AMF), instant lossless container remuxing (<code class="text-emerald-400 font-mono">-c copy</code> in 1.2 seconds), and a standalone 48MB Windows executable bundled with FFmpeg.
+            </p>
+
+            <!-- Technical Highlights -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-gray-300">
+              <div class="flex items-center gap-2">
+                <i data-lucide="zap" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                <span>1.2s Fast Stream Remuxing</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                <span>100% Air-Gapped & Offline</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="key" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                <span>Gumroad License API Engine</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="smartphone" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                <span>Android Native Flutter Edition</span>
+              </div>
+            </div>
+
+            <!-- Tech Badges -->
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="px-3 py-1 rounded-lg bg-gray-800/90 text-gray-300 font-mono text-xs">Python 3.13</span>
+              <span class="px-3 py-1 rounded-lg bg-gray-800/90 text-gray-300 font-mono text-xs">Tkinter</span>
+              <span class="px-3 py-1 rounded-lg bg-gray-800/90 text-gray-300 font-mono text-xs">Flutter / Dart</span>
+              <span class="px-3 py-1 rounded-lg bg-gray-800/90 text-gray-300 font-mono text-xs">Embedded FFmpeg</span>
+              <span class="px-3 py-1 rounded-lg bg-gray-800/90 text-gray-300 font-mono text-xs">PyInstaller</span>
+              <span class="px-3 py-1 rounded-lg bg-gray-800/90 text-gray-300 font-mono text-xs">Gumroad API</span>
+            </div>
+
+            <!-- CTA Links -->
+            <div class="flex flex-wrap items-center gap-4 pt-4">
+              <a href="https://bonnokush.gumroad.com/l/doqxfs" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-sm transition-all transform hover:scale-105 shadow-lg shadow-emerald-500/20">
+                <span>View Live Storefront</span>
+                <i data-lucide="external-link" class="w-4 h-4"></i>
+              </a>
+              <a href="https://github.com/bonnoxkush/RetroFlux" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl glass-panel hover:bg-gray-800 text-white font-medium text-sm transition-all border border-gray-700">
+                <i data-lucide="github" class="w-4 h-4"></i>
+                <span>GitHub Source Base</span>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Visual CRT Terminal Window Preview -->
+          <div class="lg:col-span-5">
+            <div class="rounded-2xl border-2 border-emerald-500/40 bg-[#050906] p-4 shadow-2xl font-mono text-xs text-emerald-400">
+              <div class="flex items-center justify-between pb-3 border-b border-emerald-500/20 mb-3 text-gray-400">
+                <div class="flex gap-1.5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
+                </div>
+                <span class="text-[10px] tracking-wider text-emerald-400 font-bold">RETROFLUX PRO // v1.3.0</span>
+              </div>
+              <div class="space-y-2 text-emerald-400/90 leading-relaxed">
+                <div>retroflux@system:~$ probe-gpu-acceleration</div>
+                <div class="text-white">✓ NVIDIA NVENC, Intel QSV, AMD AMF READY</div>
+                <div class="text-gray-400">------------------------------------------</div>
+                <div>retroflux@system:~$ remux -i input.mkv -o stream.mp4</div>
+                <div class="text-emerald-300 font-bold">[100%] STREAM COPY LOSSLESS FINISHED IN 1.2s</div>
+                <div class="text-gray-400">------------------------------------------</div>
+                <div>retroflux@system:~$ verify-license --api=gumroad</div>
+                <div class="text-cyan-300">✓ KEY ACTIVATED: DESKTOP EDITION [AIR-GAPPED]</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SKILLS MATRIX ================= -->
+  <section id="skills" class="py-20 px-4 sm:px-6 relative z-10 bg-black/30 border-y border-gray-800/60">
+    <div class="max-w-5xl mx-auto">
+      
+      <div class="flex items-center gap-3 mb-4">
+        <span class="w-8 h-[2px] bg-emerald-400"></span>
+        <span class="text-emerald-400 font-mono text-sm tracking-wider uppercase font-semibold">Core Competencies</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-12 tracking-tight">Skills & Domain Expertise</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Category 1 -->
+        <div class="spotlight-card glass-panel p-6 rounded-2xl border border-gray-800 shadow-xl">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-5">
+            <i data-lucide="shopping-cart" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">E-Commerce & Vendor Ops</h3>
+          <p class="text-gray-400 text-sm mb-5">
+            Proven track record in managing Amazon partner ecosystem health, claims disputes, and operational compliance.
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs font-mono">
+            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Amazon Seller Central</span>
+            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Amazon Vendor Central</span>
+            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Claims Auditing</span>
+            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Dispute Management</span>
+            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Shortage Reversals</span>
+            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">SLA Optimization</span>
+          </div>
+        </div>
+
+        <!-- Category 2 -->
+        <div class="spotlight-card glass-panel p-6 rounded-2xl border border-gray-800 shadow-xl">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-5">
+            <i data-lucide="headset" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Customer Service & Leadership</h3>
+          <p class="text-gray-400 text-sm mb-5">
+            Over five years of customer-centric process design, training, ticket triage, and escalation resolution.
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs font-mono">
+            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">SOP Management</span>
+            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Auditing & Reporting</span>
+            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Training & Mentorship</span>
+            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Conflict Resolution</span>
+            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Root Cause Analysis</span>
+            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Cross-Team Coordination</span>
+          </div>
+        </div>
+
+        <!-- Category 3 -->
+        <div class="spotlight-card glass-panel p-6 rounded-2xl border border-gray-800 shadow-xl">
+          <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-5">
+            <i data-lucide="terminal" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Systems & Technical Stack</h3>
+          <p class="text-gray-400 text-sm mb-5">
+            Hands-on enterprise systems administration, remote tooling, scripting, and media transcoding pipelines.
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs font-mono">
+            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Active Directory</span>
+            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Datto RMM</span>
+            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Zoho Desk</span>
+            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Citrix Workspace</span>
+            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Oracle Siebel CRM</span>
+            <span class="px-2.5 py-1 rounded bg-gray-800 text-gray-300">Python & Flutter</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= EDUCATION, CERTIFICATES & LANGUAGES ================= -->
+  <section id="education" class="py-20 px-4 sm:px-6 relative z-10">
+    <div class="max-w-5xl mx-auto">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        
+        <!-- Education Column -->
+        <div class="lg:col-span-6 space-y-6">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="w-8 h-[2px] bg-emerald-400"></span>
+            <span class="text-emerald-400 font-mono text-sm tracking-wider uppercase font-semibold">Academic Foundation</span>
+          </div>
+          <h2 class="text-3xl font-extrabold text-white mb-8 tracking-tight">Education</h2>
+
+          <!-- Degree -->
+          <div class="spotlight-card glass-panel p-6 rounded-2xl border border-gray-800 shadow-lg">
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <span class="text-xs font-mono text-emerald-400 font-bold">06/2014 – 06/2018</span>
+              <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 text-xs font-mono font-bold">8.5 GPA / 77.7%</span>
+            </div>
+            <h3 class="text-xl font-bold text-white">Bachelor of Technology (B.Tech)</h3>
+            <div class="text-sm text-gray-300 font-medium mt-1">Electronics & Communication Engineering</div>
+            <div class="text-xs text-gray-400 mt-2 flex items-center gap-1.5">
+              <i data-lucide="school" class="w-4 h-4 text-emerald-400"></i>
+              <span>Haldia Institute of Technology</span>
+            </div>
+          </div>
+
+          <!-- Higher Secondary -->
+          <div class="spotlight-card glass-panel p-6 rounded-2xl border border-gray-800 shadow-lg">
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <span class="text-xs font-mono text-gray-400 font-bold">05/2012 – 05/2014</span>
+              <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-300 text-xs font-mono">Science Stream</span>
+            </div>
+            <h3 class="text-xl font-bold text-white">Higher Secondary Education</h3>
+            <div class="text-sm text-gray-300 font-medium mt-1">Central Board of Secondary Education (CBSE)</div>
+            <div class="text-xs text-gray-400 mt-2 flex items-center gap-1.5">
+              <i data-lucide="school" class="w-4 h-4 text-gray-400"></i>
+              <span>Kendriya Vidyalaya IOC Haldia</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certifications & Languages Column -->
+        <div class="lg:col-span-6 space-y-6">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="w-8 h-[2px] bg-cyan-400"></span>
+            <span class="text-cyan-400 font-mono text-sm tracking-wider uppercase font-semibold">Qualifications & Culture</span>
+          </div>
+          <h2 class="text-3xl font-extrabold text-white mb-8 tracking-tight">Certificates & Languages</h2>
+
+          <!-- Certificate -->
+          <div class="spotlight-card glass-panel p-6 rounded-2xl border border-cyan-500/30 shadow-lg">
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <span class="text-xs font-mono text-cyan-400 font-bold">ISSUED: 08/2024</span>
+              <span class="px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 text-xs font-mono font-bold">STANDARDIZED TEST</span>
+            </div>
+            <h3 class="text-xl font-bold text-white">EF SET Certificate</h3>
+            <p class="text-sm text-gray-300 mt-2">
+              The EF Standard English Test certifying advanced international English language proficiency for cross-border operations and client communication.
+            </p>
+          </div>
+
+          <!-- Languages Card -->
+          <div class="spotlight-card glass-panel p-6 rounded-2xl border border-gray-800 shadow-lg">
+            <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+              <i data-lucide="globe-2" class="w-5 h-5 text-emerald-400"></i>
+              <span>Language Proficiencies</span>
+            </h3>
+            <div class="grid grid-cols-2 gap-3 text-sm">
+              <div class="p-3 rounded-xl bg-gray-800/60 border border-gray-700/60">
+                <div class="font-bold text-white">English</div>
+                <div class="text-xs text-emerald-400 font-mono mt-0.5">Native / Bilingual</div>
+              </div>
+              <div class="p-3 rounded-xl bg-gray-800/60 border border-gray-700/60">
+                <div class="font-bold text-white">Hindi</div>
+                <div class="text-xs text-emerald-400 font-mono mt-0.5">Native / Bilingual</div>
+              </div>
+              <div class="p-3 rounded-xl bg-gray-800/60 border border-gray-700/60">
+                <div class="font-bold text-white">Bengali</div>
+                <div class="text-xs text-cyan-400 font-mono mt-0.5">Full Professional</div>
+              </div>
+              <div class="p-3 rounded-xl bg-gray-800/60 border border-gray-700/60">
+                <div class="font-bold text-white">Odiya</div>
+                <div class="text-xs text-purple-400 font-mono mt-0.5">Professional Working</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interests Card -->
+          <div class="spotlight-card glass-panel p-6 rounded-2xl border border-gray-800 shadow-lg">
+            <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+              <i data-lucide="sparkles" class="w-5 h-5 text-amber-400"></i>
+              <span>Personal Passions</span>
+            </h3>
+            <div class="flex flex-wrap gap-2 text-xs font-mono">
+              <span class="px-3 py-1.5 rounded-lg bg-gray-800 text-gray-200 border border-gray-700">🏎️ Motorsports & Formula 1</span>
+              <span class="px-3 py-1.5 rounded-lg bg-gray-800 text-gray-200 border border-gray-700">🌌 Astrophile & Aerospace</span>
+              <span class="px-3 py-1.5 rounded-lg bg-gray-800 text-gray-200 border border-gray-700">💻 Tech Innovations & AI</span>
+              <span class="px-3 py-1.5 rounded-lg bg-gray-800 text-gray-200 border border-gray-700">🎧 High-Fidelity Music</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= CONTACT SECTION ================= -->
+  <section id="contact" class="py-24 px-4 sm:px-6 relative z-10">
+    <div class="max-w-4xl mx-auto text-center">
+      
+      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full glass-panel border border-emerald-500/30 text-emerald-400 text-xs sm:text-sm font-medium mb-6">
+        <span>Let's Build Something Great Together</span>
+      </div>
+
+      <h2 class="text-4xl sm:text-5xl font-extrabold text-white mb-6 tracking-tight">Get in Touch</h2>
+      <p class="text-gray-300 text-base sm:text-lg max-w-xl mx-auto mb-12 leading-relaxed">
+        Whether you have an exciting leadership opportunity, need e-commerce operations consulting, or simply want to connect, my inbox is always open.
+      </p>
+
+      <!-- Contact Action Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto mb-12">
+        
+        <!-- Email Card with 1-click Copy -->
+        <button id="copyEmailBtn" class="spotlight-card glass-panel p-5 rounded-2xl border border-gray-800 hover:border-emerald-500/50 text-left transition-all group">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-3 group-hover:scale-110 transition-transform">
+            <i data-lucide="mail" class="w-5 h-5"></i>
+          </div>
+          <div class="text-xs text-gray-400 font-mono">Email Address</div>
+          <div class="text-sm font-bold text-white mt-1 break-all">malik.bikash219@gmail.com</div>
+          <div class="text-[11px] text-emerald-400 font-mono mt-2 flex items-center gap-1">
+            <i data-lucide="copy" class="w-3 h-3"></i>
+            <span>Click to copy</span>
+          </div>
+        </button>
+
+        <!-- Phone Card with 1-click Copy -->
+        <button id="copyPhoneBtn" class="spotlight-card glass-panel p-5 rounded-2xl border border-gray-800 hover:border-cyan-500/50 text-left transition-all group">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 mb-3 group-hover:scale-110 transition-transform">
+            <i data-lucide="phone" class="w-5 h-5"></i>
+          </div>
+          <div class="text-xs text-gray-400 font-mono">Phone & WhatsApp</div>
+          <div class="text-sm font-bold text-white mt-1">+91 8972157104</div>
+          <div class="text-[11px] text-cyan-400 font-mono mt-2 flex items-center gap-1">
+            <i data-lucide="copy" class="w-3 h-3"></i>
+            <span>Click to copy</span>
+          </div>
+        </button>
+
+        <!-- LinkedIn Link -->
+        <a href="https://linkedin.com/in/bonnokush" target="_blank" rel="noopener noreferrer" class="spotlight-card glass-panel p-5 rounded-2xl border border-gray-800 hover:border-purple-500/50 text-left transition-all group sm:col-span-2 md:col-span-1">
+          <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 mb-3 group-hover:scale-110 transition-transform">
+            <i data-lucide="linkedin" class="w-5 h-5"></i>
+          </div>
+          <div class="text-xs text-gray-400 font-mono">LinkedIn Profile</div>
+          <div class="text-sm font-bold text-white mt-1">/in/bonnokush</div>
+          <div class="text-[11px] text-purple-400 font-mono mt-2 flex items-center gap-1">
+            <i data-lucide="external-link" class="w-3 h-3"></i>
+            <span>Connect online</span>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- Resume Download Banner -->
+      <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-emerald-500/30 max-w-xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 shadow-2xl">
+        <div class="text-left">
+          <div class="text-white font-bold text-base">Want a permanent copy of my CV?</div>
+          <div class="text-xs text-gray-400 mt-1">Includes complete timeline, metrics, and references.</div>
+        </div>
+        <a href="Bikash_Kumar_Malik_Resume.pdf" download="Bikash_Kumar_Malik_Resume.pdf" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-sm transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-emerald-500/20">
+          <i data-lucide="file-text" class="w-4 h-4"></i>
+          <span>Download PDF</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="py-8 px-4 border-t border-gray-800/80 text-center text-xs text-gray-500 font-mono relative z-10">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        Designed & Engineered with passion by <strong class="text-gray-300">Bikash Kumar Malik</strong>.
+      </div>
+      <div>
+        100% Client-Side // Fluid Animations // Haldia, West Bengal, India
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= TOAST NOTIFICATION ================= -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="glass-panel px-4 py-3 rounded-xl border border-emerald-500/50 text-white font-mono text-sm flex items-center gap-2 shadow-2xl">
+      <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+      <span id="toastMessage">Copied to clipboard!</span>
+    </div>
+  </div>
+
+  <!-- ================= JAVASCRIPT: FLUID MOTION & INTERACTIONS ================= -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // 1. Fluid Mouse Spotlight Tracking
+    document.querySelectorAll('.spotlight-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
+
+    // 2. Scroll Reveal Observer for Fluid Entry Animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal-item').forEach(el => observer.observe(el));
+
+    // 3. Navbar Blur Transition on Scroll
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 40) {
+        nav.classList.add('py-2');
+        nav.classList.remove('py-4');
+      } else {
+        nav.classList.add('py-4');
+        nav.classList.remove('py-2');
+      }
+    });
+
+    // 4. Mobile Menu Drawer Toggle
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const drawer = document.getElementById('mobileDrawer');
+    if (mobileBtn && drawer) {
+      mobileBtn.addEventListener('click', () => {
+        drawer.classList.toggle('hidden');
+      });
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => drawer.classList.add('hidden'));
+      });
+    }
+
+    // 5. Toast Notification & 1-Click Clipboard
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toastMessage');
+
+    function showToast(message) {
+      if (!toast || !toastMsg) return;
+      toastMsg.textContent = message;
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-24', 'opacity-0');
+      }, 2400);
+    }
+
+    const copyEmailBtn = document.getElementById('copyEmailBtn');
+    if (copyEmailBtn) {
+      copyEmailBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText('malik.bikash219@gmail.com').then(() => {
+          showToast('Copied: malik.bikash219@gmail.com');
+        });
+      });
+    }
+
+    const copyPhoneBtn = document.getElementById('copyPhoneBtn');
+    if (copyPhoneBtn) {
+      copyPhoneBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText('+918972157104').then(() => {
+          showToast('Copied: +91 8972157104');
+        });
+      });
+    }
+  </script>
+
+</body>
+</html>
