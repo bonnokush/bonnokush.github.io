@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bikash Kumar Malik — Subject Matter Expert & Operations Specialist</title>
-  <meta name="description" content="Portfolio of Bikash Kumar Malik: Subject Matter Expert in Amazon Seller & Vendor Central operations, SLA governance, and process leadership." />
+  <meta name="description" content="Portfolio of Bikash Kumar Malik: Subject Matter Expert in Amazon Seller & Vendor Central operations, claims dispute resolution, and process leadership." />
   
   <!-- Favicon -->
   <link rel="icon" type="image/jpeg" href="profile.jpg" />
 
-  <!-- Premium Typography: Plus Jakarta Sans -->
+  <!-- Premium Apple-Grade Typography: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -48,7 +48,7 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
-    /* Apple & Linear Pure Aesthetic */
+    /* ================= APPLE PRODUCT DESIGN LANGUAGE ================= */
     html {
       background-color: #090a0f;
     }
@@ -65,14 +65,14 @@
       color: #ffffff;
     }
 
-    /* Subtle Glass Card */
+    /* Subtle Apple Glass Card */
     .glass-card {
       background: rgba(255, 255, 255, 0.02);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
       border: 1px solid rgba(255, 255, 255, 0.07);
       position: relative;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .glass-card:hover {
       background: rgba(255, 255, 255, 0.038);
@@ -80,7 +80,7 @@
       transform: translateY(-2px);
     }
 
-    /* Subtle Linear Spotlight Glow */
+    /* Apple-style Soft Spotlight Follow */
     .spotlight {
       position: relative;
       overflow: hidden;
@@ -90,8 +90,8 @@
       position: absolute;
       top: var(--mouse-y, -1000px);
       left: var(--mouse-x, -1000px);
-      width: 420px;
-      height: 420px;
+      width: 440px;
+      height: 440px;
       background: radial-gradient(circle closest-side, rgba(255, 255, 255, 0.06), transparent 70%);
       transform: translate(-50%, -50%);
       pointer-events: none;
@@ -103,15 +103,45 @@
       opacity: 1;
     }
 
-    /* Silky Smooth Scroll Reveal */
+    /* Apple Scroll-Driven Text Illumination */
+    .apple-scrub-word {
+      color: rgba(255, 255, 255, 0.22);
+      transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .apple-scrub-word.active {
+      color: rgba(255, 255, 255, 0.98);
+    }
+
+    /* Apple Segmented Pill Switcher Indicator */
+    .segmented-pill {
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Apple Interactive Accordion / Expandable Drawers */
+    .apple-drawer-content {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), margin-top 0.35s ease;
+    }
+    .apple-drawer.open .apple-drawer-content {
+      max-height: 400px;
+      opacity: 1;
+      margin-top: 1rem;
+    }
+    .apple-drawer.open .drawer-chevron {
+      transform: rotate(180deg);
+    }
+
+    /* Apple-style Silky Scroll Reveal */
     .reveal {
       opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(20px) scale(0.99);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .reveal.active {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
     }
 
     /* Minimal Native Scrollbar */
@@ -133,17 +163,20 @@
 
 <body class="selection:bg-indigo-500/30 selection:text-white">
 
+  <!-- ================= TOP SCROLL PROGRESS BAR ================= -->
+  <div id="scrollProgressBar" class="fixed top-0 left-0 h-[2.5px] bg-gradient-to-r from-blue-500 via-indigo-400 to-purple-400 z-50 transition-all duration-75 w-0"></div>
+
   <!-- ================= SUBTLE AMBIENT MESH LIGHTING ================= -->
   <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
-    <div class="absolute -top-48 left-1/2 -translate-x-1/2 w-[42rem] h-[24rem] bg-indigo-600/10 rounded-full blur-[140px]"></div>
-    <div class="absolute top-1/3 -right-48 w-[32rem] h-[32rem] bg-blue-600/5 rounded-full blur-[160px]"></div>
-    <div class="absolute bottom-10 -left-48 w-[32rem] h-[32rem] bg-emerald-600/5 rounded-full blur-[160px]"></div>
+    <div class="absolute -top-48 left-1/2 -translate-x-1/2 w-[46rem] h-[26rem] bg-indigo-600/10 rounded-full blur-[150px]"></div>
+    <div class="absolute top-1/3 -right-48 w-[34rem] h-[34rem] bg-blue-600/5 rounded-full blur-[160px]"></div>
+    <div class="absolute bottom-10 -left-48 w-[34rem] h-[34rem] bg-emerald-600/5 rounded-full blur-[160px]"></div>
   </div>
 
-  <!-- ================= SLEEK NAVBAR ================= -->
+  <!-- ================= APPLE-STYLE FLOATING PILL NAVBAR ================= -->
   <header class="fixed top-0 inset-x-0 z-50 transition-all duration-300" id="navbar">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 py-4">
-      <nav class="glass-card rounded-full px-5 py-2.5 flex items-center justify-between shadow-[0_8px_30px_rgb(0,0,0,0.25)] border border-white/[0.08]">
+      <nav class="glass-card rounded-full px-5 py-2.5 flex items-center justify-between shadow-[0_8px_30px_rgb(0,0,0,0.3)] border border-white/[0.08]">
         
         <!-- Brand / Identity -->
         <a href="#hero" class="flex items-center gap-3 group">
@@ -154,19 +187,19 @@
           </div>
         </a>
 
-        <!-- Desktop Navigation Links -->
-        <div class="hidden md:flex items-center gap-7 text-xs font-medium text-slate-300">
-          <a href="#about" class="hover:text-white transition-colors">About</a>
-          <a href="#experience" class="hover:text-white transition-colors">Experience</a>
-          <a href="#projects" class="hover:text-white transition-colors">Projects</a>
-          <a href="#skills" class="hover:text-white transition-colors">Skills</a>
-          <a href="#education" class="hover:text-white transition-colors">Education</a>
-          <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+        <!-- Desktop Navigation Links with Active Spy -->
+        <div class="hidden md:flex items-center gap-6 text-xs font-medium text-slate-300" id="desktopNavLinks">
+          <a href="#about" class="nav-item hover:text-white transition-colors py-1 px-2 rounded-full">About</a>
+          <a href="#experience" class="nav-item hover:text-white transition-colors py-1 px-2 rounded-full">Experience</a>
+          <a href="#workflows" class="nav-item hover:text-white transition-colors py-1 px-2 rounded-full">Workflows</a>
+          <a href="#skills" class="nav-item hover:text-white transition-colors py-1 px-2 rounded-full">Skills</a>
+          <a href="#education" class="nav-item hover:text-white transition-colors py-1 px-2 rounded-full">Education</a>
+          <a href="#contact" class="nav-item hover:text-white transition-colors py-1 px-2 rounded-full">Contact</a>
         </div>
 
         <!-- Download Resume Button -->
         <div class="flex items-center gap-3">
-          <a href="Bikash_Kumar_Malik_Resume.pdf" download="Bikash_Kumar_Malik_Resume.pdf" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white hover:bg-slate-200 text-black font-semibold text-xs transition-all transform hover:scale-[1.03] active:scale-[0.98] shadow-sm">
+          <a href="Bikash_Kumar_Malik_Resume.pdf" download="Bikash_Kumar_Malik_Resume.pdf" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white hover:bg-slate-200 text-black font-semibold text-xs transition-all transform hover:scale-[1.03] active:scale-[0.97] shadow-sm">
             <i data-lucide="download" class="w-3.5 h-3.5"></i>
             <span>Resume</span>
           </a>
@@ -184,7 +217,7 @@
       <div class="glass-card p-4 rounded-2xl flex flex-col gap-2.5 text-sm font-medium text-slate-300">
         <a href="#about" class="mobile-link py-2 px-3 rounded-lg hover:bg-white/5 hover:text-white">About</a>
         <a href="#experience" class="mobile-link py-2 px-3 rounded-lg hover:bg-white/5 hover:text-white">Experience</a>
-        <a href="#projects" class="mobile-link py-2 px-3 rounded-lg hover:bg-white/5 hover:text-white">Projects</a>
+        <a href="#workflows" class="mobile-link py-2 px-3 rounded-lg hover:bg-white/5 hover:text-white">Workflows</a>
         <a href="#skills" class="mobile-link py-2 px-3 rounded-lg hover:bg-white/5 hover:text-white">Skills</a>
         <a href="#education" class="mobile-link py-2 px-3 rounded-lg hover:bg-white/5 hover:text-white">Education</a>
         <a href="#contact" class="mobile-link py-2 px-3 rounded-lg hover:bg-white/5 hover:text-white">Contact</a>
@@ -210,40 +243,40 @@
 
       <!-- Subtitle -->
       <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
-        I'm <strong class="text-white font-medium">Bikash Kumar Malik</strong>. Specializing in Amazon Seller &amp; Vendor Central compliance, revenue defense, customer service excellence, and cross-functional team leadership.
+        I'm <strong class="text-white font-medium">Bikash Kumar Malik</strong>. Specializing in Amazon Seller &amp; Vendor Central compliance, A-to-z claims defense, feedback health, and cross-functional team leadership.
       </p>
 
       <!-- Action Buttons -->
       <div class="flex flex-wrap items-center justify-center gap-3.5 mb-16">
-        <a href="#experience" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white hover:bg-slate-200 text-black font-semibold text-sm transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-lg">
+        <a href="#experience" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white hover:bg-slate-200 text-black font-semibold text-sm transition-all transform hover:scale-[1.02] active:scale-[0.97] shadow-lg">
           <span>View Experience</span>
           <i data-lucide="arrow-down" class="w-4 h-4"></i>
         </a>
-        <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-full glass-card hover:border-white/20 text-white font-medium text-sm transition-all">
-          <i data-lucide="mail" class="w-4 h-4 text-slate-400"></i>
-          <span>Get in Touch</span>
+        <a href="#workflows" class="inline-flex items-center gap-2 px-6 py-3 rounded-full glass-card hover:border-white/20 text-white font-medium text-sm transition-all transform hover:scale-[1.02] active:scale-[0.97]">
+          <i data-lucide="layers" class="w-4 h-4 text-indigo-400"></i>
+          <span>Interactive Workflows</span>
         </a>
-        <a href="Bikash_Kumar_Malik_Resume.pdf" download="Bikash_Kumar_Malik_Resume.pdf" class="inline-flex items-center gap-2 px-6 py-3 rounded-full glass-card hover:border-white/20 text-slate-300 hover:text-white font-medium text-sm transition-all">
+        <a href="Bikash_Kumar_Malik_Resume.pdf" download="Bikash_Kumar_Malik_Resume.pdf" class="inline-flex items-center gap-2 px-6 py-3 rounded-full glass-card hover:border-white/20 text-slate-300 hover:text-white font-medium text-sm transition-all transform hover:scale-[1.02] active:scale-[0.97]">
           <i data-lucide="file-text" class="w-4 h-4 text-slate-400"></i>
           <span>Download CV</span>
         </a>
       </div>
 
-      <!-- Linear Metric Strip -->
+      <!-- Linear Metric Strip with Hover Elevation -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto">
-        <div class="glass-card p-5 rounded-2xl text-left">
+        <div class="glass-card spotlight p-5 rounded-2xl text-left">
           <div class="text-2xl sm:text-3xl font-bold text-white tracking-tight">5+ Years</div>
           <div class="text-xs text-slate-400 mt-1 font-medium">Professional Experience</div>
         </div>
-        <div class="glass-card p-5 rounded-2xl text-left">
+        <div class="glass-card spotlight p-5 rounded-2xl text-left">
           <div class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Amazon</div>
           <div class="text-xs text-slate-400 mt-1 font-medium">Seller &amp; Vendor Central</div>
         </div>
-        <div class="glass-card p-5 rounded-2xl text-left">
+        <div class="glass-card spotlight p-5 rounded-2xl text-left">
           <div class="text-2xl sm:text-3xl font-bold text-white tracking-tight">SME</div>
           <div class="text-xs text-slate-400 mt-1 font-medium">Process &amp; Audit Governance</div>
         </div>
-        <div class="glass-card p-5 rounded-2xl text-left">
+        <div class="glass-card spotlight p-5 rounded-2xl text-left">
           <div class="text-2xl sm:text-3xl font-bold text-white tracking-tight">8.5 GPA</div>
           <div class="text-xs text-slate-400 mt-1 font-medium">B.Tech in Electronics (ECE)</div>
         </div>
@@ -252,7 +285,7 @@
     </div>
   </section>
 
-  <!-- ================= ABOUT ME ================= -->
+  <!-- ================= ABOUT ME (WITH APPLE-STYLE SCROLL ILLUMINATION) ================= -->
   <section id="about" class="py-20 px-4 sm:px-6 relative z-10 border-t border-white/[0.06]">
     <div class="max-w-4xl mx-auto">
       
@@ -275,21 +308,24 @@
           </div>
         </div>
 
-        <!-- Narrative -->
+        <!-- Narrative with Apple Scrollytelling Illuminator -->
         <div class="md:col-span-7 space-y-4 text-slate-300 text-base leading-relaxed">
-          <p>
-            I am an operations specialist and <strong class="text-white">Subject Matter Expert</strong> with over five years of multidisciplinary experience across enterprise e-commerce compliance, technical customer support, and IT workflow governance.
+          <p class="apple-scrub-paragraph text-lg font-normal leading-relaxed text-slate-300">
+            I am an operations specialist and <strong class="text-white font-semibold">Subject Matter Expert</strong> with over five years of multidisciplinary expertise spanning enterprise e-commerce compliance, technical customer support, and IT workflow governance.
           </p>
-          <p>
-            Currently, at <strong class="text-white">Bathroom Bubbles Ltd</strong>, I manage operational health and revenue recovery across <span class="text-white font-medium">Amazon Seller Central</span> and <span class="text-white font-medium">Amazon Vendor Central</span>. My responsibilities include auditing deductions, reversing invalid chargebacks, rectifying shortage claims, and maintaining account health compliance.
+          <p class="text-slate-300">
+            Currently, at <strong class="text-white font-medium">Bathroom Bubbles Ltd</strong>, I manage operational health and revenue recovery across <span class="text-white font-medium">Amazon Seller Central</span> and <span class="text-white font-medium">Amazon Vendor Central</span>. My responsibilities center on auditing deductions, reversing invalid chargebacks, preparing evidence for A-to-z guarantee claims, managing feedback health, and protecting profit margins.
           </p>
-          <p>
-            Previously, at <strong class="text-white">31 West Global Services</strong> as an SME and at <strong class="text-white">Wipro Limited</strong>, I spearheaded SLA compliance, authored Standard Operating Procedures (SOPs), mentored teams, and resolved complex escalations in fast-paced operational environments.
+          <p class="text-slate-300">
+            Previously, at <strong class="text-white font-medium">31 West Global Services</strong> as an SME and at <strong class="text-white font-medium">Wipro Limited</strong>, I spearheaded SLA compliance, authored Standard Operating Procedures (SOPs), mentored frontline teams, and resolved high-stakes escalations in fast-paced operational environments.
           </p>
           
-          <!-- Quote -->
-          <div class="glass-card p-4 rounded-xl border-l-2 border-indigo-500 mt-4 text-sm text-slate-300 italic">
-            "In this interconnected world, we have the opportunity to make a difference, no matter how small it may seem. Together, we can create a ripple effect of positivity and change that extends far beyond our individual reach."
+          <!-- Apple Scroll Scrubbing Quote Card -->
+          <div class="glass-card p-5 rounded-2xl border-l-2 border-indigo-500 mt-5">
+            <p id="scrubQuote" class="text-sm sm:text-base leading-relaxed italic">
+              <!-- Dynamically populated by JS for smooth word-by-word scroll illumination -->
+              "In this interconnected world, we have the opportunity to make a difference, no matter how small it may seem. Together, we can create a ripple effect of positivity and change that extends far beyond our individual reach."
+            </p>
           </div>
         </div>
 
@@ -298,7 +334,7 @@
     </div>
   </section>
 
-  <!-- ================= WORK EXPERIENCE (CLEAN LINEAR TIMELINE) ================= -->
+  <!-- ================= WORK HISTORY ================= -->
   <section id="experience" class="py-20 px-4 sm:px-6 relative z-10 border-t border-white/[0.06]">
     <div class="max-w-4xl mx-auto">
       
@@ -372,7 +408,7 @@
           <ul class="space-y-2.5 text-sm text-slate-300">
             <li class="flex items-start gap-2.5">
               <span class="text-slate-500 mt-0.5">&bull;</span>
-              <span><strong>Technical Escalations:</strong> Conducted root-cause investigations on production issues, system anomalies, and complex workflows.</span>
+              <span><strong>Technical Escalations &amp; RCA:</strong> Conducted root-cause investigations on production outages, system anomalies, and complex client workflows.</span>
             </li>
             <li class="flex items-start gap-2.5">
               <span class="text-slate-500 mt-0.5">&bull;</span>
@@ -380,7 +416,7 @@
             </li>
             <li class="flex items-start gap-2.5">
               <span class="text-slate-500 mt-0.5">&bull;</span>
-              <span><strong>SOP Authoring &amp; Quality:</strong> Standardized documentation, created team operating procedures, and led quality audits.</span>
+              <span><strong>SOP Authoring &amp; Quality:</strong> Standardized documentation, authored team standard operating procedures, and led quality compliance audits.</span>
             </li>
             <li class="flex items-start gap-2.5">
               <span class="text-slate-500 mt-0.5">&bull;</span>
@@ -433,50 +469,140 @@
     </div>
   </section>
 
-  <!-- ================= SIDE PROJECT: RETROFLUX PRO (SUBTLE) ================= -->
-  <section id="projects" class="py-14 px-4 sm:px-6 relative z-10 border-t border-white/[0.06]">
+  <!-- ================= APPLE-STYLE INTERACTIVE WORKFLOWS & OPTION SELECTOR ================= -->
+  <section id="workflows" class="py-20 px-4 sm:px-6 relative z-10 border-t border-white/[0.06]">
     <div class="max-w-4xl mx-auto">
       
-      <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Technical Projects</div>
-      <h2 class="text-xl sm:text-2xl font-bold text-white mb-2 tracking-tight">Side Project: RetroFlux PRO</h2>
-      <p class="text-slate-400 text-xs mb-6 max-w-xl leading-relaxed">
-        A personal desktop &amp; mobile media utility developed for fast local stream remuxing and audio/video conversions.
+      <div class="text-xs font-semibold uppercase tracking-wider text-indigo-400 mb-2">Interactive Workflows</div>
+      <h2 class="text-2xl sm:text-4xl font-bold text-white mb-4 tracking-tight">Amazon Operations Protocol</h2>
+      <p class="text-slate-400 text-sm mb-8 max-w-xl">
+        Explore core operational frameworks. Click any domain below to examine the dispute resolution mechanics and SLA adherence standards.
       </p>
 
-      <div class="glass-card spotlight p-5 sm:p-6 rounded-2xl reveal">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
-          <div>
-            <div class="text-white font-semibold text-base">RetroFlux PRO <span class="text-xs text-slate-400 font-normal ml-2 font-mono">v1.3.0</span></div>
-            <div class="text-xs text-slate-400 mt-0.5">Desktop &amp; Android media conversion utility</div>
+      <!-- Apple-style Segmented Control Filter Tabs -->
+      <div class="relative glass-card p-1.5 rounded-full inline-flex flex-wrap gap-1 mb-8 border border-white/10" id="segmentedBar">
+        <button class="segment-tab active px-4 py-2 rounded-full text-xs font-medium text-white transition-all transform active:scale-95" data-target="workflow-all">
+          All Frameworks
+        </button>
+        <button class="segment-tab px-4 py-2 rounded-full text-xs font-medium text-slate-400 hover:text-white transition-all transform active:scale-95" data-target="workflow-claims">
+          A-to-z Claims
+        </button>
+        <button class="segment-tab px-4 py-2 rounded-full text-xs font-medium text-slate-400 hover:text-white transition-all transform active:scale-95" data-target="workflow-feedback">
+          Feedback &amp; CX
+        </button>
+        <button class="segment-tab px-4 py-2 rounded-full text-xs font-medium text-slate-400 hover:text-white transition-all transform active:scale-95" data-target="workflow-vendor">
+          Vendor Central
+        </button>
+        <button class="segment-tab px-4 py-2 rounded-full text-xs font-medium text-slate-400 hover:text-white transition-all transform active:scale-95" data-target="workflow-safet">
+          Safe-T Claims
+        </button>
+      </div>
+
+      <!-- Interactive Expandable Drawers (Apple-Style) -->
+      <div class="space-y-4" id="drawersContainer">
+        
+        <!-- Drawer 1: A-to-z Guarantee Claims Protocol -->
+        <div class="apple-drawer glass-card spotlight p-6 rounded-2xl cursor-pointer reveal transition-all" data-category="workflow-claims" onclick="toggleDrawer(this)">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-indigo-500/10 flex items-center justify-center text-indigo-400">
+                <i data-lucide="shield-alert" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-white text-base">A-to-z Guarantee Claims &amp; Representation</h3>
+                <div class="text-xs text-slate-400">SOP representation, POD investigation, and appeal victory</div>
+              </div>
+            </div>
+            <div class="drawer-chevron text-slate-400 transition-transform duration-300">
+              <i data-lucide="chevron-down" class="w-4 h-4"></i>
+            </div>
           </div>
-          <div class="flex items-center gap-2">
-            <a href="https://bonnokush.gumroad.com/l/doqxfs" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-slate-200 hover:text-white text-xs font-medium transition-all">
-              <span>Gumroad Store</span>
-              <i data-lucide="external-link" class="w-3 h-3"></i>
-            </a>
-            <a href="https://github.com/bonnoxkush/RetroFlux" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.03] hover:bg-white/[0.08] text-slate-300 text-xs font-medium transition-all">
-              <i data-lucide="github" class="w-3 h-3"></i>
-              <span>GitHub</span>
-            </a>
+          
+          <div class="apple-drawer-content text-xs text-slate-300 space-y-2 border-t border-white/[0.06] pt-3">
+            <p><strong>1. Claim Triage:</strong> Immediate audit against customer signature, courier tracking timestamps, and communication logs within the 72-hour Amazon window.</p>
+            <p><strong>2. Evidence-Backed Representation:</strong> Submission of standardized proof of delivery (POD), GPS carrier drops, and packaging specs to successfully contest buyer fraud or delivery misunderstandings.</p>
+            <p><strong>3. Appeals &amp; ODR Reversal:</strong> Filing executive escalations when claims are erroneously granted, reversing account metric penalties and recapturing claim funds.</p>
           </div>
         </div>
 
-        <p class="text-slate-300 text-xs leading-relaxed mb-4">
-          Developed as a lightweight, offline local utility featuring lossless stream copying (<code class="text-indigo-300 font-mono">-c copy</code> in ~1.2s), GPU acceleration support (NVIDIA NVENC, Intel QSV, AMD AMF), and Gumroad license API verification.
-        </p>
-
-        <div class="flex flex-wrap gap-1.5 text-xs text-slate-400 font-mono">
-          <span class="px-2 py-0.5 rounded bg-white/[0.03]">Python</span>
-          <span class="px-2 py-0.5 rounded bg-white/[0.03]">Flutter</span>
-          <span class="px-2 py-0.5 rounded bg-white/[0.03]">Embedded FFmpeg</span>
-          <span class="px-2 py-0.5 rounded bg-white/[0.03]">Gumroad API</span>
+        <!-- Drawer 2: Customer Feedback & Review Policy Governance -->
+        <div class="apple-drawer glass-card spotlight p-6 rounded-2xl cursor-pointer reveal transition-all" data-category="workflow-feedback" onclick="toggleDrawer(this)">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-indigo-500/10 flex items-center justify-center text-indigo-400">
+                <i data-lucide="message-square" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-white text-base">Customer Feedback &amp; CX Health Management</h3>
+                <div class="text-xs text-slate-400">Policy-based removals, FBA logistics strike-throughs, and sentiment recovery</div>
+              </div>
+            </div>
+            <div class="drawer-chevron text-slate-400 transition-transform duration-300">
+              <i data-lucide="chevron-down" class="w-4 h-4"></i>
+            </div>
+          </div>
+          
+          <div class="apple-drawer-content text-xs text-slate-300 space-y-2 border-t border-white/[0.06] pt-3">
+            <p><strong>1. Policy-Based Feedback Strike-Through:</strong> Leveraging Amazon Feedback Manager to strike through carrier-delayed orders and Amazon fulfillment errors automatically.</p>
+            <p><strong>2. Voice of Customer (VOC) &amp; NCX Optimization:</strong> Triaging Negative Customer Experience metrics to isolate ASIN-level catalog ambiguities before account health warnings trigger.</p>
+            <p><strong>3. Review Remediation:</strong> Identifying product-review violations in seller feedback queues and submitting compliance cases to uphold a 99%+ positive merchant score.</p>
+          </div>
         </div>
+
+        <!-- Drawer 3: Vendor Central Deduction & Shortage Auditing -->
+        <div class="apple-drawer glass-card spotlight p-6 rounded-2xl cursor-pointer reveal transition-all" data-category="workflow-vendor" onclick="toggleDrawer(this)">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-indigo-500/10 flex items-center justify-center text-indigo-400">
+                <i data-lucide="receipt" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-white text-base">Amazon Vendor Central Shortage &amp; Co-op Defense</h3>
+                <div class="text-xs text-slate-400">PO reconciliation, operational chargebacks, and remittance dispute recovery</div>
+              </div>
+            </div>
+            <div class="drawer-chevron text-slate-400 transition-transform duration-300">
+              <i data-lucide="chevron-down" class="w-4 h-4"></i>
+            </div>
+          </div>
+          
+          <div class="apple-drawer-content text-xs text-slate-300 space-y-2 border-t border-white/[0.06] pt-3">
+            <p><strong>1. Purchase Order Auditing:</strong> Cross-referencing warehouse shipment manifests against Amazon receipt discrepancy reports to challenge unverified shortages.</p>
+            <p><strong>2. Chargeback Dispute Filing:</strong> Disputing operational chargebacks (carton prep, carton labeling, ASN mismatches) by providing packing slips and carrier bills of lading (BOL).</p>
+            <p><strong>3. Net Margin Protection:</strong> Submitting financial dispute batches via Vendor Central remittance portals to reclaim deducted payments.</p>
+          </div>
+        </div>
+
+        <!-- Drawer 4: Safe-T Claims & Reimbursements -->
+        <div class="apple-drawer glass-card spotlight p-6 rounded-2xl cursor-pointer reveal transition-all" data-category="workflow-safet" onclick="toggleDrawer(this)">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-indigo-500/10 flex items-center justify-center text-indigo-400">
+                <i data-lucide="dollar-sign" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-white text-base">Safe-T Claims &amp; Merchant Reimbursement</h3>
+                <div class="text-xs text-slate-400">Damaged returns, returnless refunds, and carrier loss restitution</div>
+              </div>
+            </div>
+            <div class="drawer-chevron text-slate-400 transition-transform duration-300">
+              <i data-lucide="chevron-down" class="w-4 h-4"></i>
+            </div>
+          </div>
+          
+          <div class="apple-drawer-content text-xs text-slate-300 space-y-2 border-t border-white/[0.06] pt-3">
+            <p><strong>1. Photographic Evidence Logging:</strong> Capturing serial numbers, return shipping labels, and packaging condition upon warehouse receipt.</p>
+            <p><strong>2. Safe-T Filing:</strong> Drafting structured claims with item value invoices and condition documentation for customer-damaged returns and switcheroo frauds.</p>
+            <p><strong>3. Capital Recovery:</strong> Maintaining an audit trail to ensure reimbursement credits are credited to merchant disbursements.</p>
+          </div>
+        </div>
+
       </div>
 
     </div>
   </section>
 
-  <!-- ================= SKILLS MATRIX ================= -->
+  <!-- ================= CORE COMPETENCIES MATRIX ================= -->
   <section id="skills" class="py-20 px-4 sm:px-6 relative z-10 border-t border-white/[0.06]">
     <div class="max-w-4xl mx-auto">
       
@@ -546,6 +672,49 @@
     </div>
   </section>
 
+  <!-- ================= SUBTLE SIDE PROJECT ENTRY ================= -->
+  <section id="projects" class="py-14 px-4 sm:px-6 relative z-10 border-t border-white/[0.06]">
+    <div class="max-w-4xl mx-auto">
+      
+      <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Technical Projects</div>
+      <h2 class="text-xl sm:text-2xl font-bold text-white mb-2 tracking-tight">Side Project: RetroFlux PRO</h2>
+      <p class="text-slate-400 text-xs mb-6 max-w-xl leading-relaxed">
+        A personal desktop &amp; mobile media utility developed for fast local stream remuxing and audio/video conversions.
+      </p>
+
+      <div class="glass-card spotlight p-5 sm:p-6 rounded-2xl reveal">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+          <div>
+            <div class="text-white font-semibold text-base">RetroFlux PRO <span class="text-xs text-slate-400 font-normal ml-2 font-mono">v1.3.0</span></div>
+            <div class="text-xs text-slate-400 mt-0.5">Desktop &amp; Android media conversion utility</div>
+          </div>
+          <div class="flex items-center gap-2">
+            <a href="https://bonnokush.gumroad.com/l/doqxfs" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-slate-200 hover:text-white text-xs font-medium transition-all transform active:scale-95">
+              <span>Gumroad Store</span>
+              <i data-lucide="external-link" class="w-3 h-3"></i>
+            </a>
+            <a href="https://github.com/bonnoxkush/RetroFlux" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.03] hover:bg-white/[0.08] text-slate-300 text-xs font-medium transition-all transform active:scale-95">
+              <i data-lucide="github" class="w-3 h-3"></i>
+              <span>GitHub</span>
+            </a>
+          </div>
+        </div>
+
+        <p class="text-slate-300 text-xs leading-relaxed mb-4">
+          Developed as a lightweight, offline local utility featuring lossless stream copying (<code class="text-indigo-300 font-mono">-c copy</code> in ~1.2s), GPU acceleration support (NVIDIA NVENC, Intel QSV, AMD AMF), and Gumroad license API verification.
+        </p>
+
+        <div class="flex flex-wrap gap-1.5 text-xs text-slate-400 font-mono">
+          <span class="px-2 py-0.5 rounded bg-white/[0.03]">Python</span>
+          <span class="px-2 py-0.5 rounded bg-white/[0.03]">Flutter</span>
+          <span class="px-2 py-0.5 rounded bg-white/[0.03]">Embedded FFmpeg</span>
+          <span class="px-2 py-0.5 rounded bg-white/[0.03]">Gumroad API</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ================= EDUCATION, CERTIFICATES & PASSIONS ================= -->
   <section id="education" class="py-20 px-4 sm:px-6 relative z-10 border-t border-white/[0.06]">
     <div class="max-w-4xl mx-auto">
@@ -558,7 +727,7 @@
           <h2 class="text-2xl font-bold text-white mb-6 tracking-tight">Academic History</h2>
 
           <div class="space-y-4">
-            <div class="glass-card p-5 rounded-2xl">
+            <div class="glass-card spotlight p-5 rounded-2xl reveal">
               <div class="flex items-center justify-between text-xs text-slate-400 mb-1">
                 <span>06/2014 – 06/2018</span>
                 <span class="text-emerald-400 font-semibold">8.5 GPA</span>
@@ -568,7 +737,7 @@
               <div class="text-xs text-slate-400 mt-2">Haldia Institute of Technology</div>
             </div>
 
-            <div class="glass-card p-5 rounded-2xl">
+            <div class="glass-card spotlight p-5 rounded-2xl reveal">
               <div class="flex items-center justify-between text-xs text-slate-400 mb-1">
                 <span>05/2012 – 05/2014</span>
                 <span class="text-slate-400">Science Stream</span>
@@ -587,7 +756,7 @@
 
           <div class="space-y-4">
             <!-- EF SET -->
-            <div class="glass-card p-5 rounded-2xl">
+            <div class="glass-card spotlight p-5 rounded-2xl reveal">
               <div class="flex items-center justify-between text-xs text-slate-400 mb-1">
                 <span>Issued 08/2024</span>
                 <span class="text-indigo-400 font-semibold">Standardized Test</span>
@@ -599,7 +768,7 @@
             </div>
 
             <!-- Languages -->
-            <div class="glass-card p-5 rounded-2xl">
+            <div class="glass-card spotlight p-5 rounded-2xl reveal">
               <div class="text-xs font-semibold text-white mb-3">Language Proficiencies</div>
               <div class="grid grid-cols-2 gap-2 text-xs">
                 <div class="p-2 rounded-lg bg-white/[0.03]">
@@ -622,7 +791,7 @@
             </div>
 
             <!-- Interests -->
-            <div class="glass-card p-4 rounded-2xl">
+            <div class="glass-card spotlight p-4 rounded-2xl reveal">
               <div class="text-xs font-semibold text-white mb-2">Personal Interests</div>
               <div class="flex flex-wrap gap-2 text-xs text-slate-300">
                 <span class="px-2.5 py-1 rounded bg-white/[0.04]">Motorsports &amp; Formula 1</span>
@@ -647,13 +816,13 @@
       <div class="text-xs font-semibold uppercase tracking-wider text-indigo-400 mb-2">Contact</div>
       <h2 class="text-3xl sm:text-5xl font-bold text-white mb-4 tracking-tight">Let's Connect</h2>
       <p class="text-slate-400 text-base max-w-lg mx-auto mb-10">
-        Whether you have an operations leadership opportunity or want to discuss e-commerce strategy, feel free to reach out.
+        Whether you have an operations leadership opportunity or want to discuss Amazon e-commerce strategy, feel free to reach out.
       </p>
 
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10 text-left">
         
         <!-- Email -->
-        <button id="copyEmailBtn" class="glass-card spotlight p-5 rounded-2xl transition-all group">
+        <button id="copyEmailBtn" class="glass-card spotlight p-5 rounded-2xl transition-all group transform active:scale-95">
           <div class="w-9 h-9 rounded-xl bg-white/[0.04] flex items-center justify-center text-slate-300 mb-3 group-hover:text-white transition-colors">
             <i data-lucide="mail" class="w-4 h-4"></i>
           </div>
@@ -666,7 +835,7 @@
         </button>
 
         <!-- Phone -->
-        <button id="copyPhoneBtn" class="glass-card spotlight p-5 rounded-2xl transition-all group">
+        <button id="copyPhoneBtn" class="glass-card spotlight p-5 rounded-2xl transition-all group transform active:scale-95">
           <div class="w-9 h-9 rounded-xl bg-white/[0.04] flex items-center justify-center text-slate-300 mb-3 group-hover:text-white transition-colors">
             <i data-lucide="phone" class="w-4 h-4"></i>
           </div>
@@ -678,8 +847,8 @@
           </div>
         </button>
 
-        <!-- LinkedIn -->
-        <a href="https://linkedin.com/in/bonnokush" target="_blank" rel="noopener noreferrer" class="glass-card spotlight p-5 rounded-2xl transition-all group">
+        <!-- LinkedIn with Crisp Inline SVG -->
+        <a href="https://linkedin.com/in/bonnokush" target="_blank" rel="noopener noreferrer" class="glass-card spotlight p-5 rounded-2xl transition-all group transform active:scale-95">
           <div class="w-9 h-9 rounded-xl bg-white/[0.04] flex items-center justify-center text-slate-300 mb-3 group-hover:text-white transition-colors">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.64a1.64 1.64 0 1 0 0 3.28 1.64 1.64 0 0 0 0-3.28Z"/>
@@ -701,7 +870,7 @@
           <div class="text-white font-semibold text-sm">Download Verified Resume</div>
           <div class="text-xs text-slate-400 mt-0.5">Updated PDF with full chronology &amp; references.</div>
         </div>
-        <a href="Bikash_Kumar_Malik_Resume.pdf" download="Bikash_Kumar_Malik_Resume.pdf" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-white hover:bg-slate-200 text-black font-semibold text-xs transition-all">
+        <a href="Bikash_Kumar_Malik_Resume.pdf" download="Bikash_Kumar_Malik_Resume.pdf" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-white hover:bg-slate-200 text-black font-semibold text-xs transition-all transform hover:scale-[1.02] active:scale-[0.97]">
           <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
           <span>Download PDF</span>
         </a>
@@ -736,12 +905,99 @@
     </div>
   </div>
 
-  <!-- ================= JAVASCRIPT: FLUID MOTION & INTERACTIONS ================= -->
+  <!-- ================= JAVASCRIPT: APPLE ANIMATRONICS ENGINE ================= -->
   <script>
-    // Initialize Icons
+    // 1. Initialize Lucide Icons
     lucide.createIcons();
 
-    // 1. Apple/Linear Subtle Mouse Spotlight Glow
+    // 2. Apple Scroll Progress Bar
+    const progressBar = document.getElementById('scrollProgressBar');
+    window.addEventListener('scroll', () => {
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalScroll > 0 && progressBar) {
+        const scrolled = (window.scrollY / totalScroll) * 100;
+        progressBar.style.width = `${scrolled}%`;
+      }
+    });
+
+    // 3. Apple-Style Scroll-Scrubbed Text Illumination
+    const scrubQuote = document.getElementById('scrubQuote');
+    if (scrubQuote) {
+      const text = scrubQuote.innerText.trim();
+      const words = text.split(/\s+/);
+      scrubQuote.innerHTML = words.map(word => `<span class="apple-scrub-word">${word}</span>`).join(' ');
+
+      const scrubSpans = scrubQuote.querySelectorAll('.apple-scrub-word');
+      window.addEventListener('scroll', () => {
+        const rect = scrubQuote.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        // Start illuminating when card enters middle 70% of screen
+        const start = windowHeight * 0.85;
+        const end = windowHeight * 0.35;
+        const progress = Math.min(Math.max((start - rect.top) / (start - end), 0), 1);
+        const activeWordCount = Math.floor(progress * scrubSpans.length);
+
+        scrubSpans.forEach((span, idx) => {
+          if (idx <= activeWordCount) {
+            span.classList.add('active');
+          } else {
+            span.classList.remove('active');
+          }
+        });
+      });
+    }
+
+    // 4. Apple Segmented Option Control (Filtering & Click Animations)
+    const segmentButtons = document.querySelectorAll('.segment-tab');
+    const drawers = document.querySelectorAll('.apple-drawer');
+
+    segmentButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Toggle active button style
+        segmentButtons.forEach(b => {
+          b.classList.remove('active', 'text-white', 'bg-white/10');
+          b.classList.add('text-slate-400');
+        });
+        btn.classList.add('active', 'text-white', 'bg-white/10');
+        btn.classList.remove('text-slate-400');
+
+        const target = btn.getAttribute('data-target');
+
+        // Apple-style Filter transition
+        drawers.forEach(drawer => {
+          const category = drawer.getAttribute('data-category');
+          if (target === 'workflow-all' || category === target) {
+            drawer.style.display = 'block';
+            setTimeout(() => {
+              drawer.style.opacity = '1';
+              drawer.style.transform = 'translateY(0) scale(1)';
+            }, 20);
+          } else {
+            drawer.style.opacity = '0';
+            drawer.style.transform = 'translateY(8px) scale(0.98)';
+            setTimeout(() => {
+              drawer.style.display = 'none';
+            }, 250);
+          }
+        });
+      });
+    });
+
+    // 5. Apple Interactive Expandable Drawer Toggle
+    function toggleDrawer(element) {
+      const isOpen = element.classList.contains('open');
+      // Close sibling drawers if needed or toggle current
+      document.querySelectorAll('.apple-drawer').forEach(d => {
+        if (d !== element) d.classList.remove('open');
+      });
+      if (isOpen) {
+        element.classList.remove('open');
+      } else {
+        element.classList.add('open');
+      }
+    }
+
+    // 6. Subtle Mouse Spotlight Glow
     document.querySelectorAll('.spotlight').forEach(card => {
       card.addEventListener('mousemove', e => {
         const rect = card.getBoundingClientRect();
@@ -752,7 +1008,7 @@
       });
     });
 
-    // 2. Silky Scroll Reveal
+    // 7. Apple Silky Scroll Reveal
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -763,7 +1019,28 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // 3. Mobile Navigation Drawer
+    // 8. Apple Nav Active Spy on Scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navItems = document.querySelectorAll('.nav-item');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(sec => {
+        const top = sec.offsetTop - 120;
+        if (window.scrollY >= top) {
+          current = sec.getAttribute('id');
+        }
+      });
+
+      navItems.forEach(item => {
+        item.classList.remove('text-white', 'bg-white/10');
+        if (item.getAttribute('href') === `#${current}`) {
+          item.classList.add('text-white', 'bg-white/10');
+        }
+      });
+    });
+
+    // 9. Mobile Navigation Drawer
     const mobileBtn = document.getElementById('mobileBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     if (mobileBtn && mobileMenu) {
@@ -775,7 +1052,7 @@
       });
     }
 
-    // 4. Toast Notification
+    // 10. Minimal Toast Notification & Clipboard
     const toast = document.getElementById('toast');
     const toastMsg = document.getElementById('toastMessage');
 
