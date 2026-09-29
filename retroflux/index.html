@@ -183,6 +183,7 @@
       <!-- Navigation Links -->
       <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-[#86868b]">
         <a href="#features" class="hover:text-white transition-colors">Features</a>
+        <a href="#screenshots" class="hover:text-white transition-colors">Screenshots</a>
         <a href="#comparison" class="hover:text-white transition-colors">Vs Cloud</a>
         <a href="#editions" class="hover:text-white transition-colors">Pricing & Editions</a>
         <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
@@ -452,6 +453,110 @@
           </div>
           <div class="mt-8 pt-6 border-t border-white/[0.06] text-xs text-white/70">
             <span>Multi-Core Parallel Queue</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= APP SHOWCASE & SCREENSHOTS ================= -->
+  <section id="screenshots" class="py-20 md:py-28 border-t border-white/[0.08] relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/15 text-xs text-white/80 font-medium mb-4 backdrop-blur-md">
+          <span class="w-2 h-2 rounded-full bg-[#30d158]"></span>
+          <span>Native Desktop & Mobile Interfaces</span>
+        </div>
+        <h2 class="headline-gradient text-3xl sm:text-5xl font-bold tracking-tight mb-4">
+          Experience the Interface
+        </h2>
+        <p class="text-[#86868b] text-base sm:text-lg">
+          Designed with minimalist precision and dark titanium aesthetics. Explore the native desktop workstation, GPU pipeline configuration, and Android mobile companion.
+        </p>
+      </div>
+
+      <!-- Screenshot Tabs Navigation -->
+      <div class="flex items-center justify-center mb-10">
+        <div class="inline-flex p-1.5 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-xl gap-1">
+          <button id="tabDesktopBtn" onclick="switchGallery('desktop')" class="px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-black shadow-md">
+            🖥️ Desktop Workstation
+          </button>
+          <button id="tabSettingsBtn" onclick="switchGallery('settings')" class="px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-[#86868b] hover:text-white">
+            ⚙️ Hardware & Codecs
+          </button>
+          <button id="tabMobileBtn" onclick="switchGallery('mobile')" class="px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-[#86868b] hover:text-white">
+            📱 Mobile Edition
+          </button>
+        </div>
+      </div>
+
+      <!-- Screenshot Display Canvas -->
+      <div class="max-w-5xl mx-auto">
+        
+        <!-- View 1: Desktop Workstation Queue -->
+        <div id="galleryDesktop" class="space-y-6 transition-all duration-300">
+          <div class="glass-panel rounded-3xl p-3 sm:p-4 border border-white/15 shadow-[0_30px_90px_rgba(0,0,0,0.8)] overflow-hidden">
+            <img src="assets/screenshot-desktop-queue.jpg" alt="RetroFlux PRO Desktop Workstation Batch Queue" class="w-full h-auto rounded-2xl object-cover shadow-2xl" />
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+            <div class="glass-panel rounded-2xl p-5">
+              <div class="text-[#30d158] font-bold text-sm mb-1">⚡ Instant Stream Remux</div>
+              <p class="text-xs text-[#86868b] leading-relaxed">Changes 4K MKV to MP4 in 1.4 seconds with zero re-encoding or bit-for-bit quality degradation.</p>
+            </div>
+            <div class="glass-panel rounded-2xl p-5">
+              <div class="text-[#ffd60a] font-bold text-sm mb-1">🚀 Multi-GPU Pipelines</div>
+              <p class="text-xs text-[#86868b] leading-relaxed">Auto-routes tasks to NVIDIA GeForce RTX NVENC, Intel QSV, or AMD AMF hardware.</p>
+            </div>
+            <div class="glass-panel rounded-2xl p-5">
+              <div class="text-[#2997ff] font-bold text-sm mb-1">♾️ Unlimited Queues</div>
+              <p class="text-xs text-[#86868b] leading-relaxed">Batch convert hundreds of heavy audio and video files in continuous background workers.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- View 2: Hardware & Codec Settings -->
+        <div id="gallerySettings" class="space-y-6 transition-all duration-300 hidden">
+          <div class="glass-panel rounded-3xl p-3 sm:p-4 border border-white/15 shadow-[0_30px_90px_rgba(0,0,0,0.8)] overflow-hidden">
+            <img src="assets/screenshot-hardware-settings.jpg" alt="RetroFlux PRO Hardware Acceleration and Codec Settings" class="w-full h-auto rounded-2xl object-cover shadow-2xl" />
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+            <div class="glass-panel rounded-2xl p-5">
+              <div class="text-[#30d158] font-bold text-sm mb-1">🔍 Automatic Hardware Probing</div>
+              <p class="text-xs text-[#86868b] leading-relaxed">Instant detection of installed dedicated graphics cards and Intel integrated silicon.</p>
+            </div>
+            <div class="glass-panel rounded-2xl p-5">
+              <div class="text-[#ffd60a] font-bold text-sm mb-1">🎛️ Universal Codec Presets</div>
+              <p class="text-xs text-[#86868b] leading-relaxed">One-click toggles for MP4 H.264, MKV HEVC H.265, ProRes 422, and WebM VP9.</p>
+            </div>
+            <div class="glass-panel rounded-2xl p-5">
+              <div class="text-[#af52de] font-bold text-sm mb-1">🎵 Studio Audio Extraction</div>
+              <p class="text-xs text-[#86868b] leading-relaxed">Variable bitrate audio extraction up to 320 kbps MP3, WAV passthrough, and AAC.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- View 3: Mobile Edition (Android) -->
+        <div id="galleryMobile" class="space-y-6 transition-all duration-300 hidden">
+          <div class="max-w-md mx-auto glass-panel rounded-3xl p-3 sm:p-4 border border-white/15 shadow-[0_30px_90px_rgba(0,0,0,0.8)] overflow-hidden">
+            <img src="assets/screenshot-mobile-app.jpg" alt="RetroFlux Mobile Android Edition" class="w-full h-auto rounded-2xl object-cover shadow-2xl mx-auto" />
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+            <div class="glass-panel rounded-2xl p-5">
+              <div class="text-[#30d158] font-bold text-sm mb-1">📱 MediaCodec GPU Acceleration</div>
+              <p class="text-xs text-[#86868b] leading-relaxed">Leverages Qualcomm Snapdragon Adreno and MediaTek GPU hardware for mobile speed.</p>
+            </div>
+            <div class="glass-panel rounded-2xl p-5">
+              <div class="text-[#ffd60a] font-bold text-sm mb-1">📁 Drag & Drop File Import</div>
+              <p class="text-xs text-[#86868b] leading-relaxed">Instant system file picker integration to batch process phone video recordings.</p>
+            </div>
+            <div class="glass-panel rounded-2xl p-5">
+              <div class="text-[#2997ff] font-bold text-sm mb-1">🔒 100% On-Device Privacy</div>
+              <p class="text-xs text-[#86868b] leading-relaxed">Zero cellular data usage. Converts directly on your Android phone's local storage.</p>
+            </div>
           </div>
         </div>
 
@@ -1072,6 +1177,36 @@
 
     function closeCheckout() {
       document.getElementById('checkoutModal').classList.add('hidden');
+    }
+
+    function switchGallery(tab) {
+      var d = document.getElementById('galleryDesktop');
+      var s = document.getElementById('gallerySettings');
+      var m = document.getElementById('galleryMobile');
+      var btnD = document.getElementById('tabDesktopBtn');
+      var btnS = document.getElementById('tabSettingsBtn');
+      var btnM = document.getElementById('tabMobileBtn');
+
+      var activeClass = 'px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-black shadow-md';
+      var inactiveClass = 'px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-[#86868b] hover:text-white';
+
+      d.classList.add('hidden');
+      s.classList.add('hidden');
+      m.classList.add('hidden');
+      btnD.className = inactiveClass;
+      btnS.className = inactiveClass;
+      btnM.className = inactiveClass;
+
+      if (tab === 'desktop') {
+        d.classList.remove('hidden');
+        btnD.className = activeClass;
+      } else if (tab === 'settings') {
+        s.classList.remove('hidden');
+        btnS.className = activeClass;
+      } else if (tab === 'mobile') {
+        m.classList.remove('hidden');
+        btnM.className = activeClass;
+      }
     }
 
     function switchTab(tab) {
