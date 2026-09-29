@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-gumroad-field="name">RetroFlux PRO — High-Speed Offline Media Converter</title>
+  <title>RetroFlux PRO — High-Speed Offline Media Converter</title>
   
-  <!-- Retro Terminal Google Fonts (Allowed by Gumroad CSP) -->
+  <!-- Retro Terminal Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS Configuration (BEFORE CDN script) -->
@@ -40,8 +40,6 @@
   </script>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Gumroad Overlay Checkout Script -->
-  <script src="https://gumroad.com/js/gumroad.js"></script>
 
   <style>
     /* Absolute Theme Enforcement */
@@ -211,7 +209,7 @@
         </div>
         <div>
           <div class="flex items-center gap-2">
-            <span class="font-mono font-bold text-xl sm:text-2xl tracking-wider text-crt-green crt-glow" data-gumroad-field="name">RETROFLUX PRO</span>
+            <span class="font-mono font-bold text-xl sm:text-2xl tracking-wider text-crt-green crt-glow">RETROFLUX PRO</span>
             <span class="terminal-cursor text-xl">_</span>
             <span class="hidden sm:inline-block px-2 py-0.5 rounded text-xs font-mono font-bold bg-crt-green/15 text-crt-green border border-crt-green/40">v1.3.0</span>
           </div>
@@ -261,12 +259,12 @@
 
       <!-- Rating & Social Proof Badges -->
       <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-sm sm:text-base font-mono mb-12">
-        <span class="px-4 py-2 rounded-xl bg-crt-amber/15 text-crt-amber border border-crt-amber/40 font-bold" data-gumroad-field="rating">
+        <span class="px-4 py-2 rounded-xl bg-crt-amber/15 text-crt-amber border border-crt-amber/40 font-bold">
           5.0 ★★★★★
         </span>
         <span class="text-crt-muted hidden sm:inline">•</span>
-        <span class="px-4 py-2 rounded-xl bg-crt-card text-crt-text border border-crt-border font-bold" data-gumroad-field="review-count">
-          Be the first to review
+        <span class="px-4 py-2 rounded-xl bg-crt-card text-crt-text border border-crt-border font-bold">
+          Verified Offline Core
         </span>
         <span class="text-crt-muted hidden sm:inline">•</span>
         <span class="px-4 py-2 rounded-xl bg-crt-green/15 text-crt-green border border-crt-green/40 font-bold">
@@ -526,9 +524,9 @@
             </ul>
           </div>
 
-          <a href="https://bonnokush.gumroad.com/l/doqxfs" data-gumroad-action="buy" data-gumroad-option="Mobile Edition" class="cursor-pointer block text-center w-full py-4 px-5 rounded-xl btn-outline-green text-base transition-all active:scale-95">
-            Buy Mobile Edition — $3.99
-          </a>
+          <button onclick="openCheckout('mobile', 'Mobile Edition', '3.99', '299')" class="cursor-pointer block text-center w-full py-4 px-5 rounded-xl btn-outline-green text-base font-bold transition-all active:scale-95 shadow-md">
+            ⚡ Buy Mobile Edition — $3.99 / ₹299
+          </button>
         </div>
 
         <!-- Tier 2: Desktop Edition (Featured / Most Popular) -->
@@ -544,7 +542,8 @@
             
             <div class="flex items-baseline gap-1.5 mb-3">
               <span class="text-4xl sm:text-5xl font-extrabold text-white font-mono">$8.99</span>
-              <span class="text-sm text-crt-muted">one-time</span>
+              <span class="text-sm text-crt-muted font-mono">/ ₹699</span>
+              <span class="text-xs text-crt-muted">one-time</span>
             </div>
             
             <p class="text-base text-crt-muted mb-6">
@@ -575,9 +574,9 @@
             </ul>
           </div>
 
-          <a href="https://bonnokush.gumroad.com/l/doqxfs" data-gumroad-action="buy" data-gumroad-option="Desktop Edition" class="cursor-pointer block text-center w-full py-4 px-5 rounded-xl btn-outline-green text-base transition-all active:scale-95">
-            Buy Desktop Edition — $8.99
-          </a>
+          <button onclick="openCheckout('desktop', 'Desktop Edition', '8.99', '699')" class="cursor-pointer block text-center w-full py-4 px-5 rounded-xl btn-outline-green text-base font-bold transition-all active:scale-95 shadow-lg">
+            ⚡ Buy Desktop Edition — $8.99 / ₹699
+          </button>
         </div>
 
         <!-- Tier 3: All-Access Master Bundle (Best Value) -->
@@ -593,7 +592,8 @@
             
             <div class="flex items-baseline gap-1.5 mb-3">
               <span class="text-4xl sm:text-5xl font-extrabold text-white font-mono">$11.99</span>
-              <span class="text-sm text-crt-muted">one-time</span>
+              <span class="text-sm text-crt-muted font-mono">/ ₹899</span>
+              <span class="text-xs text-crt-muted">one-time</span>
             </div>
             
             <p class="text-base text-crt-muted mb-6">
@@ -624,9 +624,9 @@
             </ul>
           </div>
 
-          <a href="https://bonnokush.gumroad.com/l/doqxfs" data-gumroad-action="buy" data-gumroad-option="All-Access Master Bundle" class="cursor-pointer block text-center w-full py-4 px-5 rounded-xl btn-outline-green text-base transition-all active:scale-95">
-            Get Master Bundle — $11.99
-          </a>
+          <button onclick="openCheckout('bundle', 'All-Access Master Bundle', '11.99', '899')" class="cursor-pointer block text-center w-full py-4 px-5 rounded-xl btn-outline-green text-base font-bold transition-all active:scale-95 shadow-lg">
+            ⚡ Get Master Bundle — $11.99 / ₹899
+          </button>
         </div>
 
       </div>
@@ -811,6 +811,280 @@
       }
       loop();
     })();
+  </script>
+
+  <!-- ================= DIRECT CHECKOUT MODAL (UPI & PAYPAL) ================= -->
+  <div id="checkoutModal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+    <div class="relative w-full max-w-lg rounded-2xl border-2 border-crt-green bg-crt-surface p-6 sm:p-8 crt-box-glow text-crt-text font-mono my-8 shadow-2xl">
+      
+      <!-- Close button -->
+      <button onclick="closeCheckout()" class="absolute top-4 right-4 text-crt-muted hover:text-crt-green text-xl font-bold font-mono transition-colors">[ ✕ ]</button>
+
+      <!-- Header -->
+      <div class="mb-5">
+        <div class="text-xs text-crt-green font-bold tracking-wider">[ ⚡ DIRECT CHECKOUT // 0% PLATFORM ROYALTY ]</div>
+        <h3 id="modalTierTitle" class="text-2xl font-bold text-white mt-1">Desktop Edition</h3>
+        <div class="flex items-baseline gap-2 mt-1">
+          <span id="modalUsdPrice" class="text-xl font-bold text-crt-amber font-mono">$8.99 USD</span>
+          <span class="text-crt-muted">/</span>
+          <span id="modalInrPrice" class="text-xl font-bold text-crt-green font-mono">₹699 INR</span>
+          <span class="text-xs text-crt-muted ml-1">(One-time lifetime)</span>
+        </div>
+      </div>
+
+      <!-- Payment Method Tabs -->
+      <div class="grid grid-cols-2 gap-2 mb-6 p-1 bg-crt-card rounded-xl border border-crt-border">
+        <button id="tabUpiBtn" onclick="switchTab('upi')" class="py-2.5 px-3 rounded-lg text-xs sm:text-sm font-bold transition-all bg-crt-green text-black">
+          ⚡ UPI / QR (India - 0% Fee)
+        </button>
+        <button id="tabPaypalBtn" onclick="switchTab('paypal')" class="py-2.5 px-3 rounded-lg text-xs sm:text-sm font-bold transition-all text-crt-muted hover:text-white">
+          🌐 PayPal (Global)
+        </button>
+      </div>
+
+      <!-- TAB 1: UPI CONTENT -->
+      <div id="upiTabContent" class="space-y-4">
+        <div class="p-4 rounded-xl bg-crt-card border border-crt-border text-center">
+          <div class="text-xs text-crt-muted mb-2 tracking-wider">SCAN TO PAY VIA GPAY / PHONEPE / PAYTM / ANY UPI APP</div>
+          <div class="inline-block p-2 bg-black rounded-xl border-2 border-crt-green mb-3 crt-box-glow">
+            <img id="upiQrCode" src="" alt="UPI QR Code" class="w-44 h-44 sm:w-48 sm:h-48 mx-auto rounded" />
+          </div>
+          <div class="text-sm font-bold text-white mb-1">
+            VPA: <span id="vpaText" class="text-crt-green font-mono select-all">bonnokush@uboi</span>
+            <button type="button" onclick="copyVpa()" class="ml-2 px-2.5 py-0.5 text-xs rounded bg-crt-green/20 text-crt-green hover:bg-crt-green/30 border border-crt-green/40 transition-colors">Copy</button>
+          </div>
+          <div class="text-xs text-crt-muted">Payee: <strong class="text-white">bonnokush</strong> &bull; Amount: <strong id="upiAmountBadge" class="text-crt-green">₹699</strong></div>
+          <div class="mt-3">
+            <a id="upiIntentBtn" href="" class="inline-block w-full py-2.5 rounded-lg bg-crt-green text-black font-bold text-sm tracking-wide active:scale-95 transition-all shadow-md">
+              ⚡ Open in Installed UPI App
+            </a>
+          </div>
+        </div>
+
+        <!-- Verification Form -->
+        <form id="upiOrderForm" onsubmit="submitOrder(event, 'upi')" class="space-y-3 pt-2 border-t border-crt-border">
+          <div class="text-xs text-crt-green font-bold">[ STEP 2: ENTER PAYMENT DETAILS FOR KEY DISPATCH ]</div>
+          <div>
+            <label class="block text-xs text-crt-muted mb-1">Your Email Address (for key delivery):</label>
+            <input type="email" id="upiEmail" required placeholder="you@example.com" class="w-full px-3 py-2 rounded-lg bg-crt-bg border border-crt-border text-white font-mono text-sm focus:border-crt-green focus:outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs text-crt-muted mb-1">UPI Reference / UTR Number (12 digits from receipt):</label>
+            <input type="text" id="upiUtr" required placeholder="e.g. 427819283741" class="w-full px-3 py-2 rounded-lg bg-crt-bg border border-crt-border text-white font-mono text-sm focus:border-crt-green focus:outline-none" />
+          </div>
+          <button type="submit" id="upiSubmitBtn" class="w-full py-3 rounded-xl btn-outline-green font-bold text-sm tracking-wider active:scale-95 transition-all">
+            [ SUBMIT ORDER & CLAIM KEY ]
+          </button>
+        </form>
+      </div>
+
+      <!-- TAB 2: PAYPAL CONTENT -->
+      <div id="paypalTabContent" class="space-y-4 hidden">
+        <div class="p-4 rounded-xl bg-crt-card border border-crt-border text-center">
+          <div class="text-xs text-crt-muted mb-2 tracking-wider">PAY VIA PAYPAL (CARDS / BALANCE)</div>
+          <div class="text-lg font-bold text-white mb-2">Send: <span id="paypalAmountText" class="text-crt-amber font-mono">$8.99 USD</span></div>
+          <a id="paypalDirectLink" href="https://paypal.me/bonnokush/8.99USD" target="_blank" rel="noopener noreferrer" class="inline-block w-full py-3 rounded-lg bg-crt-amber text-black font-bold text-sm tracking-wide active:scale-95 transition-all shadow-lg hover:brightness-110">
+            👉 Open PayPal to Complete Payment
+          </a>
+          <p class="text-xs text-crt-muted mt-2">Send to user: <strong class="text-white">bonnokush</strong></p>
+        </div>
+
+        <!-- Verification Form -->
+        <form id="paypalOrderForm" onsubmit="submitOrder(event, 'paypal')" class="space-y-3 pt-2 border-t border-crt-border">
+          <div class="text-xs text-crt-amber font-bold">[ STEP 2: ENTER TRANSACTION ID FOR KEY DISPATCH ]</div>
+          <div>
+            <label class="block text-xs text-crt-muted mb-1">Your Email Address (for key delivery):</label>
+            <input type="email" id="paypalEmail" required placeholder="you@example.com" class="w-full px-3 py-2 rounded-lg bg-crt-bg border border-crt-border text-white font-mono text-sm focus:border-crt-amber focus:outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs text-crt-muted mb-1">PayPal Transaction ID / Email Used:</label>
+            <input type="text" id="paypalTxnId" required placeholder="e.g. 9XX123456789" class="w-full px-3 py-2 rounded-lg bg-crt-bg border border-crt-border text-white font-mono text-sm focus:border-crt-amber focus:outline-none" />
+          </div>
+          <button type="submit" id="paypalSubmitBtn" class="w-full py-3 rounded-xl border border-crt-amber text-crt-amber hover:bg-crt-amber hover:text-black font-bold text-sm tracking-wider active:scale-95 transition-all">
+            [ SUBMIT ORDER & CLAIM KEY ]
+          </button>
+        </form>
+      </div>
+
+      <!-- Feedback / Result Area -->
+      <div id="checkoutFeedback" class="hidden mt-4 p-4 rounded-xl border text-sm font-mono"></div>
+
+      <!-- Order Status Check Lookup -->
+      <div class="mt-4 pt-3 border-t border-crt-border/60 text-center">
+        <details class="text-xs text-crt-muted cursor-pointer">
+          <summary class="hover:text-crt-green transition-colors font-bold">🔍 Already paid? Check order & retrieve license key</summary>
+          <div class="mt-3 flex gap-2">
+            <input type="text" id="lookupRefInput" placeholder="Enter UTR or PayPal Txn ID" class="flex-1 px-2.5 py-1.5 rounded bg-crt-bg border border-crt-border text-white text-xs font-mono focus:outline-none focus:border-crt-green" />
+            <button onclick="checkOrderStatus()" class="px-3 py-1.5 rounded bg-crt-card border border-crt-green text-crt-green font-bold text-xs hover:bg-crt-green hover:text-black transition-all">Check</button>
+          </div>
+          <div id="lookupResult" class="hidden mt-2 p-2 rounded bg-crt-card text-left text-xs font-mono border border-crt-border"></div>
+        </details>
+      </div>
+
+      <!-- Direct Downloads Section -->
+      <div class="mt-5 pt-4 border-t border-crt-border text-center">
+        <div class="text-xs text-crt-muted mb-2 tracking-wider">OFFICIAL RUNTIME BINARIES (DOWNLOAD NOW):</div>
+        <div class="flex flex-wrap items-center justify-center gap-2">
+          <a href="https://github.com/bonnoxkush/retroflux-releases/releases/download/v1.3.0/RetroFlux.exe" class="px-3 py-1.5 rounded-lg bg-crt-card border border-crt-border text-xs text-crt-green hover:border-crt-green transition-all">
+            ⬇ Download Windows (.exe)
+          </a>
+          <a href="https://github.com/bonnoxkush/retroflux-releases/releases/download/v1.3.0/RetroFlux-v1.3.0-release.apk" class="px-3 py-1.5 rounded-lg bg-crt-card border border-crt-border text-xs text-crt-amber hover:border-crt-amber transition-all">
+            ⬇ Download Android (.apk)
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Dual-Payment & Order Management Engine -->
+  <script>
+    var currentCheckout = {
+      tier: 'desktop',
+      title: 'Desktop Edition',
+      usd: '8.99',
+      inr: '699'
+    };
+
+    var SUPABASE_URL = "https://jfwfepmrasssefcobwoz.supabase.co";
+    var SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impmd2ZlcG1yYXNzc2VmY29id296Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg4NzQ1NDQsImV4cCI6MjEwNDQ1MDU0NH0.2xK5APNDDptRV4FD-an7ohWOy8jrekYVq6JVby-aDG4";
+
+    function openCheckout(tier, title, usd, inr) {
+      currentCheckout = { tier: tier, title: title, usd: usd, inr: inr };
+      document.getElementById('modalTierTitle').textContent = title;
+      document.getElementById('modalUsdPrice').textContent = '$' + usd + ' USD';
+      document.getElementById('modalInrPrice').textContent = '₹' + inr + ' INR';
+      document.getElementById('upiAmountBadge').textContent = '₹' + inr;
+      document.getElementById('paypalAmountText').textContent = '$' + usd + ' USD';
+
+      // Update UPI link and QR code
+      var upiString = 'upi://pay?pa=bonnokush@uboi&pn=bonnokush&am=' + inr + '&cu=INR&tn=RetroFlux ' + encodeURIComponent(title);
+      document.getElementById('upiIntentBtn').href = upiString;
+      document.getElementById('upiQrCode').src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=00ff66&bgcolor=050906&data=' + encodeURIComponent(upiString);
+
+      // Update PayPal link
+      document.getElementById('paypalDirectLink').href = 'https://paypal.me/bonnokush/' + usd + 'USD';
+
+      // Reset feedback
+      document.getElementById('checkoutFeedback').className = 'hidden';
+      document.getElementById('checkoutModal').classList.remove('hidden');
+    }
+
+    function closeCheckout() {
+      document.getElementById('checkoutModal').classList.add('hidden');
+    }
+
+    function switchTab(tab) {
+      var upiTab = document.getElementById('upiTabContent');
+      var paypalTab = document.getElementById('paypalTabContent');
+      var tabUpiBtn = document.getElementById('tabUpiBtn');
+      var tabPaypalBtn = document.getElementById('tabPaypalBtn');
+
+      if (tab === 'upi') {
+        upiTab.classList.remove('hidden');
+        paypalTab.classList.add('hidden');
+        tabUpiBtn.className = 'py-2.5 px-3 rounded-lg text-xs sm:text-sm font-bold transition-all bg-crt-green text-black';
+        tabPaypalBtn.className = 'py-2.5 px-3 rounded-lg text-xs sm:text-sm font-bold transition-all text-crt-muted hover:text-white';
+      } else {
+        upiTab.classList.add('hidden');
+        paypalTab.classList.remove('hidden');
+        tabPaypalBtn.className = 'py-2.5 px-3 rounded-lg text-xs sm:text-sm font-bold transition-all bg-crt-amber text-black';
+        tabUpiBtn.className = 'py-2.5 px-3 rounded-lg text-xs sm:text-sm font-bold transition-all text-crt-muted hover:text-white';
+      }
+    }
+
+    function copyVpa() {
+      navigator.clipboard.writeText('bonnokush@uboi').then(function() {
+        alert('UPI ID (bonnokush@uboi) copied to clipboard!');
+      });
+    }
+
+    function submitOrder(e, method) {
+      e.preventDefault();
+      var email = method === 'upi' ? document.getElementById('upiEmail').value.trim() : document.getElementById('paypalEmail').value.trim();
+      var txnRef = method === 'upi' ? document.getElementById('upiUtr').value.trim() : document.getElementById('paypalTxnId').value.trim();
+      var amount = method === 'upi' ? ('₹' + currentCheckout.inr) : ('$' + currentCheckout.usd);
+      var btn = method === 'upi' ? document.getElementById('upiSubmitBtn') : document.getElementById('paypalSubmitBtn');
+      var feedback = document.getElementById('checkoutFeedback');
+
+      btn.disabled = true;
+      btn.textContent = 'TRANSMITTING ORDER...';
+
+      fetch(SUPABASE_URL + '/rest/v1/rpc/submit_retroflux_order', {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_ANON,
+          'Authorization': 'Bearer ' + SUPABASE_ANON,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          p_email: email,
+          p_method: method,
+          p_tier: currentCheckout.tier,
+          p_amount: amount,
+          p_txn_ref: txnRef
+        })
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        btn.disabled = false;
+        btn.textContent = '[ SUBMIT ORDER & CLAIM KEY ]';
+        feedback.classList.remove('hidden');
+
+        if (data.success) {
+          feedback.className = 'mt-4 p-4 rounded-xl border border-crt-green bg-crt-green/10 text-crt-green text-sm font-mono';
+          feedback.innerHTML = '<strong class="text-white block mb-1">✓ ORDER REGISTERED!</strong>' +
+            data.message + '<br><br>' +
+            '<span class="text-white font-bold">Transaction Reference:</span> ' + txnRef + '<br>' +
+            '<span class="text-white font-bold">Email:</span> ' + email + '<br><br>' +
+            '<span class="text-xs text-crt-muted">Your license key is generated in our system and will be delivered to your email. You can also paste your UTR in the status checker below to retrieve it anytime.</span>';
+        } else {
+          feedback.className = 'mt-4 p-4 rounded-xl border border-red-500 bg-red-500/10 text-red-400 text-sm font-mono';
+          feedback.innerHTML = '<strong>✗ ' + (data.message || 'Submission failed') + '</strong>';
+        }
+      })
+      .catch(function(err) {
+        btn.disabled = false;
+        btn.textContent = '[ SUBMIT ORDER & CLAIM KEY ]';
+        feedback.classList.remove('hidden');
+        feedback.className = 'mt-4 p-4 rounded-xl border border-red-500 bg-red-500/10 text-red-400 text-sm font-mono';
+        feedback.innerHTML = '<strong>✗ Connection error. Please verify network and try again.</strong>';
+      });
+    }
+
+    function checkOrderStatus() {
+      var ref = document.getElementById('lookupRefInput').value.trim();
+      var resEl = document.getElementById('lookupResult');
+      if (!ref) return;
+
+      resEl.classList.remove('hidden');
+      resEl.textContent = 'Querying database...';
+
+      fetch(SUPABASE_URL + '/rest/v1/rpc/lookup_retroflux_order', {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_ANON,
+          'Authorization': 'Bearer ' + SUPABASE_ANON,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ p_txn_ref: ref })
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        if (!data.found) {
+          resEl.innerHTML = '<span class="text-red-400">✗ ' + data.message + '</span>';
+        } else if (data.status === 'approved') {
+          resEl.innerHTML = '<span class="text-crt-green font-bold">✓ PAYMENT VERIFIED!</span><br>' +
+            '<span class="text-white">License Key:</span> <code class="text-crt-green font-bold bg-black px-1.5 py-0.5 rounded select-all">' + data.license_key + '</code><br>' +
+            '<span class="text-xs text-crt-muted">Enter this key into RetroFlux to unlock PRO immediately.</span>';
+        } else {
+          resEl.innerHTML = '<span class="text-crt-amber font-bold">⏳ ' + data.message + '</span>';
+        }
+      })
+      .catch(function(err) {
+        resEl.innerHTML = '<span class="text-red-400">✗ Network error.</span>';
+      });
+    }
   </script>
 
 </body>
