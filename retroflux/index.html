@@ -41,6 +41,9 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Razorpay Standard Checkout SDK -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
   <style>
     /* Absolute Theme Enforcement */
     :root {
@@ -1003,77 +1006,110 @@
       </div>
 
       <!-- Payment Method Tabs -->
-      <div class="grid grid-cols-2 gap-2 mb-6 p-1 bg-crt-card rounded-xl border border-crt-border">
-        <button id="tabUpiBtn" onclick="switchTab('upi')" class="py-2.5 px-3 rounded-lg text-xs sm:text-sm font-bold transition-all bg-crt-green text-black">
-          ⚡ UPI / QR (India - 0% Fee)
+      <div id="checkoutTabs" class="grid grid-cols-2 gap-2 mb-6 p-1 bg-crt-card rounded-xl border border-crt-border">
+        <button id="tabRzpBtn" onclick="switchTab('rzp')" class="py-2.5 px-3 rounded-lg text-xs sm:text-sm font-bold transition-all bg-crt-green text-black shadow-md">
+          ⚡ Razorpay (UPI / Cards / NetBanking)
         </button>
         <button id="tabPaypalBtn" onclick="switchTab('paypal')" class="py-2.5 px-3 rounded-lg text-xs sm:text-sm font-bold transition-all text-crt-muted hover:text-white">
-          🌐 PayPal (Global)
+          🌐 PayPal (Global USD)
         </button>
       </div>
 
-      <!-- TAB 1: UPI CONTENT -->
-      <div id="upiTabContent" class="space-y-4">
-        <div class="p-4 rounded-xl bg-crt-card border border-crt-border text-center">
-          <div class="text-xs text-crt-muted mb-2 tracking-wider">SCAN TO PAY VIA GPAY / PHONEPE / PAYTM / ANY UPI APP</div>
-          <div class="inline-block p-2 bg-black rounded-xl border-2 border-crt-green mb-3 crt-box-glow">
-            <img id="upiQrCode" src="" alt="UPI QR Code" class="w-44 h-44 sm:w-48 sm:h-48 mx-auto rounded" />
+      <div id="tabContentsContainer">
+        <!-- TAB 1: RAZORPAY INSTANT CHECKOUT (DEFAULT) -->
+        <div id="rzpTabContent" class="space-y-4">
+          <div class="p-5 rounded-xl bg-crt-card border border-crt-border text-center space-y-4">
+            <div class="inline-block px-3 py-1 rounded bg-crt-green/10 border border-crt-green/30 text-crt-green text-xs font-bold tracking-wider">
+              ✓ 1-TAP SECURE CHECKOUT // AMOUNT LOCKED
+            </div>
+
+            <div class="flex items-center justify-between p-3.5 rounded-lg bg-black/70 border border-crt-border text-left">
+              <div>
+                <div class="text-[11px] text-crt-muted font-mono tracking-wider">SELECTED EDITION:</div>
+                <div id="rzpModalTierTitle" class="text-base font-bold text-white">Desktop Edition</div>
+              </div>
+              <div class="text-right">
+                <div class="text-[11px] text-crt-muted font-mono tracking-wider">LOCKED AMOUNT:</div>
+                <div id="rzpModalInrBadge" class="text-2xl font-extrabold text-crt-green font-mono">₹699</div>
+              </div>
+            </div>
+
+            <form id="rzpOrderForm" onsubmit="startRazorpayCheckout(event)" class="space-y-3.5 text-left">
+              <div>
+                <label class="block text-xs text-crt-muted mb-1">Your Delivery Email Address (for key dispatch):</label>
+                <input type="email" id="rzpEmail" required placeholder="you@example.com" class="w-full px-3 py-2.5 rounded-lg bg-crt-bg border border-crt-border text-white font-mono text-sm focus:border-crt-green focus:outline-none" />
+                <p class="text-[11px] text-crt-muted mt-1.5">Your authentic PRO license key will be displayed on screen immediately upon payment.</p>
+              </div>
+
+              <button type="submit" id="rzpPayBtn" class="cursor-pointer w-full py-4 px-4 rounded-xl bg-crt-green text-black font-extrabold text-base tracking-wide hover:brightness-110 active:scale-95 transition-all shadow-lg flex items-center justify-center gap-2">
+                <span>⚡ PROCEED TO PAYMENT — </span><span id="rzpBtnPrice">₹699</span>
+              </button>
+            </form>
+
+            <div class="pt-3 border-t border-crt-border/60 text-[11px] text-crt-muted flex flex-wrap items-center justify-center gap-2.5">
+              <span>🔒 256-Bit SSL Encrypted</span>
+              <span>•</span>
+              <span>⚡ 1-Tap UPI (GPay, PhonePe, Paytm, CRED)</span>
+              <span>•</span>
+              <span>💳 Cards (Visa, Mastercard, RuPay)</span>
+            </div>
+
+            <!-- Optional Manual QR Fallback -->
+            <details class="text-xs text-crt-muted text-center cursor-pointer pt-2 border-t border-crt-border/40">
+              <summary class="hover:text-crt-green transition-colors font-bold text-[11px]">Prefer direct manual transfer via personal UPI / QR?</summary>
+              <div class="mt-3 p-3 bg-black/60 rounded-xl border border-crt-border text-center space-y-2">
+                <div class="inline-block p-1.5 bg-black rounded-lg border border-crt-green">
+                  <img id="upiQrCode" src="" alt="UPI QR Code" class="w-36 h-36 mx-auto rounded" />
+                </div>
+                <div class="text-xs text-white">
+                  VPA: <span id="vpaText" class="text-crt-green font-mono select-all">bonnokush@uboi</span>
+                  <button type="button" onclick="copyVpa()" class="ml-2 px-2 py-0.5 text-[11px] rounded bg-crt-green/20 text-crt-green hover:bg-crt-green/30 border border-crt-green/40">Copy</button>
+                </div>
+                <div>
+                  <a id="upiIntentBtn" href="" class="inline-block px-4 py-2 rounded-lg bg-crt-green text-black font-bold text-xs active:scale-95 transition-all shadow-md">
+                    ⚡ Open in Installed UPI App
+                  </a>
+                </div>
+                <form id="upiOrderForm" onsubmit="submitOrder(event, 'upi')" class="space-y-2 pt-2 border-t border-crt-border text-left">
+                  <div class="text-[11px] text-crt-green font-bold">[ ENTER UTR TO CLAIM KEY ]</div>
+                  <input type="text" id="upiUtr" placeholder="12-digit UPI UTR from receipt" class="w-full px-2.5 py-1.5 rounded bg-crt-bg border border-crt-border text-white text-xs font-mono focus:border-crt-green focus:outline-none" />
+                  <button type="submit" id="upiSubmitBtn" class="w-full py-2 rounded-lg border border-crt-green text-crt-green hover:bg-crt-green hover:text-black font-bold text-xs tracking-wider transition-all">
+                    Submit UTR & Claim Key
+                  </button>
+                </form>
+              </div>
+            </details>
+
           </div>
-          <div class="text-sm font-bold text-white mb-1">
-            VPA: <span id="vpaText" class="text-crt-green font-mono select-all">bonnokush@uboi</span>
-            <button type="button" onclick="copyVpa()" class="ml-2 px-2.5 py-0.5 text-xs rounded bg-crt-green/20 text-crt-green hover:bg-crt-green/30 border border-crt-green/40 transition-colors">Copy</button>
-          </div>
-          <div class="text-xs text-crt-muted">Payee: <strong class="text-white">bonnokush</strong> &bull; Amount: <strong id="upiAmountBadge" class="text-crt-green">₹699</strong></div>
-          <div class="mt-3">
-            <a id="upiIntentBtn" href="" class="inline-block w-full py-2.5 rounded-lg bg-crt-green text-black font-bold text-sm tracking-wide active:scale-95 transition-all shadow-md">
-              ⚡ Open in Installed UPI App
+        </div>
+
+        <!-- TAB 2: PAYPAL CONTENT -->
+        <div id="paypalTabContent" class="space-y-4 hidden">
+          <div class="p-4 rounded-xl bg-crt-card border border-crt-border text-center">
+            <div class="text-xs text-crt-muted mb-2 tracking-wider">PAY VIA PAYPAL (CARDS / BALANCE)</div>
+            <div class="text-lg font-bold text-white mb-2">Send: <span id="paypalAmountText" class="text-crt-amber font-mono">$8.99 USD</span></div>
+            <a id="paypalDirectLink" href="https://paypal.me/bonnokush/8.99USD" target="_blank" rel="noopener noreferrer" class="inline-block w-full py-3 rounded-lg bg-crt-amber text-black font-bold text-sm tracking-wide active:scale-95 transition-all shadow-lg hover:brightness-110">
+              👉 Open PayPal to Complete Payment
             </a>
+            <p class="text-xs text-crt-muted mt-2">Send to user: <strong class="text-white">bonnokush</strong></p>
           </div>
+
+          <!-- Verification Form -->
+          <form id="paypalOrderForm" onsubmit="submitOrder(event, 'paypal')" class="space-y-3 pt-2 border-t border-crt-border">
+            <div class="text-xs text-crt-amber font-bold">[ STEP 2: ENTER TRANSACTION ID FOR KEY DISPATCH ]</div>
+            <div>
+              <label class="block text-xs text-crt-muted mb-1">Your Email Address (for key delivery):</label>
+              <input type="email" id="paypalEmail" required placeholder="you@example.com" class="w-full px-3 py-2 rounded-lg bg-crt-bg border border-crt-border text-white font-mono text-sm focus:border-crt-amber focus:outline-none" />
+            </div>
+            <div>
+              <label class="block text-xs text-crt-muted mb-1">PayPal Transaction ID / Email Used:</label>
+              <input type="text" id="paypalTxnId" required placeholder="e.g. 9XX123456789" class="w-full px-3 py-2 rounded-lg bg-crt-bg border border-crt-border text-white font-mono text-sm focus:border-crt-amber focus:outline-none" />
+            </div>
+            <button type="submit" id="paypalSubmitBtn" class="w-full py-3 rounded-xl border border-crt-amber text-crt-amber hover:bg-crt-amber hover:text-black font-bold text-sm tracking-wider active:scale-95 transition-all">
+              [ SUBMIT ORDER & CLAIM KEY ]
+            </button>
+          </form>
         </div>
-
-        <!-- Verification Form -->
-        <form id="upiOrderForm" onsubmit="submitOrder(event, 'upi')" class="space-y-3 pt-2 border-t border-crt-border">
-          <div class="text-xs text-crt-green font-bold">[ STEP 2: ENTER PAYMENT DETAILS FOR KEY DISPATCH ]</div>
-          <div>
-            <label class="block text-xs text-crt-muted mb-1">Your Email Address (for key delivery):</label>
-            <input type="email" id="upiEmail" required placeholder="you@example.com" class="w-full px-3 py-2 rounded-lg bg-crt-bg border border-crt-border text-white font-mono text-sm focus:border-crt-green focus:outline-none" />
-          </div>
-          <div>
-            <label class="block text-xs text-crt-muted mb-1">UPI Reference / UTR Number (12 digits from receipt):</label>
-            <input type="text" id="upiUtr" required placeholder="e.g. 427819283741" class="w-full px-3 py-2 rounded-lg bg-crt-bg border border-crt-border text-white font-mono text-sm focus:border-crt-green focus:outline-none" />
-          </div>
-          <button type="submit" id="upiSubmitBtn" class="w-full py-3 rounded-xl btn-outline-green font-bold text-sm tracking-wider active:scale-95 transition-all">
-            [ SUBMIT ORDER & CLAIM KEY ]
-          </button>
-        </form>
-      </div>
-
-      <!-- TAB 2: PAYPAL CONTENT -->
-      <div id="paypalTabContent" class="space-y-4 hidden">
-        <div class="p-4 rounded-xl bg-crt-card border border-crt-border text-center">
-          <div class="text-xs text-crt-muted mb-2 tracking-wider">PAY VIA PAYPAL (CARDS / BALANCE)</div>
-          <div class="text-lg font-bold text-white mb-2">Send: <span id="paypalAmountText" class="text-crt-amber font-mono">$8.99 USD</span></div>
-          <a id="paypalDirectLink" href="https://paypal.me/bonnokush/8.99USD" target="_blank" rel="noopener noreferrer" class="inline-block w-full py-3 rounded-lg bg-crt-amber text-black font-bold text-sm tracking-wide active:scale-95 transition-all shadow-lg hover:brightness-110">
-            👉 Open PayPal to Complete Payment
-          </a>
-          <p class="text-xs text-crt-muted mt-2">Send to user: <strong class="text-white">bonnokush</strong></p>
-        </div>
-
-        <!-- Verification Form -->
-        <form id="paypalOrderForm" onsubmit="submitOrder(event, 'paypal')" class="space-y-3 pt-2 border-t border-crt-border">
-          <div class="text-xs text-crt-amber font-bold">[ STEP 2: ENTER TRANSACTION ID FOR KEY DISPATCH ]</div>
-          <div>
-            <label class="block text-xs text-crt-muted mb-1">Your Email Address (for key delivery):</label>
-            <input type="email" id="paypalEmail" required placeholder="you@example.com" class="w-full px-3 py-2 rounded-lg bg-crt-bg border border-crt-border text-white font-mono text-sm focus:border-crt-amber focus:outline-none" />
-          </div>
-          <div>
-            <label class="block text-xs text-crt-muted mb-1">PayPal Transaction ID / Email Used:</label>
-            <input type="text" id="paypalTxnId" required placeholder="e.g. 9XX123456789" class="w-full px-3 py-2 rounded-lg bg-crt-bg border border-crt-border text-white font-mono text-sm focus:border-crt-amber focus:outline-none" />
-          </div>
-          <button type="submit" id="paypalSubmitBtn" class="w-full py-3 rounded-xl border border-crt-amber text-crt-amber hover:bg-crt-amber hover:text-black font-bold text-sm tracking-wider active:scale-95 transition-all">
-            [ SUBMIT ORDER & CLAIM KEY ]
-          </button>
-        </form>
       </div>
 
       <!-- Feedback / Result Area -->
@@ -1084,7 +1120,7 @@
         <details class="text-xs text-crt-muted cursor-pointer">
           <summary class="hover:text-crt-green transition-colors font-bold">🔍 Already paid? Check order & retrieve license key</summary>
           <div class="mt-3 flex gap-2">
-            <input type="text" id="lookupRefInput" placeholder="Enter UTR or PayPal Txn ID" class="flex-1 px-2.5 py-1.5 rounded bg-crt-bg border border-crt-border text-white text-xs font-mono focus:outline-none focus:border-crt-green" />
+            <input type="text" id="lookupRefInput" placeholder="Enter Payment ID, UTR, or Txn ID" class="flex-1 px-2.5 py-1.5 rounded bg-crt-bg border border-crt-border text-white text-xs font-mono focus:outline-none focus:border-crt-green" />
             <button onclick="checkOrderStatus()" class="px-3 py-1.5 rounded bg-crt-card border border-crt-green text-crt-green font-bold text-xs hover:bg-crt-green hover:text-black transition-all">Check</button>
           </div>
           <div id="lookupResult" class="hidden mt-2 p-2 rounded bg-crt-card text-left text-xs font-mono border border-crt-border"></div>
@@ -1124,10 +1160,12 @@
       document.getElementById('modalTierTitle').textContent = title;
       document.getElementById('modalUsdPrice').textContent = '$' + usd + ' USD';
       document.getElementById('modalInrPrice').textContent = '₹' + inr + ' INR';
-      document.getElementById('upiAmountBadge').textContent = '₹' + inr;
+      document.getElementById('rzpModalTierTitle').textContent = title;
+      document.getElementById('rzpModalInrBadge').textContent = '₹' + inr;
+      document.getElementById('rzpBtnPrice').textContent = '₹' + inr;
       document.getElementById('paypalAmountText').textContent = '$' + usd + ' USD';
 
-      // Update UPI link and QR code
+      // Update manual fallback UPI link and QR code
       var upiString = 'upi://pay?pa=bonnokush@uboi&pn=bonnokush&am=' + inr + '&cu=INR&tn=RetroFlux ' + encodeURIComponent(title);
       document.getElementById('upiIntentBtn').href = upiString;
       document.getElementById('upiQrCode').src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=00ff66&bgcolor=050906&data=' + encodeURIComponent(upiString);
@@ -1136,8 +1174,9 @@
       document.getElementById('paypalDirectLink').href = 'https://paypal.me/bonnokush/' + usd + 'USD';
 
       // Reset feedback and restore view
-      document.querySelector('#checkoutModal .grid-cols-2').classList.remove('hidden');
-      switchTab('upi');
+      document.getElementById('checkoutTabs').classList.remove('hidden');
+      document.getElementById('tabContentsContainer').classList.remove('hidden');
+      switchTab('rzp');
       document.getElementById('checkoutFeedback').className = 'hidden';
       document.getElementById('checkoutModal').classList.remove('hidden');
     }
@@ -1147,22 +1186,149 @@
     }
 
     function switchTab(tab) {
-      var upiTab = document.getElementById('upiTabContent');
+      var rzpTab = document.getElementById('rzpTabContent');
       var paypalTab = document.getElementById('paypalTabContent');
-      var tabUpiBtn = document.getElementById('tabUpiBtn');
+      var tabRzpBtn = document.getElementById('tabRzpBtn');
       var tabPaypalBtn = document.getElementById('tabPaypalBtn');
 
-      if (tab === 'upi') {
-        upiTab.classList.remove('hidden');
+      if (tab === 'rzp') {
+        rzpTab.classList.remove('hidden');
         paypalTab.classList.add('hidden');
-        tabUpiBtn.className = 'py-2.5 px-3 rounded-lg text-xs sm:text-sm font-bold transition-all bg-crt-green text-black';
+        tabRzpBtn.className = 'py-2.5 px-3 rounded-lg text-xs sm:text-sm font-bold transition-all bg-crt-green text-black shadow-md';
         tabPaypalBtn.className = 'py-2.5 px-3 rounded-lg text-xs sm:text-sm font-bold transition-all text-crt-muted hover:text-white';
       } else {
-        upiTab.classList.add('hidden');
+        rzpTab.classList.add('hidden');
         paypalTab.classList.remove('hidden');
-        tabPaypalBtn.className = 'py-2.5 px-3 rounded-lg text-xs sm:text-sm font-bold transition-all bg-crt-amber text-black';
-        tabUpiBtn.className = 'py-2.5 px-3 rounded-lg text-xs sm:text-sm font-bold transition-all text-crt-muted hover:text-white';
+        tabPaypalBtn.className = 'py-2.5 px-3 rounded-lg text-xs sm:text-sm font-bold transition-all bg-crt-amber text-black shadow-md';
+        tabRzpBtn.className = 'py-2.5 px-3 rounded-lg text-xs sm:text-sm font-bold transition-all text-crt-muted hover:text-white';
       }
+    }
+
+    function startRazorpayCheckout(e) {
+      if (e) e.preventDefault();
+      var email = document.getElementById('rzpEmail').value.trim();
+      if (!email) {
+        alert('Please enter your email address for license key delivery.');
+        document.getElementById('rzpEmail').focus();
+        return;
+      }
+
+      var payBtn = document.getElementById('rzpPayBtn');
+      payBtn.disabled = true;
+      payBtn.innerHTML = '<span>⚡ CONNECTING TO RAZORPAY GATEWAY...</span>';
+
+      fetch('https://jfwfepmrasssefcobwoz.supabase.co/functions/v1/razorpay-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'create',
+          tier: currentCheckout.tier,
+          email: email
+        })
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        payBtn.disabled = false;
+        payBtn.innerHTML = '<span>⚡ PROCEED TO PAYMENT — </span><span>₹' + currentCheckout.inr + '</span>';
+
+        if (!data.success || !data.order_id) {
+          alert('Failed to initialize payment: ' + (data.message || 'Please retry.'));
+          return;
+        }
+
+        var options = {
+          "key": data.key_id,
+          "amount": data.amount,
+          "currency": "INR",
+          "name": "RetroFlux PRO",
+          "description": currentCheckout.title + " (Lifetime License)",
+          "image": "https://public-files.gumroad.com/g7r71g56t397cs9duy4iyq6727v3",
+          "order_id": data.order_id,
+          "prefill": {
+            "email": email
+          },
+          "theme": {
+            "color": "#00ff66"
+          },
+          "handler": function (response) {
+            fulfillRazorpayOrder(response, email);
+          },
+          "modal": {
+            "ondismiss": function() {
+              console.log('Razorpay modal closed');
+            }
+          }
+        };
+
+        var rzp = new Razorpay(options);
+        rzp.on('payment.failed', function (resp){
+          alert('Payment was not completed: ' + (resp.error ? resp.error.description : 'Transaction cancelled'));
+        });
+        rzp.open();
+      })
+      .catch(function(err) {
+        payBtn.disabled = false;
+        payBtn.innerHTML = '<span>⚡ PROCEED TO PAYMENT — </span><span>₹' + currentCheckout.inr + '</span>';
+        alert('Connection error. Please verify network and try again.');
+      });
+    }
+
+    function fulfillRazorpayOrder(rzpResponse, email) {
+      var feedback = document.getElementById('checkoutFeedback');
+      feedback.classList.remove('hidden');
+      feedback.className = 'mt-4 p-4 rounded-xl border border-crt-green bg-crt-green/10 text-crt-green text-sm font-mono';
+      feedback.innerHTML = '<strong class="text-white block mb-1">⏳ VERIFYING TRANSACTION & ISSUING PRO KEY...</strong>Please wait 2 seconds while your key is generated...';
+
+      // Hide input tabs
+      document.getElementById('checkoutTabs').classList.add('hidden');
+      document.getElementById('tabContentsContainer').classList.add('hidden');
+
+      fetch('https://jfwfepmrasssefcobwoz.supabase.co/functions/v1/razorpay-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'verify',
+          razorpay_order_id: rzpResponse.razorpay_order_id,
+          razorpay_payment_id: rzpResponse.razorpay_payment_id,
+          razorpay_signature: rzpResponse.razorpay_signature,
+          tier: currentCheckout.tier,
+          email: email
+        })
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        if (data.success && data.license_key) {
+          feedback.className = 'mt-2 p-5 rounded-2xl border-2 border-crt-green bg-crt-card crt-box-glow text-crt-text text-sm font-mono space-y-4';
+          feedback.innerHTML = 
+            '<div class="flex items-center gap-2 text-crt-green font-bold text-base sm:text-lg">' +
+              '<span>✓</span><span>PAYMENT CONFIRMED & LICENSE ACTIVATED!</span>' +
+            '</div>' +
+            '<p class="text-xs text-crt-muted">' +
+              'Thank you! Your ' + currentCheckout.title + ' license has been activated instantaneously.' +
+            '</p>' +
+            '<div class="p-4 bg-black/90 rounded-xl border border-crt-green text-center space-y-2">' +
+              '<div class="text-xs text-crt-muted tracking-wider">YOUR RETROFLUX PRO LICENSE KEY:</div>' +
+              '<div id="activeKeyBox" class="text-lg sm:text-2xl font-mono font-extrabold text-crt-green select-all tracking-widest break-all py-1">' +
+                data.license_key +
+              '</div>' +
+              '<button type="button" id="copyKeyBtn" onclick="copyLicenseKey(\'' + data.license_key + '\')" class="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-crt-green text-black font-bold text-xs uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-md">' +
+                '📋 Click to Copy License Key' +
+              '</button>' +
+            '</div>' +
+            '<div class="space-y-1.5 text-xs text-crt-muted pt-2 border-t border-crt-border">' +
+              '<div><strong class="text-white">Payment ID:</strong> <span class="font-mono text-crt-green">' + rzpResponse.razorpay_payment_id + '</span></div>' +
+              '<div><strong class="text-white">Delivery Email:</strong> ' + email + '</div>' +
+              '<div class="pt-2"><strong class="text-white">Activation Instructions:</strong> Launch <strong class="text-white">RetroFlux</strong>, click <strong class="text-crt-green">[ ENTER LICENSE KEY ]</strong> on the startup window or bottom status bar, paste this key, and press Unlock PRO.</div>' +
+            '</div>';
+        } else {
+          feedback.className = 'mt-4 p-4 rounded-xl border border-red-500 bg-red-500/10 text-red-400 text-sm font-mono';
+          feedback.innerHTML = '<strong>✗ Verification error: ' + (data.message || 'Please contact support') + '</strong><br>Payment ID: ' + rzpResponse.razorpay_payment_id;
+        }
+      })
+      .catch(function(err) {
+        feedback.className = 'mt-4 p-4 rounded-xl border border-red-500 bg-red-500/10 text-red-400 text-sm font-mono';
+        feedback.innerHTML = '<strong>✗ Network error while retrieving key. Please use status checker with Payment ID: ' + rzpResponse.razorpay_payment_id + '</strong>';
+      });
     }
 
     function copyVpa() {
@@ -1171,9 +1337,23 @@
       });
     }
 
+    function copyLicenseKey(key) {
+      navigator.clipboard.writeText(key).then(function() {
+        var btn = document.getElementById('copyKeyBtn');
+        if (btn) {
+          btn.textContent = '✓ KEY COPIED TO CLIPBOARD!';
+          btn.classList.add('bg-emerald-400');
+          setTimeout(function() {
+            btn.textContent = '📋 Click to Copy License Key';
+            btn.classList.remove('bg-emerald-400');
+          }, 3000);
+        }
+      });
+    }
+
     function submitOrder(e, method) {
       e.preventDefault();
-      var email = method === 'upi' ? document.getElementById('upiEmail').value.trim() : document.getElementById('paypalEmail').value.trim();
+      var email = method === 'upi' ? document.getElementById('rzpEmail').value.trim() : document.getElementById('paypalEmail').value.trim();
       var txnRef = method === 'upi' ? document.getElementById('upiUtr').value.trim() : document.getElementById('paypalTxnId').value.trim();
       var amount = method === 'upi' ? ('₹' + currentCheckout.inr) : ('$' + currentCheckout.usd);
       var btn = method === 'upi' ? document.getElementById('upiSubmitBtn') : document.getElementById('paypalSubmitBtn');
@@ -1204,10 +1384,8 @@
         feedback.classList.remove('hidden');
 
         if (data.success && data.license_key) {
-          // Hide forms so user focuses on their key
-          document.getElementById('upiTabContent').classList.add('hidden');
-          document.getElementById('paypalTabContent').classList.add('hidden');
-          document.querySelector('#checkoutModal .grid-cols-2').classList.add('hidden');
+          document.getElementById('checkoutTabs').classList.add('hidden');
+          document.getElementById('tabContentsContainer').classList.add('hidden');
 
           feedback.className = 'mt-2 p-5 rounded-2xl border-2 border-crt-green bg-crt-card crt-box-glow text-crt-text text-sm font-mono space-y-4';
           feedback.innerHTML = 
@@ -1252,20 +1430,6 @@
       });
     }
 
-    function copyLicenseKey(key) {
-      navigator.clipboard.writeText(key).then(function() {
-        var btn = document.getElementById('copyKeyBtn');
-        if (btn) {
-          btn.textContent = '✓ KEY COPIED TO CLIPBOARD!';
-          btn.classList.add('bg-emerald-400');
-          setTimeout(function() {
-            btn.textContent = '📋 Click to Copy License Key';
-            btn.classList.remove('bg-emerald-400');
-          }, 3000);
-        }
-      });
-    }
-
     function checkOrderStatus() {
       var ref = document.getElementById('lookupRefInput').value.trim();
       var resEl = document.getElementById('lookupResult');
@@ -1303,3 +1467,4 @@
 
 </body>
 </html>
+
