@@ -474,10 +474,10 @@
 
   <!-- ================= EDITIONS & PRICING (BUY SECTION) ================= -->
   <section id="editions" class="py-16 md:py-24 border-t border-crt-border bg-crt-surface/80">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div id="free-download" class="max-w-7xl mx-auto px-4 sm:px-6">
       
       <!-- Section Header -->
-      <div class="text-center max-w-2xl mx-auto mb-16">
+      <div class="text-center max-w-2xl mx-auto mb-14">
         <div class="inline-block px-3 py-1 rounded bg-crt-green/10 border border-crt-green/30 text-crt-green font-mono text-xs font-bold mb-3 tracking-widest">
           // STORE CATALOG & TIERS
         </div>
@@ -485,179 +485,320 @@
           Choose Your Edition
         </h2>
         <p class="text-crt-muted text-base sm:text-lg font-mono">
-          No monthly renewals. Every purchase provides a lifetime license key with instant on-screen delivery.
+          Start for free or upgrade to Lifetime PRO. Zero recurring fees, zero subscription lock-in.
         </p>
       </div>
 
-      <!-- Free Community Edition Banner -->
-      <div id="free-download" class="mb-12 p-6 sm:p-8 rounded-2xl border-2 border-dashed border-crt-border bg-crt-card/60 backdrop-blur-sm flex flex-col md:flex-row items-center justify-between gap-6">
-        <div>
-          <div class="inline-block px-2.5 py-0.5 rounded text-xs font-bold font-mono bg-white/10 text-white border border-white/20 mb-2">
-            🆓 COMMUNITY EDITION // 100% FREE FOREVER
+      <!-- 4 Tier Cards Grid (Free Community + 3 Pro Editions) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch font-mono">
+
+        <!-- Tier 0: Free Community Edition -->
+        <div class="relative flex flex-col justify-between p-6 sm:p-7 rounded-2xl border-2 border-white/20 bg-crt-card/90 crt-box-glow hover:border-white/40 transition-all">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded text-[11px] font-extrabold tracking-wider bg-white/10 text-white border border-white/20 whitespace-nowrap shadow-md">
+            🆓 100% FREE FOREVER
           </div>
-          <h3 class="text-2xl font-bold text-white font-mono">Want to evaluate RetroFlux first?</h3>
-          <p class="text-sm text-crt-muted font-mono mt-1 max-w-xl leading-relaxed">
-            Download the standalone free build. Includes full GPU acceleration, instant stream copy (<code class="text-crt-green font-bold">-c copy</code> in 1.5s), and standard presets with a 2-file queue limit. No registration or credit cards required.
-          </p>
-        </div>
-        <div class="flex flex-wrap sm:flex-nowrap items-center gap-3 w-full md:w-auto">
-          <a href="https://github.com/bonnoxkush/retroflux-releases/releases/download/v1.3.0/RetroFlux.exe" class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-crt-green/15 text-crt-green border border-crt-green/40 hover:bg-crt-green hover:text-black font-mono font-bold text-sm transition-all active:scale-95 shadow-md">
-            ⬇ Windows (.exe)
-          </a>
-          <a href="https://github.com/bonnoxkush/retroflux-releases/releases/download/v1.3.0/RetroFlux-v1.3.0-release.apk" class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-crt-card border border-crt-border text-white hover:border-crt-amber hover:text-crt-amber font-mono font-bold text-sm transition-all active:scale-95 shadow-md">
-            ⬇ Android (.apk)
-          </a>
-        </div>
-      </div>
 
-      <!-- 3 Tier Cards Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch font-mono">
-
-        <!-- Tier 1: Mobile Edition -->
-        <div class="flex flex-col justify-between p-7 sm:p-8 rounded-2xl border border-crt-border bg-crt-card crt-box-glow hover:border-crt-green/50 transition-all">
           <div>
-            <div class="text-sm font-bold text-crt-muted mb-4 tracking-wider">
-              [ 📱 MOBILE EDITION ]
+            <div class="text-xs font-bold text-crt-muted mb-3 mt-1 tracking-wider">
+              [ 🆓 COMMUNITY EDITION ]
             </div>
             
-            <div class="flex items-baseline gap-1.5 mb-3">
-              <span class="text-4xl sm:text-5xl font-extrabold text-white font-mono">$3.99</span>
-              <span class="text-sm text-crt-muted">one-time</span>
+            <div class="flex items-baseline gap-1.5 mb-2">
+              <span class="text-3xl sm:text-4xl font-extrabold text-white font-mono">$0</span>
+              <span class="text-xs text-crt-muted font-mono">/ ₹0</span>
+              <span class="text-xs text-crt-green font-bold">Free Forever</span>
             </div>
             
-            <p class="text-base text-crt-muted mb-6">
-              For smartphones and tablets. Hardware video transcoding on Android.
+            <p class="text-xs text-crt-muted mb-5 leading-relaxed">
+              Standalone offline build for casual daily media tasks. No registration or credit cards required.
             </p>
 
-            <ul class="space-y-3.5 text-base text-crt-text mb-8 border-t border-crt-border pt-6">
-              <li class="flex items-center gap-2.5">
+            <ul class="space-y-2.5 text-xs text-crt-text mb-6 border-t border-crt-border pt-5">
+              <li class="flex items-center gap-2">
                 <span class="text-crt-green font-bold">✓</span>
-                <span>Android Release APK (`API 24+`)</span>
+                <span>Windows 64-bit Portable Executable</span>
               </li>
-              <li class="flex items-center gap-2.5">
+              <li class="flex items-center gap-2">
                 <span class="text-crt-green font-bold">✓</span>
-                <span>Mobile MediaCodec GPU encoding</span>
+                <span>Android Mobile Release APK</span>
               </li>
-              <li class="flex items-center gap-2.5">
+              <li class="flex items-center gap-2">
                 <span class="text-crt-green font-bold">✓</span>
-                <span>Instant Stream Copy (`-c copy`)</span>
+                <span>Instant Stream Copy (<code class="text-crt-green">-c copy</code>)</span>
               </li>
-              <li class="flex items-center gap-2.5">
+              <li class="flex items-center gap-2">
                 <span class="text-crt-green font-bold">✓</span>
-                <span>Unique Mobile Key (`RFMOB-...`)</span>
+                <span>Standard audio & video presets</span>
               </li>
-              <li class="flex items-center gap-2.5">
-                <span class="text-crt-green font-bold">✓</span>
-                <span>Unlimited batch queue</span>
+              <li class="flex items-center gap-2 text-crt-muted">
+                <span class="text-amber-400 font-bold">!</span>
+                <span>2-file queue limit per session</span>
+              </li>
+              <li class="flex items-center gap-2 text-crt-muted">
+                <span class="text-amber-400 font-bold">!</span>
+                <span>No hardware-locked PRO key</span>
               </li>
             </ul>
           </div>
 
-          <button onclick="openCheckout('mobile', 'Mobile Edition', '3.99', '299')" class="cursor-pointer block text-center w-full py-4 px-5 rounded-xl btn-outline-green text-base font-bold transition-all active:scale-95 shadow-md">
-            ⚡ Buy Mobile Edition — $3.99 / ₹299
+          <div class="space-y-2 pt-3 border-t border-crt-border/60">
+            <a href="https://github.com/bonnoxkush/retroflux-releases/releases/download/v1.3.0/RetroFlux.exe" class="cursor-pointer block text-center w-full py-2.5 px-3 rounded-xl bg-crt-green/15 text-crt-green border border-crt-green/40 text-xs font-bold hover:bg-crt-green hover:text-black transition-all active:scale-95 shadow-md">
+              ⬇ Free Windows (.exe)
+            </a>
+            <a href="https://github.com/bonnoxkush/retroflux-releases/releases/download/v1.3.0/RetroFlux-v1.3.0-release.apk" class="cursor-pointer block text-center w-full py-2 px-3 rounded-xl bg-crt-card border border-crt-border text-white text-xs font-bold hover:border-crt-amber hover:text-crt-amber transition-all active:scale-95 shadow-md">
+              ⬇ Free Android (.apk)
+            </a>
+          </div>
+        </div>
+
+        <!-- Tier 1: Mobile Edition -->
+        <div class="relative flex flex-col justify-between p-6 sm:p-7 rounded-2xl border border-crt-border bg-crt-card crt-box-glow hover:border-crt-green/50 transition-all">
+          <div>
+            <div class="text-xs font-bold text-crt-muted mb-3 mt-1 tracking-wider">
+              [ 📱 MOBILE EDITION ]
+            </div>
+            
+            <div class="flex items-baseline gap-1.5 mb-2">
+              <span class="text-3xl sm:text-4xl font-extrabold text-white font-mono">$3.99</span>
+              <span class="text-xs text-crt-muted font-mono">/ ₹299</span>
+              <span class="text-xs text-crt-muted">one-time</span>
+            </div>
+            
+            <p class="text-xs text-crt-muted mb-5 leading-relaxed">
+              For smartphones and tablets. Hardware video transcoding on Android.
+            </p>
+
+            <ul class="space-y-2.5 text-xs text-crt-text mb-6 border-t border-crt-border pt-5">
+              <li class="flex items-center gap-2">
+                <span class="text-crt-green font-bold">✓</span>
+                <span>Android Release APK (<code class="text-crt-green">API 24+</code>)</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-crt-green font-bold">✓</span>
+                <span>Mobile MediaCodec GPU encoding</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-crt-green font-bold">✓</span>
+                <span>Instant Stream Copy (<code class="text-crt-green">-c copy</code>)</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-crt-green font-bold">✓</span>
+                <span>Unique Mobile Key (<code class="text-crt-green">RFMOB-...</code>)</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-crt-green font-bold">✓</span>
+                <span>Unlimited batch queue</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-crt-green font-bold">✓</span>
+                <span>Single-Device Mobile Hardware Lock</span>
+              </li>
+            </ul>
+          </div>
+
+          <button onclick="openCheckout('mobile', 'Mobile Edition', '3.99', '299')" class="cursor-pointer block text-center w-full py-3.5 px-4 rounded-xl btn-outline-green text-xs sm:text-sm font-bold transition-all active:scale-95 shadow-md">
+            ⚡ Buy Mobile — $3.99 / ₹299
           </button>
         </div>
 
         <!-- Tier 2: Desktop Edition (Featured / Most Popular) -->
-        <div class="relative flex flex-col justify-between p-7 sm:p-8 rounded-2xl border-2 border-crt-green bg-crt-card crt-box-glow shadow-2xl">
-          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-md badge-dark-on-green text-xs font-extrabold tracking-wider shadow-lg">
+        <div class="relative flex flex-col justify-between p-6 sm:p-7 rounded-2xl border-2 border-crt-green bg-crt-card crt-box-glow shadow-2xl">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded badge-dark-on-green text-[11px] font-extrabold tracking-wider whitespace-nowrap shadow-lg">
             ⭐ MOST POPULAR FOR CREATORS
           </div>
 
           <div>
-            <div class="text-sm font-bold text-crt-green mb-4 mt-2 tracking-wider">
+            <div class="text-xs font-bold text-crt-green mb-3 mt-1 tracking-wider">
               [ 💻 DESKTOP EDITION ]
             </div>
             
-            <div class="flex items-baseline gap-1.5 mb-3">
-              <span class="text-4xl sm:text-5xl font-extrabold text-white font-mono">$8.99</span>
-              <span class="text-sm text-crt-muted font-mono">/ ₹699</span>
+            <div class="flex items-baseline gap-1.5 mb-2">
+              <span class="text-3xl sm:text-4xl font-extrabold text-white font-mono">$8.99</span>
+              <span class="text-xs text-crt-muted font-mono">/ ₹699</span>
               <span class="text-xs text-crt-muted">one-time</span>
             </div>
             
-            <p class="text-base text-crt-muted mb-6">
+            <p class="text-xs text-crt-muted mb-5 leading-relaxed">
               Complete standalone media workstation for Windows 10 & 11 PCs.
             </p>
 
-            <ul class="space-y-3.5 text-base text-crt-text mb-8 border-t border-crt-border pt-6">
-              <li class="flex items-center gap-2.5">
+            <ul class="space-y-2.5 text-xs text-crt-text mb-6 border-t border-crt-border pt-5">
+              <li class="flex items-center gap-2">
                 <span class="text-crt-green font-bold">✓</span>
-                <span>Windows 64-bit Portable Executable (`.exe`)</span>
+                <span>Windows 64-bit Portable Executable</span>
               </li>
-              <li class="flex items-center gap-2.5">
+              <li class="flex items-center gap-2">
                 <span class="text-crt-green font-bold">✓</span>
-                <span>Embedded FFmpeg included (No setup needed)</span>
+                <span>Embedded FFmpeg included</span>
               </li>
-              <li class="flex items-center gap-2.5">
+              <li class="flex items-center gap-2">
                 <span class="text-crt-green font-bold">✓</span>
-                <span>NVIDIA NVENC, Intel QSV & AMD AMF Core</span>
+                <span>NVIDIA NVENC, Intel QSV & AMD AMF</span>
               </li>
-              <li class="flex items-center gap-2.5">
+              <li class="flex items-center gap-2">
                 <span class="text-crt-green font-bold">✓</span>
                 <span>Single-Device Hardware Lock (PC Seat)</span>
               </li>
-              <li class="flex items-center gap-2.5">
+              <li class="flex items-center gap-2">
                 <span class="text-crt-green font-bold">✓</span>
-                <span>Unlimited batch queues & folder workflows</span>
+                <span>Unique Desktop Key (<code class="text-crt-green">RFPC-...</code>)</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-crt-green font-bold">✓</span>
+                <span>Unlimited batch queues & workflows</span>
               </li>
             </ul>
           </div>
 
-          <button onclick="openCheckout('desktop', 'Desktop Edition', '8.99', '699')" class="cursor-pointer block text-center w-full py-4 px-5 rounded-xl btn-outline-green text-base font-bold transition-all active:scale-95 shadow-lg">
-            ⚡ Buy Desktop Edition — $8.99 / ₹699
+          <button onclick="openCheckout('desktop', 'Desktop Edition', '8.99', '699')" class="cursor-pointer block text-center w-full py-3.5 px-4 rounded-xl btn-outline-green text-xs sm:text-sm font-bold transition-all active:scale-95 shadow-lg">
+            ⚡ Buy Desktop — $8.99 / ₹699
           </button>
         </div>
 
         <!-- Tier 3: All-Access Master Bundle (Best Value) -->
-        <div class="relative flex flex-col justify-between p-7 sm:p-8 rounded-2xl border-2 border-crt-amber/80 bg-crt-card amber-box-glow">
-          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-md badge-dark-on-amber text-xs font-extrabold tracking-wider shadow-lg">
+        <div class="relative flex flex-col justify-between p-6 sm:p-7 rounded-2xl border-2 border-crt-amber/80 bg-crt-card amber-box-glow">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded badge-dark-on-amber text-[11px] font-extrabold tracking-wider whitespace-nowrap shadow-lg">
             ⚡ BEST VALUE // ALL-ACCESS
           </div>
 
           <div>
-            <div class="text-sm font-bold text-crt-amber mb-4 mt-2 tracking-wider">
+            <div class="text-xs font-bold text-crt-amber mb-3 mt-1 tracking-wider">
               [ ⚡ ALL-ACCESS MASTER BUNDLE ]
             </div>
             
-            <div class="flex items-baseline gap-1.5 mb-3">
-              <span class="text-4xl sm:text-5xl font-extrabold text-white font-mono">$11.99</span>
-              <span class="text-sm text-crt-muted font-mono">/ ₹899</span>
+            <div class="flex items-baseline gap-1.5 mb-2">
+              <span class="text-3xl sm:text-4xl font-extrabold text-white font-mono">$11.99</span>
+              <span class="text-xs text-crt-muted font-mono">/ ₹899</span>
               <span class="text-xs text-crt-muted">one-time</span>
             </div>
             
-            <p class="text-base text-crt-muted mb-6">
+            <p class="text-xs text-crt-muted mb-5 leading-relaxed">
               Complete dual-platform package. Both PC & Android apps with master key.
             </p>
 
-            <ul class="space-y-3.5 text-base text-crt-text mb-8 border-t border-crt-border pt-6">
-              <li class="flex items-center gap-2.5">
+            <ul class="space-y-2.5 text-xs text-crt-text mb-6 border-t border-crt-border pt-5">
+              <li class="flex items-center gap-2">
                 <span class="text-crt-amber font-bold">✓</span>
                 <span><strong class="text-white">Both Windows .exe AND Android APK</strong></span>
               </li>
-              <li class="flex items-center gap-2.5">
+              <li class="flex items-center gap-2">
                 <span class="text-crt-amber font-bold">✓</span>
-                <span><strong class="text-white">All-Access Master Key (1 PC + 1 Mobile Seat)</strong></span>
+                <span><strong class="text-white">Master Key (1 PC + 1 Mobile Seat)</strong></span>
               </li>
-              <li class="flex items-center gap-2.5">
+              <li class="flex items-center gap-2">
                 <span class="text-crt-amber font-bold">✓</span>
-                <span>Unlocks unlimited features across all devices</span>
+                <span>Unique Master Key (<code class="text-crt-amber">RFPRO-...</code>)</span>
               </li>
-              <li class="flex items-center gap-2.5">
+              <li class="flex items-center gap-2">
                 <span class="text-crt-amber font-bold">✓</span>
                 <span>All GPU engines & stream-copy remuxing</span>
               </li>
-              <li class="flex items-center gap-2.5">
+              <li class="flex items-center gap-2">
+                <span class="text-crt-amber font-bold">✓</span>
+                <span>Unlimited batch queue on both devices</span>
+              </li>
+              <li class="flex items-center gap-2">
                 <span class="text-crt-amber font-bold">✓</span>
                 <span>Lifetime priority updates</span>
               </li>
             </ul>
           </div>
 
-          <button onclick="openCheckout('bundle', 'All-Access Master Bundle', '11.99', '899')" class="cursor-pointer block text-center w-full py-4 px-5 rounded-xl btn-outline-green text-base font-bold transition-all active:scale-95 shadow-lg">
-            ⚡ Get Master Bundle — $11.99 / ₹899
+          <button onclick="openCheckout('bundle', 'All-Access Master Bundle', '11.99', '899')" class="cursor-pointer block text-center w-full py-3.5 px-4 rounded-xl btn-outline-green text-xs sm:text-sm font-bold transition-all active:scale-95 shadow-lg">
+            ⚡ Get Bundle — $11.99 / ₹899
           </button>
         </div>
 
+      </div>
+
+      <!-- Comprehensive Tier Comparison Matrix -->
+      <div class="mt-16 overflow-x-auto">
+        <div class="text-center mb-8">
+          <div class="inline-block px-3 py-1 rounded bg-crt-green/10 border border-crt-green/30 text-crt-green font-mono text-xs font-bold mb-2 tracking-widest">
+            // SIDE-BY-SIDE MATRIX
+          </div>
+          <h3 class="text-2xl font-extrabold text-white font-mono">Edition Feature Comparison</h3>
+          <p class="text-xs sm:text-sm text-crt-muted font-mono mt-1">Compare features across Free Community and Lifetime PRO Editions</p>
+        </div>
+        <div class="border border-crt-border rounded-2xl overflow-hidden shadow-2xl bg-crt-surface">
+          <table class="w-full text-left font-mono text-xs sm:text-sm">
+            <thead class="bg-crt-card text-crt-green border-b border-crt-border">
+              <tr>
+                <th class="py-4 px-4 sm:px-6 font-bold">Feature</th>
+                <th class="py-4 px-4 sm:px-6 font-bold text-white">Free Community</th>
+                <th class="py-4 px-4 sm:px-6 font-bold text-crt-green">Mobile Edition</th>
+                <th class="py-4 px-4 sm:px-6 font-bold text-crt-green">Desktop Edition</th>
+                <th class="py-4 px-4 sm:px-6 font-bold text-crt-amber">Master Bundle</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-crt-border/60">
+              <tr class="hover:bg-crt-card/50 transition-colors">
+                <td class="py-3.5 px-4 sm:px-6 font-semibold text-white">Price</td>
+                <td class="py-3.5 px-4 sm:px-6 text-white font-bold">$0 / ₹0</td>
+                <td class="py-3.5 px-4 sm:px-6 text-white font-bold">$3.99 / ₹299</td>
+                <td class="py-3.5 px-4 sm:px-6 text-crt-green font-bold">$8.99 / ₹699</td>
+                <td class="py-3.5 px-4 sm:px-6 text-crt-amber font-bold">$11.99 / ₹899</td>
+              </tr>
+              <tr class="hover:bg-crt-card/50 transition-colors">
+                <td class="py-3.5 px-4 sm:px-6 font-semibold text-white">Platform</td>
+                <td class="py-3.5 px-4 sm:px-6 text-crt-muted">Windows + Android</td>
+                <td class="py-3.5 px-4 sm:px-6 text-crt-muted">Android Only</td>
+                <td class="py-3.5 px-4 sm:px-6 text-crt-muted">Windows PC Only</td>
+                <td class="py-3.5 px-4 sm:px-6 text-white font-bold">Both Windows + Android</td>
+              </tr>
+              <tr class="hover:bg-crt-card/50 transition-colors">
+                <td class="py-3.5 px-4 sm:px-6 font-semibold text-white">Batch Queue Limit</td>
+                <td class="py-3.5 px-4 sm:px-6 text-amber-400 font-bold">2 files max</td>
+                <td class="py-3.5 px-4 sm:px-6 text-crt-green font-bold">Unlimited</td>
+                <td class="py-3.5 px-4 sm:px-6 text-crt-green font-bold">Unlimited</td>
+                <td class="py-3.5 px-4 sm:px-6 text-crt-green font-bold">Unlimited</td>
+              </tr>
+              <tr class="hover:bg-crt-card/50 transition-colors">
+                <td class="py-3.5 px-4 sm:px-6 font-semibold text-white">Stream Copy (-c copy in 1.5s)</td>
+                <td class="py-3.5 px-4 sm:px-6 text-crt-green">✓ Enabled</td>
+                <td class="py-3.5 px-4 sm:px-6 text-crt-green">✓ Enabled</td>
+                <td class="py-3.5 px-4 sm:px-6 text-crt-green">✓ Enabled</td>
+                <td class="py-3.5 px-4 sm:px-6 text-crt-green">✓ Enabled</td>
+              </tr>
+              <tr class="hover:bg-crt-card/50 transition-colors">
+                <td class="py-3.5 px-4 sm:px-6 font-semibold text-white">Hardware Acceleration</td>
+                <td class="py-3.5 px-4 sm:px-6 text-crt-green">✓ Included</td>
+                <td class="py-3.5 px-4 sm:px-6 text-crt-green">✓ MediaCodec GPU</td>
+                <td class="py-3.5 px-4 sm:px-6 text-crt-green">✓ NVENC, QSV, AMF</td>
+                <td class="py-3.5 px-4 sm:px-6 text-crt-green">✓ All GPU Engines</td>
+              </tr>
+              <tr class="hover:bg-crt-card/50 transition-colors">
+                <td class="py-3.5 px-4 sm:px-6 font-semibold text-white">Hardware Seat Lock</td>
+                <td class="py-3.5 px-4 sm:px-6 text-crt-muted">— (Free)</td>
+                <td class="py-3.5 px-4 sm:px-6 text-white">1 Mobile Device</td>
+                <td class="py-3.5 px-4 sm:px-6 text-white">1 PC Hardware</td>
+                <td class="py-3.5 px-4 sm:px-6 text-crt-amber font-bold">1 PC + 1 Mobile Seat</td>
+              </tr>
+              <tr class="hover:bg-crt-card/50 transition-colors">
+                <td class="py-3.5 px-4 sm:px-6 font-semibold text-white">License Key</td>
+                <td class="py-3.5 px-4 sm:px-6 text-crt-muted">Not required</td>
+                <td class="py-3.5 px-4 sm:px-6 font-mono text-crt-green">RFMOB-XXXX-...</td>
+                <td class="py-3.5 px-4 sm:px-6 font-mono text-crt-green">RFPC-XXXX-...</td>
+                <td class="py-3.5 px-4 sm:px-6 font-mono text-crt-amber">RFPRO-XXXX-...</td>
+              </tr>
+              <tr class="hover:bg-crt-card/50 transition-colors">
+                <td class="py-3.5 px-4 sm:px-6 font-semibold text-white">Get Edition</td>
+                <td class="py-3.5 px-4 sm:px-6">
+                  <a href="https://github.com/bonnoxkush/retroflux-releases/releases/download/v1.3.0/RetroFlux.exe" class="inline-block px-3 py-1.5 rounded-lg bg-crt-green/20 text-crt-green hover:bg-crt-green hover:text-black font-bold text-xs transition-colors">⬇ Free .exe</a>
+                </td>
+                <td class="py-3.5 px-4 sm:px-6">
+                  <button onclick="openCheckout('mobile', 'Mobile Edition', '3.99', '299')" class="px-3 py-1.5 rounded-lg bg-crt-card border border-crt-green text-crt-green hover:bg-crt-green hover:text-black font-bold text-xs transition-colors">Buy $3.99</button>
+                </td>
+                <td class="py-3.5 px-4 sm:px-6">
+                  <button onclick="openCheckout('desktop', 'Desktop Edition', '8.99', '699')" class="px-3 py-1.5 rounded-lg bg-crt-green text-black hover:brightness-110 font-bold text-xs transition-all shadow-md">Buy $8.99</button>
+                </td>
+                <td class="py-3.5 px-4 sm:px-6">
+                  <button onclick="openCheckout('bundle', 'All-Access Master Bundle', '11.99', '899')" class="px-3 py-1.5 rounded-lg bg-crt-amber text-black hover:brightness-110 font-bold text-xs transition-all shadow-md">Buy $11.99</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
     </div>
