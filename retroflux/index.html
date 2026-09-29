@@ -1,415 +1,458 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth bg-black text-[#f5f5f7]">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RetroFlux PRO — High-Speed Offline Media Converter</title>
+  <title>RetroFlux PRO — High-Speed Offline Media Workstation</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   
-  <!-- Retro Terminal Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
+  <!-- Inter: Apple-grade Universal Modern Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
 
-  <!-- Tailwind CSS Configuration (BEFORE CDN script) -->
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind = {
-      config: {
-        theme: {
-          extend: {
-            colors: {
-              crt: {
-                bg: '#050906',
-                surface: '#0a120d',
-                card: '#0e1811',
-                cardhover: '#132318',
-                border: '#1a3522',
-                green: '#00ff66',
-                amber: '#ffb300',
-                cyan: '#00e5ff',
-                text: '#e6f4ea',
-                muted: '#9db4a3'
-              }
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            mono: ['JetBrains Mono', 'Consolas', 'Courier New', 'monospace'],
+          },
+          colors: {
+            apple: {
+              bg: '#000000',
+              surface: '#0a0a0e',
+              card: 'rgba(255, 255, 255, 0.04)',
+              cardHover: 'rgba(255, 255, 255, 0.07)',
+              border: 'rgba(255, 255, 255, 0.1)',
+              borderHover: 'rgba(255, 255, 255, 0.22)',
+              text: '#f5f5f7',
+              muted: '#86868b',
+              blue: '#2997ff',
+              green: '#30d158',
+              amber: '#ffd60a',
+              purple: '#af52de'
+            }
+          },
+          animation: {
+            'float-slow': 'float 8s ease-in-out infinite',
+            'float-reverse': 'floatRev 9s ease-in-out infinite',
+            'pulse-subtle': 'pulseSubtle 4s ease-in-out infinite',
+            'shimmer': 'shimmer 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px) scale(1)' },
+              '50%': { transform: 'translateY(-18px) scale(1.02)' },
             },
-            fontFamily: {
-              vt: ['VT323', 'monospace'],
-              mono: ['Share Tech Mono', 'Consolas', 'Fira Code', 'Monaco', 'Courier New', 'monospace'],
-              sans: ['Share Tech Mono', 'Consolas', 'system-ui', 'sans-serif']
+            floatRev: {
+              '0%, 100%': { transform: 'translateY(0px) scale(1)' },
+              '50%': { transform: 'translateY(16px) scale(0.98)' },
+            },
+            pulseSubtle: {
+              '0%, 100%': { opacity: '0.4' },
+              '50%': { opacity: '0.75' },
+            },
+            shimmer: {
+              '0%': { transform: 'translateX(-100%)' },
+              '100%': { transform: 'translateX(200%)' }
             }
           }
         }
       }
     };
   </script>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Razorpay Standard Checkout SDK -->
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
   <style>
-    /* Absolute Theme Enforcement */
     :root {
       color-scheme: dark;
     }
-    html, body {
-      background-color: #050906 !important;
-      color: #e6f4ea !important;
-      font-family: 'Share Tech Mono', 'Consolas', 'Courier New', monospace;
-      margin: 0;
-      padding: 0;
+    body {
+      background-color: #000000;
+      color: #f5f5f7;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
     }
 
-    /* Universal Text Color Guard (Guarantees NO element ever inherits invisible black text) */
-    p, span, li, summary, td, th, label, div, h1, h2, h3, h4, h5, h6 {
-      color: #e6f4ea;
+    /* Fluid Glassmorphism */
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* Old Terminal CRT Font Styles */
-    .font-vt {
-      font-family: 'VT323', monospace !important;
-    }
-    .font-terminal {
-      font-family: 'Share Tech Mono', 'Consolas', monospace !important;
+    .glass-panel:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.18);
+      transform: translateY(-3px);
     }
 
-    /* Live Blinking Terminal Cursor */
-    @keyframes blink {
-      0%, 49% { opacity: 1; }
-      50%, 100% { opacity: 0; }
-    }
-    .terminal-cursor {
-      display: inline-block;
-      color: #00ff66;
-      font-weight: 900;
-      animation: blink 0.9s step-start infinite;
-      margin-left: 2px;
-      vertical-align: baseline;
-    }
-    .amber-cursor {
-      display: inline-block;
-      color: #ffb300;
-      font-weight: 900;
-      animation: blink 0.9s step-start infinite;
-      margin-left: 2px;
-      vertical-align: baseline;
+    .glass-card-featured {
+      background: linear-gradient(180deg, rgba(48, 209, 88, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1.5px solid rgba(48, 209, 88, 0.45);
+      box-shadow: 0 20px 60px -15px rgba(48, 209, 88, 0.2);
     }
 
-    /* Phosphor Glows */
-    .crt-glow {
-      text-shadow: 0 0 10px rgba(0, 255, 102, 0.55), 0 0 20px rgba(0, 255, 102, 0.25);
-    }
-    .amber-glow {
-      text-shadow: 0 0 10px rgba(255, 179, 0, 0.55), 0 0 20px rgba(255, 179, 0, 0.25);
-    }
-    .crt-box-glow {
-      box-shadow: 0 0 25px rgba(0, 255, 102, 0.12), inset 0 0 15px rgba(0, 255, 102, 0.04);
-    }
-    .amber-box-glow {
-      box-shadow: 0 0 30px rgba(255, 179, 0, 0.16), inset 0 0 15px rgba(255, 179, 0, 0.05);
+    .glass-card-bundle {
+      background: linear-gradient(180deg, rgba(255, 214, 10, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1.5px solid rgba(255, 214, 10, 0.45);
+      box-shadow: 0 20px 60px -15px rgba(255, 214, 10, 0.2);
     }
 
-    /* Scanlines Overlay */
-    .scanlines {
-      background: linear-gradient(
-        rgba(18, 16, 16, 0) 50%, 
-        rgba(0, 0, 0, 0.35) 50%
-      ), linear-gradient(
-        90deg,
-        rgba(255, 0, 0, 0.02),
-        rgba(0, 255, 0, 0.01),
-        rgba(0, 0, 255, 0.02)
-      );
-      background-size: 100% 4px, 6px 100%;
+    /* Apple-Style Text Gradient */
+    .headline-gradient {
+      background: linear-gradient(180deg, #ffffff 20%, #a1a1a6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    /* Terminal Grid Lines */
-    .terminal-grid {
-      background-image: 
-        linear-gradient(to right, rgba(0, 255, 102, 0.035) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(0, 255, 102, 0.035) 1px, transparent 1px);
-      background-size: 48px 48px;
+    /* Ambient Lighting Mesh */
+    .ambient-glow-1 {
+      position: absolute;
+      top: 5%;
+      left: 20%;
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, rgba(41, 151, 255, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+      filter: blur(90px);
+      pointer-events: none;
+      z-index: 0;
     }
-
-    /* High-Visibility Primary Buttons (Explicit High-Contrast Styling) */
-    .btn-green-solid {
-      background-color: #00ff66 !important;
-      color: #000000 !important;
-      border: 2px solid #00ff66 !important;
-      font-weight: 800 !important;
-      box-shadow: 0 0 20px rgba(0, 255, 102, 0.35) !important;
+    .ambient-glow-2 {
+      position: absolute;
+      top: 35%;
+      right: 15%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(48, 209, 88, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: 0;
     }
-    .btn-green-solid * {
-      color: #000000 !important;
-    }
-    .btn-green-solid:hover {
-      background-color: #33ff85 !important;
-      box-shadow: 0 0 30px rgba(0, 255, 102, 0.6) !important;
-    }
-
-    .btn-amber-solid {
-      background-color: #ffb300 !important;
-      color: #000000 !important;
-      border: 2px solid #ffb300 !important;
-      font-weight: 800 !important;
-      box-shadow: 0 0 20px rgba(255, 179, 0, 0.35) !important;
-    }
-    .btn-amber-solid * {
-      color: #000000 !important;
-    }
-    .btn-amber-solid:hover {
-      background-color: #ffc233 !important;
-      box-shadow: 0 0 30px rgba(255, 179, 0, 0.6) !important;
-    }
-
-    .btn-outline-green {
-      background-color: #0a140d !important;
-      color: #00ff66 !important;
-      border: 2px solid #00ff66 !important;
-      font-weight: 700 !important;
-    }
-    .btn-outline-green * {
-      color: #00ff66 !important;
-    }
-    .btn-outline-green:hover {
-      background-color: #00ff66 !important;
-      color: #000000 !important;
-    }
-    .btn-outline-green:hover * {
-      color: #000000 !important;
-    }
-
-    /* Badges with Black Text on Bright Backing */
-    .badge-dark-on-green {
-      background-color: #00ff66 !important;
-      color: #000000 !important;
-    }
-    .badge-dark-on-green * {
-      color: #000000 !important;
-    }
-
-    .badge-dark-on-amber {
-      background-color: #ffb300 !important;
-      color: #000000 !important;
-    }
-    .badge-dark-on-amber * {
-      color: #000000 !important;
+    .ambient-glow-3 {
+      position: absolute;
+      top: 65%;
+      left: 10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(175, 82, 222, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: 0;
     }
   </style>
 </head>
 
-<body class="bg-crt-bg text-crt-text antialiased selection:bg-crt-green selection:text-black terminal-grid min-h-screen">
+<body class="selection:bg-white selection:text-black relative">
 
-  <!-- ================= TOP TERMINAL NAV ================= -->
-  <header class="sticky top-0 z-50 backdrop-blur-md bg-crt-bg/95 border-b border-crt-border">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+  <!-- Ambient Light Orbs -->
+  <div class="ambient-glow-1 animate-float-slow"></div>
+  <div class="ambient-glow-2 animate-float-reverse"></div>
+  <div class="ambient-glow-3 animate-float-slow"></div>
+
+  <!-- ================= TOP NAVIGATION ================= -->
+  <header class="sticky top-0 z-50 backdrop-blur-2xl bg-black/75 border-b border-white/[0.08] transition-all">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
       
-      <!-- Logo + Live Title -->
-      <a href="#hero" class="flex items-center gap-3.5 group">
-        <div class="relative p-1 rounded-xl border border-crt-green/50 bg-crt-card group-hover:border-crt-green transition-colors">
-          <img src="https://public-files.gumroad.com/g7r71g56t397cs9duy4iyq6727v3" alt="RetroFlux Logo" class="w-10 h-10 rounded-lg group-hover:scale-105 transition-transform" />
+      <!-- Brand & Version -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-white/15 to-white/5 border border-white/20 flex items-center justify-center p-1.5 group-hover:scale-105 group-hover:border-[#30d158]/50 transition-all shadow-md">
+          <svg class="w-full h-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" class="fill-[#ffd60a] stroke-[#ffd60a]" />
+          </svg>
         </div>
-        <div>
-          <div class="flex items-center gap-2">
-            <span class="font-mono font-bold text-xl sm:text-2xl tracking-wider text-crt-green crt-glow">RETROFLUX PRO</span>
-            <span class="terminal-cursor text-xl">_</span>
-            <span class="hidden sm:inline-block px-2 py-0.5 rounded text-xs font-mono font-bold bg-crt-green/15 text-crt-green border border-crt-green/40">v1.3.0</span>
-          </div>
-          <span class="block text-xs font-mono text-crt-muted tracking-wider">OFFLINE MEDIA CORE // GPU-ACCELERATED</span>
+        <div class="flex items-center gap-2">
+          <span class="font-semibold text-base sm:text-lg tracking-tight text-white">RetroFlux</span>
+          <span class="px-2 py-0.5 rounded-full text-[11px] font-medium bg-white/10 text-white/80 border border-white/15">v1.3.0</span>
         </div>
       </a>
 
-      <!-- Navigation & Action -->
-      <div class="flex items-center gap-4 sm:gap-6">
-        <nav class="hidden md:flex items-center gap-6 font-mono text-sm">
-          <a href="#features" class="text-crt-muted hover:text-crt-green transition-colors">[ FEATURES ]</a>
-          <a href="#comparison" class="text-crt-muted hover:text-crt-green transition-colors">[ VS CLOUD ]</a>
-          <a href="#editions" class="text-crt-muted hover:text-crt-green transition-colors">[ EDITIONS ]</a>
-          <a href="#faq" class="text-crt-muted hover:text-crt-green transition-colors">[ FAQ ]</a>
-        </nav>
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-[#86868b]">
+        <a href="#features" class="hover:text-white transition-colors">Features</a>
+        <a href="#comparison" class="hover:text-white transition-colors">Vs Cloud</a>
+        <a href="#editions" class="hover:text-white transition-colors">Pricing & Editions</a>
+        <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+      </nav>
 
-        <div class="flex items-center gap-2.5">
-          <a href="#free-download" class="hidden sm:inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-crt-border bg-crt-card hover:border-crt-green text-xs font-mono text-crt-muted hover:text-white transition-all">
-            <span>⬇ FREE DOWNLOAD</span>
-          </a>
-          <a href="#editions" class="cursor-pointer inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl btn-outline-green font-mono text-xs sm:text-sm tracking-wide transition-all active:scale-95">
-            <span>[ VIEW EDITIONS ]</span>
-          </a>
-        </div>
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-3">
+        <a href="#free-download" class="hidden sm:inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-medium text-white/90 hover:text-white bg-white/[0.06] hover:bg-white/[0.1] border border-white/10 transition-all">
+          Download Free
+        </a>
+        <a href="#editions" class="inline-flex items-center px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold text-black bg-white hover:bg-[#e8e8ed] active:scale-95 transition-all shadow-md">
+          Buy PRO
+        </a>
       </div>
 
     </div>
   </header>
 
   <!-- ================= HERO SECTION ================= -->
-  <section id="hero" class="relative pt-12 pb-16 md:pt-20 md:pb-24 overflow-hidden">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
+  <section id="hero" class="relative pt-16 pb-20 md:pt-24 md:pb-32 overflow-hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
 
-      <!-- Live Terminal Command Bar with Dynamic Typing -->
-      <div class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl border border-crt-green/40 bg-crt-card text-crt-green font-mono text-xs sm:text-base font-semibold mb-8 crt-box-glow max-w-full overflow-hidden">
-        <span class="w-2.5 h-2.5 rounded-full bg-crt-green animate-pulse flex-shrink-0"></span>
-        <span class="text-crt-muted flex-shrink-0">retroflux@local:~$</span>
-        <span id="liveTypingText" class="text-crt-green font-bold"></span>
-        <span class="terminal-cursor text-base flex-shrink-0">▋</span>
+      <!-- Badge Pill -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/15 text-xs sm:text-sm text-white/80 font-medium mb-8 backdrop-blur-md">
+        <span class="w-2 h-2 rounded-full bg-[#30d158] animate-pulse"></span>
+        <span>Standalone Local Workstation • Instant GPU Acceleration</span>
       </div>
 
       <!-- Main Headline -->
-      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.18] mb-6 font-mono">
-        Blistering Fast Media Conversion. <br class="hidden sm:inline" />
-        <span class="text-crt-green crt-glow">Zero Cloud. Zero Subscriptions.</span>
+      <h1 class="headline-gradient text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.08] mb-6">
+        Fast. Private.<br>Completely local.
       </h1>
 
-      <!-- Clear Subheadline -->
-      <p class="max-w-3xl mx-auto text-lg sm:text-xl text-crt-muted mb-10 leading-relaxed font-mono">
-        Stop uploading your private media to sluggish cloud converters. Run lossless container remuxing, multi-GPU encoding, and batch queues directly on your own hardware.
+      <!-- Subtitle -->
+      <p class="text-lg sm:text-xl md:text-2xl text-[#86868b] max-w-2xl mx-auto font-normal leading-relaxed mb-10">
+        The ultimate media converter and remuxer for Windows and Android. Convert gigabytes in 1.5 seconds with zero cloud lag and zero monthly fees.
       </p>
 
-      <!-- Rating & Social Proof Badges -->
-      <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-sm sm:text-base font-mono mb-12">
-        <span class="px-4 py-2 rounded-xl bg-crt-amber/15 text-crt-amber border border-crt-amber/40 font-bold">
-          5.0 ★★★★★
-        </span>
-        <span class="text-crt-muted hidden sm:inline">•</span>
-        <span class="px-4 py-2 rounded-xl bg-crt-card text-crt-text border border-crt-border font-bold">
-          Verified Offline Core
-        </span>
-        <span class="text-crt-muted hidden sm:inline">•</span>
-        <span class="px-4 py-2 rounded-xl bg-crt-green/15 text-crt-green border border-crt-green/40 font-bold">
-          ✓ Lifetime License (No Renewals)
-        </span>
-      </div>
-
-      <!-- Hero Call To Action (Scrolls to Editions or Downloads Free) -->
+      <!-- Hero Call-To-Action Pills -->
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-        <a href="#editions" class="cursor-pointer inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 rounded-xl btn-outline-green font-mono text-base sm:text-lg font-bold tracking-wide transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-center shadow-lg w-full sm:w-auto">
-          <span>⚡ GET PRO EDITIONS</span>
-          <span class="text-sm font-normal text-crt-muted">(From $3.99 / ₹299)</span>
-          <span class="text-crt-green font-bold">▾</span>
+        <a href="#editions" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-white text-black font-semibold text-base hover:bg-[#f0f0f2] active:scale-95 transition-all shadow-[0_10px_35px_rgba(255,255,255,0.2)]">
+          <span>⚡ Get Lifetime PRO</span>
+          <span class="text-xs text-black/60 font-medium">(From $3.99 / ₹299)</span>
         </a>
-        <a href="#free-download" class="cursor-pointer inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl border-2 border-crt-border bg-crt-card hover:border-crt-green text-white font-mono text-base font-semibold transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-center w-full sm:w-auto">
-          <span>⬇ DOWNLOAD FREE TIER</span>
+        <a href="#free-download" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white/[0.08] hover:bg-white/[0.14] text-white font-medium text-base border border-white/15 active:scale-95 transition-all">
+          <span>⬇ Download Free Tier</span>
         </a>
       </div>
 
-      <!-- Framed CRT Banner Window -->
-      <div class="relative max-w-4xl mx-auto rounded-2xl border-2 border-crt-green/50 crt-box-glow bg-crt-surface overflow-hidden">
-        <!-- Terminal Header -->
-        <div class="h-10 px-4 bg-crt-card border-b border-crt-border flex items-center justify-between">
-          <div class="flex items-center gap-2">
-            <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
-            <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
-            <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
-          </div>
-          <span class="font-mono text-xs sm:text-sm text-crt-green font-bold tracking-wider">RETROFLUX MEDIA WORKSTATION // GPU ACTIVE</span>
-          <span class="terminal-cursor text-sm">_</span>
-        </div>
+      <!-- Hero App Window Mockup (Apple-Grade Interactive Workstation Interface) -->
+      <div class="relative max-w-4xl mx-auto rounded-3xl border border-white/15 bg-[#0d0d12]/95 backdrop-blur-2xl shadow-[0_30px_90px_rgba(0,0,0,0.85)] overflow-hidden text-left">
         
-        <!-- Banner Image Container -->
-        <div class="relative scanlines">
-          <img src="https://public-files.gumroad.com/f6nuhus5jxc3d4581km37zicu5wn" alt="RetroFlux PRO Terminal Interface" class="w-full h-auto object-cover select-none" />
+        <!-- Mockup Window Header -->
+        <div class="h-11 px-4 bg-white/[0.04] border-b border-white/[0.08] flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-[#ff5f56]/90 border border-[#ff5f56]"></span>
+            <span class="w-3 h-3 rounded-full bg-[#ffbd2e]/90 border border-[#ffbd2e]"></span>
+            <span class="w-3 h-3 rounded-full bg-[#27c93f]/90 border border-[#27c93f]"></span>
+            <span class="ml-3 text-xs font-semibold text-white/90">RetroFlux PRO</span>
+            <span class="text-[11px] text-[#86868b]">v1.3.0 — Local Workstation</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-[#30d158]/10 text-[#30d158] border border-[#30d158]/30">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#30d158] animate-pulse"></span>
+              GPU ACCELERATION ACTIVE
+            </span>
+          </div>
+        </div>
+
+        <!-- App Body -->
+        <div class="p-4 sm:p-6 space-y-5">
+
+          <!-- Presets Toolbar -->
+          <div class="flex flex-wrap items-center gap-2 pb-4 border-b border-white/[0.06]">
+            <span class="text-xs text-[#86868b] mr-1 hidden sm:inline">Engine Presets:</span>
+            <div class="px-3 py-1.5 rounded-xl bg-white text-black text-xs font-bold flex items-center gap-1.5 shadow-sm">
+              <span>⚡ Fast Remux (-c copy)</span>
+              <span class="text-[10px] px-1.5 py-0.2 rounded bg-black/10 text-black/80 font-mono">1.5s</span>
+            </div>
+            <div class="px-3 py-1.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] text-white/80 text-xs font-medium border border-white/10 transition-colors">
+              H.264 / HEVC (NVENC)
+            </div>
+            <div class="px-3 py-1.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] text-white/80 text-xs font-medium border border-white/10 transition-colors hidden sm:block">
+              Intel QuickSync (QSV)
+            </div>
+            <div class="px-3 py-1.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] text-white/80 text-xs font-medium border border-white/10 transition-colors hidden md:block">
+              WebM VP9 High-Bitrate
+            </div>
+            <div class="px-3 py-1.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] text-white/80 text-xs font-medium border border-white/10 transition-colors">
+              Audio Extract (MP3)
+            </div>
+          </div>
+
+          <!-- Active Queue Cards -->
+          <div class="space-y-3">
+
+            <!-- Card 1: Instant Remux -->
+            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition-all">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2.5">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-[#30d158]/15 border border-[#30d158]/30 flex items-center justify-center text-lg">
+                    ⚡
+                  </div>
+                  <div>
+                    <div class="text-sm font-semibold text-white tracking-tight flex items-center gap-2">
+                      <span>4K_Cinematic_Sequence_RAW.mkv</span>
+                      <span class="text-[#86868b] text-xs">➔</span>
+                      <span class="text-[#30d158]">Sequence.mp4</span>
+                    </div>
+                    <div class="text-[11px] text-[#86868b]">3.84 GB • 3840×2160 @ 60fps • 5.1 Surround Passthrough</div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2 self-start sm:self-auto">
+                  <span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-[#30d158]/20 text-[#30d158] border border-[#30d158]/40">
+                    ✓ STREAM COPIED (1.4s)
+                  </span>
+                </div>
+              </div>
+
+              <!-- Shimmer Progress Track -->
+              <div class="w-full h-1.5 rounded-full bg-white/10 overflow-hidden relative">
+                <div class="w-full h-full bg-[#30d158] rounded-full"></div>
+              </div>
+
+              <div class="flex items-center justify-between mt-2 text-[10px] sm:text-[11px] text-[#86868b]">
+                <span class="text-white/80 font-mono">Speed: 2,450 FPS (Zero CPU Encoding Overhead)</span>
+                <span class="text-[#30d158] font-medium">100% Lossless Bit-for-Bit Copy</span>
+              </div>
+            </div>
+
+            <!-- Card 2: GPU Encoding -->
+            <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-white/20 transition-all">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center text-lg">
+                    🎬
+                  </div>
+                  <div>
+                    <div class="text-sm font-semibold text-white tracking-tight flex items-center gap-2">
+                      <span>Sony_FX3_Podcast_Studio.mov</span>
+                      <span class="text-[#86868b] text-xs">➔</span>
+                      <span class="text-white">Podcast_Master.mp4</span>
+                    </div>
+                    <div class="text-[11px] text-[#86868b]">6.20 GB • 4K Rec.709 • NVIDIA NVENC Hardware Pipeline</div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2 self-start sm:self-auto">
+                  <span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-white/10 text-white/90 border border-white/15">
+                    GPU ENCODING (14.2s)
+                  </span>
+                </div>
+              </div>
+              <div class="w-full h-1.5 rounded-full bg-white/10 overflow-hidden relative">
+                <div class="w-full h-full bg-[#2997ff] rounded-full"></div>
+              </div>
+              <div class="flex items-center justify-between mt-2 text-[10px] sm:text-[11px] text-[#86868b]">
+                <span class="text-white/80 font-mono">Output: H.264 High Profile • 45 Mbps</span>
+                <span class="text-[#2997ff] font-medium">GPU VRAM: 1.8 GB Active</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bottom Telemetry Tray -->
+          <div class="pt-3 border-t border-white/[0.06] flex flex-wrap items-center justify-between gap-3 text-[11px] text-[#86868b]">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-[#30d158]"></span>
+              <span class="text-white/90 font-medium">Privacy Status:</span>
+              <span>100% Air-Gapped Local Machine</span>
+            </div>
+            <div class="flex items-center gap-3 font-mono text-[10px]">
+              <span>Remote Uploads: 0 bytes</span>
+              <span>•</span>
+              <span>Cloud Latency: 0.00ms</span>
+            </div>
+          </div>
+
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- ================= CORE CAPABILITIES (FEATURES) ================= -->
-  <section id="features" class="py-16 md:py-24 border-t border-crt-border bg-crt-surface/60">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+  <!-- ================= BENTO FEATURE GRID ================= -->
+  <section id="features" class="py-20 md:py-28 border-t border-white/[0.08] relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
       
       <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <div class="inline-block px-3 py-1 rounded bg-crt-green/10 border border-crt-green/30 text-crt-green font-mono text-xs font-bold mb-3 tracking-widest">
-          // ARCHITECTURE & CAPABILITIES
-        </div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4 tracking-tight font-mono">
-          Engineered for Maximum Local Performance
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="headline-gradient text-3xl sm:text-5xl font-bold tracking-tight mb-4">
+          Engineered for Pure Performance
         </h2>
-        <p class="text-crt-muted text-base sm:text-lg leading-relaxed font-mono">
-          Daily audio & video conversion with zero cloud lag, zero privacy leaks, and zero recurring fees.
+        <p class="text-[#86868b] text-base sm:text-lg">
+          Daily audio & video conversion with zero cloud lag, zero data harvesting, and zero recurring fees.
         </p>
       </div>
 
-      <!-- 6 Feature Cards Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      <!-- Bento Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-        <!-- Card 1 -->
-        <div class="p-7 rounded-2xl border border-crt-border bg-crt-card hover:border-crt-green/60 transition-all group crt-box-glow">
-          <div class="w-12 h-12 rounded-xl bg-crt-green/10 border border-crt-green/30 flex items-center justify-center text-crt-green font-mono text-2xl font-bold mb-5 group-hover:scale-105 transition-transform">
-            ⚡
+        <!-- Card 1 (Span 2) -->
+        <div class="md:col-span-2 glass-panel rounded-3xl p-8 sm:p-10 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-xl mb-6">⚡</div>
+            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-3 tracking-tight">Instant Stream Copy (-c copy)</h3>
+            <p class="text-[#86868b] text-base leading-relaxed max-w-xl">
+              Change container formats (e.g. MKV to MP4, MOV to MKV) in 1 to 2 seconds. Zero re-encoding, zero CPU burn, and 100% lossless bit-for-bit fidelity.
+            </p>
           </div>
-          <h3 class="text-xl font-bold font-mono text-white mb-3 group-hover:text-crt-green transition-colors">
-            Fast Remux (Stream Copy)
-          </h3>
-          <p class="text-base text-crt-muted leading-relaxed font-mono">
-            Change container formats (e.g. MKV to MP4, MOV to MKV) in <strong class="text-crt-green">1–2 seconds</strong> with zero re-encoding, zero CPU burn, and 100% lossless video fidelity.
-          </p>
+          <div class="mt-8 pt-6 border-t border-white/[0.06] flex items-center gap-3 text-xs text-white/70">
+            <span class="px-3 py-1 rounded-full bg-white/10 text-white font-mono">1.5s Execution</span>
+            <span>•</span>
+            <span>Zero Quality Loss</span>
+          </div>
         </div>
 
         <!-- Card 2 -->
-        <div class="p-7 rounded-2xl border border-crt-border bg-crt-card hover:border-crt-green/60 transition-all group crt-box-glow">
-          <div class="w-12 h-12 rounded-xl bg-crt-green/10 border border-crt-green/30 flex items-center justify-center text-crt-green font-mono text-2xl font-bold mb-5 group-hover:scale-105 transition-transform">
-            🚀
+        <div class="glass-panel rounded-3xl p-8 sm:p-10 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-xl mb-6">🔒</div>
+            <h3 class="text-2xl font-bold text-white mb-3 tracking-tight">100% Air-Gapped Privacy</h3>
+            <p class="text-[#86868b] text-base leading-relaxed">
+              No files are ever uploaded to a remote server. Your confidential media remains strictly stored on your own local hard drive.
+            </p>
           </div>
-          <h3 class="text-xl font-bold font-mono text-white mb-3 group-hover:text-crt-green transition-colors">
-            Multi-GPU Auto-Detection
-          </h3>
-          <p class="text-base text-crt-muted leading-relaxed font-mono">
-            Native hardware video encoding on <strong class="text-white">NVIDIA (NVENC)</strong>, <strong class="text-white">Intel (QuickSync)</strong>, and <strong class="text-white">AMD (AMF)</strong>, with dynamic fallback to multicore CPU.
-          </p>
+          <div class="mt-8 pt-6 border-t border-white/[0.06] text-xs text-white/70">
+            <span>Zero Telemetry or Cloud Tracking</span>
+          </div>
         </div>
 
         <!-- Card 3 -->
-        <div class="p-7 rounded-2xl border border-crt-border bg-crt-card hover:border-crt-green/60 transition-all group crt-box-glow">
-          <div class="w-12 h-12 rounded-xl bg-crt-green/10 border border-crt-green/30 flex items-center justify-center text-crt-green font-mono text-2xl font-bold mb-5 group-hover:scale-105 transition-transform">
-            🔒
+        <div class="glass-panel rounded-3xl p-8 sm:p-10 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-xl mb-6">🚀</div>
+            <h3 class="text-2xl font-bold text-white mb-3 tracking-tight">Hardware Acceleration</h3>
+            <p class="text-[#86868b] text-base leading-relaxed">
+              Native auto-probing for NVIDIA NVENC, Intel QuickSync (QSV), AMD AMF, and Android MediaCodec GPU pipelines.
+            </p>
           </div>
-          <h3 class="text-xl font-bold font-mono text-white mb-3 group-hover:text-crt-green transition-colors">
-            100% Offline & Air-Gapped
-          </h3>
-          <p class="text-base text-crt-muted leading-relaxed font-mono">
-            Zero cloud uploads. Zero telemetry. RetroFlux operates completely air-gapped on your computer and never phones home.
-          </p>
+          <div class="mt-8 pt-6 border-t border-white/[0.06] text-xs text-white/70">
+            <span>Up to 12x Faster Encoding</span>
+          </div>
         </div>
 
         <!-- Card 4 -->
-        <div class="p-7 rounded-2xl border border-crt-border bg-crt-card hover:border-crt-green/60 transition-all group crt-box-glow">
-          <div class="w-12 h-12 rounded-xl bg-crt-green/10 border border-crt-green/30 flex items-center justify-center text-crt-green font-mono text-2xl font-bold mb-5 group-hover:scale-105 transition-transform">
-            📁
+        <div class="glass-panel rounded-3xl p-8 sm:p-10 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-xl mb-6">📦</div>
+            <h3 class="text-2xl font-bold text-white mb-3 tracking-tight">Universal Codec Suite</h3>
+            <p class="text-[#86868b] text-base leading-relaxed">
+              Export to MP4, MKV, MOV, WebM, high-bitrate MP3, WAV, AAC, and optimized 2-pass Lanczos animated GIFs.
+            </p>
           </div>
-          <h3 class="text-xl font-bold font-mono text-white mb-3 group-hover:text-crt-green transition-colors">
-            Unlimited Batch Queue
-          </h3>
-          <p class="text-base text-crt-muted leading-relaxed font-mono">
-            Import hundreds of files or entire folders at once. Batch process sequentially with real-time ETA, frame rate, and progress parsing.
-          </p>
+          <div class="mt-8 pt-6 border-t border-white/[0.06] text-xs text-white/70">
+            <span>Embedded Standalone FFmpeg</span>
+          </div>
         </div>
 
         <!-- Card 5 -->
-        <div class="p-7 rounded-2xl border border-crt-border bg-crt-card hover:border-crt-green/60 transition-all group crt-box-glow">
-          <div class="w-12 h-12 rounded-xl bg-crt-green/10 border border-crt-green/30 flex items-center justify-center text-crt-green font-mono text-2xl font-bold mb-5 group-hover:scale-105 transition-transform">
-            🎨
+        <div class="glass-panel rounded-3xl p-8 sm:p-10 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-xl mb-6">♾️</div>
+            <h3 class="text-2xl font-bold text-white mb-3 tracking-tight">Unlimited Batch Queues</h3>
+            <p class="text-[#86868b] text-base leading-relaxed">
+              Process hundreds of videos and audio tracks in continuous batch queues. No artificial daily caps or file size ceilings.
+            </p>
           </div>
-          <h3 class="text-xl font-bold font-mono text-white mb-3 group-hover:text-crt-green transition-colors">
-            Adaptive Triple-Theme Engine
-          </h3>
-          <p class="text-base text-crt-muted leading-relaxed font-mono">
-            Switch effortlessly between <strong class="text-crt-green">Retro CRT Phosphor Terminal</strong>, <strong class="text-white">Material 3 Light</strong>, and <strong class="text-white">Material 3 Dark</strong> inside the app.
-          </p>
-        </div>
-
-        <!-- Card 6 -->
-        <div class="p-7 rounded-2xl border border-crt-border bg-crt-card hover:border-crt-green/60 transition-all group crt-box-glow">
-          <div class="w-12 h-12 rounded-xl bg-crt-green/10 border border-crt-green/30 flex items-center justify-center text-crt-green font-mono text-2xl font-bold mb-5 group-hover:scale-105 transition-transform">
-            🎬
+          <div class="mt-8 pt-6 border-t border-white/[0.06] text-xs text-white/70">
+            <span>Multi-Core Parallel Queue</span>
           </div>
-          <h3 class="text-xl font-bold font-mono text-white mb-3 group-hover:text-crt-green transition-colors">
-            Production Formats & Presets
-          </h3>
-          <p class="text-base text-crt-muted leading-relaxed font-mono">
-            Presets for MP4, MKV, MOV, AVI, WebM (VP9/Opus), high-bitrate 320kbps MP3 audio extraction, and 2-Pass Lanczos animated GIFs.
-          </p>
         </div>
 
       </div>
@@ -417,386 +460,342 @@
     </div>
   </section>
 
-  <!-- ================= COMPARISON MATRIX (VS CLOUD) ================= -->
-  <section id="comparison" class="py-16 md:py-24 border-t border-crt-border">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+  <!-- ================= RETROFLUX VS CLOUD ================= -->
+  <section id="comparison" class="py-20 md:py-28 border-t border-white/[0.08]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
       
-      <div class="text-center mb-14">
-        <div class="inline-block px-3 py-1 rounded bg-crt-amber/10 border border-crt-amber/30 text-crt-amber font-mono text-xs font-bold mb-3 tracking-widest">
-          // BENCHMARK COMPARISON
-        </div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4 font-mono">
-          Local Hardware vs. Cloud Converters
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="headline-gradient text-3xl sm:text-5xl font-bold tracking-tight mb-4">
+          Why Local Beats Cloud
         </h2>
-        <p class="text-crt-muted text-base sm:text-lg font-mono">
-          Why local GPU processing outclasses third-party conversion websites.
+        <p class="text-[#86868b] text-base sm:text-lg">
+          Cloud converters compromise your privacy, throttle bandwidth, and charge recurring fees.
         </p>
       </div>
 
-      <div class="overflow-x-auto rounded-2xl border-2 border-crt-border bg-crt-card shadow-2xl">
-        <table class="w-full text-left font-mono text-sm sm:text-base">
-          <thead>
-            <tr class="border-b-2 border-crt-border bg-crt-surface text-xs sm:text-sm font-bold tracking-wider">
-              <th class="py-4 px-6 text-crt-muted">CRITERIA</th>
-              <th class="py-4 px-6 text-rose-400">CLOUD CONVERTERS</th>
-              <th class="py-4 px-6 text-crt-green font-extrabold crt-glow">RETROFLUX PRO</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-crt-border text-crt-text">
-            <tr class="hover:bg-crt-cardhover transition-colors">
-              <td class="py-4 px-6 font-bold text-white">Privacy & Security</td>
-              <td class="py-4 px-6 text-rose-300">Uploaded to remote 3rd-party servers</td>
-              <td class="py-4 px-6 text-crt-green font-bold">100% on your device (Air-gapped)</td>
-            </tr>
-            <tr class="hover:bg-crt-cardhover transition-colors">
-              <td class="py-4 px-6 font-bold text-white">Remux Speed (Container Swap)</td>
-              <td class="py-4 px-6 text-rose-300">Slow (Upload + Encode + Download)</td>
-              <td class="py-4 px-6 text-crt-green font-bold">1–2 Seconds (Instant Stream Copy)</td>
-            </tr>
-            <tr class="hover:bg-crt-cardhover transition-colors">
-              <td class="py-4 px-6 font-bold text-white">File Size Restriction</td>
-              <td class="py-4 px-6 text-rose-300">Capped at 50MB – 100MB unless paid</td>
-              <td class="py-4 px-6 text-crt-green font-bold">Unlimited (Gigabytes & 4K/8K)</td>
-            </tr>
-            <tr class="hover:bg-crt-cardhover transition-colors">
-              <td class="py-4 px-6 font-bold text-white">Billing Model</td>
-              <td class="py-4 px-6 text-rose-300">Recurring ($10 – $20 / month)</td>
-              <td class="py-4 px-6 text-crt-green font-bold">One-Time Lifetime Ownership</td>
-            </tr>
-            <tr class="hover:bg-crt-cardhover transition-colors">
-              <td class="py-4 px-6 font-bold text-white">Internet Bandwidth</td>
-              <td class="py-4 px-6 text-rose-300">Heavy upload/download bandwidth required</td>
-              <td class="py-4 px-6 text-crt-green font-bold">Zero internet needed</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="glass-panel rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+        <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/[0.08]">
+          
+          <!-- Column 1: Feature -->
+          <div class="p-6 sm:p-8 space-y-6 bg-white/[0.01]">
+            <div class="text-xs font-semibold text-[#86868b] tracking-wider uppercase">Comparison Metric</div>
+            <div class="space-y-6 text-sm sm:text-base font-medium text-white/90">
+              <div class="h-10 flex items-center">Privacy & Data Security</div>
+              <div class="h-10 flex items-center">Conversion Speed</div>
+              <div class="h-10 flex items-center">File Size Ceiling</div>
+              <div class="h-10 flex items-center">Pricing Model</div>
+              <div class="h-10 flex items-center">Internet Dependency</div>
+            </div>
+          </div>
+
+          <!-- Column 2: Cloud -->
+          <div class="p-6 sm:p-8 space-y-6 bg-white/[0.01]">
+            <div class="text-xs font-semibold text-rose-400 tracking-wider uppercase">Cloud Converters</div>
+            <div class="space-y-6 text-sm sm:text-base text-[#86868b]">
+              <div class="h-10 flex items-center text-rose-300">Uploaded to third-party servers</div>
+              <div class="h-10 flex items-center">Slow (Upload + Queue + Download)</div>
+              <div class="h-10 flex items-center">Capped at 50MB – 100MB</div>
+              <div class="h-10 flex items-center text-rose-300">Recurring ($10 – $20 / month)</div>
+              <div class="h-10 flex items-center">Requires high-speed internet</div>
+            </div>
+          </div>
+
+          <!-- Column 3: RetroFlux PRO -->
+          <div class="p-6 sm:p-8 space-y-6 bg-white/[0.03]">
+            <div class="text-xs font-semibold text-[#30d158] tracking-wider uppercase">RetroFlux PRO</div>
+            <div class="space-y-6 text-sm sm:text-base font-semibold text-white">
+              <div class="h-10 flex items-center text-[#30d158]">✓ 100% Offline (Never leaves PC)</div>
+              <div class="h-10 flex items-center text-[#30d158]">✓ 1–2 Seconds (Instant Stream Copy)</div>
+              <div class="h-10 flex items-center text-[#30d158]">✓ Unlimited (Gigabytes & 4K/8K)</div>
+              <div class="h-10 flex items-center text-[#30d158]">✓ One-Time Lifetime Ownership</div>
+              <div class="h-10 flex items-center text-[#30d158]">✓ Zero internet needed</div>
+            </div>
+          </div>
+
+        </div>
       </div>
 
     </div>
   </section>
 
-  <!-- ================= EDITIONS & PRICING (BUY SECTION) ================= -->
-  <section id="editions" class="py-16 md:py-24 border-t border-crt-border bg-crt-surface/80">
-    <div id="free-download" class="max-w-7xl mx-auto px-4 sm:px-6">
+  <!-- ================= EDITIONS & PRICING ================= -->
+  <section id="editions" class="py-20 md:py-28 border-t border-white/[0.08] relative">
+    <div id="free-download" class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
       
       <!-- Section Header -->
-      <div class="text-center max-w-2xl mx-auto mb-14">
-        <div class="inline-block px-3 py-1 rounded bg-crt-green/10 border border-crt-green/30 text-crt-green font-mono text-xs font-bold mb-3 tracking-widest">
-          // STORE CATALOG & TIERS
-        </div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4 font-mono">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="headline-gradient text-3xl sm:text-5xl font-bold tracking-tight mb-4">
           Choose Your Edition
         </h2>
-        <p class="text-crt-muted text-base sm:text-lg font-mono">
-          Start for free or upgrade to Lifetime PRO. Zero recurring fees, zero subscription lock-in.
+        <p class="text-[#86868b] text-base sm:text-lg">
+          Start with the Free Community Edition or unlock Lifetime PRO. Zero recurring fees.
         </p>
       </div>
 
-      <!-- 4 Tier Cards Grid (Free Community + 3 Pro Editions) -->
-      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch font-mono">
+      <!-- 4 Tier Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
 
-        <!-- Tier 0: Free Community Edition -->
-        <div class="relative flex flex-col justify-between p-6 sm:p-7 rounded-2xl border-2 border-white/20 bg-crt-card/90 crt-box-glow hover:border-white/40 transition-all">
-          <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded text-[11px] font-extrabold tracking-wider bg-white/10 text-white border border-white/20 whitespace-nowrap shadow-md">
-            🆓 100% FREE FOREVER
-          </div>
-
+        <!-- Tier 0: Free Community -->
+        <div class="glass-panel rounded-3xl p-6 sm:p-7 flex flex-col justify-between">
           <div>
-            <div class="text-xs font-bold text-crt-muted mb-3 mt-1 tracking-wider">
-              [ 🆓 COMMUNITY EDITION ]
+            <div class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-white/10 text-white/80 border border-white/15 mb-4">
+              Free Forever
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Community Edition</h3>
+            
+            <div class="flex items-baseline gap-1.5 mb-4">
+              <span class="text-4xl font-extrabold text-white font-mono">$0</span>
+              <span class="text-xs text-[#86868b]">/ ₹0</span>
             </div>
             
-            <div class="flex items-baseline gap-1.5 mb-2">
-              <span class="text-3xl sm:text-4xl font-extrabold text-white font-mono">$0</span>
-              <span class="text-xs text-crt-muted font-mono">/ ₹0</span>
-              <span class="text-xs text-crt-green font-bold">Free Forever</span>
-            </div>
-            
-            <p class="text-xs text-crt-muted mb-5 leading-relaxed">
-              Standalone offline build for casual daily media tasks. No registration or credit cards required.
+            <p class="text-xs text-[#86868b] mb-6 leading-relaxed">
+              Standalone offline build for casual daily tasks. No registration or credit cards required.
             </p>
 
-            <ul class="space-y-2.5 text-xs text-crt-text mb-6 border-t border-crt-border pt-5">
+            <ul class="space-y-3 text-xs text-white/80 mb-8 border-t border-white/[0.08] pt-6">
               <li class="flex items-center gap-2">
-                <span class="text-crt-green font-bold">✓</span>
-                <span>Windows 64-bit Portable Executable</span>
+                <span class="text-[#30d158] font-bold">✓</span>
+                <span>Windows 64-bit Portable (.exe)</span>
               </li>
               <li class="flex items-center gap-2">
-                <span class="text-crt-green font-bold">✓</span>
+                <span class="text-[#30d158] font-bold">✓</span>
                 <span>Android Mobile Release APK</span>
               </li>
               <li class="flex items-center gap-2">
-                <span class="text-crt-green font-bold">✓</span>
-                <span>Instant Stream Copy (<code class="text-crt-green">-c copy</code>)</span>
+                <span class="text-[#30d158] font-bold">✓</span>
+                <span>Instant Stream Copy (-c copy)</span>
               </li>
-              <li class="flex items-center gap-2">
-                <span class="text-crt-green font-bold">✓</span>
-                <span>Standard audio & video presets</span>
-              </li>
-              <li class="flex items-center gap-2 text-crt-muted">
-                <span class="text-amber-400 font-bold">!</span>
+              <li class="flex items-center gap-2 text-[#86868b]">
+                <span class="text-amber-400 font-bold">•</span>
                 <span>2-file queue limit per session</span>
-              </li>
-              <li class="flex items-center gap-2 text-crt-muted">
-                <span class="text-amber-400 font-bold">!</span>
-                <span>No hardware-locked PRO key</span>
               </li>
             </ul>
           </div>
 
-          <div class="space-y-2 pt-3 border-t border-crt-border/60">
-            <a href="https://github.com/bonnoxkush/retroflux-releases/releases/download/v1.3.0/RetroFlux.exe" class="cursor-pointer block text-center w-full py-2.5 px-3 rounded-xl bg-crt-green/15 text-crt-green border border-crt-green/40 text-xs font-bold hover:bg-crt-green hover:text-black transition-all active:scale-95 shadow-md">
-              ⬇ Free Windows (.exe)
+          <div class="space-y-2 pt-4 border-t border-white/[0.08]">
+            <a href="https://github.com/bonnoxkush/retroflux-releases/releases/download/v1.3.0/RetroFlux.exe" class="block text-center w-full py-2.5 px-3 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold active:scale-95 transition-all">
+              ⬇ Download Windows (.exe)
             </a>
-            <a href="https://github.com/bonnoxkush/retroflux-releases/releases/download/v1.3.0/RetroFlux-v1.3.0-release.apk" class="cursor-pointer block text-center w-full py-2 px-3 rounded-xl bg-crt-card border border-crt-border text-white text-xs font-bold hover:border-crt-amber hover:text-crt-amber transition-all active:scale-95 shadow-md">
-              ⬇ Free Android (.apk)
+            <a href="https://github.com/bonnoxkush/retroflux-releases/releases/download/v1.3.0/RetroFlux-v1.3.0-release.apk" class="block text-center w-full py-2 px-3 rounded-full bg-transparent hover:bg-white/[0.06] text-[#86868b] hover:text-white text-xs font-medium active:scale-95 transition-all">
+              ⬇ Download Android (.apk)
             </a>
           </div>
         </div>
 
         <!-- Tier 1: Mobile Edition -->
-        <div class="relative flex flex-col justify-between p-6 sm:p-7 rounded-2xl border border-crt-border bg-crt-card crt-box-glow hover:border-crt-green/50 transition-all">
+        <div class="glass-panel rounded-3xl p-6 sm:p-7 flex flex-col justify-between">
           <div>
-            <div class="text-xs font-bold text-crt-muted mb-3 mt-1 tracking-wider">
-              [ 📱 MOBILE EDITION ]
+            <div class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-white/10 text-white/80 border border-white/15 mb-4">
+              Mobile Device
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Mobile Edition</h3>
+            
+            <div class="flex items-baseline gap-1.5 mb-4">
+              <span class="text-4xl font-extrabold text-white font-mono">$3.99</span>
+              <span class="text-xs text-[#86868b]">/ ₹299</span>
             </div>
             
-            <div class="flex items-baseline gap-1.5 mb-2">
-              <span class="text-3xl sm:text-4xl font-extrabold text-white font-mono">$3.99</span>
-              <span class="text-xs text-crt-muted font-mono">/ ₹299</span>
-              <span class="text-xs text-crt-muted">one-time</span>
-            </div>
-            
-            <p class="text-xs text-crt-muted mb-5 leading-relaxed">
-              For smartphones and tablets. Hardware video transcoding on Android.
+            <p class="text-xs text-[#86868b] mb-6 leading-relaxed">
+              For Android smartphones and tablets. Hardware video transcoding on the go.
             </p>
 
-            <ul class="space-y-2.5 text-xs text-crt-text mb-6 border-t border-crt-border pt-5">
+            <ul class="space-y-3 text-xs text-white/80 mb-8 border-t border-white/[0.08] pt-6">
               <li class="flex items-center gap-2">
-                <span class="text-crt-green font-bold">✓</span>
-                <span>Android Release APK (<code class="text-crt-green">API 24+</code>)</span>
+                <span class="text-[#30d158] font-bold">✓</span>
+                <span>Android Release APK (API 24+)</span>
               </li>
               <li class="flex items-center gap-2">
-                <span class="text-crt-green font-bold">✓</span>
+                <span class="text-[#30d158] font-bold">✓</span>
                 <span>Mobile MediaCodec GPU encoding</span>
               </li>
               <li class="flex items-center gap-2">
-                <span class="text-crt-green font-bold">✓</span>
-                <span>Instant Stream Copy (<code class="text-crt-green">-c copy</code>)</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="text-crt-green font-bold">✓</span>
-                <span>Unique Mobile Key (<code class="text-crt-green">RFMOB-...</code>)</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="text-crt-green font-bold">✓</span>
+                <span class="text-[#30d158] font-bold">✓</span>
                 <span>Unlimited batch queue</span>
               </li>
               <li class="flex items-center gap-2">
-                <span class="text-crt-green font-bold">✓</span>
-                <span>Single-Device Mobile Hardware Lock</span>
+                <span class="text-[#30d158] font-bold">✓</span>
+                <span>Unique Mobile Key (RFMOB-)</span>
               </li>
             </ul>
           </div>
 
-          <button onclick="openCheckout('mobile', 'Mobile Edition', '3.99', '299')" class="cursor-pointer block text-center w-full py-3.5 px-4 rounded-xl btn-outline-green text-xs sm:text-sm font-bold transition-all active:scale-95 shadow-md">
-            ⚡ Buy Mobile — $3.99 / ₹299
+          <button onclick="openCheckout('mobile', 'Mobile Edition', '3.99', '299')" class="cursor-pointer block text-center w-full py-3 px-4 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold active:scale-95 transition-all">
+            Buy Mobile — ₹299 / $3.99
           </button>
         </div>
 
-        <!-- Tier 2: Desktop Edition (Featured / Most Popular) -->
-        <div class="relative flex flex-col justify-between p-6 sm:p-7 rounded-2xl border-2 border-crt-green bg-crt-card crt-box-glow shadow-2xl">
-          <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded badge-dark-on-green text-[11px] font-extrabold tracking-wider whitespace-nowrap shadow-lg">
-            ⭐ MOST POPULAR FOR CREATORS
+        <!-- Tier 2: Desktop Edition (Featured) -->
+        <div class="glass-card-featured rounded-3xl p-6 sm:p-7 flex flex-col justify-between relative">
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#30d158] text-black shadow-lg">
+            ⭐ Most Popular
           </div>
 
           <div>
-            <div class="text-xs font-bold text-crt-green mb-3 mt-1 tracking-wider">
-              [ 💻 DESKTOP EDITION ]
+            <div class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-[#30d158]/20 text-[#30d158] border border-[#30d158]/30 mb-4 mt-2">
+              Windows PC Workstation
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Desktop Edition</h3>
+            
+            <div class="flex items-baseline gap-1.5 mb-4">
+              <span class="text-4xl font-extrabold text-white font-mono">$8.99</span>
+              <span class="text-xs text-[#86868b]">/ ₹699</span>
             </div>
             
-            <div class="flex items-baseline gap-1.5 mb-2">
-              <span class="text-3xl sm:text-4xl font-extrabold text-white font-mono">$8.99</span>
-              <span class="text-xs text-crt-muted font-mono">/ ₹699</span>
-              <span class="text-xs text-crt-muted">one-time</span>
-            </div>
-            
-            <p class="text-xs text-crt-muted mb-5 leading-relaxed">
+            <p class="text-xs text-[#86868b] mb-6 leading-relaxed">
               Complete standalone media workstation for Windows 10 & 11 PCs.
             </p>
 
-            <ul class="space-y-2.5 text-xs text-crt-text mb-6 border-t border-crt-border pt-5">
+            <ul class="space-y-3 text-xs text-white mb-8 border-t border-white/[0.08] pt-6">
               <li class="flex items-center gap-2">
-                <span class="text-crt-green font-bold">✓</span>
-                <span>Windows 64-bit Portable Executable</span>
+                <span class="text-[#30d158] font-bold">✓</span>
+                <span>Windows 64-bit Portable (.exe)</span>
               </li>
               <li class="flex items-center gap-2">
-                <span class="text-crt-green font-bold">✓</span>
+                <span class="text-[#30d158] font-bold">✓</span>
                 <span>Embedded FFmpeg included</span>
               </li>
               <li class="flex items-center gap-2">
-                <span class="text-crt-green font-bold">✓</span>
+                <span class="text-[#30d158] font-bold">✓</span>
                 <span>NVIDIA NVENC, Intel QSV & AMD AMF</span>
               </li>
               <li class="flex items-center gap-2">
-                <span class="text-crt-green font-bold">✓</span>
-                <span>Single-Device Hardware Lock (PC Seat)</span>
+                <span class="text-[#30d158] font-bold">✓</span>
+                <span>Unlimited batch queue</span>
               </li>
               <li class="flex items-center gap-2">
-                <span class="text-crt-green font-bold">✓</span>
-                <span>Unique Desktop Key (<code class="text-crt-green">RFPC-...</code>)</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="text-crt-green font-bold">✓</span>
-                <span>Unlimited batch queues & workflows</span>
+                <span class="text-[#30d158] font-bold">✓</span>
+                <span>Unique Desktop Key (RFPC-)</span>
               </li>
             </ul>
           </div>
 
-          <button onclick="openCheckout('desktop', 'Desktop Edition', '8.99', '699')" class="cursor-pointer block text-center w-full py-3.5 px-4 rounded-xl btn-outline-green text-xs sm:text-sm font-bold transition-all active:scale-95 shadow-lg">
-            ⚡ Buy Desktop — $8.99 / ₹699
+          <button onclick="openCheckout('desktop', 'Desktop Edition', '8.99', '699')" class="cursor-pointer block text-center w-full py-3.5 px-4 rounded-full bg-white text-black text-xs sm:text-sm font-bold active:scale-95 transition-all shadow-[0_10px_30px_rgba(255,255,255,0.25)] hover:bg-[#eaeaea]">
+            ⚡ Buy Desktop — ₹699 / $8.99
           </button>
         </div>
 
-        <!-- Tier 3: All-Access Master Bundle (Best Value) -->
-        <div class="relative flex flex-col justify-between p-6 sm:p-7 rounded-2xl border-2 border-crt-amber/80 bg-crt-card amber-box-glow">
-          <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded badge-dark-on-amber text-[11px] font-extrabold tracking-wider whitespace-nowrap shadow-lg">
-            ⚡ BEST VALUE // ALL-ACCESS
+        <!-- Tier 3: All-Access Master Bundle -->
+        <div class="glass-card-bundle rounded-3xl p-6 sm:p-7 flex flex-col justify-between relative">
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#ffd60a] text-black shadow-lg">
+            ⚡ Best Value
           </div>
 
           <div>
-            <div class="text-xs font-bold text-crt-amber mb-3 mt-1 tracking-wider">
-              [ ⚡ ALL-ACCESS MASTER BUNDLE ]
+            <div class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-[#ffd60a]/20 text-[#ffd60a] border border-[#ffd60a]/30 mb-4 mt-2">
+              Windows + Android
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Master Bundle</h3>
+            
+            <div class="flex items-baseline gap-1.5 mb-4">
+              <span class="text-4xl font-extrabold text-white font-mono">$11.99</span>
+              <span class="text-xs text-[#86868b]">/ ₹899</span>
             </div>
             
-            <div class="flex items-baseline gap-1.5 mb-2">
-              <span class="text-3xl sm:text-4xl font-extrabold text-white font-mono">$11.99</span>
-              <span class="text-xs text-crt-muted font-mono">/ ₹899</span>
-              <span class="text-xs text-crt-muted">one-time</span>
-            </div>
-            
-            <p class="text-xs text-crt-muted mb-5 leading-relaxed">
+            <p class="text-xs text-[#86868b] mb-6 leading-relaxed">
               Complete dual-platform package. Both PC & Android apps with master key.
             </p>
 
-            <ul class="space-y-2.5 text-xs text-crt-text mb-6 border-t border-crt-border pt-5">
+            <ul class="space-y-3 text-xs text-white mb-8 border-t border-white/[0.08] pt-6">
               <li class="flex items-center gap-2">
-                <span class="text-crt-amber font-bold">✓</span>
-                <span><strong class="text-white">Both Windows .exe AND Android APK</strong></span>
+                <span class="text-[#ffd60a] font-bold">✓</span>
+                <span>Both Windows .exe AND Android APK</span>
               </li>
               <li class="flex items-center gap-2">
-                <span class="text-crt-amber font-bold">✓</span>
-                <span><strong class="text-white">Master Key (1 PC + 1 Mobile Seat)</strong></span>
+                <span class="text-[#ffd60a] font-bold">✓</span>
+                <span>Master Key (1 PC + 1 Mobile Seat)</span>
               </li>
               <li class="flex items-center gap-2">
-                <span class="text-crt-amber font-bold">✓</span>
-                <span>Unique Master Key (<code class="text-crt-amber">RFPRO-...</code>)</span>
+                <span class="text-[#ffd60a] font-bold">✓</span>
+                <span>All GPU engines & stream remuxing</span>
               </li>
               <li class="flex items-center gap-2">
-                <span class="text-crt-amber font-bold">✓</span>
-                <span>All GPU engines & stream-copy remuxing</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="text-crt-amber font-bold">✓</span>
-                <span>Unlimited batch queue on both devices</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="text-crt-amber font-bold">✓</span>
-                <span>Lifetime priority updates</span>
+                <span class="text-[#ffd60a] font-bold">✓</span>
+                <span>Unlimited batch queue</span>
               </li>
             </ul>
           </div>
 
-          <button onclick="openCheckout('bundle', 'All-Access Master Bundle', '11.99', '899')" class="cursor-pointer block text-center w-full py-3.5 px-4 rounded-xl btn-outline-green text-xs sm:text-sm font-bold transition-all active:scale-95 shadow-lg">
-            ⚡ Get Bundle — $11.99 / ₹899
+          <button onclick="openCheckout('bundle', 'All-Access Master Bundle', '11.99', '899')" class="cursor-pointer block text-center w-full py-3.5 px-4 rounded-full bg-[#ffd60a] text-black text-xs sm:text-sm font-bold active:scale-95 transition-all shadow-[0_10px_30px_rgba(255,214,10,0.3)] hover:brightness-110">
+            ⚡ Get Bundle — ₹899 / $11.99
           </button>
         </div>
 
       </div>
 
-      <!-- Comprehensive Tier Comparison Matrix -->
-      <div class="mt-16 overflow-x-auto">
+      <!-- Feature Comparison Table -->
+      <div class="mt-20 glass-panel rounded-3xl overflow-hidden p-6 sm:p-8">
         <div class="text-center mb-8">
-          <div class="inline-block px-3 py-1 rounded bg-crt-green/10 border border-crt-green/30 text-crt-green font-mono text-xs font-bold mb-2 tracking-widest">
-            // SIDE-BY-SIDE MATRIX
-          </div>
-          <h3 class="text-2xl font-extrabold text-white font-mono">Edition Feature Comparison</h3>
-          <p class="text-xs sm:text-sm text-crt-muted font-mono mt-1">Compare features across Free Community and Lifetime PRO Editions</p>
+          <h3 class="text-2xl font-bold text-white mb-1">Edition Comparison Matrix</h3>
+          <p class="text-xs sm:text-sm text-[#86868b]">Compare capabilities across all 4 tiers</p>
         </div>
-        <div class="border border-crt-border rounded-2xl overflow-hidden shadow-2xl bg-crt-surface">
-          <table class="w-full text-left font-mono text-xs sm:text-sm">
-            <thead class="bg-crt-card text-crt-green border-b border-crt-border">
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs sm:text-sm">
+            <thead class="text-[#86868b] border-b border-white/[0.08]">
               <tr>
-                <th class="py-4 px-4 sm:px-6 font-bold">Feature</th>
-                <th class="py-4 px-4 sm:px-6 font-bold text-white">Free Community</th>
-                <th class="py-4 px-4 sm:px-6 font-bold text-crt-green">Mobile Edition</th>
-                <th class="py-4 px-4 sm:px-6 font-bold text-crt-green">Desktop Edition</th>
-                <th class="py-4 px-4 sm:px-6 font-bold text-crt-amber">Master Bundle</th>
+                <th class="py-4 px-4 font-medium">Feature</th>
+                <th class="py-4 px-4 font-semibold text-white">Free Community</th>
+                <th class="py-4 px-4 font-semibold text-white">Mobile Edition</th>
+                <th class="py-4 px-4 font-semibold text-[#30d158]">Desktop Edition</th>
+                <th class="py-4 px-4 font-semibold text-[#ffd60a]">Master Bundle</th>
               </tr>
             </thead>
-            <tbody class="divide-y divide-crt-border/60">
-              <tr class="hover:bg-crt-card/50 transition-colors">
-                <td class="py-3.5 px-4 sm:px-6 font-semibold text-white">Price</td>
-                <td class="py-3.5 px-4 sm:px-6 text-white font-bold">$0 / ₹0</td>
-                <td class="py-3.5 px-4 sm:px-6 text-white font-bold">$3.99 / ₹299</td>
-                <td class="py-3.5 px-4 sm:px-6 text-crt-green font-bold">$8.99 / ₹699</td>
-                <td class="py-3.5 px-4 sm:px-6 text-crt-amber font-bold">$11.99 / ₹899</td>
+            <tbody class="divide-y divide-white/[0.06] text-white/90">
+              <tr>
+                <td class="py-4 px-4 text-[#86868b]">Price</td>
+                <td class="py-4 px-4 font-semibold">$0 / ₹0</td>
+                <td class="py-4 px-4 font-semibold">$3.99 / ₹299</td>
+                <td class="py-4 px-4 font-semibold text-[#30d158]">$8.99 / ₹699</td>
+                <td class="py-4 px-4 font-semibold text-[#ffd60a]">$11.99 / ₹899</td>
               </tr>
-              <tr class="hover:bg-crt-card/50 transition-colors">
-                <td class="py-3.5 px-4 sm:px-6 font-semibold text-white">Platform</td>
-                <td class="py-3.5 px-4 sm:px-6 text-crt-muted">Windows + Android</td>
-                <td class="py-3.5 px-4 sm:px-6 text-crt-muted">Android Only</td>
-                <td class="py-3.5 px-4 sm:px-6 text-crt-muted">Windows PC Only</td>
-                <td class="py-3.5 px-4 sm:px-6 text-white font-bold">Both Windows + Android</td>
+              <tr>
+                <td class="py-4 px-4 text-[#86868b]">Platforms</td>
+                <td class="py-4 px-4">Windows + Android</td>
+                <td class="py-4 px-4">Android Only</td>
+                <td class="py-4 px-4">Windows PC Only</td>
+                <td class="py-4 px-4 font-semibold text-white">Both Windows + Android</td>
               </tr>
-              <tr class="hover:bg-crt-card/50 transition-colors">
-                <td class="py-3.5 px-4 sm:px-6 font-semibold text-white">Batch Queue Limit</td>
-                <td class="py-3.5 px-4 sm:px-6 text-amber-400 font-bold">2 files max</td>
-                <td class="py-3.5 px-4 sm:px-6 text-crt-green font-bold">Unlimited</td>
-                <td class="py-3.5 px-4 sm:px-6 text-crt-green font-bold">Unlimited</td>
-                <td class="py-3.5 px-4 sm:px-6 text-crt-green font-bold">Unlimited</td>
+              <tr>
+                <td class="py-4 px-4 text-[#86868b]">Queue Limit</td>
+                <td class="py-4 px-4 text-amber-300">2 files per session</td>
+                <td class="py-4 px-4 font-semibold text-[#30d158]">Unlimited</td>
+                <td class="py-4 px-4 font-semibold text-[#30d158]">Unlimited</td>
+                <td class="py-4 px-4 font-semibold text-[#30d158]">Unlimited</td>
               </tr>
-              <tr class="hover:bg-crt-card/50 transition-colors">
-                <td class="py-3.5 px-4 sm:px-6 font-semibold text-white">Stream Copy (-c copy in 1.5s)</td>
-                <td class="py-3.5 px-4 sm:px-6 text-crt-green">✓ Enabled</td>
-                <td class="py-3.5 px-4 sm:px-6 text-crt-green">✓ Enabled</td>
-                <td class="py-3.5 px-4 sm:px-6 text-crt-green">✓ Enabled</td>
-                <td class="py-3.5 px-4 sm:px-6 text-crt-green">✓ Enabled</td>
+              <tr>
+                <td class="py-4 px-4 text-[#86868b]">Fast Remux (-c copy)</td>
+                <td class="py-4 px-4 text-[#30d158]">✓ 1.5s</td>
+                <td class="py-4 px-4 text-[#30d158]">✓ Included</td>
+                <td class="py-4 px-4 text-[#30d158]">✓ Included</td>
+                <td class="py-4 px-4 text-[#30d158]">✓ Included</td>
               </tr>
-              <tr class="hover:bg-crt-card/50 transition-colors">
-                <td class="py-3.5 px-4 sm:px-6 font-semibold text-white">Hardware Acceleration</td>
-                <td class="py-3.5 px-4 sm:px-6 text-crt-green">✓ Included</td>
-                <td class="py-3.5 px-4 sm:px-6 text-crt-green">✓ MediaCodec GPU</td>
-                <td class="py-3.5 px-4 sm:px-6 text-crt-green">✓ NVENC, QSV, AMF</td>
-                <td class="py-3.5 px-4 sm:px-6 text-crt-green">✓ All GPU Engines</td>
+              <tr>
+                <td class="py-4 px-4 text-[#86868b]">Hardware Acceleration</td>
+                <td class="py-4 px-4">Basic GPU</td>
+                <td class="py-4 px-4">MediaCodec GPU</td>
+                <td class="py-4 px-4 text-[#30d158]">NVENC, QSV, AMF</td>
+                <td class="py-4 px-4 text-[#ffd60a]">All GPU Engines</td>
               </tr>
-              <tr class="hover:bg-crt-card/50 transition-colors">
-                <td class="py-3.5 px-4 sm:px-6 font-semibold text-white">Hardware Seat Lock</td>
-                <td class="py-3.5 px-4 sm:px-6 text-crt-muted">— (Free)</td>
-                <td class="py-3.5 px-4 sm:px-6 text-white">1 Mobile Device</td>
-                <td class="py-3.5 px-4 sm:px-6 text-white">1 PC Hardware</td>
-                <td class="py-3.5 px-4 sm:px-6 text-crt-amber font-bold">1 PC + 1 Mobile Seat</td>
+              <tr>
+                <td class="py-4 px-4 text-[#86868b]">Device Seats</td>
+                <td class="py-4 px-4 text-[#86868b]">—</td>
+                <td class="py-4 px-4">1 Mobile Seat</td>
+                <td class="py-4 px-4">1 PC Hardware Seat</td>
+                <td class="py-4 px-4 font-semibold text-[#ffd60a]">1 PC + 1 Mobile Seat</td>
               </tr>
-              <tr class="hover:bg-crt-card/50 transition-colors">
-                <td class="py-3.5 px-4 sm:px-6 font-semibold text-white">License Key</td>
-                <td class="py-3.5 px-4 sm:px-6 text-crt-muted">Not required</td>
-                <td class="py-3.5 px-4 sm:px-6 font-mono text-crt-green">RFMOB-XXXX-...</td>
-                <td class="py-3.5 px-4 sm:px-6 font-mono text-crt-green">RFPC-XXXX-...</td>
-                <td class="py-3.5 px-4 sm:px-6 font-mono text-crt-amber">RFPRO-XXXX-...</td>
-              </tr>
-              <tr class="hover:bg-crt-card/50 transition-colors">
-                <td class="py-3.5 px-4 sm:px-6 font-semibold text-white">Get Edition</td>
-                <td class="py-3.5 px-4 sm:px-6">
-                  <a href="https://github.com/bonnoxkush/retroflux-releases/releases/download/v1.3.0/RetroFlux.exe" class="inline-block px-3 py-1.5 rounded-lg bg-crt-green/20 text-crt-green hover:bg-crt-green hover:text-black font-bold text-xs transition-colors">⬇ Free .exe</a>
+              <tr>
+                <td class="py-4 px-4 text-[#86868b]">Action</td>
+                <td class="py-4 px-4">
+                  <a href="#free-download" class="text-xs font-semibold text-white underline hover:text-[#30d158]">Download Free</a>
                 </td>
-                <td class="py-3.5 px-4 sm:px-6">
-                  <button onclick="openCheckout('mobile', 'Mobile Edition', '3.99', '299')" class="px-3 py-1.5 rounded-lg bg-crt-card border border-crt-green text-crt-green hover:bg-crt-green hover:text-black font-bold text-xs transition-colors">Buy $3.99</button>
+                <td class="py-4 px-4">
+                  <button onclick="openCheckout('mobile', 'Mobile Edition', '3.99', '299')" class="text-xs font-semibold text-white underline hover:text-[#30d158]">Buy $3.99</button>
                 </td>
-                <td class="py-3.5 px-4 sm:px-6">
-                  <button onclick="openCheckout('desktop', 'Desktop Edition', '8.99', '699')" class="px-3 py-1.5 rounded-lg bg-crt-green text-black hover:brightness-110 font-bold text-xs transition-all shadow-md">Buy $8.99</button>
+                <td class="py-4 px-4">
+                  <button onclick="openCheckout('desktop', 'Desktop Edition', '8.99', '699')" class="text-xs font-semibold text-[#30d158] underline hover:text-white">Buy $8.99</button>
                 </td>
-                <td class="py-3.5 px-4 sm:px-6">
-                  <button onclick="openCheckout('bundle', 'All-Access Master Bundle', '11.99', '899')" class="px-3 py-1.5 rounded-lg bg-crt-amber text-black hover:brightness-110 font-bold text-xs transition-all shadow-md">Buy $11.99</button>
+                <td class="py-4 px-4">
+                  <button onclick="openCheckout('bundle', 'All-Access Master Bundle', '11.99', '899')" class="text-xs font-semibold text-[#ffd60a] underline hover:text-white">Buy $11.99</button>
                 </td>
               </tr>
             </tbody>
@@ -807,210 +806,105 @@
     </div>
   </section>
 
-  <!-- ================= TECHNICAL SPECIFICATIONS ================= -->
-  <section class="py-16 md:py-20 border-t border-crt-border">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      
-      <div class="p-8 rounded-2xl border border-crt-border bg-crt-card font-mono text-sm sm:text-base crt-box-glow">
-        <div class="flex items-center gap-2 mb-6 text-crt-green font-bold text-lg crt-glow">
-          <span>●</span>
-          <span>SYSTEM SPECIFICATIONS & RUNTIME REQUIREMENTS</span>
-          <span class="terminal-cursor text-base">_</span>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-crt-muted leading-relaxed">
-          <div class="space-y-2">
-            <h4 class="text-white font-bold text-base">// WINDOWS PLATFORM</h4>
-            <p>• OS: Windows 10 / Windows 11 (64-bit)</p>
-            <p>• Architecture: Portable standalone `.exe`</p>
-            <p>• FFmpeg Core: Embedded internally (zero external setup)</p>
-            <p>• GPU Encoders: NVIDIA NVENC, Intel QSV, AMD AMF</p>
-          </div>
-          <div class="space-y-2">
-            <h4 class="text-white font-bold text-base">// ANDROID PLATFORM</h4>
-            <p>• OS: Android 7.0+ (API Level 24+)</p>
-            <p>• Architecture: ARM64 & ARMv7 Release APK</p>
-            <p>• Hardware Codecs: Android MediaCodec Hardware Pipeline</p>
-            <p>• Permissions: Minimal local file access only</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
   <!-- ================= FAQ SECTION ================= -->
-  <section id="faq" class="py-16 md:py-24 border-t border-crt-border bg-crt-surface/60 font-mono">
+  <section id="faq" class="py-20 md:py-28 border-t border-white/[0.08]">
     <div class="max-w-3xl mx-auto px-4 sm:px-6">
       
       <div class="text-center mb-14">
-        <div class="inline-block px-3 py-1 rounded bg-crt-green/10 border border-crt-green/30 text-crt-green text-xs font-bold mb-3 tracking-widest">
-          // USER DIRECTORY & HELP
-        </div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">
+        <h2 class="headline-gradient text-3xl sm:text-5xl font-bold tracking-tight mb-4">
           Frequently Asked Questions
         </h2>
-        <p class="text-crt-muted text-base sm:text-lg">Everything you need to know about keys, activation, and usage.</p>
+        <p class="text-[#86868b] text-base">Clear answers to common questions about licensing and usage.</p>
       </div>
 
-      <div class="space-y-5">
+      <div class="space-y-4">
         
-        <details class="group p-6 rounded-2xl border border-crt-border bg-crt-card crt-box-glow [&_summary::-webkit-details-marker]:hidden">
-          <summary class="flex items-center justify-between cursor-pointer font-bold text-base sm:text-lg text-white">
-            <span>How do I receive my unique license key?</span>
-            <span class="ml-4 transition-transform group-open:rotate-180 text-crt-green text-xl font-bold">▾</span>
+        <details class="glass-panel group rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+          <summary class="flex items-center justify-between font-semibold text-base sm:text-lg text-white">
+            <span>Is this really a one-time purchase?</span>
+            <span class="ml-4 transition-transform group-open:rotate-180 text-[#86868b]">▾</span>
           </summary>
-          <p class="mt-4 text-base text-crt-muted leading-relaxed">
-            Immediately after checkout, our automated system generates your unique cryptographic license key and emails it directly to your purchase inbox. You can also view it on your post-purchase receipt page.
+          <p class="mt-4 text-sm text-[#86868b] leading-relaxed">
+            Yes. There are zero subscriptions, zero recurring monthly fees, and zero hidden costs. You own your license key permanently for the life of the version.
           </p>
         </details>
 
-        <details class="group p-6 rounded-2xl border border-crt-border bg-crt-card crt-box-glow [&_summary::-webkit-details-marker]:hidden">
-          <summary class="flex items-center justify-between cursor-pointer font-bold text-base sm:text-lg text-white">
-            <span>Does RetroFlux require an internet connection?</span>
-            <span class="ml-4 transition-transform group-open:rotate-180 text-crt-green text-xl font-bold">▾</span>
+        <details class="glass-panel group rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+          <summary class="flex items-center justify-between font-semibold text-base sm:text-lg text-white">
+            <span>Can I transfer my license to a new PC?</span>
+            <span class="ml-4 transition-transform group-open:rotate-180 text-[#86868b]">▾</span>
           </summary>
-          <p class="mt-4 text-base text-crt-muted leading-relaxed">
-            No. RetroFlux operates completely air-gapped. Once you enter your key, it verifies locally using an embedded cryptographic checksum. It never phones home or uploads data to any server.
+          <p class="mt-4 text-sm text-[#86868b] leading-relaxed">
+            Yes. Simply click "[ DEACTIVATE KEY ]" inside RetroFlux before switching computers. This releases your hardware seat so you can activate on your new device immediately.
           </p>
         </details>
 
-        <details class="group p-6 rounded-2xl border border-crt-border bg-crt-card crt-box-glow [&_summary::-webkit-details-marker]:hidden">
-          <summary class="flex items-center justify-between cursor-pointer font-bold text-base sm:text-lg text-white">
-            <span>Do I need to install Python or FFmpeg on Windows?</span>
-            <span class="ml-4 transition-transform group-open:rotate-180 text-crt-green text-xl font-bold">▾</span>
+        <details class="glass-panel group rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+          <summary class="flex items-center justify-between font-semibold text-base sm:text-lg text-white">
+            <span>Does it require an internet connection to run?</span>
+            <span class="ml-4 transition-transform group-open:rotate-180 text-[#86868b]">▾</span>
           </summary>
-          <p class="mt-4 text-base text-crt-muted leading-relaxed">
-            No. The Desktop Edition is distributed as a single portable Windows executable (`RetroFlux.exe`) with the complete runtime and FFmpeg binaries bundled inside. Double-click to launch anywhere.
+          <p class="mt-4 text-sm text-[#86868b] leading-relaxed">
+            No. RetroFlux operates 100% offline. After initial activation, your license is verified locally using a machine-bound cryptographic token. It never uploads data or phones home.
           </p>
         </details>
 
-        <details class="group p-6 rounded-2xl border border-crt-border bg-crt-card crt-box-glow [&_summary::-webkit-details-marker]:hidden">
-          <summary class="flex items-center justify-between cursor-pointer font-bold text-base sm:text-lg text-white">
-            <span>What is the difference between Desktop and All-Access?</span>
-            <span class="ml-4 transition-transform group-open:rotate-180 text-crt-green text-xl font-bold">▾</span>
+        <details class="glass-panel group rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+          <summary class="flex items-center justify-between font-semibold text-base sm:text-lg text-white">
+            <span>Do I need to install FFmpeg or Python separately?</span>
+            <span class="ml-4 transition-transform group-open:rotate-180 text-[#86868b]">▾</span>
           </summary>
-          <p class="mt-4 text-base text-crt-muted leading-relaxed">
-            The Desktop Edition provides a Windows PC license for unlimited conversions on desktop. The All-Access Master Bundle delivers both the Windows `.exe` and Android `.apk`, along with full multi-platform unlock across all your devices.
-          </p>
-        </details>
-
-        <details class="group p-6 rounded-2xl border border-crt-border bg-crt-card crt-box-glow [&_summary::-webkit-details-marker]:hidden">
-          <summary class="flex items-center justify-between cursor-pointer font-bold text-base sm:text-lg text-white">
-            <span>Can I transfer my license if I get a new computer?</span>
-            <span class="ml-4 transition-transform group-open:rotate-180 text-crt-green text-xl font-bold">▾</span>
-          </summary>
-          <p class="mt-4 text-base text-crt-muted leading-relaxed">
-            Yes! Each license seat is locked to one active device at a time. If you switch computers, simply click &quot;[ DEACTIVATE KEY ]&quot; inside RetroFlux to release your seat, and then activate on your new PC immediately.
+          <p class="mt-4 text-sm text-[#86868b] leading-relaxed">
+            No. The Desktop Edition is a single, self-contained standalone executable (<code class="text-white font-mono">RetroFlux.exe</code>) with the complete Python runtime and embedded FFmpeg binary bundled inside.
           </p>
         </details>
 
       </div>
+
     </div>
   </section>
 
-  <!-- ================= FINAL CTA & TERMINAL FOOTER ================= -->
-  <footer class="py-16 border-t-2 border-crt-border bg-crt-bg text-crt-muted font-mono">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
-      
-      <div class="inline-block mb-4">
-        <span class="text-sm text-crt-green crt-glow font-bold">● RETROFLUX MEDIA CORE // v1.3.0 READY</span>
-        <span class="terminal-cursor text-base">_</span>
+  <!-- ================= FOOTER ================= -->
+  <footer class="py-16 border-t border-white/[0.08] text-xs text-[#86868b]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+      <div>
+        <div class="font-semibold text-white text-sm mb-1">RetroFlux PRO Workstation</div>
+        <p>© 2026 RetroFlux. All rights reserved. High-speed local media processing.</p>
       </div>
-
-      <h3 class="text-3xl sm:text-4xl font-extrabold text-white mb-6 tracking-tight">
-        Take Full Control of Your Media Conversion
-      </h3>
-
-      <div class="flex items-center justify-center mb-12">
-        <a href="#editions" class="cursor-pointer inline-flex items-center gap-3 px-8 sm:px-10 py-4 rounded-xl btn-outline-green font-mono text-base sm:text-lg font-bold shadow-lg transition-all active:scale-95">
-          <span>📦 VIEW EDITIONS & PRICING</span>
-          <span class="text-crt-green">▲</span>
-        </a>
+      <div class="flex items-center gap-6">
+        <a href="#editions" class="hover:text-white transition-colors">Editions</a>
+        <a href="#features" class="hover:text-white transition-colors">Features</a>
+        <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+        <a href="https://github.com/bonnoxkush/retroflux-releases" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Releases</a>
       </div>
-
-      <div class="border-t border-crt-border pt-8 flex flex-col sm:flex-row items-center justify-between text-xs sm:text-sm text-crt-muted gap-4">
-        <div>
-          <span>Crafted with passion by <strong class="text-crt-green font-bold">bonnokush</strong>.</span>
-        </div>
-        <div>
-          <span class="text-crt-green">100% OFFLINE</span> // <span class="text-crt-green">AIR-GAPPED PRIVACY</span> // NO TELEMETRY
-        </div>
-      </div>
-
     </div>
   </footer>
 
-  <!-- Live Typing Terminal Engine -->
-  <script>
-    (function() {
-      var commands = [
-        "remux --input=4k_capture.mkv --output=stream.mp4 --copy-streams [DONE: 1.2s]",
-        "detect-hardware-gpu --auto [NVIDIA NVENC, Intel QSV, AMD AMF READY]",
-        "batch-process --queue=48-files --preset=lossless [0 ERRORS DETECTED]",
-        "verify-license --offline [CRYPTOGRAPHIC CHECKSUM VERIFIED]",
-        "extract-audio --format=mp3 --bitrate=320kbps [HIGH FIDELITY COMPLETE]"
-      ];
-      var el = document.getElementById("liveTypingText");
-      if (!el) return;
-
-      var cmdIdx = 0;
-      var charIdx = 0;
-      var isDeleting = false;
-      var typeSpeed = 50;
-
-      function loop() {
-        var current = commands[cmdIdx];
-        if (isDeleting) {
-          el.textContent = current.substring(0, charIdx - 1);
-          charIdx--;
-          typeSpeed = 20;
-        } else {
-          el.textContent = current.substring(0, charIdx + 1);
-          charIdx++;
-          typeSpeed = 45;
-        }
-
-        if (!isDeleting && charIdx === current.length) {
-          typeSpeed = 2600; // Pause when full sentence typed
-          isDeleting = true;
-        } else if (isDeleting && charIdx === 0) {
-          isDeleting = false;
-          cmdIdx = (cmdIdx + 1) % commands.length;
-          typeSpeed = 350; // Short pause before next command
-        }
-
-        setTimeout(loop, typeSpeed);
-      }
-      loop();
-    })();
-  </script>
-
-  <!-- ================= DIRECT CHECKOUT MODAL (UPI & PAYPAL) ================= -->
-  <div id="checkoutModal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
-    <div class="relative w-full max-w-lg rounded-2xl border-2 border-crt-green bg-crt-surface p-6 sm:p-8 crt-box-glow text-crt-text font-mono my-8 shadow-2xl">
+  <!-- ================= MODERN CHECKOUT SHEET MODAL ================= -->
+  <div id="checkoutModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-xl flex items-center justify-center p-4 overflow-y-auto">
+    <div class="relative w-full max-w-lg rounded-3xl border border-white/15 bg-[#0d0d12]/95 p-6 sm:p-8 shadow-[0_25px_80px_rgba(0,0,0,0.9)] text-[#f5f5f7] my-8">
       
       <!-- Close button -->
-      <button onclick="closeCheckout()" class="absolute top-4 right-4 text-crt-muted hover:text-crt-green text-xl font-bold font-mono transition-colors">[ ✕ ]</button>
+      <button onclick="closeCheckout()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-[#86868b] hover:text-white flex items-center justify-center text-sm font-bold transition-all">✕</button>
 
       <!-- Header -->
-      <div class="mb-5">
-        <div class="text-xs text-crt-green font-bold tracking-wider">[ ⚡ DIRECT CHECKOUT // 0% PLATFORM ROYALTY ]</div>
-        <h3 id="modalTierTitle" class="text-2xl font-bold text-white mt-1">Desktop Edition</h3>
+      <div class="mb-6">
+        <div class="text-[11px] font-bold text-[#30d158] uppercase tracking-wider mb-1">Secure Checkout</div>
+        <h3 id="modalTierTitle" class="text-2xl font-bold text-white tracking-tight">Desktop Edition</h3>
         <div class="flex items-baseline gap-2 mt-1">
-          <span id="modalUsdPrice" class="text-xl font-bold text-crt-amber font-mono">$8.99 USD</span>
-          <span class="text-crt-muted">/</span>
-          <span id="modalInrPrice" class="text-xl font-bold text-crt-green font-mono">₹699 INR</span>
-          <span class="text-xs text-crt-muted ml-1">(One-time lifetime)</span>
+          <span id="modalInrPrice" class="text-2xl font-extrabold text-[#30d158] font-mono">₹699 INR</span>
+          <span class="text-xs text-[#86868b]">/</span>
+          <span id="modalUsdPrice" class="text-sm font-medium text-[#86868b] font-mono">$8.99 USD</span>
+          <span class="text-xs text-[#86868b] ml-1">(One-time lifetime)</span>
         </div>
       </div>
 
       <!-- Payment Method Tabs -->
-      <div id="checkoutTabs" class="grid grid-cols-2 gap-2 mb-6 p-1 bg-crt-card rounded-xl border border-crt-border">
-        <button id="tabRzpBtn" onclick="switchTab('rzp')" class="py-2.5 px-3 rounded-lg text-xs sm:text-sm font-bold transition-all bg-crt-green text-black shadow-md">
-          ⚡ Razorpay (UPI / Cards / NetBanking)
+      <div id="checkoutTabs" class="grid grid-cols-2 gap-2 mb-6 p-1 bg-white/[0.04] rounded-2xl border border-white/10">
+        <button id="tabRzpBtn" onclick="switchTab('rzp')" class="py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-black shadow-md">
+          ⚡ Razorpay (UPI & Cards)
         </button>
-        <button id="tabPaypalBtn" onclick="switchTab('paypal')" class="py-2.5 px-3 rounded-lg text-xs sm:text-sm font-bold transition-all text-crt-muted hover:text-white">
+        <button id="tabPaypalBtn" onclick="switchTab('paypal')" class="py-2.5 px-3 rounded-xl text-xs sm:text-sm font-medium transition-all text-[#86868b] hover:text-white">
           🌐 PayPal (Global USD)
         </button>
       </div>
@@ -1018,63 +912,60 @@
       <div id="tabContentsContainer">
         <!-- TAB 1: RAZORPAY INSTANT CHECKOUT (DEFAULT) -->
         <div id="rzpTabContent" class="space-y-4">
-          <div class="p-5 rounded-xl bg-crt-card border border-crt-border text-center space-y-4">
-            <div class="inline-block px-3 py-1 rounded bg-crt-green/10 border border-crt-green/30 text-crt-green text-xs font-bold tracking-wider">
-              ✓ 1-TAP SECURE CHECKOUT // AMOUNT LOCKED
-            </div>
-
-            <div class="flex items-center justify-between p-3.5 rounded-lg bg-black/70 border border-crt-border text-left">
+          <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 space-y-4">
+            
+            <div class="flex items-center justify-between p-4 rounded-xl bg-black/50 border border-white/10">
               <div>
-                <div class="text-[11px] text-crt-muted font-mono tracking-wider">SELECTED EDITION:</div>
-                <div id="rzpModalTierTitle" class="text-base font-bold text-white">Desktop Edition</div>
+                <div class="text-[11px] text-[#86868b] uppercase tracking-wider">Edition</div>
+                <div id="rzpModalTierTitle" class="text-sm font-bold text-white">Desktop Edition</div>
               </div>
               <div class="text-right">
-                <div class="text-[11px] text-crt-muted font-mono tracking-wider">LOCKED AMOUNT:</div>
-                <div id="rzpModalInrBadge" class="text-2xl font-extrabold text-crt-green font-mono">₹699</div>
+                <div class="text-[11px] text-[#86868b] uppercase tracking-wider">Locked Amount</div>
+                <div id="rzpModalInrBadge" class="text-2xl font-extrabold text-[#30d158] font-mono">₹699</div>
               </div>
             </div>
 
-            <form id="rzpOrderForm" onsubmit="startRazorpayCheckout(event)" class="space-y-3.5 text-left">
+            <form id="rzpOrderForm" onsubmit="startRazorpayCheckout(event)" class="space-y-4">
               <div>
-                <label class="block text-xs text-crt-muted mb-1">Your Delivery Email Address (for key dispatch):</label>
-                <input type="email" id="rzpEmail" required placeholder="you@example.com" class="w-full px-3 py-2.5 rounded-lg bg-crt-bg border border-crt-border text-white font-mono text-sm focus:border-crt-green focus:outline-none" />
-                <p class="text-[11px] text-crt-muted mt-1.5">Your authentic PRO license key will be displayed on screen immediately upon payment.</p>
+                <label class="block text-xs font-medium text-[#86868b] mb-1.5">Email address for license delivery:</label>
+                <input type="email" id="rzpEmail" required placeholder="you@example.com" class="w-full px-3.5 py-2.5 rounded-xl bg-black/60 border border-white/15 text-white text-sm focus:border-[#30d158] focus:outline-none transition-colors" />
+                <p class="text-[11px] text-[#86868b] mt-1.5">Your genuine PRO license key will be displayed on screen immediately upon payment.</p>
               </div>
 
-              <button type="submit" id="rzpPayBtn" class="cursor-pointer w-full py-4 px-4 rounded-xl bg-crt-green text-black font-extrabold text-base tracking-wide hover:brightness-110 active:scale-95 transition-all shadow-lg flex items-center justify-center gap-2">
-                <span>⚡ PROCEED TO PAYMENT — </span><span id="rzpBtnPrice">₹699</span>
+              <button type="submit" id="rzpPayBtn" class="cursor-pointer w-full py-4 px-4 rounded-2xl bg-[#30d158] hover:bg-[#34e260] text-black font-bold text-sm tracking-wide active:scale-[0.98] transition-all shadow-[0_10px_30px_rgba(48,209,88,0.3)] flex items-center justify-center gap-2">
+                <span>⚡ Pay Now via Razorpay — </span><span id="rzpBtnPrice">₹699</span>
               </button>
             </form>
 
-            <div class="pt-3 border-t border-crt-border/60 text-[11px] text-crt-muted flex flex-wrap items-center justify-center gap-2.5">
+            <div class="pt-3 border-t border-white/[0.06] text-[11px] text-[#86868b] flex flex-wrap items-center justify-center gap-3">
               <span>🔒 256-Bit SSL Encrypted</span>
               <span>•</span>
-              <span>⚡ 1-Tap UPI (GPay, PhonePe, Paytm, CRED)</span>
+              <span>1-Tap UPI (GPay/PhonePe)</span>
               <span>•</span>
-              <span>💳 Cards (Visa, Mastercard, RuPay)</span>
+              <span>Credit & Debit Cards</span>
             </div>
 
             <!-- Optional Manual QR Fallback -->
-            <details class="text-xs text-crt-muted text-center cursor-pointer pt-2 border-t border-crt-border/40">
-              <summary class="hover:text-crt-green transition-colors font-bold text-[11px]">Prefer direct manual transfer via personal UPI / QR?</summary>
-              <div class="mt-3 p-3 bg-black/60 rounded-xl border border-crt-border text-center space-y-2">
-                <div class="inline-block p-1.5 bg-black rounded-lg border border-crt-green">
+            <details class="text-xs text-[#86868b] text-center cursor-pointer pt-2 border-t border-white/[0.06]">
+              <summary class="hover:text-white transition-colors font-medium text-[11px]">Prefer direct bank transfer via personal UPI / QR?</summary>
+              <div class="mt-3 p-3 bg-black/60 rounded-2xl border border-white/10 text-center space-y-2">
+                <div class="inline-block p-2 bg-white rounded-xl">
                   <img id="upiQrCode" src="" alt="UPI QR Code" class="w-36 h-36 mx-auto rounded" />
                 </div>
                 <div class="text-xs text-white">
-                  VPA: <span id="vpaText" class="text-crt-green font-mono select-all">bonnokush@uboi</span>
-                  <button type="button" onclick="copyVpa()" class="ml-2 px-2 py-0.5 text-[11px] rounded bg-crt-green/20 text-crt-green hover:bg-crt-green/30 border border-crt-green/40">Copy</button>
+                  VPA: <span id="vpaText" class="text-[#30d158] font-mono select-all">bonnokush@uboi</span>
+                  <button type="button" onclick="copyVpa()" class="ml-2 px-2.5 py-0.5 text-[11px] rounded-full bg-white/10 text-white hover:bg-white/20">Copy</button>
                 </div>
                 <div>
-                  <a id="upiIntentBtn" href="" class="inline-block px-4 py-2 rounded-lg bg-crt-green text-black font-bold text-xs active:scale-95 transition-all shadow-md">
+                  <a id="upiIntentBtn" href="" class="inline-block px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold active:scale-95 transition-all">
                     ⚡ Open in Installed UPI App
                   </a>
                 </div>
-                <form id="upiOrderForm" onsubmit="submitOrder(event, 'upi')" class="space-y-2 pt-2 border-t border-crt-border text-left">
-                  <div class="text-[11px] text-crt-green font-bold">[ ENTER UTR TO CLAIM KEY ]</div>
-                  <input type="text" id="upiUtr" placeholder="12-digit UPI UTR from receipt" class="w-full px-2.5 py-1.5 rounded bg-crt-bg border border-crt-border text-white text-xs font-mono focus:border-crt-green focus:outline-none" />
-                  <button type="submit" id="upiSubmitBtn" class="w-full py-2 rounded-lg border border-crt-green text-crt-green hover:bg-crt-green hover:text-black font-bold text-xs tracking-wider transition-all">
-                    Submit UTR & Claim Key
+                <form id="upiOrderForm" onsubmit="submitOrder(event, 'upi')" class="space-y-2 pt-2 border-t border-white/[0.06] text-left">
+                  <div class="text-[11px] text-[#86868b] font-medium">Enter UTR reference from bank receipt:</div>
+                  <input type="text" id="upiUtr" placeholder="12-digit UPI UTR" class="w-full px-3 py-1.5 rounded-lg bg-black border border-white/15 text-white text-xs font-mono focus:border-[#30d158] focus:outline-none" />
+                  <button type="submit" id="upiSubmitBtn" class="w-full py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-xs transition-all">
+                    Claim Key with UTR
                   </button>
                 </form>
               </div>
@@ -1085,57 +976,55 @@
 
         <!-- TAB 2: PAYPAL CONTENT -->
         <div id="paypalTabContent" class="space-y-4 hidden">
-          <div class="p-4 rounded-xl bg-crt-card border border-crt-border text-center">
-            <div class="text-xs text-crt-muted mb-2 tracking-wider">PAY VIA PAYPAL (CARDS / BALANCE)</div>
-            <div class="text-lg font-bold text-white mb-2">Send: <span id="paypalAmountText" class="text-crt-amber font-mono">$8.99 USD</span></div>
-            <a id="paypalDirectLink" href="https://paypal.me/bonnokush/8.99USD" target="_blank" rel="noopener noreferrer" class="inline-block w-full py-3 rounded-lg bg-crt-amber text-black font-bold text-sm tracking-wide active:scale-95 transition-all shadow-lg hover:brightness-110">
+          <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 text-center space-y-4">
+            <div class="text-xs text-[#86868b] uppercase tracking-wider">Pay via PayPal (Cards / Balance)</div>
+            <div class="text-xl font-bold text-white">Send: <span id="paypalAmountText" class="text-[#ffd60a] font-mono">$8.99 USD</span></div>
+            <a id="paypalDirectLink" href="https://paypal.me/bonnokush/8.99USD" target="_blank" rel="noopener noreferrer" class="inline-block w-full py-3.5 rounded-2xl bg-[#ffd60a] text-black font-bold text-sm hover:brightness-110 active:scale-[0.98] transition-all shadow-[0_10px_25px_rgba(255,214,10,0.25)]">
               👉 Open PayPal to Complete Payment
             </a>
-            <p class="text-xs text-crt-muted mt-2">Send to user: <strong class="text-white">bonnokush</strong></p>
-          </div>
+            <p class="text-xs text-[#86868b]">Recipient: <strong class="text-white font-mono">bonnokush</strong></p>
 
-          <!-- Verification Form -->
-          <form id="paypalOrderForm" onsubmit="submitOrder(event, 'paypal')" class="space-y-3 pt-2 border-t border-crt-border">
-            <div class="text-xs text-crt-amber font-bold">[ STEP 2: ENTER TRANSACTION ID FOR KEY DISPATCH ]</div>
-            <div>
-              <label class="block text-xs text-crt-muted mb-1">Your Email Address (for key delivery):</label>
-              <input type="email" id="paypalEmail" required placeholder="you@example.com" class="w-full px-3 py-2 rounded-lg bg-crt-bg border border-crt-border text-white font-mono text-sm focus:border-crt-amber focus:outline-none" />
-            </div>
-            <div>
-              <label class="block text-xs text-crt-muted mb-1">PayPal Transaction ID / Email Used:</label>
-              <input type="text" id="paypalTxnId" required placeholder="e.g. 9XX123456789" class="w-full px-3 py-2 rounded-lg bg-crt-bg border border-crt-border text-white font-mono text-sm focus:border-crt-amber focus:outline-none" />
-            </div>
-            <button type="submit" id="paypalSubmitBtn" class="w-full py-3 rounded-xl border border-crt-amber text-crt-amber hover:bg-crt-amber hover:text-black font-bold text-sm tracking-wider active:scale-95 transition-all">
-              [ SUBMIT ORDER & CLAIM KEY ]
-            </button>
-          </form>
+            <form id="paypalOrderForm" onsubmit="submitOrder(event, 'paypal')" class="space-y-3 pt-3 border-t border-white/[0.06] text-left">
+              <div>
+                <label class="block text-xs font-medium text-[#86868b] mb-1">Your Email Address:</label>
+                <input type="email" id="paypalEmail" required placeholder="you@example.com" class="w-full px-3 py-2 rounded-xl bg-black/60 border border-white/15 text-white text-xs focus:border-[#ffd60a] focus:outline-none" />
+              </div>
+              <div>
+                <label class="block text-xs font-medium text-[#86868b] mb-1">PayPal Transaction ID:</label>
+                <input type="text" id="paypalTxnId" required placeholder="e.g. 9XX123456789" class="w-full px-3 py-2 rounded-xl bg-black/60 border border-white/15 text-white text-xs font-mono focus:border-[#ffd60a] focus:outline-none" />
+              </div>
+              <button type="submit" id="paypalSubmitBtn" class="w-full py-3 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs transition-all">
+                Submit & Claim License Key
+              </button>
+            </form>
+          </div>
         </div>
       </div>
 
-      <!-- Feedback / Result Area -->
-      <div id="checkoutFeedback" class="hidden mt-4 p-4 rounded-xl border text-sm font-mono"></div>
+      <!-- Feedback / Success Area -->
+      <div id="checkoutFeedback" class="hidden mt-4 p-5 rounded-2xl border text-sm"></div>
 
-      <!-- Order Status Check Lookup -->
-      <div class="mt-4 pt-3 border-t border-crt-border/60 text-center">
-        <details class="text-xs text-crt-muted cursor-pointer">
-          <summary class="hover:text-crt-green transition-colors font-bold">🔍 Already paid? Check order & retrieve license key</summary>
+      <!-- Self-Service Order Lookup -->
+      <div class="mt-4 pt-3 border-t border-white/[0.06] text-center">
+        <details class="text-xs text-[#86868b] cursor-pointer">
+          <summary class="hover:text-white transition-colors font-medium">Already paid? Check order & retrieve license key</summary>
           <div class="mt-3 flex gap-2">
-            <input type="text" id="lookupRefInput" placeholder="Enter Payment ID, UTR, or Txn ID" class="flex-1 px-2.5 py-1.5 rounded bg-crt-bg border border-crt-border text-white text-xs font-mono focus:outline-none focus:border-crt-green" />
-            <button onclick="checkOrderStatus()" class="px-3 py-1.5 rounded bg-crt-card border border-crt-green text-crt-green font-bold text-xs hover:bg-crt-green hover:text-black transition-all">Check</button>
+            <input type="text" id="lookupRefInput" placeholder="Enter Payment ID, UTR, or Txn ID" class="flex-1 px-3 py-2 rounded-xl bg-black/60 border border-white/15 text-white text-xs font-mono focus:outline-none focus:border-[#30d158]" />
+            <button onclick="checkOrderStatus()" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs transition-all">Check</button>
           </div>
-          <div id="lookupResult" class="hidden mt-2 p-2 rounded bg-crt-card text-left text-xs font-mono border border-crt-border"></div>
+          <div id="lookupResult" class="hidden mt-2 p-3 rounded-xl bg-black/80 text-left text-xs font-mono border border-white/10"></div>
         </details>
       </div>
 
       <!-- Direct Downloads Section -->
-      <div class="mt-5 pt-4 border-t border-crt-border text-center">
-        <div class="text-xs text-crt-muted mb-2 tracking-wider">OFFICIAL RUNTIME BINARIES (DOWNLOAD NOW):</div>
+      <div class="mt-6 pt-4 border-t border-white/[0.06] text-center">
+        <div class="text-[11px] text-[#86868b] uppercase tracking-wider mb-2">Official Downloads:</div>
         <div class="flex flex-wrap items-center justify-center gap-2">
-          <a href="https://github.com/bonnoxkush/retroflux-releases/releases/download/v1.3.0/RetroFlux.exe" class="px-3 py-1.5 rounded-lg bg-crt-card border border-crt-border text-xs text-crt-green hover:border-crt-green transition-all">
-            ⬇ Download Windows (.exe)
+          <a href="https://github.com/bonnoxkush/retroflux-releases/releases/download/v1.3.0/RetroFlux.exe" class="px-3.5 py-1.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-xs text-white border border-white/10 transition-all">
+            ⬇ Windows (.exe)
           </a>
-          <a href="https://github.com/bonnoxkush/retroflux-releases/releases/download/v1.3.0/RetroFlux-v1.3.0-release.apk" class="px-3 py-1.5 rounded-lg bg-crt-card border border-crt-border text-xs text-crt-amber hover:border-crt-amber transition-all">
-            ⬇ Download Android (.apk)
+          <a href="https://github.com/bonnoxkush/retroflux-releases/releases/download/v1.3.0/RetroFlux-v1.3.0-release.apk" class="px-3.5 py-1.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-xs text-white border border-white/10 transition-all">
+            ⬇ Android (.apk)
           </a>
         </div>
       </div>
@@ -1168,7 +1057,7 @@
       // Update manual fallback UPI link and QR code
       var upiString = 'upi://pay?pa=bonnokush@uboi&pn=bonnokush&am=' + inr + '&cu=INR&tn=RetroFlux ' + encodeURIComponent(title);
       document.getElementById('upiIntentBtn').href = upiString;
-      document.getElementById('upiQrCode').src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=00ff66&bgcolor=050906&data=' + encodeURIComponent(upiString);
+      document.getElementById('upiQrCode').src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=000000&bgcolor=ffffff&data=' + encodeURIComponent(upiString);
 
       // Update PayPal link
       document.getElementById('paypalDirectLink').href = 'https://paypal.me/bonnokush/' + usd + 'USD';
@@ -1194,13 +1083,13 @@
       if (tab === 'rzp') {
         rzpTab.classList.remove('hidden');
         paypalTab.classList.add('hidden');
-        tabRzpBtn.className = 'py-2.5 px-3 rounded-lg text-xs sm:text-sm font-bold transition-all bg-crt-green text-black shadow-md';
-        tabPaypalBtn.className = 'py-2.5 px-3 rounded-lg text-xs sm:text-sm font-bold transition-all text-crt-muted hover:text-white';
+        tabRzpBtn.className = 'py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-black shadow-md';
+        tabPaypalBtn.className = 'py-2.5 px-3 rounded-xl text-xs sm:text-sm font-medium transition-all text-[#86868b] hover:text-white';
       } else {
         rzpTab.classList.add('hidden');
         paypalTab.classList.remove('hidden');
-        tabPaypalBtn.className = 'py-2.5 px-3 rounded-lg text-xs sm:text-sm font-bold transition-all bg-crt-amber text-black shadow-md';
-        tabRzpBtn.className = 'py-2.5 px-3 rounded-lg text-xs sm:text-sm font-bold transition-all text-crt-muted hover:text-white';
+        tabPaypalBtn.className = 'py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-[#ffd60a] text-black shadow-md';
+        tabRzpBtn.className = 'py-2.5 px-3 rounded-xl text-xs sm:text-sm font-medium transition-all text-[#86868b] hover:text-white';
       }
     }
 
@@ -1215,7 +1104,7 @@
 
       var payBtn = document.getElementById('rzpPayBtn');
       payBtn.disabled = true;
-      payBtn.innerHTML = '<span>⚡ CONNECTING TO RAZORPAY GATEWAY...</span>';
+      payBtn.innerHTML = '<span>⚡ Connecting to Razorpay...</span>';
 
       fetch('https://jfwfepmrasssefcobwoz.supabase.co/functions/v1/razorpay-checkout', {
         method: 'POST',
@@ -1229,7 +1118,7 @@
       .then(function(res) { return res.json(); })
       .then(function(data) {
         payBtn.disabled = false;
-        payBtn.innerHTML = '<span>⚡ PROCEED TO PAYMENT — </span><span>₹' + currentCheckout.inr + '</span>';
+        payBtn.innerHTML = '<span>⚡ Pay Now via Razorpay — </span><span>₹' + currentCheckout.inr + '</span>';
 
         if (!data.success || !data.order_id) {
           alert('Failed to initialize payment: ' + (data.message || 'Please retry.'));
@@ -1242,13 +1131,12 @@
           "currency": "INR",
           "name": "RetroFlux PRO",
           "description": currentCheckout.title + " (Lifetime License)",
-          "image": "https://public-files.gumroad.com/g7r71g56t397cs9duy4iyq6727v3",
           "order_id": data.order_id,
           "prefill": {
             "email": email
           },
           "theme": {
-            "color": "#00ff66"
+            "color": "#000000"
           },
           "handler": function (response) {
             fulfillRazorpayOrder(response, email);
@@ -1268,7 +1156,7 @@
       })
       .catch(function(err) {
         payBtn.disabled = false;
-        payBtn.innerHTML = '<span>⚡ PROCEED TO PAYMENT — </span><span>₹' + currentCheckout.inr + '</span>';
+        payBtn.innerHTML = '<span>⚡ Pay Now via Razorpay — </span><span>₹' + currentCheckout.inr + '</span>';
         alert('Connection error. Please verify network and try again.');
       });
     }
@@ -1276,8 +1164,8 @@
     function fulfillRazorpayOrder(rzpResponse, email) {
       var feedback = document.getElementById('checkoutFeedback');
       feedback.classList.remove('hidden');
-      feedback.className = 'mt-4 p-4 rounded-xl border border-crt-green bg-crt-green/10 text-crt-green text-sm font-mono';
-      feedback.innerHTML = '<strong class="text-white block mb-1">⏳ VERIFYING TRANSACTION & ISSUING PRO KEY...</strong>Please wait 2 seconds while your key is generated...';
+      feedback.className = 'mt-4 p-5 rounded-2xl border border-white/20 bg-white/[0.05] text-[#30d158] text-sm';
+      feedback.innerHTML = '<strong class="text-white block mb-1">⏳ Verifying payment and generating license key...</strong>Please wait a moment while your key is activated...';
 
       // Hide input tabs
       document.getElementById('checkoutTabs').classList.add('hidden');
@@ -1298,35 +1186,35 @@
       .then(function(res) { return res.json(); })
       .then(function(data) {
         if (data.success && data.license_key) {
-          feedback.className = 'mt-2 p-5 rounded-2xl border-2 border-crt-green bg-crt-card crt-box-glow text-crt-text text-sm font-mono space-y-4';
+          feedback.className = 'mt-2 p-6 rounded-2xl border border-[#30d158]/50 bg-[#30d158]/10 text-white text-sm space-y-4';
           feedback.innerHTML = 
-            '<div class="flex items-center gap-2 text-crt-green font-bold text-base sm:text-lg">' +
-              '<span>✓</span><span>PAYMENT CONFIRMED & LICENSE ACTIVATED!</span>' +
+            '<div class="flex items-center gap-2 text-[#30d158] font-bold text-lg">' +
+              '<span>✓</span><span>Payment Confirmed & License Activated!</span>' +
             '</div>' +
-            '<p class="text-xs text-crt-muted">' +
-              'Thank you! Your ' + currentCheckout.title + ' license has been activated instantaneously.' +
+            '<p class="text-xs text-[#86868b]">' +
+              'Thank you! Your ' + currentCheckout.title + ' license has been generated instantaneously.' +
             '</p>' +
-            '<div class="p-4 bg-black/90 rounded-xl border border-crt-green text-center space-y-2">' +
-              '<div class="text-xs text-crt-muted tracking-wider">YOUR RETROFLUX PRO LICENSE KEY:</div>' +
-              '<div id="activeKeyBox" class="text-lg sm:text-2xl font-mono font-extrabold text-crt-green select-all tracking-widest break-all py-1">' +
+            '<div class="p-4 bg-black rounded-xl border border-white/20 text-center space-y-2">' +
+              '<div class="text-xs text-[#86868b] uppercase tracking-wider">Your RetroFlux PRO License Key:</div>' +
+              '<div id="activeKeyBox" class="text-xl sm:text-2xl font-mono font-extrabold text-[#30d158] select-all tracking-wider break-all py-1">' +
                 data.license_key +
               '</div>' +
-              '<button type="button" id="copyKeyBtn" onclick="copyLicenseKey(\'' + data.license_key + '\')" class="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-crt-green text-black font-bold text-xs uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-md">' +
+              '<button type="button" id="copyKeyBtn" onclick="copyLicenseKey(\'' + data.license_key + '\')" class="w-full sm:w-auto px-6 py-2.5 rounded-full bg-white text-black font-bold text-xs uppercase tracking-wider hover:bg-[#e8e8ed] active:scale-95 transition-all shadow-md">' +
                 '📋 Click to Copy License Key' +
               '</button>' +
             '</div>' +
-            '<div class="space-y-1.5 text-xs text-crt-muted pt-2 border-t border-crt-border">' +
-              '<div><strong class="text-white">Payment ID:</strong> <span class="font-mono text-crt-green">' + rzpResponse.razorpay_payment_id + '</span></div>' +
+            '<div class="space-y-1.5 text-xs text-[#86868b] pt-3 border-t border-white/10">' +
+              '<div><strong class="text-white">Payment ID:</strong> <span class="font-mono text-white/90">' + rzpResponse.razorpay_payment_id + '</span></div>' +
               '<div><strong class="text-white">Delivery Email:</strong> ' + email + '</div>' +
-              '<div class="pt-2"><strong class="text-white">Activation Instructions:</strong> Launch <strong class="text-white">RetroFlux</strong>, click <strong class="text-crt-green">[ ENTER LICENSE KEY ]</strong> on the startup window or bottom status bar, paste this key, and press Unlock PRO.</div>' +
+              '<div class="pt-2"><strong class="text-white">How to activate:</strong> Launch <strong class="text-white">RetroFlux</strong>, click <strong class="text-[#30d158]">[ Enter License Key ]</strong> on the startup window or bottom status bar, paste this key, and press Unlock PRO.</div>' +
             '</div>';
         } else {
-          feedback.className = 'mt-4 p-4 rounded-xl border border-red-500 bg-red-500/10 text-red-400 text-sm font-mono';
+          feedback.className = 'mt-4 p-5 rounded-2xl border border-red-500/50 bg-red-500/10 text-red-300 text-sm';
           feedback.innerHTML = '<strong>✗ Verification error: ' + (data.message || 'Please contact support') + '</strong><br>Payment ID: ' + rzpResponse.razorpay_payment_id;
         }
       })
       .catch(function(err) {
-        feedback.className = 'mt-4 p-4 rounded-xl border border-red-500 bg-red-500/10 text-red-400 text-sm font-mono';
+        feedback.className = 'mt-4 p-5 rounded-2xl border border-red-500/50 bg-red-500/10 text-red-300 text-sm';
         feedback.innerHTML = '<strong>✗ Network error while retrieving key. Please use status checker with Payment ID: ' + rzpResponse.razorpay_payment_id + '</strong>';
       });
     }
@@ -1341,11 +1229,11 @@
       navigator.clipboard.writeText(key).then(function() {
         var btn = document.getElementById('copyKeyBtn');
         if (btn) {
-          btn.textContent = '✓ KEY COPIED TO CLIPBOARD!';
-          btn.classList.add('bg-emerald-400');
+          btn.textContent = '✓ Key Copied to Clipboard!';
+          btn.classList.add('bg-[#30d158]');
           setTimeout(function() {
             btn.textContent = '📋 Click to Copy License Key';
-            btn.classList.remove('bg-emerald-400');
+            btn.classList.remove('bg-[#30d158]');
           }, 3000);
         }
       });
@@ -1360,7 +1248,7 @@
       var feedback = document.getElementById('checkoutFeedback');
 
       btn.disabled = true;
-      btn.textContent = 'TRANSMITTING ORDER...';
+      btn.textContent = 'Transmitting order...';
 
       fetch(SUPABASE_URL + '/rest/v1/rpc/submit_retroflux_order', {
         method: 'POST',
@@ -1380,52 +1268,51 @@
       .then(function(res) { return res.json(); })
       .then(function(data) {
         btn.disabled = false;
-        btn.textContent = '[ SUBMIT ORDER & CLAIM KEY ]';
+        btn.textContent = 'Claim License Key';
         feedback.classList.remove('hidden');
 
         if (data.success && data.license_key) {
           document.getElementById('checkoutTabs').classList.add('hidden');
           document.getElementById('tabContentsContainer').classList.add('hidden');
 
-          feedback.className = 'mt-2 p-5 rounded-2xl border-2 border-crt-green bg-crt-card crt-box-glow text-crt-text text-sm font-mono space-y-4';
+          feedback.className = 'mt-2 p-6 rounded-2xl border border-[#30d158]/50 bg-[#30d158]/10 text-white text-sm space-y-4';
           feedback.innerHTML = 
-            '<div class="flex items-center gap-2 text-crt-green font-bold text-base sm:text-lg">' +
-              '<span>✓</span><span>PAYMENT REGISTERED & LICENSE ACTIVATED!</span>' +
+            '<div class="flex items-center gap-2 text-[#30d158] font-bold text-lg">' +
+              '<span>✓</span><span>Order Registered & License Activated!</span>' +
             '</div>' +
-            '<p class="text-xs text-crt-muted">' +
+            '<p class="text-xs text-[#86868b]">' +
               'Thank you! Your ' + currentCheckout.title + ' license has been generated instantaneously.' +
             '</p>' +
-            '<div class="p-4 bg-black/90 rounded-xl border border-crt-green text-center space-y-2">' +
-              '<div class="text-xs text-crt-muted tracking-wider">YOUR RETROFLUX PRO LICENSE KEY:</div>' +
-              '<div id="activeKeyBox" class="text-lg sm:text-2xl font-mono font-extrabold text-crt-green select-all tracking-widest break-all py-1">' +
+            '<div class="p-4 bg-black rounded-xl border border-white/20 text-center space-y-2">' +
+              '<div class="text-xs text-[#86868b] uppercase tracking-wider">Your RetroFlux PRO License Key:</div>' +
+              '<div id="activeKeyBox" class="text-xl sm:text-2xl font-mono font-extrabold text-[#30d158] select-all tracking-wider break-all py-1">' +
                 data.license_key +
               '</div>' +
-              '<button type="button" id="copyKeyBtn" onclick="copyLicenseKey(\'' + data.license_key + '\')" class="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-crt-green text-black font-bold text-xs uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-md">' +
+              '<button type="button" id="copyKeyBtn" onclick="copyLicenseKey(\'' + data.license_key + '\')" class="w-full sm:w-auto px-6 py-2.5 rounded-full bg-white text-black font-bold text-xs uppercase tracking-wider hover:bg-[#e8e8ed] active:scale-95 transition-all shadow-md">' +
                 '📋 Click to Copy License Key' +
               '</button>' +
             '</div>' +
-            '<div class="space-y-1.5 text-xs text-crt-muted pt-2 border-t border-crt-border">' +
-              '<div><strong class="text-white">Transaction Reference:</strong> <span class="font-mono text-crt-green">' + txnRef + '</span></div>' +
+            '<div class="space-y-1.5 text-xs text-[#86868b] pt-3 border-t border-white/10">' +
+              '<div><strong class="text-white">Transaction Reference:</strong> <span class="font-mono text-white/90">' + txnRef + '</span></div>' +
               '<div><strong class="text-white">Delivery Email:</strong> ' + email + '</div>' +
-              '<div class="pt-2"><strong class="text-white">Activation Instructions:</strong> Launch <strong class="text-white">RetroFlux</strong>, click <strong class="text-crt-green">[ ENTER LICENSE KEY ]</strong> on the startup window or bottom status bar, paste this key, and press Unlock PRO.</div>' +
+              '<div class="pt-2"><strong class="text-white">How to activate:</strong> Launch <strong class="text-white">RetroFlux</strong>, click <strong class="text-[#30d158]">[ Enter License Key ]</strong> on the startup window or bottom status bar, paste this key, and press Unlock PRO.</div>' +
             '</div>';
         } else if (data.success) {
-          feedback.className = 'mt-4 p-4 rounded-xl border border-crt-green bg-crt-green/10 text-crt-green text-sm font-mono';
-          feedback.innerHTML = '<strong class="text-white block mb-1">✓ ORDER REGISTERED!</strong>' +
+          feedback.className = 'mt-4 p-5 rounded-2xl border border-white/20 bg-white/[0.05] text-[#30d158] text-sm';
+          feedback.innerHTML = '<strong class="text-white block mb-1">✓ Order Registered!</strong>' +
             data.message + '<br><br>' +
-            '<span class="text-white font-bold">Transaction Reference:</span> ' + txnRef + '<br>' +
-            '<span class="text-white font-bold">Email:</span> ' + email + '<br><br>' +
-            '<span class="text-xs text-crt-muted">Your license key is generated in our system and will be delivered to your email. You can also paste your UTR in the status checker below to retrieve it anytime.</span>';
+            '<span class="text-white font-semibold">Reference:</span> ' + txnRef + '<br>' +
+            '<span class="text-white font-semibold">Email:</span> ' + email;
         } else {
-          feedback.className = 'mt-4 p-4 rounded-xl border border-red-500 bg-red-500/10 text-red-400 text-sm font-mono';
+          feedback.className = 'mt-4 p-5 rounded-2xl border border-red-500/50 bg-red-500/10 text-red-300 text-sm';
           feedback.innerHTML = '<strong>✗ ' + (data.message || 'Submission failed') + '</strong>';
         }
       })
       .catch(function(err) {
         btn.disabled = false;
-        btn.textContent = '[ SUBMIT ORDER & CLAIM KEY ]';
+        btn.textContent = 'Claim License Key';
         feedback.classList.remove('hidden');
-        feedback.className = 'mt-4 p-4 rounded-xl border border-red-500 bg-red-500/10 text-red-400 text-sm font-mono';
+        feedback.className = 'mt-4 p-5 rounded-2xl border border-red-500/50 bg-red-500/10 text-red-300 text-sm';
         feedback.innerHTML = '<strong>✗ Connection error. Please verify network and try again.</strong>';
       });
     }
@@ -1452,11 +1339,11 @@
         if (!data.found) {
           resEl.innerHTML = '<span class="text-red-400">✗ ' + data.message + '</span>';
         } else if (data.status === 'approved') {
-          resEl.innerHTML = '<span class="text-crt-green font-bold">✓ PAYMENT VERIFIED!</span><br>' +
-            '<span class="text-white">License Key:</span> <code class="text-crt-green font-bold bg-black px-1.5 py-0.5 rounded select-all">' + data.license_key + '</code><br>' +
-            '<span class="text-xs text-crt-muted">Enter this key into RetroFlux to unlock PRO immediately.</span>';
+          resEl.innerHTML = '<span class="text-[#30d158] font-bold">✓ Payment Verified!</span><br>' +
+            '<span class="text-white">License Key:</span> <code class="text-[#30d158] font-mono font-bold bg-white/10 px-2 py-0.5 rounded select-all">' + data.license_key + '</code><br>' +
+            '<span class="text-xs text-[#86868b] mt-1 block">Enter this key into RetroFlux to unlock PRO immediately.</span>';
         } else {
-          resEl.innerHTML = '<span class="text-crt-amber font-bold">⏳ ' + data.message + '</span>';
+          resEl.innerHTML = '<span class="text-amber-400 font-bold">⏳ ' + data.message + '</span>';
         }
       })
       .catch(function(err) {
@@ -1467,4 +1354,3 @@
 
 </body>
 </html>
-
