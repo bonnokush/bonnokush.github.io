@@ -481,17 +481,20 @@
 
       <!-- Screenshot Tabs Navigation -->
       <div class="flex items-center justify-center mb-10">
-        <div class="inline-flex p-1.5 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-xl gap-1">
-          <button id="tabDesktopBtn" onclick="switchGallery('desktop')" class="px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-black shadow-md">
+        <div class="inline-flex flex-wrap items-center justify-center p-1.5 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-xl gap-1">
+          <button id="tabDesktopBtn" onclick="switchGallery('desktop')" class="px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-black shadow-md">
             🖥️ Modern Dark
           </button>
-          <button id="tabLightBtn" onclick="switchGallery('light')" class="px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-[#86868b] hover:text-white">
+          <button id="tabDemoBtn" onclick="switchGallery('demo')" class="px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-[#86868b] hover:text-white">
+            🎬 Live Demo
+          </button>
+          <button id="tabLightBtn" onclick="switchGallery('light')" class="px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-[#86868b] hover:text-white">
             ☀️ Modern Light
           </button>
-          <button id="tabCrtBtn" onclick="switchGallery('crt')" class="px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-[#86868b] hover:text-white">
+          <button id="tabCrtBtn" onclick="switchGallery('crt')" class="px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-[#86868b] hover:text-white">
             📟 Retro CRT
           </button>
-          <button id="tabMobileBtn" onclick="switchGallery('mobile')" class="px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-[#86868b] hover:text-white">
+          <button id="tabMobileBtn" onclick="switchGallery('mobile')" class="px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-[#86868b] hover:text-white">
             📱 Mobile Edition
           </button>
         </div>
@@ -517,6 +520,36 @@
             <div class="glass-panel rounded-2xl p-5">
               <div class="text-[#2997ff] font-bold text-sm mb-1">♾️ Unlimited Queues</div>
               <p class="text-xs text-[#86868b] leading-relaxed">Batch convert hundreds of heavy audio and video files in continuous background workers.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- View 2: Live Demo Video -->
+        <div id="galleryDemo" class="space-y-6 transition-all duration-300 hidden">
+          <div class="glass-panel rounded-3xl p-3 sm:p-4 border border-white/15 shadow-[0_30px_90px_rgba(0,0,0,0.8)] overflow-hidden">
+            <video 
+              id="workflowVideo"
+              src="assets/retroflux-workflow.mp4" 
+              poster="assets/screenshot-desktop-dark.png" 
+              class="w-full h-auto rounded-2xl object-cover shadow-2xl" 
+              controls
+              muted 
+              playsinline 
+              preload="metadata">
+            </video>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+            <div class="glass-panel rounded-2xl p-5">
+              <div class="text-[#30d158] font-bold text-sm mb-1">⚡ Real-Time Transcoding</div>
+              <p class="text-xs text-[#86868b] leading-relaxed">Watch GPU-accelerated video conversions execute with live frame-by-frame progress telemetry.</p>
+            </div>
+            <div class="glass-panel rounded-2xl p-5">
+              <div class="text-[#ffd60a] font-bold text-sm mb-1">🎨 Seamless Theme Switching</div>
+              <p class="text-xs text-[#86868b] leading-relaxed">Instant 1-click toggling between Titanium Dark, Studio Light, and Retro CRT modes.</p>
+            </div>
+            <div class="glass-panel rounded-2xl p-5">
+              <div class="text-[#2997ff] font-bold text-sm mb-1">🛡️ 100% Local Pipeline</div>
+              <p class="text-xs text-[#86868b] leading-relaxed">Embedded static FFmpeg engine running entirely on your machine with zero cloud uploads.</p>
             </div>
           </div>
         </div>
@@ -1230,29 +1263,43 @@
 
     function switchGallery(tab) {
       var d = document.getElementById('galleryDesktop');
+      var demo = document.getElementById('galleryDemo');
       var l = document.getElementById('galleryLight');
       var c = document.getElementById('galleryCrt');
       var m = document.getElementById('galleryMobile');
       var btnD = document.getElementById('tabDesktopBtn');
+      var btnDemo = document.getElementById('tabDemoBtn');
       var btnL = document.getElementById('tabLightBtn');
       var btnC = document.getElementById('tabCrtBtn');
       var btnM = document.getElementById('tabMobileBtn');
+      var vid = document.getElementById('workflowVideo');
 
-      var activeClass = 'px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-black shadow-md';
-      var inactiveClass = 'px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-[#86868b] hover:text-white';
+      var activeClass = 'px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-black shadow-md';
+      var inactiveClass = 'px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-[#86868b] hover:text-white';
 
       d.classList.add('hidden');
+      if (demo) demo.classList.add('hidden');
       if (l) l.classList.add('hidden');
       if (c) c.classList.add('hidden');
       m.classList.add('hidden');
       btnD.className = inactiveClass;
+      if (btnDemo) btnDemo.className = inactiveClass;
       if (btnL) btnL.className = inactiveClass;
       if (btnC) btnC.className = inactiveClass;
       btnM.className = inactiveClass;
 
+      if (vid) vid.pause();
+
       if (tab === 'desktop') {
         d.classList.remove('hidden');
         btnD.className = activeClass;
+      } else if (tab === 'demo') {
+        if (demo) demo.classList.remove('hidden');
+        if (btnDemo) btnDemo.className = activeClass;
+        if (vid) {
+          vid.currentTime = 0;
+          vid.play().catch(function() {});
+        }
       } else if (tab === 'light') {
         if (l) l.classList.remove('hidden');
         if (btnL) btnL.className = activeClass;
