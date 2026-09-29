@@ -218,7 +218,7 @@
       </a>
 
       <!-- Navigation & Action -->
-      <div class="flex items-center gap-6">
+      <div class="flex items-center gap-4 sm:gap-6">
         <nav class="hidden md:flex items-center gap-6 font-mono text-sm">
           <a href="#features" class="text-crt-muted hover:text-crt-green transition-colors">[ FEATURES ]</a>
           <a href="#comparison" class="text-crt-muted hover:text-crt-green transition-colors">[ VS CLOUD ]</a>
@@ -226,9 +226,14 @@
           <a href="#faq" class="text-crt-muted hover:text-crt-green transition-colors">[ FAQ ]</a>
         </nav>
 
-        <a href="#editions" class="cursor-pointer inline-flex items-center gap-2 px-5 py-2.5 rounded-xl btn-outline-green font-mono text-sm tracking-wide transition-all active:scale-95">
-          <span>[ VIEW EDITIONS ]</span>
-        </a>
+        <div class="flex items-center gap-2.5">
+          <a href="#free-download" class="hidden sm:inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-crt-border bg-crt-card hover:border-crt-green text-xs font-mono text-crt-muted hover:text-white transition-all">
+            <span>⬇ FREE DOWNLOAD</span>
+          </a>
+          <a href="#editions" class="cursor-pointer inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl btn-outline-green font-mono text-xs sm:text-sm tracking-wide transition-all active:scale-95">
+            <span>[ VIEW EDITIONS ]</span>
+          </a>
+        </div>
       </div>
 
     </div>
@@ -272,12 +277,15 @@
         </span>
       </div>
 
-      <!-- Hero Call To Action (Scrolls to Editions) -->
-      <div class="flex items-center justify-center mb-16">
-        <a href="#editions" class="cursor-pointer inline-flex items-center gap-3 px-8 sm:px-10 py-4 rounded-xl btn-outline-green font-mono text-base sm:text-lg font-bold tracking-wide transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-center shadow-lg">
-          <span>📦 VIEW EDITIONS & PRICING</span>
-          <span class="text-sm font-normal text-crt-muted">(From $3.99)</span>
+      <!-- Hero Call To Action (Scrolls to Editions or Downloads Free) -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <a href="#editions" class="cursor-pointer inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 rounded-xl btn-outline-green font-mono text-base sm:text-lg font-bold tracking-wide transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-center shadow-lg w-full sm:w-auto">
+          <span>⚡ GET PRO EDITIONS</span>
+          <span class="text-sm font-normal text-crt-muted">(From $3.99 / ₹299)</span>
           <span class="text-crt-green font-bold">▾</span>
+        </a>
+        <a href="#free-download" class="cursor-pointer inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl border-2 border-crt-border bg-crt-card hover:border-crt-green text-white font-mono text-base font-semibold transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-center w-full sm:w-auto">
+          <span>⬇ DOWNLOAD FREE TIER</span>
         </a>
       </div>
 
@@ -477,8 +485,29 @@
           Choose Your Edition
         </h2>
         <p class="text-crt-muted text-base sm:text-lg font-mono">
-          No monthly renewals. Every purchase provides a lifetime license key with instant email delivery.
+          No monthly renewals. Every purchase provides a lifetime license key with instant on-screen delivery.
         </p>
+      </div>
+
+      <!-- Free Community Edition Banner -->
+      <div id="free-download" class="mb-12 p-6 sm:p-8 rounded-2xl border-2 border-dashed border-crt-border bg-crt-card/60 backdrop-blur-sm flex flex-col md:flex-row items-center justify-between gap-6">
+        <div>
+          <div class="inline-block px-2.5 py-0.5 rounded text-xs font-bold font-mono bg-white/10 text-white border border-white/20 mb-2">
+            🆓 COMMUNITY EDITION // 100% FREE FOREVER
+          </div>
+          <h3 class="text-2xl font-bold text-white font-mono">Want to evaluate RetroFlux first?</h3>
+          <p class="text-sm text-crt-muted font-mono mt-1 max-w-xl leading-relaxed">
+            Download the standalone free build. Includes full GPU acceleration, instant stream copy (<code class="text-crt-green font-bold">-c copy</code> in 1.5s), and standard presets with a 2-file queue limit. No registration or credit cards required.
+          </p>
+        </div>
+        <div class="flex flex-wrap sm:flex-nowrap items-center gap-3 w-full md:w-auto">
+          <a href="https://github.com/bonnoxkush/retroflux-releases/releases/download/v1.3.0/RetroFlux.exe" class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-crt-green/15 text-crt-green border border-crt-green/40 hover:bg-crt-green hover:text-black font-mono font-bold text-sm transition-all active:scale-95 shadow-md">
+            ⬇ Windows (.exe)
+          </a>
+          <a href="https://github.com/bonnoxkush/retroflux-releases/releases/download/v1.3.0/RetroFlux-v1.3.0-release.apk" class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-crt-card border border-crt-border text-white hover:border-crt-amber hover:text-crt-amber font-mono font-bold text-sm transition-all active:scale-95 shadow-md">
+            ⬇ Android (.apk)
+          </a>
+        </div>
       </div>
 
       <!-- 3 Tier Cards Grid -->
@@ -965,7 +994,9 @@
       // Update PayPal link
       document.getElementById('paypalDirectLink').href = 'https://paypal.me/bonnokush/' + usd + 'USD';
 
-      // Reset feedback
+      // Reset feedback and restore view
+      document.querySelector('#checkoutModal .grid-cols-2').classList.remove('hidden');
+      switchTab('upi');
       document.getElementById('checkoutFeedback').className = 'hidden';
       document.getElementById('checkoutModal').classList.remove('hidden');
     }
@@ -1031,7 +1062,35 @@
         btn.textContent = '[ SUBMIT ORDER & CLAIM KEY ]';
         feedback.classList.remove('hidden');
 
-        if (data.success) {
+        if (data.success && data.license_key) {
+          // Hide forms so user focuses on their key
+          document.getElementById('upiTabContent').classList.add('hidden');
+          document.getElementById('paypalTabContent').classList.add('hidden');
+          document.querySelector('#checkoutModal .grid-cols-2').classList.add('hidden');
+
+          feedback.className = 'mt-2 p-5 rounded-2xl border-2 border-crt-green bg-crt-card crt-box-glow text-crt-text text-sm font-mono space-y-4';
+          feedback.innerHTML = 
+            '<div class="flex items-center gap-2 text-crt-green font-bold text-base sm:text-lg">' +
+              '<span>✓</span><span>PAYMENT REGISTERED & LICENSE ACTIVATED!</span>' +
+            '</div>' +
+            '<p class="text-xs text-crt-muted">' +
+              'Thank you! Your ' + currentCheckout.title + ' license has been generated instantaneously.' +
+            '</p>' +
+            '<div class="p-4 bg-black/90 rounded-xl border border-crt-green text-center space-y-2">' +
+              '<div class="text-xs text-crt-muted tracking-wider">YOUR RETROFLUX PRO LICENSE KEY:</div>' +
+              '<div id="activeKeyBox" class="text-lg sm:text-2xl font-mono font-extrabold text-crt-green select-all tracking-widest break-all py-1">' +
+                data.license_key +
+              '</div>' +
+              '<button type="button" id="copyKeyBtn" onclick="copyLicenseKey(\'' + data.license_key + '\')" class="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-crt-green text-black font-bold text-xs uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-md">' +
+                '📋 Click to Copy License Key' +
+              '</button>' +
+            '</div>' +
+            '<div class="space-y-1.5 text-xs text-crt-muted pt-2 border-t border-crt-border">' +
+              '<div><strong class="text-white">Transaction Reference:</strong> <span class="font-mono text-crt-green">' + txnRef + '</span></div>' +
+              '<div><strong class="text-white">Delivery Email:</strong> ' + email + '</div>' +
+              '<div class="pt-2"><strong class="text-white">Activation Instructions:</strong> Launch <strong class="text-white">RetroFlux</strong>, click <strong class="text-crt-green">[ ENTER LICENSE KEY ]</strong> on the startup window or bottom status bar, paste this key, and press Unlock PRO.</div>' +
+            '</div>';
+        } else if (data.success) {
           feedback.className = 'mt-4 p-4 rounded-xl border border-crt-green bg-crt-green/10 text-crt-green text-sm font-mono';
           feedback.innerHTML = '<strong class="text-white block mb-1">✓ ORDER REGISTERED!</strong>' +
             data.message + '<br><br>' +
@@ -1049,6 +1108,20 @@
         feedback.classList.remove('hidden');
         feedback.className = 'mt-4 p-4 rounded-xl border border-red-500 bg-red-500/10 text-red-400 text-sm font-mono';
         feedback.innerHTML = '<strong>✗ Connection error. Please verify network and try again.</strong>';
+      });
+    }
+
+    function copyLicenseKey(key) {
+      navigator.clipboard.writeText(key).then(function() {
+        var btn = document.getElementById('copyKeyBtn');
+        if (btn) {
+          btn.textContent = '✓ KEY COPIED TO CLIPBOARD!';
+          btn.classList.add('bg-emerald-400');
+          setTimeout(function() {
+            btn.textContent = '📋 Click to Copy License Key';
+            btn.classList.remove('bg-emerald-400');
+          }, 3000);
+        }
       });
     }
 
