@@ -677,13 +677,15 @@
             </ul>
           </div>
 
-          <div class="space-y-2 pt-4 border-t border-white/[0.08]">
-            <a href="https://github.com/bonnoxkush/retroflux-releases/releases/download/v1.3.0/RetroFlux.exe" class="block text-center w-full py-2.5 px-3 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold active:scale-95 transition-all">
-              ⬇ Download Windows (.exe)
+          <div>
+            <a href="https://github.com/bonnoxkush/retroflux-releases/releases/download/v1.3.0/RetroFlux.exe" class="cursor-pointer block text-center w-full py-3.5 px-4 rounded-full bg-white text-black text-xs sm:text-sm font-bold active:scale-95 transition-all shadow-[0_10px_30px_rgba(255,255,255,0.25)] hover:bg-[#eaeaea]">
+              ⬇ Download Free (.exe)
             </a>
-            <a href="https://github.com/bonnoxkush/retroflux-releases/releases/download/v1.3.0/RetroFlux-v1.3.0-release.apk" class="block text-center w-full py-2 px-3 rounded-full bg-transparent hover:bg-white/[0.06] text-[#86868b] hover:text-white text-xs font-medium active:scale-95 transition-all">
-              ⬇ Download Android (.apk)
-            </a>
+            <div class="text-center pt-2.5">
+              <a href="https://github.com/bonnoxkush/retroflux-releases/releases/download/v1.3.0/RetroFlux-v1.3.0-release.apk" class="text-[11px] text-[#86868b] hover:text-white transition-colors underline font-medium">
+                Android APK available (.apk) →
+              </a>
+            </div>
           </div>
         </div>
 
@@ -724,9 +726,14 @@
             </ul>
           </div>
 
-          <button onclick="openCheckout('mobile', 'Mobile Edition', '3.99', '299')" class="cursor-pointer block text-center w-full py-3 px-4 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold active:scale-95 transition-all">
-            Buy Mobile — ₹299 / $3.99
-          </button>
+          <div>
+            <button onclick="openCheckout('mobile', 'Mobile Edition', '3.99', '299')" class="cursor-pointer block text-center w-full py-3.5 px-4 rounded-full bg-white text-black text-xs sm:text-sm font-bold active:scale-95 transition-all shadow-[0_10px_30px_rgba(255,255,255,0.25)] hover:bg-[#eaeaea]">
+              ⚡ Buy Mobile — ₹299 / $3.99
+            </button>
+            <div class="text-center pt-2.5">
+              <span class="text-[11px] text-[#86868b]">1 Android Device Seat</span>
+            </div>
+          </div>
         </div>
 
         <!-- Tier 2: Desktop Edition (Featured) -->
@@ -774,9 +781,14 @@
             </ul>
           </div>
 
-          <button onclick="openCheckout('desktop', 'Desktop Edition', '8.99', '699')" class="cursor-pointer block text-center w-full py-3.5 px-4 rounded-full bg-white text-black text-xs sm:text-sm font-bold active:scale-95 transition-all shadow-[0_10px_30px_rgba(255,255,255,0.25)] hover:bg-[#eaeaea]">
-            ⚡ Buy Desktop — ₹699 / $8.99
-          </button>
+          <div>
+            <button onclick="openCheckout('desktop', 'Desktop Edition', '8.99', '699')" class="cursor-pointer block text-center w-full py-3.5 px-4 rounded-full bg-white text-black text-xs sm:text-sm font-bold active:scale-95 transition-all shadow-[0_10px_30px_rgba(255,255,255,0.25)] hover:bg-[#eaeaea]">
+              ⚡ Buy Desktop — ₹699 / $8.99
+            </button>
+            <div class="text-center pt-2.5">
+              <span class="text-[11px] text-[#86868b]">1 Windows PC Hardware Seat</span>
+            </div>
+          </div>
         </div>
 
         <!-- Tier 3: All-Access Master Bundle -->
@@ -820,9 +832,14 @@
             </ul>
           </div>
 
-          <button onclick="openCheckout('bundle', 'All-Access Master Bundle', '11.99', '899')" class="cursor-pointer block text-center w-full py-3.5 px-4 rounded-full bg-[#ffd60a] text-black text-xs sm:text-sm font-bold active:scale-95 transition-all shadow-[0_10px_30px_rgba(255,214,10,0.3)] hover:brightness-110">
-            ⚡ Get Bundle — ₹899 / $11.99
-          </button>
+          <div>
+            <button onclick="openCheckout('bundle', 'All-Access Master Bundle', '11.99', '899')" class="cursor-pointer block text-center w-full py-3.5 px-4 rounded-full bg-[#ffd60a] text-black text-xs sm:text-sm font-bold active:scale-95 transition-all shadow-[0_10px_30px_rgba(255,214,10,0.3)] hover:brightness-110">
+              ⚡ Get Bundle — ₹899 / $11.99
+            </button>
+            <div class="text-center pt-2.5">
+              <span class="text-[11px] text-[#86868b]">Dual Platform (1 PC + 1 Mobile)</span>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -891,16 +908,16 @@
               <tr>
                 <td class="py-4 px-4 text-[#86868b]">Action</td>
                 <td class="py-4 px-4">
-                  <a href="#free-download" class="text-xs font-semibold text-white underline hover:text-[#30d158]">Download Free</a>
+                  <a href="#free-download" class="inline-block px-3.5 py-1.5 rounded-full bg-white text-black hover:bg-[#eaeaea] text-xs font-bold active:scale-95 transition-all shadow-sm">⬇ Free (.exe)</a>
                 </td>
                 <td class="py-4 px-4">
-                  <button onclick="openCheckout('mobile', 'Mobile Edition', '3.99', '299')" class="text-xs font-semibold text-white underline hover:text-[#30d158]">Buy $3.99</button>
+                  <button onclick="openCheckout('mobile', 'Mobile Edition', '3.99', '299')" class="inline-block px-3.5 py-1.5 rounded-full bg-white text-black hover:bg-[#eaeaea] text-xs font-bold active:scale-95 transition-all shadow-sm">⚡ Buy $3.99</button>
                 </td>
                 <td class="py-4 px-4">
-                  <button onclick="openCheckout('desktop', 'Desktop Edition', '8.99', '699')" class="text-xs font-semibold text-[#30d158] underline hover:text-white">Buy $8.99</button>
+                  <button onclick="openCheckout('desktop', 'Desktop Edition', '8.99', '699')" class="inline-block px-3.5 py-1.5 rounded-full bg-white text-black hover:bg-[#eaeaea] text-xs font-bold active:scale-95 transition-all shadow-sm">⚡ Buy $8.99</button>
                 </td>
                 <td class="py-4 px-4">
-                  <button onclick="openCheckout('bundle', 'All-Access Master Bundle', '11.99', '899')" class="text-xs font-semibold text-[#ffd60a] underline hover:text-white">Buy $11.99</button>
+                  <button onclick="openCheckout('bundle', 'All-Access Master Bundle', '11.99', '899')" class="inline-block px-3.5 py-1.5 rounded-full bg-[#ffd60a] text-black hover:brightness-110 text-xs font-bold active:scale-95 transition-all shadow-sm">⚡ Buy $11.99</button>
                 </td>
               </tr>
             </tbody>
