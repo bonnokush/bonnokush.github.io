@@ -483,10 +483,13 @@
       <div class="flex items-center justify-center mb-10">
         <div class="inline-flex p-1.5 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-xl gap-1">
           <button id="tabDesktopBtn" onclick="switchGallery('desktop')" class="px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-black shadow-md">
-            🖥️ Desktop Workstation
+            🖥️ Modern Dark
           </button>
-          <button id="tabSettingsBtn" onclick="switchGallery('settings')" class="px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-[#86868b] hover:text-white">
-            ⚙️ Hardware & Codecs
+          <button id="tabLightBtn" onclick="switchGallery('light')" class="px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-[#86868b] hover:text-white">
+            ☀️ Modern Light
+          </button>
+          <button id="tabCrtBtn" onclick="switchGallery('crt')" class="px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-[#86868b] hover:text-white">
+            📟 Retro CRT
           </button>
           <button id="tabMobileBtn" onclick="switchGallery('mobile')" class="px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-[#86868b] hover:text-white">
             📱 Mobile Edition
@@ -497,10 +500,10 @@
       <!-- Screenshot Display Canvas -->
       <div class="max-w-5xl mx-auto">
         
-        <!-- View 1: Desktop Workstation Queue -->
+        <!-- View 1: Desktop Workstation Modern Dark -->
         <div id="galleryDesktop" class="space-y-6 transition-all duration-300">
           <div class="glass-panel rounded-3xl p-3 sm:p-4 border border-white/15 shadow-[0_30px_90px_rgba(0,0,0,0.8)] overflow-hidden">
-            <img src="assets/screenshot-desktop-queue.jpg" alt="RetroFlux PRO Desktop Workstation Batch Queue" class="w-full h-auto rounded-2xl object-cover shadow-2xl" />
+            <img src="assets/screenshot-desktop-dark.png" alt="RetroFlux PRO Desktop Workstation Dark Theme" class="w-full h-auto rounded-2xl object-cover shadow-2xl" />
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
             <div class="glass-panel rounded-2xl p-5">
@@ -518,19 +521,40 @@
           </div>
         </div>
 
-        <!-- View 2: Hardware & Codec Settings -->
-        <div id="gallerySettings" class="space-y-6 transition-all duration-300 hidden">
-          <div class="glass-panel rounded-3xl p-3 sm:p-4 border border-white/15 shadow-[0_30px_90px_rgba(0,0,0,0.8)] overflow-hidden">
-            <img src="assets/screenshot-hardware-settings.jpg" alt="RetroFlux PRO Hardware Acceleration and Codec Settings" class="w-full h-auto rounded-2xl object-cover shadow-2xl" />
+        <!-- View 2: Modern Light Theme -->
+        <div id="galleryLight" class="space-y-6 transition-all duration-300 hidden">
+          <div class="glass-panel rounded-3xl p-3 sm:p-4 border border-white/15 shadow-[0_30px_90px_rgba(0,0,0,0.8)] overflow-hidden bg-white/5">
+            <img src="assets/screenshot-desktop-light.png" alt="RetroFlux PRO Modern Light Theme" class="w-full h-auto rounded-2xl object-cover shadow-2xl" />
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
             <div class="glass-panel rounded-2xl p-5">
-              <div class="text-[#30d158] font-bold text-sm mb-1">🔍 Automatic Hardware Probing</div>
-              <p class="text-xs text-[#86868b] leading-relaxed">Instant detection of installed dedicated graphics cards and Intel integrated silicon.</p>
+              <div class="text-[#30d158] font-bold text-sm mb-1">☀️ High-Contrast Daylight Mode</div>
+              <p class="text-xs text-[#86868b] leading-relaxed">Engineered for bright environments with sharp slate typography and fluid pill controls.</p>
             </div>
             <div class="glass-panel rounded-2xl p-5">
               <div class="text-[#ffd60a] font-bold text-sm mb-1">🎛️ Universal Codec Presets</div>
-              <p class="text-xs text-[#86868b] leading-relaxed">One-click toggles for MP4 H.264, MKV HEVC H.265, ProRes 422, and WebM VP9.</p>
+              <p class="text-xs text-[#86868b] leading-relaxed">One-click toggles for MP4 H.264, MKV HEVC H.265, WebM VP9, and animated GIFs.</p>
+            </div>
+            <div class="glass-panel rounded-2xl p-5">
+              <div class="text-[#2997ff] font-bold text-sm mb-1">🔍 Automatic Hardware Probing</div>
+              <p class="text-xs text-[#86868b] leading-relaxed">Instant detection of installed dedicated graphics cards with seamless CPU fallback.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- View 3: Retro CRT Terminal Theme -->
+        <div id="galleryCrt" class="space-y-6 transition-all duration-300 hidden">
+          <div class="glass-panel rounded-3xl p-3 sm:p-4 border border-white/15 shadow-[0_30px_90px_rgba(0,0,0,0.8)] overflow-hidden">
+            <img src="assets/screenshot-desktop-crt.png" alt="RetroFlux PRO Cyberpunk Retro CRT Terminal" class="w-full h-auto rounded-2xl object-cover shadow-2xl" />
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+            <div class="glass-panel rounded-2xl p-5">
+              <div class="text-[#30d158] font-bold text-sm mb-1">📟 Cyberpunk CRT Terminal</div>
+              <p class="text-xs text-[#86868b] leading-relaxed">Vintage phosphor green terminal aesthetics with live stream diagnostics and telemetry.</p>
+            </div>
+            <div class="glass-panel rounded-2xl p-5">
+              <div class="text-[#ffd60a] font-bold text-sm mb-1">🛡️ Standalone Embedded Engine</div>
+              <p class="text-xs text-[#86868b] leading-relaxed">Embedded static FFmpeg engine running 100% offline with zero cloud tracking.</p>
             </div>
             <div class="glass-panel rounded-2xl p-5">
               <div class="text-[#af52de] font-bold text-sm mb-1">🎵 Studio Audio Extraction</div>
@@ -539,7 +563,7 @@
           </div>
         </div>
 
-        <!-- View 3: Mobile Edition (Android) -->
+        <!-- View 4: Mobile Edition (Android) -->
         <div id="galleryMobile" class="space-y-6 transition-all duration-300 hidden">
           <div class="max-w-md mx-auto glass-panel rounded-3xl p-3 sm:p-4 border border-white/15 shadow-[0_30px_90px_rgba(0,0,0,0.8)] overflow-hidden">
             <img src="assets/screenshot-mobile-app.jpg" alt="RetroFlux Mobile Android Edition" class="w-full h-auto rounded-2xl object-cover shadow-2xl mx-auto" />
@@ -1206,28 +1230,35 @@
 
     function switchGallery(tab) {
       var d = document.getElementById('galleryDesktop');
-      var s = document.getElementById('gallerySettings');
+      var l = document.getElementById('galleryLight');
+      var c = document.getElementById('galleryCrt');
       var m = document.getElementById('galleryMobile');
       var btnD = document.getElementById('tabDesktopBtn');
-      var btnS = document.getElementById('tabSettingsBtn');
+      var btnL = document.getElementById('tabLightBtn');
+      var btnC = document.getElementById('tabCrtBtn');
       var btnM = document.getElementById('tabMobileBtn');
 
       var activeClass = 'px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-black shadow-md';
       var inactiveClass = 'px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-[#86868b] hover:text-white';
 
       d.classList.add('hidden');
-      s.classList.add('hidden');
+      if (l) l.classList.add('hidden');
+      if (c) c.classList.add('hidden');
       m.classList.add('hidden');
       btnD.className = inactiveClass;
-      btnS.className = inactiveClass;
+      if (btnL) btnL.className = inactiveClass;
+      if (btnC) btnC.className = inactiveClass;
       btnM.className = inactiveClass;
 
       if (tab === 'desktop') {
         d.classList.remove('hidden');
         btnD.className = activeClass;
-      } else if (tab === 'settings') {
-        s.classList.remove('hidden');
-        btnS.className = activeClass;
+      } else if (tab === 'light') {
+        if (l) l.classList.remove('hidden');
+        if (btnL) btnL.className = activeClass;
+      } else if (tab === 'crt') {
+        if (c) c.classList.remove('hidden');
+        if (btnC) btnC.className = activeClass;
       } else if (tab === 'mobile') {
         m.classList.remove('hidden');
         btnM.className = activeClass;
