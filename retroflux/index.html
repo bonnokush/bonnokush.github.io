@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-gumroad-field="name">RetroFlux PRO — High-Speed Offline Media Converter</title>
+  
+  <!-- Retro Terminal Google Fonts (Allowed by Gumroad CSP) -->
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS Configuration (BEFORE CDN script) -->
+  <script>
+    tailwind = {
+      config: {
+        theme: {
+          extend: {
+            colors: {
+              crt: {
+                bg: '#050906',
+                surface: '#0a120d',
+                card: '#0e1811',
+                cardhover: '#132318',
+                border: '#1a3522',
+                green: '#00ff66',
+                amber: '#ffb300',
+                cyan: '#00e5ff',
+                text: '#e6f4ea',
+                muted: '#9db4a3'
+              }
+            },
+            fontFamily: {
+              vt: ['VT323', 'monospace'],
+              mono: ['Share Tech Mono', 'Consolas', 'Fira Code', 'Monaco', 'Courier New', 'monospace'],
+              sans: ['Share Tech Mono', 'Consolas', 'system-ui', 'sans-serif']
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Gumroad Overlay Checkout Script -->
+  <script src="https://gumroad.com/js/gumroad.js"></script>
+
+  <style>
+    /* Absolute Theme Enforcement */
+    :root {
+      color-scheme: dark;
+    }
+    html, body {
+      background-color: #050906 !important;
+      color: #e6f4ea !important;
+      font-family: 'Share Tech Mono', 'Consolas', 'Courier New', monospace;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Universal Text Color Guard (Guarantees NO element ever inherits invisible black text) */
+    p, span, li, summary, td, th, label, div, h1, h2, h3, h4, h5, h6 {
+      color: #e6f4ea;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Old Terminal CRT Font Styles */
+    .font-vt {
+      font-family: 'VT323', monospace !important;
+    }
+    .font-terminal {
+      font-family: 'Share Tech Mono', 'Consolas', monospace !important;
+    }
+
+    /* Live Blinking Terminal Cursor */
+    @keyframes blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    .terminal-cursor {
+      display: inline-block;
+      color: #00ff66;
+      font-weight: 900;
+      animation: blink 0.9s step-start infinite;
+      margin-left: 2px;
+      vertical-align: baseline;
+    }
+    .amber-cursor {
+      display: inline-block;
+      color: #ffb300;
+      font-weight: 900;
+      animation: blink 0.9s step-start infinite;
+      margin-left: 2px;
+      vertical-align: baseline;
+    }
+
+    /* Phosphor Glows */
+    .crt-glow {
+      text-shadow: 0 0 10px rgba(0, 255, 102, 0.55), 0 0 20px rgba(0, 255, 102, 0.25);
+    }
+    .amber-glow {
+      text-shadow: 0 0 10px rgba(255, 179, 0, 0.55), 0 0 20px rgba(255, 179, 0, 0.25);
+    }
+    .crt-box-glow {
+      box-shadow: 0 0 25px rgba(0, 255, 102, 0.12), inset 0 0 15px rgba(0, 255, 102, 0.04);
+    }
+    .amber-box-glow {
+      box-shadow: 0 0 30px rgba(255, 179, 0, 0.16), inset 0 0 15px rgba(255, 179, 0, 0.05);
+    }
+
+    /* Scanlines Overlay */
+    .scanlines {
+      background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%, 
+        rgba(0, 0, 0, 0.35) 50%
+      ), linear-gradient(
+        90deg,
+        rgba(255, 0, 0, 0.02),
+        rgba(0, 255, 0, 0.01),
+        rgba(0, 0, 255, 0.02)
+      );
+      background-size: 100% 4px, 6px 100%;
+    }
+
+    /* Terminal Grid Lines */
+    .terminal-grid {
+      background-image: 
+        linear-gradient(to right, rgba(0, 255, 102, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 255, 102, 0.035) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    /* High-Visibility Primary Buttons (Explicit High-Contrast Styling) */
+    .btn-green-solid {
+      background-color: #00ff66 !important;
+      color: #000000 !important;
+      border: 2px solid #00ff66 !important;
+      font-weight: 800 !important;
+      box-shadow: 0 0 20px rgba(0, 255, 102, 0.35) !important;
+    }
+    .btn-green-solid * {
+      color: #000000 !important;
+    }
+    .btn-green-solid:hover {
+      background-color: #33ff85 !important;
+      box-shadow: 0 0 30px rgba(0, 255, 102, 0.6) !important;
+    }
+
+    .btn-amber-solid {
+      background-color: #ffb300 !important;
+      color: #000000 !important;
+      border: 2px solid #ffb300 !important;
+      font-weight: 800 !important;
+      box-shadow: 0 0 20px rgba(255, 179, 0, 0.35) !important;
+    }
+    .btn-amber-solid * {
+      color: #000000 !important;
+    }
+    .btn-amber-solid:hover {
+      background-color: #ffc233 !important;
+      box-shadow: 0 0 30px rgba(255, 179, 0, 0.6) !important;
+    }
+
+    .btn-outline-green {
+      background-color: #0a140d !important;
+      color: #00ff66 !important;
+      border: 2px solid #00ff66 !important;
+      font-weight: 700 !important;
+    }
+    .btn-outline-green * {
+      color: #00ff66 !important;
+    }
+    .btn-outline-green:hover {
+      background-color: #00ff66 !important;
+      color: #000000 !important;
+    }
+    .btn-outline-green:hover * {
+      color: #000000 !important;
+    }
+
+    /* Badges with Black Text on Bright Backing */
+    .badge-dark-on-green {
+      background-color: #00ff66 !important;
+      color: #000000 !important;
+    }
+    .badge-dark-on-green * {
+      color: #000000 !important;
+    }
+
+    .badge-dark-on-amber {
+      background-color: #ffb300 !important;
+      color: #000000 !important;
+    }
+    .badge-dark-on-amber * {
+      color: #000000 !important;
+    }
+  </style>
+</head>
+
+<body class="bg-crt-bg text-crt-text antialiased selection:bg-crt-green selection:text-black terminal-grid min-h-screen">
+
+  <!-- ================= TOP TERMINAL NAV ================= -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-crt-bg/95 border-b border-crt-border">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+      
+      <!-- Logo + Live Title -->
+      <a href="#hero" class="flex items-center gap-3.5 group">
+        <div class="relative p-1 rounded-xl border border-crt-green/50 bg-crt-card group-hover:border-crt-green transition-colors">
+          <img src="https://public-files.gumroad.com/g7r71g56t397cs9duy4iyq6727v3" alt="RetroFlux Logo" class="w-10 h-10 rounded-lg group-hover:scale-105 transition-transform" />
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-mono font-bold text-xl sm:text-2xl tracking-wider text-crt-green crt-glow" data-gumroad-field="name">RETROFLUX PRO</span>
+            <span class="terminal-cursor text-xl">_</span>
+            <span class="hidden sm:inline-block px-2 py-0.5 rounded text-xs font-mono font-bold bg-crt-green/15 text-crt-green border border-crt-green/40">v1.3.0</span>
+          </div>
+          <span class="block text-xs font-mono text-crt-muted tracking-wider">OFFLINE MEDIA CORE // GPU-ACCELERATED</span>
+        </div>
+      </a>
+
+      <!-- Navigation & Action -->
+      <div class="flex items-center gap-6">
+        <nav class="hidden md:flex items-center gap-6 font-mono text-sm">
+          <a href="#features" class="text-crt-muted hover:text-crt-green transition-colors">[ FEATURES ]</a>
+          <a href="#comparison" class="text-crt-muted hover:text-crt-green transition-colors">[ VS CLOUD ]</a>
+          <a href="#editions" class="text-crt-muted hover:text-crt-green transition-colors">[ EDITIONS ]</a>
+          <a href="#faq" class="text-crt-muted hover:text-crt-green transition-colors">[ FAQ ]</a>
+        </nav>
+
+        <a href="#editions" class="cursor-pointer inline-flex items-center gap-2 px-5 py-2.5 rounded-xl btn-outline-green font-mono text-sm tracking-wide transition-all active:scale-95">
+          <span>[ VIEW EDITIONS ]</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section id="hero" class="relative pt-12 pb-16 md:pt-20 md:pb-24 overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
+
+      <!-- Live Terminal Command Bar with Dynamic Typing -->
+      <div class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl border border-crt-green/40 bg-crt-card text-crt-green font-mono text-xs sm:text-base font-semibold mb-8 crt-box-glow max-w-full overflow-hidden">
+        <span class="w-2.5 h-2.5 rounded-full bg-crt-green animate-pulse flex-shrink-0"></span>
+        <span class="text-crt-muted flex-shrink-0">retroflux@local:~$</span>
+        <span id="liveTypingText" class="text-crt-green font-bold"></span>
+        <span class="terminal-cursor text-base flex-shrink-0">▋</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.18] mb-6 font-mono">
+        Blistering Fast Media Conversion. <br class="hidden sm:inline" />
+        <span class="text-crt-green crt-glow">Zero Cloud. Zero Subscriptions.</span>
+      </h1>
+
+      <!-- Clear Subheadline -->
+      <p class="max-w-3xl mx-auto text-lg sm:text-xl text-crt-muted mb-10 leading-relaxed font-mono">
+        Stop uploading your private media to sluggish cloud converters. Run lossless container remuxing, multi-GPU encoding, and batch queues directly on your own hardware.
+      </p>
+
+      <!-- Rating & Social Proof Badges -->
+      <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-sm sm:text-base font-mono mb-12">
+        <span class="px-4 py-2 rounded-xl bg-crt-amber/15 text-crt-amber border border-crt-amber/40 font-bold" data-gumroad-field="rating">
+          5.0 ★★★★★
+        </span>
+        <span class="text-crt-muted hidden sm:inline">•</span>
+        <span class="px-4 py-2 rounded-xl bg-crt-card text-crt-text border border-crt-border font-bold" data-gumroad-field="review-count">
+          Be the first to review
+        </span>
+        <span class="text-crt-muted hidden sm:inline">•</span>
+        <span class="px-4 py-2 rounded-xl bg-crt-green/15 text-crt-green border border-crt-green/40 font-bold">
+          ✓ Lifetime License (No Renewals)
+        </span>
+      </div>
+
+      <!-- Hero Call To Action (Scrolls to Editions) -->
+      <div class="flex items-center justify-center mb-16">
+        <a href="#editions" class="cursor-pointer inline-flex items-center gap-3 px-8 sm:px-10 py-4 rounded-xl btn-outline-green font-mono text-base sm:text-lg font-bold tracking-wide transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-center shadow-lg">
+          <span>📦 VIEW EDITIONS & PRICING</span>
+          <span class="text-sm font-normal text-crt-muted">(From $3.99)</span>
+          <span class="text-crt-green font-bold">▾</span>
+        </a>
+      </div>
+
+      <!-- Framed CRT Banner Window -->
+      <div class="relative max-w-4xl mx-auto rounded-2xl border-2 border-crt-green/50 crt-box-glow bg-crt-surface overflow-hidden">
+        <!-- Terminal Header -->
+        <div class="h-10 px-4 bg-crt-card border-b border-crt-border flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+          </div>
+          <span class="font-mono text-xs sm:text-sm text-crt-green font-bold tracking-wider">RETROFLUX MEDIA WORKSTATION // GPU ACTIVE</span>
+          <span class="terminal-cursor text-sm">_</span>
+        </div>
+        
+        <!-- Banner Image Container -->
+        <div class="relative scanlines">
+          <img src="https://public-files.gumroad.com/f6nuhus5jxc3d4581km37zicu5wn" alt="RetroFlux PRO Terminal Interface" class="w-full h-auto object-cover select-none" />
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= CORE CAPABILITIES (FEATURES) ================= -->
+  <section id="features" class="py-16 md:py-24 border-t border-crt-border bg-crt-surface/60">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-block px-3 py-1 rounded bg-crt-green/10 border border-crt-green/30 text-crt-green font-mono text-xs font-bold mb-3 tracking-widest">
+          // ARCHITECTURE & CAPABILITIES
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4 tracking-tight font-mono">
+          Engineered for Maximum Local Performance
+        </h2>
+        <p class="text-crt-muted text-base sm:text-lg leading-relaxed font-mono">
+          Daily audio & video conversion with zero cloud lag, zero privacy leaks, and zero recurring fees.
+        </p>
+      </div>
+
+      <!-- 6 Feature Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+
+        <!-- Card 1 -->
+        <div class="p-7 rounded-2xl border border-crt-border bg-crt-card hover:border-crt-green/60 transition-all group crt-box-glow">
+          <div class="w-12 h-12 rounded-xl bg-crt-green/10 border border-crt-green/30 flex items-center justify-center text-crt-green font-mono text-2xl font-bold mb-5 group-hover:scale-105 transition-transform">
+            ⚡
+          </div>
+          <h3 class="text-xl font-bold font-mono text-white mb-3 group-hover:text-crt-green transition-colors">
+            Fast Remux (Stream Copy)
+          </h3>
+          <p class="text-base text-crt-muted leading-relaxed font-mono">
+            Change container formats (e.g. MKV to MP4, MOV to MKV) in <strong class="text-crt-green">1–2 seconds</strong> with zero re-encoding, zero CPU burn, and 100% lossless video fidelity.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="p-7 rounded-2xl border border-crt-border bg-crt-card hover:border-crt-green/60 transition-all group crt-box-glow">
+          <div class="w-12 h-12 rounded-xl bg-crt-green/10 border border-crt-green/30 flex items-center justify-center text-crt-green font-mono text-2xl font-bold mb-5 group-hover:scale-105 transition-transform">
+            🚀
+          </div>
+          <h3 class="text-xl font-bold font-mono text-white mb-3 group-hover:text-crt-green transition-colors">
+            Multi-GPU Auto-Detection
+          </h3>
+          <p class="text-base text-crt-muted leading-relaxed font-mono">
+            Native hardware video encoding on <strong class="text-white">NVIDIA (NVENC)</strong>, <strong class="text-white">Intel (QuickSync)</strong>, and <strong class="text-white">AMD (AMF)</strong>, with dynamic fallback to multicore CPU.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="p-7 rounded-2xl border border-crt-border bg-crt-card hover:border-crt-green/60 transition-all group crt-box-glow">
+          <div class="w-12 h-12 rounded-xl bg-crt-green/10 border border-crt-green/30 flex items-center justify-center text-crt-green font-mono text-2xl font-bold mb-5 group-hover:scale-105 transition-transform">
+            🔒
+          </div>
+          <h3 class="text-xl font-bold font-mono text-white mb-3 group-hover:text-crt-green transition-colors">
+            100% Offline & Air-Gapped
+          </h3>
+          <p class="text-base text-crt-muted leading-relaxed font-mono">
+            Zero cloud uploads. Zero telemetry. RetroFlux operates completely air-gapped on your computer and never phones home.
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="p-7 rounded-2xl border border-crt-border bg-crt-card hover:border-crt-green/60 transition-all group crt-box-glow">
+          <div class="w-12 h-12 rounded-xl bg-crt-green/10 border border-crt-green/30 flex items-center justify-center text-crt-green font-mono text-2xl font-bold mb-5 group-hover:scale-105 transition-transform">
+            📁
+          </div>
+          <h3 class="text-xl font-bold font-mono text-white mb-3 group-hover:text-crt-green transition-colors">
+            Unlimited Batch Queue
+          </h3>
+          <p class="text-base text-crt-muted leading-relaxed font-mono">
+            Import hundreds of files or entire folders at once. Batch process sequentially with real-time ETA, frame rate, and progress parsing.
+          </p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="p-7 rounded-2xl border border-crt-border bg-crt-card hover:border-crt-green/60 transition-all group crt-box-glow">
+          <div class="w-12 h-12 rounded-xl bg-crt-green/10 border border-crt-green/30 flex items-center justify-center text-crt-green font-mono text-2xl font-bold mb-5 group-hover:scale-105 transition-transform">
+            🎨
+          </div>
+          <h3 class="text-xl font-bold font-mono text-white mb-3 group-hover:text-crt-green transition-colors">
+            Adaptive Triple-Theme Engine
+          </h3>
+          <p class="text-base text-crt-muted leading-relaxed font-mono">
+            Switch effortlessly between <strong class="text-crt-green">Retro CRT Phosphor Terminal</strong>, <strong class="text-white">Material 3 Light</strong>, and <strong class="text-white">Material 3 Dark</strong> inside the app.
+          </p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="p-7 rounded-2xl border border-crt-border bg-crt-card hover:border-crt-green/60 transition-all group crt-box-glow">
+          <div class="w-12 h-12 rounded-xl bg-crt-green/10 border border-crt-green/30 flex items-center justify-center text-crt-green font-mono text-2xl font-bold mb-5 group-hover:scale-105 transition-transform">
+            🎬
+          </div>
+          <h3 class="text-xl font-bold font-mono text-white mb-3 group-hover:text-crt-green transition-colors">
+            Production Formats & Presets
+          </h3>
+          <p class="text-base text-crt-muted leading-relaxed font-mono">
+            Presets for MP4, MKV, MOV, AVI, WebM (VP9/Opus), high-bitrate 320kbps MP3 audio extraction, and 2-Pass Lanczos animated GIFs.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= COMPARISON MATRIX (VS CLOUD) ================= -->
+  <section id="comparison" class="py-16 md:py-24 border-t border-crt-border">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center mb-14">
+        <div class="inline-block px-3 py-1 rounded bg-crt-amber/10 border border-crt-amber/30 text-crt-amber font-mono text-xs font-bold mb-3 tracking-widest">
+          // BENCHMARK COMPARISON
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4 font-mono">
+          Local Hardware vs. Cloud Converters
+        </h2>
+        <p class="text-crt-muted text-base sm:text-lg font-mono">
+          Why local GPU processing outclasses third-party conversion websites.
+        </p>
+      </div>
+
+      <div class="overflow-x-auto rounded-2xl border-2 border-crt-border bg-crt-card shadow-2xl">
+        <table class="w-full text-left font-mono text-sm sm:text-base">
+          <thead>
+            <tr class="border-b-2 border-crt-border bg-crt-surface text-xs sm:text-sm font-bold tracking-wider">
+              <th class="py-4 px-6 text-crt-muted">CRITERIA</th>
+              <th class="py-4 px-6 text-rose-400">CLOUD CONVERTERS</th>
+              <th class="py-4 px-6 text-crt-green font-extrabold crt-glow">RETROFLUX PRO</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-crt-border text-crt-text">
+            <tr class="hover:bg-crt-cardhover transition-colors">
+              <td class="py-4 px-6 font-bold text-white">Privacy & Security</td>
+              <td class="py-4 px-6 text-rose-300">Uploaded to remote 3rd-party servers</td>
+              <td class="py-4 px-6 text-crt-green font-bold">100% on your device (Air-gapped)</td>
+            </tr>
+            <tr class="hover:bg-crt-cardhover transition-colors">
+              <td class="py-4 px-6 font-bold text-white">Remux Speed (Container Swap)</td>
+              <td class="py-4 px-6 text-rose-300">Slow (Upload + Encode + Download)</td>
+              <td class="py-4 px-6 text-crt-green font-bold">1–2 Seconds (Instant Stream Copy)</td>
+            </tr>
+            <tr class="hover:bg-crt-cardhover transition-colors">
+              <td class="py-4 px-6 font-bold text-white">File Size Restriction</td>
+              <td class="py-4 px-6 text-rose-300">Capped at 50MB – 100MB unless paid</td>
+              <td class="py-4 px-6 text-crt-green font-bold">Unlimited (Gigabytes & 4K/8K)</td>
+            </tr>
+            <tr class="hover:bg-crt-cardhover transition-colors">
+              <td class="py-4 px-6 font-bold text-white">Billing Model</td>
+              <td class="py-4 px-6 text-rose-300">Recurring ($10 – $20 / month)</td>
+              <td class="py-4 px-6 text-crt-green font-bold">One-Time Lifetime Ownership</td>
+            </tr>
+            <tr class="hover:bg-crt-cardhover transition-colors">
+              <td class="py-4 px-6 font-bold text-white">Internet Bandwidth</td>
+              <td class="py-4 px-6 text-rose-300">Heavy upload/download bandwidth required</td>
+              <td class="py-4 px-6 text-crt-green font-bold">Zero internet needed</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= EDITIONS & PRICING (BUY SECTION) ================= -->
+  <section id="editions" class="py-16 md:py-24 border-t border-crt-border bg-crt-surface/80">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <div class="inline-block px-3 py-1 rounded bg-crt-green/10 border border-crt-green/30 text-crt-green font-mono text-xs font-bold mb-3 tracking-widest">
+          // STORE CATALOG & TIERS
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4 font-mono">
+          Choose Your Edition
+        </h2>
+        <p class="text-crt-muted text-base sm:text-lg font-mono">
+          No monthly renewals. Every purchase provides a lifetime license key with instant email delivery.
+        </p>
+      </div>
+
+      <!-- 3 Tier Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch font-mono">
+
+        <!-- Tier 1: Mobile Edition -->
+        <div class="flex flex-col justify-between p-7 sm:p-8 rounded-2xl border border-crt-border bg-crt-card crt-box-glow hover:border-crt-green/50 transition-all">
+          <div>
+            <div class="text-sm font-bold text-crt-muted mb-4 tracking-wider">
+              [ 📱 MOBILE EDITION ]
+            </div>
+            
+            <div class="flex items-baseline gap-1.5 mb-3">
+              <span class="text-4xl sm:text-5xl font-extrabold text-white font-mono">$3.99</span>
+              <span class="text-sm text-crt-muted">one-time</span>
+            </div>
+            
+            <p class="text-base text-crt-muted mb-6">
+              For smartphones and tablets. Hardware video transcoding on Android.
+            </p>
+
+            <ul class="space-y-3.5 text-base text-crt-text mb-8 border-t border-crt-border pt-6">
+              <li class="flex items-center gap-2.5">
+                <span class="text-crt-green font-bold">✓</span>
+                <span>Android Release APK (`API 24+`)</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <span class="text-crt-green font-bold">✓</span>
+                <span>Mobile MediaCodec GPU encoding</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <span class="text-crt-green font-bold">✓</span>
+                <span>Instant Stream Copy (`-c copy`)</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <span class="text-crt-green font-bold">✓</span>
+                <span>Unique Mobile Key (`RFMOB-...`)</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <span class="text-crt-green font-bold">✓</span>
+                <span>Unlimited batch queue</span>
+              </li>
+            </ul>
+          </div>
+
+          <a href="https://bonnokush.gumroad.com/l/doqxfs" data-gumroad-action="buy" data-gumroad-option="Mobile Edition" class="cursor-pointer block text-center w-full py-4 px-5 rounded-xl btn-outline-green text-base transition-all active:scale-95">
+            Buy Mobile Edition — $3.99
+          </a>
+        </div>
+
+        <!-- Tier 2: Desktop Edition (Featured / Most Popular) -->
+        <div class="relative flex flex-col justify-between p-7 sm:p-8 rounded-2xl border-2 border-crt-green bg-crt-card crt-box-glow shadow-2xl">
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-md badge-dark-on-green text-xs font-extrabold tracking-wider shadow-lg">
+            ⭐ MOST POPULAR FOR CREATORS
+          </div>
+
+          <div>
+            <div class="text-sm font-bold text-crt-green mb-4 mt-2 tracking-wider">
+              [ 💻 DESKTOP EDITION ]
+            </div>
+            
+            <div class="flex items-baseline gap-1.5 mb-3">
+              <span class="text-4xl sm:text-5xl font-extrabold text-white font-mono">$8.99</span>
+              <span class="text-sm text-crt-muted">one-time</span>
+            </div>
+            
+            <p class="text-base text-crt-muted mb-6">
+              Complete standalone media workstation for Windows 10 & 11 PCs.
+            </p>
+
+            <ul class="space-y-3.5 text-base text-crt-text mb-8 border-t border-crt-border pt-6">
+              <li class="flex items-center gap-2.5">
+                <span class="text-crt-green font-bold">✓</span>
+                <span>Windows 64-bit Portable Executable (`.exe`)</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <span class="text-crt-green font-bold">✓</span>
+                <span>Embedded FFmpeg included (No setup needed)</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <span class="text-crt-green font-bold">✓</span>
+                <span>NVIDIA NVENC, Intel QSV & AMD AMF Core</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <span class="text-crt-green font-bold">✓</span>
+                <span>Official Gumroad License Key (Instant Activation)</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <span class="text-crt-green font-bold">✓</span>
+                <span>Unlimited batch queues & folder workflows</span>
+              </li>
+            </ul>
+          </div>
+
+          <a href="https://bonnokush.gumroad.com/l/doqxfs" data-gumroad-action="buy" data-gumroad-option="Desktop Edition" class="cursor-pointer block text-center w-full py-4 px-5 rounded-xl btn-outline-green text-base transition-all active:scale-95">
+            Buy Desktop Edition — $8.99
+          </a>
+        </div>
+
+        <!-- Tier 3: All-Access Master Bundle (Best Value) -->
+        <div class="relative flex flex-col justify-between p-7 sm:p-8 rounded-2xl border-2 border-crt-amber/80 bg-crt-card amber-box-glow">
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-md badge-dark-on-amber text-xs font-extrabold tracking-wider shadow-lg">
+            ⚡ BEST VALUE // ALL-ACCESS
+          </div>
+
+          <div>
+            <div class="text-sm font-bold text-crt-amber mb-4 mt-2 tracking-wider">
+              [ ⚡ ALL-ACCESS MASTER BUNDLE ]
+            </div>
+            
+            <div class="flex items-baseline gap-1.5 mb-3">
+              <span class="text-4xl sm:text-5xl font-extrabold text-white font-mono">$11.99</span>
+              <span class="text-sm text-crt-muted">one-time</span>
+            </div>
+            
+            <p class="text-base text-crt-muted mb-6">
+              Complete dual-platform package. Both PC & Android apps with master key.
+            </p>
+
+            <ul class="space-y-3.5 text-base text-crt-text mb-8 border-t border-crt-border pt-6">
+              <li class="flex items-center gap-2.5">
+                <span class="text-crt-amber font-bold">✓</span>
+                <span><strong class="text-white">Both Windows .exe AND Android APK</strong></span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <span class="text-crt-amber font-bold">✓</span>
+                <span><strong class="text-white">Gumroad License Key (Instant Delivery)</strong></span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <span class="text-crt-amber font-bold">✓</span>
+                <span>Unlocks unlimited features across all devices</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <span class="text-crt-amber font-bold">✓</span>
+                <span>All GPU engines & stream-copy remuxing</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <span class="text-crt-amber font-bold">✓</span>
+                <span>Lifetime priority updates</span>
+              </li>
+            </ul>
+          </div>
+
+          <a href="https://bonnokush.gumroad.com/l/doqxfs" data-gumroad-action="buy" data-gumroad-option="All-Access Master Bundle" class="cursor-pointer block text-center w-full py-4 px-5 rounded-xl btn-outline-green text-base transition-all active:scale-95">
+            Get Master Bundle — $11.99
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= TECHNICAL SPECIFICATIONS ================= -->
+  <section class="py-16 md:py-20 border-t border-crt-border">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      
+      <div class="p-8 rounded-2xl border border-crt-border bg-crt-card font-mono text-sm sm:text-base crt-box-glow">
+        <div class="flex items-center gap-2 mb-6 text-crt-green font-bold text-lg crt-glow">
+          <span>●</span>
+          <span>SYSTEM SPECIFICATIONS & RUNTIME REQUIREMENTS</span>
+          <span class="terminal-cursor text-base">_</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-crt-muted leading-relaxed">
+          <div class="space-y-2">
+            <h4 class="text-white font-bold text-base">// WINDOWS PLATFORM</h4>
+            <p>• OS: Windows 10 / Windows 11 (64-bit)</p>
+            <p>• Architecture: Portable standalone `.exe`</p>
+            <p>• FFmpeg Core: Embedded internally (zero external setup)</p>
+            <p>• GPU Encoders: NVIDIA NVENC, Intel QSV, AMD AMF</p>
+          </div>
+          <div class="space-y-2">
+            <h4 class="text-white font-bold text-base">// ANDROID PLATFORM</h4>
+            <p>• OS: Android 7.0+ (API Level 24+)</p>
+            <p>• Architecture: ARM64 & ARMv7 Release APK</p>
+            <p>• Hardware Codecs: Android MediaCodec Hardware Pipeline</p>
+            <p>• Permissions: Minimal local file access only</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= FAQ SECTION ================= -->
+  <section id="faq" class="py-16 md:py-24 border-t border-crt-border bg-crt-surface/60 font-mono">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center mb-14">
+        <div class="inline-block px-3 py-1 rounded bg-crt-green/10 border border-crt-green/30 text-crt-green text-xs font-bold mb-3 tracking-widest">
+          // USER DIRECTORY & HELP
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">
+          Frequently Asked Questions
+        </h2>
+        <p class="text-crt-muted text-base sm:text-lg">Everything you need to know about keys, activation, and usage.</p>
+      </div>
+
+      <div class="space-y-5">
+        
+        <details class="group p-6 rounded-2xl border border-crt-border bg-crt-card crt-box-glow [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex items-center justify-between cursor-pointer font-bold text-base sm:text-lg text-white">
+            <span>How do I receive my unique license key?</span>
+            <span class="ml-4 transition-transform group-open:rotate-180 text-crt-green text-xl font-bold">▾</span>
+          </summary>
+          <p class="mt-4 text-base text-crt-muted leading-relaxed">
+            Immediately after checkout, our automated system generates your unique cryptographic license key and emails it directly to your purchase inbox. You can also view it on your post-purchase receipt page.
+          </p>
+        </details>
+
+        <details class="group p-6 rounded-2xl border border-crt-border bg-crt-card crt-box-glow [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex items-center justify-between cursor-pointer font-bold text-base sm:text-lg text-white">
+            <span>Does RetroFlux require an internet connection?</span>
+            <span class="ml-4 transition-transform group-open:rotate-180 text-crt-green text-xl font-bold">▾</span>
+          </summary>
+          <p class="mt-4 text-base text-crt-muted leading-relaxed">
+            No. RetroFlux operates completely air-gapped. Once you enter your key, it verifies locally using an embedded cryptographic checksum. It never phones home or uploads data to any server.
+          </p>
+        </details>
+
+        <details class="group p-6 rounded-2xl border border-crt-border bg-crt-card crt-box-glow [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex items-center justify-between cursor-pointer font-bold text-base sm:text-lg text-white">
+            <span>Do I need to install Python or FFmpeg on Windows?</span>
+            <span class="ml-4 transition-transform group-open:rotate-180 text-crt-green text-xl font-bold">▾</span>
+          </summary>
+          <p class="mt-4 text-base text-crt-muted leading-relaxed">
+            No. The Desktop Edition is distributed as a single portable Windows executable (`RetroFlux.exe`) with the complete runtime and FFmpeg binaries bundled inside. Double-click to launch anywhere.
+          </p>
+        </details>
+
+        <details class="group p-6 rounded-2xl border border-crt-border bg-crt-card crt-box-glow [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex items-center justify-between cursor-pointer font-bold text-base sm:text-lg text-white">
+            <span>What is the difference between Desktop and All-Access?</span>
+            <span class="ml-4 transition-transform group-open:rotate-180 text-crt-green text-xl font-bold">▾</span>
+          </summary>
+          <p class="mt-4 text-base text-crt-muted leading-relaxed">
+            The Desktop Edition provides a Windows PC license for unlimited conversions on desktop. The All-Access Master Bundle delivers both the Windows `.exe` and Android `.apk`, along with full multi-platform unlock across all your devices.
+          </p>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FINAL CTA & TERMINAL FOOTER ================= -->
+  <footer class="py-16 border-t-2 border-crt-border bg-crt-bg text-crt-muted font-mono">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
+      
+      <div class="inline-block mb-4">
+        <span class="text-sm text-crt-green crt-glow font-bold">● RETROFLUX MEDIA CORE // v1.3.0 READY</span>
+        <span class="terminal-cursor text-base">_</span>
+      </div>
+
+      <h3 class="text-3xl sm:text-4xl font-extrabold text-white mb-6 tracking-tight">
+        Take Full Control of Your Media Conversion
+      </h3>
+
+      <div class="flex items-center justify-center mb-12">
+        <a href="#editions" class="cursor-pointer inline-flex items-center gap-3 px-8 sm:px-10 py-4 rounded-xl btn-outline-green font-mono text-base sm:text-lg font-bold shadow-lg transition-all active:scale-95">
+          <span>📦 VIEW EDITIONS & PRICING</span>
+          <span class="text-crt-green">▲</span>
+        </a>
+      </div>
+
+      <div class="border-t border-crt-border pt-8 flex flex-col sm:flex-row items-center justify-between text-xs sm:text-sm text-crt-muted gap-4">
+        <div>
+          <span>Crafted with passion by <strong class="text-crt-green font-bold">bonnokush</strong>.</span>
+        </div>
+        <div>
+          <span class="text-crt-green">100% OFFLINE</span> // <span class="text-crt-green">AIR-GAPPED PRIVACY</span> // NO TELEMETRY
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Live Typing Terminal Engine -->
+  <script>
+    (function() {
+      var commands = [
+        "remux --input=4k_capture.mkv --output=stream.mp4 --copy-streams [DONE: 1.2s]",
+        "detect-hardware-gpu --auto [NVIDIA NVENC, Intel QSV, AMD AMF READY]",
+        "batch-process --queue=48-files --preset=lossless [0 ERRORS DETECTED]",
+        "verify-license --offline [CRYPTOGRAPHIC CHECKSUM VERIFIED]",
+        "extract-audio --format=mp3 --bitrate=320kbps [HIGH FIDELITY COMPLETE]"
+      ];
+      var el = document.getElementById("liveTypingText");
+      if (!el) return;
+
+      var cmdIdx = 0;
+      var charIdx = 0;
+      var isDeleting = false;
+      var typeSpeed = 50;
+
+      function loop() {
+        var current = commands[cmdIdx];
+        if (isDeleting) {
+          el.textContent = current.substring(0, charIdx - 1);
+          charIdx--;
+          typeSpeed = 20;
+        } else {
+          el.textContent = current.substring(0, charIdx + 1);
+          charIdx++;
+          typeSpeed = 45;
+        }
+
+        if (!isDeleting && charIdx === current.length) {
+          typeSpeed = 2600; // Pause when full sentence typed
+          isDeleting = true;
+        } else if (isDeleting && charIdx === 0) {
+          isDeleting = false;
+          cmdIdx = (cmdIdx + 1) % commands.length;
+          typeSpeed = 350; // Short pause before next command
+        }
+
+        setTimeout(loop, typeSpeed);
+      }
+      loop();
+    })();
+  </script>
+
+</body>
+</html>
