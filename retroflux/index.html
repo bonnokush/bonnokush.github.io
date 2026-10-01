@@ -153,6 +153,81 @@
       pointer-events: none;
       z-index: 0;
     }
+  
+    /* ================= RETRO CLI CONSOLE THEME OVERRIDES ================= */
+    html[data-theme="retro"] {
+      background-color: #050505 !important;
+    }
+    html[data-theme="retro"] body {
+      background-color: #050505 !important;
+      background-image: none !important;
+    }
+    
+    html[data-theme="retro"] * {
+      font-family: 'JetBrains Mono', 'Courier New', monospace !important;
+    }
+    
+    html[data-theme="retro"] h1, 
+    html[data-theme="retro"] h2, 
+    html[data-theme="retro"] h3, 
+    html[data-theme="retro"] p,
+    html[data-theme="retro"] span,
+    html[data-theme="retro"] a,
+    html[data-theme="retro"] div,
+    html[data-theme="retro"] li {
+      color: #00ff66 !important;
+      text-shadow: 0 0 2px rgba(0, 255, 102, 0.3);
+    }
+    
+    html[data-theme="retro"] .glass-card,
+    html[data-theme="retro"] header,
+    html[data-theme="retro"] footer,
+    html[data-theme="retro"] button,
+    html[data-theme="retro"] .bg-white\/\[0\.05\],
+    html[data-theme="retro"] .bg-white\/\[0\.02\],
+    html[data-theme="retro"] .bg-white,
+    html[data-theme="retro"] .bg-emerald-500\/10,
+    html[data-theme="retro"] .bg-\[\#1e1e24\],
+    html[data-theme="retro"] input,
+    html[data-theme="retro"] a.bg-white {
+      background: #000000 !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      border: 1px solid #00ff66 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+    }
+    
+    html[data-theme="retro"] button:hover,
+    html[data-theme="retro"] a:hover {
+      background: #00ff66 !important;
+    }
+    html[data-theme="retro"] button:hover *,
+    html[data-theme="retro"] a:hover * {
+      color: #000000 !important;
+    }
+    
+    html[data-theme="retro"] .text-emerald-400,
+    html[data-theme="retro"] .text-blue-400,
+    html[data-theme="retro"] .text-indigo-400,
+    html[data-theme="retro"] .bg-gradient-to-r {
+      color: #ffaa00 !important;
+      background: transparent !important;
+      -webkit-text-fill-color: #ffaa00 !important;
+      text-shadow: 0 0 4px rgba(255, 170, 0, 0.4) !important;
+    }
+    
+    html[data-theme="retro"]::after {
+      content: " ";
+      display: block;
+      position: fixed;
+      top: 0; left: 0; bottom: 0; right: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+      background-size: 100% 4px;
+      z-index: 9999;
+      pointer-events: none;
+    }
+
   </style>
 </head>
 
@@ -1607,12 +1682,10 @@
     }
     // Theme Switcher Logic (Uses CSS Filters to avoid rewriting Tailwind classes)
     function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
       if (theme === 'light') {
         document.documentElement.style.filter = 'invert(1) hue-rotate(180deg)';
         document.documentElement.style.backgroundColor = '#ffffff';
-      } else if (theme === 'retro') {
-        document.documentElement.style.filter = 'sepia(0.85) hue-rotate(-30deg) contrast(1.15) saturate(1.4)';
-        document.documentElement.style.backgroundColor = '#2c1e0e';
       } else {
         document.documentElement.style.filter = '';
         document.documentElement.style.backgroundColor = '';
