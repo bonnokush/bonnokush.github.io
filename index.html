@@ -65,19 +65,21 @@
       color: #ffffff;
     }
 
-    /* Subtle Apple Glass Card */
+    /* iOS 27 Liquid Glass Card */
     .glass-card {
-      background: rgba(255, 255, 255, 0.02);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(255, 255, 255, 0.07);
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(48px) saturate(150%);
+      -webkit-backdrop-filter: blur(48px) saturate(150%);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
       position: relative;
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .glass-card:hover {
-      background: rgba(255, 255, 255, 0.038);
-      border-color: rgba(255, 255, 255, 0.16);
-      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
     }
 
     /* Apple-style Soft Spotlight Follow */
@@ -161,15 +163,16 @@
   </style>
 </head>
 
-<body class="selection:bg-indigo-500/30 selection:text-white relative">
+<body class="selection:bg-fuchsia-500/30 selection:text-white relative">
   <!-- Dynamic Noise Grain Overlay -->
-  <div class="fixed inset-0 z-[-1] pointer-events-none opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
+  <div class="fixed inset-0 z-[-1] pointer-events-none opacity-[0.06]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
   
-  <!-- Ambient Mesh Gradient Glows -->
-  <div class="fixed inset-0 z-[-2] overflow-hidden pointer-events-none">
-    <div class="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-indigo-600/20 rounded-full blur-[120px] mix-blend-screen animate-pulse" style="animation-duration: 12s;"></div>
-    <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-emerald-600/15 rounded-full blur-[100px] mix-blend-screen animate-pulse" style="animation-duration: 15s; animation-delay: 2s;"></div>
-    <div class="absolute top-[30%] left-[60%] w-[35%] h-[35%] bg-blue-600/15 rounded-full blur-[120px] mix-blend-screen animate-pulse" style="animation-duration: 18s; animation-delay: 4s;"></div>
+  <!-- iOS Liquid Glass Fluid Background -->
+  <div class="fixed inset-0 z-[-2] overflow-hidden pointer-events-none" style="filter: blur(120px); opacity: 0.7;">
+    <div class="absolute top-[-20%] left-[-10%] w-[70%] h-[70%] bg-fuchsia-600 rounded-full mix-blend-screen animate-pulse" style="animation-duration: 10s; transform: scale(1.2);"></div>
+    <div class="absolute bottom-[-20%] right-[-20%] w-[60%] h-[80%] bg-cyan-600 rounded-full mix-blend-screen animate-pulse" style="animation-duration: 14s; animation-delay: 2s; transform: scale(1.4);"></div>
+    <div class="absolute top-[10%] left-[50%] w-[60%] h-[60%] bg-indigo-600 rounded-full mix-blend-screen animate-pulse" style="animation-duration: 16s; animation-delay: 4s; transform: scale(1.3);"></div>
+    <div class="absolute bottom-[20%] left-[-10%] w-[50%] h-[50%] bg-rose-600 rounded-full mix-blend-screen animate-pulse" style="animation-duration: 12s; animation-delay: 6s; transform: scale(1.5);"></div>
   </div>
 
   <!-- ================= TOP SCROLL PROGRESS BAR ================= -->
@@ -191,13 +194,13 @@
         <a href="#hero" class="flex items-center gap-3 group">
           <img src="profile.jpg" alt="Bikash Kumar Malik" class="w-8 h-8 rounded-full object-cover ring-1 ring-white/20 group-hover:ring-white/50 transition-all" />
           <div class="flex items-center gap-2">
-            <span class="font-semibold text-sm tracking-tight text-white group-hover:text-indigo-300 transition-colors">Bikash K. Malik</span>
-            <span class="hidden sm:inline-block text-xs text-slate-400 font-normal">/ SME &amp; Operations</span>
+            <span class="font-semibold text-base tracking-tight text-white group-hover:text-indigo-300 transition-colors">Bikash K. Malik</span>
+            <span class="hidden sm:inline-block text-sm text-slate-400 font-normal">/ SME &amp; Operations</span>
           </div>
         </a>
 
         <!-- Desktop Navigation Links with Active Spy -->
-        <div class="hidden md:flex items-center gap-6 text-xs font-medium text-slate-300" id="desktopNavLinks">
+        <div class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300" id="desktopNavLinks">
           <a href="#about" class="nav-item hover:text-white transition-colors py-1 px-2 rounded-full">About</a>
           <a href="#experience" class="nav-item hover:text-white transition-colors py-1 px-2 rounded-full">Experience</a>
           <a href="#workflows" class="nav-item hover:text-white transition-colors py-1 px-2 rounded-full">Workflows</a>
@@ -208,7 +211,7 @@
 
         <!-- Download Resume Button -->
         <div class="flex items-center gap-3">
-          <a href="Bikash_Kumar_Malik_Resume.pdf" download="Bikash_Kumar_Malik_Resume.pdf" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white hover:bg-slate-200 text-black font-semibold text-xs transition-all transform hover:scale-[1.03] active:scale-[0.97] shadow-sm">
+          <a href="Bikash_Kumar_Malik_Resume.pdf" download="Bikash_Kumar_Malik_Resume.pdf" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white hover:bg-slate-200 text-black font-semibold text-sm transition-all transform hover:scale-[1.03] active:scale-[0.97] shadow-sm">
             <i data-lucide="download" class="w-3.5 h-3.5"></i>
             <span>Resume</span>
           </a>
@@ -223,7 +226,7 @@
 
     <!-- Mobile Drawer -->
     <div id="mobileMenu" class="hidden md:hidden max-w-5xl mx-auto px-4 mt-2">
-      <div class="glass-card p-4 rounded-2xl flex flex-col gap-2.5 text-sm font-medium text-slate-300">
+      <div class="glass-card p-4 rounded-2xl flex flex-col gap-2.5 text-base font-medium text-slate-300">
         <a href="#about" class="mobile-link py-2 px-3 rounded-lg hover:bg-white/5 hover:text-white">About</a>
         <a href="#experience" class="mobile-link py-2 px-3 rounded-lg hover:bg-white/5 hover:text-white">Experience</a>
         <a href="#workflows" class="mobile-link py-2 px-3 rounded-lg hover:bg-white/5 hover:text-white">Workflows</a>
@@ -239,7 +242,7 @@
     <div class="max-w-4xl mx-auto text-center">
       
       <!-- Status Badge -->
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card border border-white/10 text-xs font-medium text-slate-300 mb-8 shadow-sm">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card border border-white/10 text-sm font-medium text-slate-300 mb-8 shadow-sm">
         <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
         <span>Available for Strategic Operations &amp; Leadership Opportunities</span>
       </div>
@@ -251,21 +254,21 @@
       </h1>
 
       <!-- Subtitle -->
-      <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
+      <p class="text-xl sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
         I'm <strong class="text-white font-medium">Bikash Kumar Malik</strong>. Specializing in Amazon Seller &amp; Vendor Central compliance, A-to-z claims defense, feedback health, and cross-functional team leadership.
       </p>
 
       <!-- Action Buttons -->
       <div class="flex flex-wrap items-center justify-center gap-3.5 mb-16">
-        <a href="#experience" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white hover:bg-slate-200 text-black font-semibold text-sm transition-all transform hover:scale-[1.02] active:scale-[0.97] shadow-lg">
+        <a href="#experience" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white hover:bg-slate-200 text-black font-semibold text-base transition-all transform hover:scale-[1.02] active:scale-[0.97] shadow-lg">
           <span>View Experience</span>
           <i data-lucide="arrow-down" class="w-4 h-4"></i>
         </a>
-        <a href="#workflows" class="inline-flex items-center gap-2 px-6 py-3 rounded-full glass-card hover:border-white/20 text-white font-medium text-sm transition-all transform hover:scale-[1.02] active:scale-[0.97]">
+        <a href="#workflows" class="inline-flex items-center gap-2 px-6 py-3 rounded-full glass-card hover:border-white/20 text-white font-medium text-base transition-all transform hover:scale-[1.02] active:scale-[0.97]">
           <i data-lucide="layers" class="w-4 h-4 text-indigo-400"></i>
           <span>Interactive Workflows</span>
         </a>
-        <a href="Bikash_Kumar_Malik_Resume.pdf" download="Bikash_Kumar_Malik_Resume.pdf" class="inline-flex items-center gap-2 px-6 py-3 rounded-full glass-card hover:border-white/20 text-slate-300 hover:text-white font-medium text-sm transition-all transform hover:scale-[1.02] active:scale-[0.97]">
+        <a href="Bikash_Kumar_Malik_Resume.pdf" download="Bikash_Kumar_Malik_Resume.pdf" class="inline-flex items-center gap-2 px-6 py-3 rounded-full glass-card hover:border-white/20 text-slate-300 hover:text-white font-medium text-base transition-all transform hover:scale-[1.02] active:scale-[0.97]">
           <i data-lucide="file-text" class="w-4 h-4 text-slate-400"></i>
           <span>Download CV</span>
         </a>
@@ -275,19 +278,19 @@
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto">
         <div class="glass-card spotlight p-5 rounded-2xl text-left">
           <div class="text-2xl sm:text-3xl font-bold text-white tracking-tight">5+ Years</div>
-          <div class="text-xs text-slate-400 mt-1 font-medium">Professional Experience</div>
+          <div class="text-sm text-slate-400 mt-1 font-medium">Professional Experience</div>
         </div>
         <div class="glass-card spotlight p-5 rounded-2xl text-left">
           <div class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Amazon</div>
-          <div class="text-xs text-slate-400 mt-1 font-medium">Seller &amp; Vendor Central</div>
+          <div class="text-sm text-slate-400 mt-1 font-medium">Seller &amp; Vendor Central</div>
         </div>
         <div class="glass-card spotlight p-5 rounded-2xl text-left">
           <div class="text-2xl sm:text-3xl font-bold text-white tracking-tight">SME</div>
-          <div class="text-xs text-slate-400 mt-1 font-medium">Process &amp; Audit Governance</div>
+          <div class="text-sm text-slate-400 mt-1 font-medium">Process &amp; Audit Governance</div>
         </div>
         <div class="glass-card spotlight p-5 rounded-2xl text-left">
           <div class="text-2xl sm:text-3xl font-bold text-white tracking-tight">8.5 GPA</div>
-          <div class="text-xs text-slate-400 mt-1 font-medium">B.Tech in Electronics (ECE)</div>
+          <div class="text-sm text-slate-400 mt-1 font-medium">B.Tech in Electronics (ECE)</div>
         </div>
       </div>
 
@@ -298,7 +301,7 @@
   <section id="about" class="py-20 px-4 sm:px-6 relative z-10 border-t border-white/[0.06]">
     <div class="max-w-4xl mx-auto">
       
-      <div class="text-xs font-semibold uppercase tracking-wider text-indigo-400 mb-2">About</div>
+      <div class="text-sm font-semibold uppercase tracking-wider text-indigo-400 mb-2">About</div>
       <h2 class="text-2xl sm:text-4xl font-bold text-white mb-10 tracking-tight">Background &amp; Expertise</h2>
 
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
@@ -309,8 +312,8 @@
             <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500/30 to-emerald-500/30 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0"></div>
             <img src="profile.jpg" alt="Bikash Kumar Malik" class="w-full h-80 sm:h-96 object-cover rounded-xl relative z-10 transition-transform duration-700 group-hover:scale-[1.02]" />
             <div class="p-3 text-left">
-              <div class="font-semibold text-white text-sm">Bikash Kumar Malik</div>
-              <div class="text-xs text-slate-400 mt-0.5 flex items-center gap-1.5">
+              <div class="font-semibold text-white text-base">Bikash Kumar Malik</div>
+              <div class="text-sm text-slate-400 mt-0.5 flex items-center gap-1.5">
                 <i data-lucide="map-pin" class="w-3.5 h-3.5 text-slate-400"></i>
                 <span>Haldia, West Bengal, India</span>
               </div>
@@ -319,8 +322,8 @@
         </div>
 
         <!-- Narrative with Apple Scrollytelling Illuminator -->
-        <div class="md:col-span-7 space-y-4 text-slate-300 text-base leading-relaxed">
-          <p class="apple-scrub-paragraph text-lg font-normal leading-relaxed text-slate-300">
+        <div class="md:col-span-7 space-y-4 text-slate-300 text-lg leading-relaxed">
+          <p class="apple-scrub-paragraph text-xl font-normal leading-relaxed text-slate-300">
             I am an operations specialist and <strong class="text-white font-semibold">Subject Matter Expert</strong> with over five years of multidisciplinary expertise spanning enterprise e-commerce compliance, technical customer support, and IT workflow governance.
           </p>
           <p class="text-slate-300">
@@ -332,7 +335,7 @@
           
           <!-- Apple Scroll Scrubbing Quote Card -->
           <div class="glass-card p-5 rounded-2xl border-l-2 border-indigo-500 mt-5">
-            <p id="scrubQuote" class="text-sm sm:text-base leading-relaxed italic">
+            <p id="scrubQuote" class="text-base sm:text-lg leading-relaxed italic">
               <!-- Dynamically populated by JS for smooth word-by-word scroll illumination -->
               "In this interconnected world, we have the opportunity to make a difference, no matter how small it may seem. Together, we can create a ripple effect of positivity and change that extends far beyond our individual reach."
             </p>
@@ -348,7 +351,7 @@
   <section id="experience" class="py-20 px-4 sm:px-6 relative z-10 border-t border-white/[0.06]">
     <div class="max-w-4xl mx-auto">
       
-      <div class="text-xs font-semibold uppercase tracking-wider text-indigo-400 mb-2">Experience</div>
+      <div class="text-sm font-semibold uppercase tracking-wider text-indigo-400 mb-2">Experience</div>
       <h2 class="text-2xl sm:text-4xl font-bold text-white mb-10 tracking-tight">Work History</h2>
 
       <div class="space-y-6">
@@ -357,17 +360,17 @@
         <div class="glass-card spotlight p-6 sm:p-8 rounded-2xl reveal">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
             <div>
-              <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-medium mb-2">
+              <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-sm font-medium mb-2">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
                 <span>Current Role</span>
               </div>
               <h3 class="text-xl font-bold text-white">Customer Services Executive</h3>
-              <div class="text-sm font-medium text-slate-300">Bathroom Bubbles Ltd</div>
+              <div class="text-base font-medium text-slate-300">Bathroom Bubbles Ltd</div>
             </div>
-            <div class="text-xs text-slate-400 font-mono">11/2024 – Present &bull; Haldia, India</div>
+            <div class="text-sm text-slate-400 font-mono">11/2024 – Present &bull; Haldia, India</div>
           </div>
 
-          <ul class="space-y-3 text-sm text-slate-300">
+          <ul class="space-y-3 text-base text-slate-300">
             <li class="flex items-start gap-2.5">
               <span class="text-slate-500 mt-1">&bull;</span>
               <span><strong>A-to-z Guarantee Claims &amp; Dispute Appeals:</strong> Investigate inbound customer claims, gather carrier proof of delivery (POD), and formulate evidence-backed representations within strict Amazon deadlines to maintain a sub-1% Order Defect Rate (ODR).</span>
@@ -394,7 +397,7 @@
             </li>
           </ul>
 
-          <div class="mt-5 pt-4 border-t border-white/[0.06] flex flex-wrap gap-2 text-xs">
+          <div class="mt-5 pt-4 border-t border-white/[0.06] flex flex-wrap gap-2 text-sm">
             <span class="px-2.5 py-1 rounded-md bg-white/[0.04] text-slate-300">A-to-z Guarantee Claims</span>
             <span class="px-2.5 py-1 rounded-md bg-white/[0.04] text-slate-300">Feedback Management</span>
             <span class="px-2.5 py-1 rounded-md bg-white/[0.04] text-slate-300">Safe-T Claims</span>
@@ -410,12 +413,12 @@
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
             <div>
               <h3 class="text-xl font-bold text-white">Subject Matter Expert (SME)</h3>
-              <div class="text-sm font-medium text-slate-300">31 West Global Services</div>
+              <div class="text-base font-medium text-slate-300">31 West Global Services</div>
             </div>
-            <div class="text-xs text-slate-400 font-mono">07/2021 – 08/2024 &bull; 3 Years 2 Mos</div>
+            <div class="text-sm text-slate-400 font-mono">07/2021 – 08/2024 &bull; 3 Years 2 Mos</div>
           </div>
 
-          <ul class="space-y-2.5 text-sm text-slate-300">
+          <ul class="space-y-2.5 text-base text-slate-300">
             <li class="flex items-start gap-2.5">
               <span class="text-slate-500 mt-0.5">&bull;</span>
               <span><strong>Technical Escalations &amp; RCA:</strong> Conducted root-cause investigations on production outages, system anomalies, and complex client workflows.</span>
@@ -434,7 +437,7 @@
             </li>
           </ul>
 
-          <div class="mt-5 pt-4 border-t border-white/[0.06] flex flex-wrap gap-2 text-xs">
+          <div class="mt-5 pt-4 border-t border-white/[0.06] flex flex-wrap gap-2 text-sm">
             <span class="px-2.5 py-1 rounded-md bg-white/[0.04] text-slate-300">Active Directory</span>
             <span class="px-2.5 py-1 rounded-md bg-white/[0.04] text-slate-300">Datto RMM</span>
             <span class="px-2.5 py-1 rounded-md bg-white/[0.04] text-slate-300">Zoho Desk</span>
@@ -447,12 +450,12 @@
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
             <div>
               <h3 class="text-xl font-bold text-white">Associate (Customer Service)</h3>
-              <div class="text-sm font-medium text-slate-300">Wipro Limited</div>
+              <div class="text-base font-medium text-slate-300">Wipro Limited</div>
             </div>
-            <div class="text-xs text-slate-400 font-mono">01/2019 – 02/2021 &bull; 2 Years 2 Mos</div>
+            <div class="text-sm text-slate-400 font-mono">01/2019 – 02/2021 &bull; 2 Years 2 Mos</div>
           </div>
 
-          <ul class="space-y-2.5 text-sm text-slate-300">
+          <ul class="space-y-2.5 text-base text-slate-300">
             <li class="flex items-start gap-2.5">
               <span class="text-slate-500 mt-0.5">&bull;</span>
               <span><strong>Claims Adjudication:</strong> Audited and processed electronic medical claims via Oracle Siebel CRM with zero compliance issues.</span>
@@ -467,7 +470,7 @@
             </li>
           </ul>
 
-          <div class="mt-5 pt-4 border-t border-white/[0.06] flex flex-wrap gap-2 text-xs">
+          <div class="mt-5 pt-4 border-t border-white/[0.06] flex flex-wrap gap-2 text-sm">
             <span class="px-2.5 py-1 rounded-md bg-white/[0.04] text-slate-300">Oracle Siebel CRM</span>
             <span class="px-2.5 py-1 rounded-md bg-white/[0.04] text-slate-300">UHG Payer Support</span>
             <span class="px-2.5 py-1 rounded-md bg-white/[0.04] text-slate-300">Claims Processing</span>
@@ -483,27 +486,27 @@
   <section id="workflows" class="py-20 px-4 sm:px-6 relative z-10 border-t border-white/[0.06]">
     <div class="max-w-4xl mx-auto">
       
-      <div class="text-xs font-semibold uppercase tracking-wider text-indigo-400 mb-2">Interactive Workflows</div>
+      <div class="text-sm font-semibold uppercase tracking-wider text-indigo-400 mb-2">Interactive Workflows</div>
       <h2 class="text-2xl sm:text-4xl font-bold text-white mb-4 tracking-tight">Amazon Operations Protocol</h2>
-      <p class="text-slate-400 text-sm mb-8 max-w-xl">
+      <p class="text-slate-400 text-base mb-8 max-w-xl">
         Explore core operational frameworks. Click any domain below to examine the dispute resolution mechanics and SLA adherence standards.
       </p>
 
       <!-- Apple-style Segmented Control Filter Tabs -->
       <div class="relative glass-card p-1.5 rounded-full inline-flex flex-wrap gap-1 mb-8 border border-white/10" id="segmentedBar">
-        <button class="segment-tab active px-4 py-2 rounded-full text-xs font-medium text-white transition-all transform active:scale-95" data-target="workflow-all">
+        <button class="segment-tab active px-4 py-2 rounded-full text-sm font-medium text-white transition-all transform active:scale-95" data-target="workflow-all">
           All Frameworks
         </button>
-        <button class="segment-tab px-4 py-2 rounded-full text-xs font-medium text-slate-400 hover:text-white transition-all transform active:scale-95" data-target="workflow-claims">
+        <button class="segment-tab px-4 py-2 rounded-full text-sm font-medium text-slate-400 hover:text-white transition-all transform active:scale-95" data-target="workflow-claims">
           A-to-z Claims
         </button>
-        <button class="segment-tab px-4 py-2 rounded-full text-xs font-medium text-slate-400 hover:text-white transition-all transform active:scale-95" data-target="workflow-feedback">
+        <button class="segment-tab px-4 py-2 rounded-full text-sm font-medium text-slate-400 hover:text-white transition-all transform active:scale-95" data-target="workflow-feedback">
           Feedback &amp; CX
         </button>
-        <button class="segment-tab px-4 py-2 rounded-full text-xs font-medium text-slate-400 hover:text-white transition-all transform active:scale-95" data-target="workflow-vendor">
+        <button class="segment-tab px-4 py-2 rounded-full text-sm font-medium text-slate-400 hover:text-white transition-all transform active:scale-95" data-target="workflow-vendor">
           Vendor Central
         </button>
-        <button class="segment-tab px-4 py-2 rounded-full text-xs font-medium text-slate-400 hover:text-white transition-all transform active:scale-95" data-target="workflow-safet">
+        <button class="segment-tab px-4 py-2 rounded-full text-sm font-medium text-slate-400 hover:text-white transition-all transform active:scale-95" data-target="workflow-safet">
           Safe-T Claims
         </button>
       </div>
@@ -519,8 +522,8 @@
                 <i data-lucide="shield-alert" class="w-4 h-4"></i>
               </div>
               <div>
-                <h3 class="font-bold text-white text-base">A-to-z Guarantee Claims &amp; Representation</h3>
-                <div class="text-xs text-slate-400">SOP representation, POD investigation, and appeal victory</div>
+                <h3 class="font-bold text-white text-lg">A-to-z Guarantee Claims &amp; Representation</h3>
+                <div class="text-sm text-slate-400">SOP representation, POD investigation, and appeal victory</div>
               </div>
             </div>
             <div class="drawer-chevron text-slate-400 transition-transform duration-300">
@@ -528,7 +531,7 @@
             </div>
           </div>
           
-          <div class="apple-drawer-content text-xs text-slate-300 space-y-2 border-t border-white/[0.06] pt-3">
+          <div class="apple-drawer-content text-sm text-slate-300 space-y-2 border-t border-white/[0.06] pt-3">
             <p><strong>1. Claim Triage:</strong> Immediate audit against customer signature, courier tracking timestamps, and communication logs within the 72-hour Amazon window.</p>
             <p><strong>2. Evidence-Backed Representation:</strong> Submission of standardized proof of delivery (POD), GPS carrier drops, and packaging specs to successfully contest buyer fraud or delivery misunderstandings.</p>
             <p><strong>3. Appeals &amp; ODR Reversal:</strong> Filing executive escalations when claims are erroneously granted, reversing account metric penalties and recapturing claim funds.</p>
@@ -543,8 +546,8 @@
                 <i data-lucide="message-square" class="w-4 h-4"></i>
               </div>
               <div>
-                <h3 class="font-bold text-white text-base">Customer Feedback &amp; CX Health Management</h3>
-                <div class="text-xs text-slate-400">Policy-based removals, FBA logistics strike-throughs, and sentiment recovery</div>
+                <h3 class="font-bold text-white text-lg">Customer Feedback &amp; CX Health Management</h3>
+                <div class="text-sm text-slate-400">Policy-based removals, FBA logistics strike-throughs, and sentiment recovery</div>
               </div>
             </div>
             <div class="drawer-chevron text-slate-400 transition-transform duration-300">
@@ -552,7 +555,7 @@
             </div>
           </div>
           
-          <div class="apple-drawer-content text-xs text-slate-300 space-y-2 border-t border-white/[0.06] pt-3">
+          <div class="apple-drawer-content text-sm text-slate-300 space-y-2 border-t border-white/[0.06] pt-3">
             <p><strong>1. Policy-Based Feedback Strike-Through:</strong> Leveraging Amazon Feedback Manager to strike through carrier-delayed orders and Amazon fulfillment errors automatically.</p>
             <p><strong>2. Voice of Customer (VOC) &amp; NCX Optimization:</strong> Triaging Negative Customer Experience metrics to isolate ASIN-level catalog ambiguities before account health warnings trigger.</p>
             <p><strong>3. Review Remediation:</strong> Identifying product-review violations in seller feedback queues and submitting compliance cases to uphold a 99%+ positive merchant score.</p>
@@ -567,8 +570,8 @@
                 <i data-lucide="receipt" class="w-4 h-4"></i>
               </div>
               <div>
-                <h3 class="font-bold text-white text-base">Amazon Vendor Central Shortage &amp; Co-op Defense</h3>
-                <div class="text-xs text-slate-400">PO reconciliation, operational chargebacks, and remittance dispute recovery</div>
+                <h3 class="font-bold text-white text-lg">Amazon Vendor Central Shortage &amp; Co-op Defense</h3>
+                <div class="text-sm text-slate-400">PO reconciliation, operational chargebacks, and remittance dispute recovery</div>
               </div>
             </div>
             <div class="drawer-chevron text-slate-400 transition-transform duration-300">
@@ -576,7 +579,7 @@
             </div>
           </div>
           
-          <div class="apple-drawer-content text-xs text-slate-300 space-y-2 border-t border-white/[0.06] pt-3">
+          <div class="apple-drawer-content text-sm text-slate-300 space-y-2 border-t border-white/[0.06] pt-3">
             <p><strong>1. Purchase Order Auditing:</strong> Cross-referencing warehouse shipment manifests against Amazon receipt discrepancy reports to challenge unverified shortages.</p>
             <p><strong>2. Chargeback Dispute Filing:</strong> Disputing operational chargebacks (carton prep, carton labeling, ASN mismatches) by providing packing slips and carrier bills of lading (BOL).</p>
             <p><strong>3. Net Margin Protection:</strong> Submitting financial dispute batches via Vendor Central remittance portals to reclaim deducted payments.</p>
@@ -591,8 +594,8 @@
                 <i data-lucide="dollar-sign" class="w-4 h-4"></i>
               </div>
               <div>
-                <h3 class="font-bold text-white text-base">Safe-T Claims &amp; Merchant Reimbursement</h3>
-                <div class="text-xs text-slate-400">Damaged returns, returnless refunds, and carrier loss restitution</div>
+                <h3 class="font-bold text-white text-lg">Safe-T Claims &amp; Merchant Reimbursement</h3>
+                <div class="text-sm text-slate-400">Damaged returns, returnless refunds, and carrier loss restitution</div>
               </div>
             </div>
             <div class="drawer-chevron text-slate-400 transition-transform duration-300">
@@ -600,7 +603,7 @@
             </div>
           </div>
           
-          <div class="apple-drawer-content text-xs text-slate-300 space-y-2 border-t border-white/[0.06] pt-3">
+          <div class="apple-drawer-content text-sm text-slate-300 space-y-2 border-t border-white/[0.06] pt-3">
             <p><strong>1. Photographic Evidence Logging:</strong> Capturing serial numbers, return shipping labels, and packaging condition upon warehouse receipt.</p>
             <p><strong>2. Safe-T Filing:</strong> Drafting structured claims with item value invoices and condition documentation for customer-damaged returns and switcheroo frauds.</p>
             <p><strong>3. Capital Recovery:</strong> Maintaining an audit trail to ensure reimbursement credits are credited to merchant disbursements.</p>
@@ -616,7 +619,7 @@
   <section id="skills" class="py-20 px-4 sm:px-6 relative z-10 border-t border-white/[0.06]">
     <div class="max-w-4xl mx-auto">
       
-      <div class="text-xs font-semibold uppercase tracking-wider text-indigo-400 mb-2">Core Competencies</div>
+      <div class="text-sm font-semibold uppercase tracking-wider text-indigo-400 mb-2">Core Competencies</div>
       <h2 class="text-2xl sm:text-4xl font-bold text-white mb-10 tracking-tight">Skills &amp; Capabilities</h2>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -625,11 +628,11 @@
           <div class="w-9 h-9 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-4">
             <i data-lucide="shopping-cart" class="w-5 h-5"></i>
           </div>
-          <h3 class="text-base font-bold text-white mb-2">E-Commerce &amp; Vendor Ops</h3>
-          <p class="text-xs text-slate-400 mb-4 leading-relaxed">
+          <h3 class="text-lg font-bold text-white mb-2">E-Commerce &amp; Vendor Ops</h3>
+          <p class="text-sm text-slate-400 mb-4 leading-relaxed">
             Amazon Seller &amp; Vendor Central compliance, claim disputes, feedback health, and revenue protection.
           </p>
-          <div class="flex flex-wrap gap-1.5 text-xs">
+          <div class="flex flex-wrap gap-1.5 text-sm">
             <span class="px-2 py-0.5 rounded bg-white/[0.04] text-slate-300">A-to-z Guarantee Claims</span>
             <span class="px-2 py-0.5 rounded bg-white/[0.04] text-slate-300">Feedback Management</span>
             <span class="px-2 py-0.5 rounded bg-white/[0.04] text-slate-300">Safe-T Claims Recovery</span>
@@ -646,11 +649,11 @@
           <div class="w-9 h-9 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-4">
             <i data-lucide="users" class="w-5 h-5"></i>
           </div>
-          <h3 class="text-base font-bold text-white mb-2">Leadership &amp; Quality</h3>
-          <p class="text-xs text-slate-400 mb-4 leading-relaxed">
+          <h3 class="text-lg font-bold text-white mb-2">Leadership &amp; Quality</h3>
+          <p class="text-sm text-slate-400 mb-4 leading-relaxed">
             Training and development, process optimization, and team mentoring.
           </p>
-          <div class="flex flex-wrap gap-1.5 text-xs">
+          <div class="flex flex-wrap gap-1.5 text-sm">
             <span class="px-2 py-0.5 rounded bg-white/[0.04] text-slate-300">SOP Management</span>
             <span class="px-2 py-0.5 rounded bg-white/[0.04] text-slate-300">Auditing &amp; Reporting</span>
             <span class="px-2 py-0.5 rounded bg-white/[0.04] text-slate-300">Team Mentorship</span>
@@ -663,11 +666,11 @@
           <div class="w-9 h-9 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-4">
             <i data-lucide="terminal" class="w-5 h-5"></i>
           </div>
-          <h3 class="text-base font-bold text-white mb-2">Systems &amp; Tooling</h3>
-          <p class="text-xs text-slate-400 mb-4 leading-relaxed">
+          <h3 class="text-lg font-bold text-white mb-2">Systems &amp; Tooling</h3>
+          <p class="text-sm text-slate-400 mb-4 leading-relaxed">
             Enterprise administration, remote infrastructure, and desktop software tooling.
           </p>
-          <div class="flex flex-wrap gap-1.5 text-xs">
+          <div class="flex flex-wrap gap-1.5 text-sm">
             <span class="px-2 py-0.5 rounded bg-white/[0.04] text-slate-300">Active Directory</span>
             <span class="px-2 py-0.5 rounded bg-white/[0.04] text-slate-300">Datto RMM</span>
             <span class="px-2 py-0.5 rounded bg-white/[0.04] text-slate-300">Zoho Desk</span>
@@ -686,35 +689,35 @@
   <section id="projects" class="py-14 px-4 sm:px-6 relative z-10 border-t border-white/[0.06]">
     <div class="max-w-4xl mx-auto">
       
-      <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Technical Projects</div>
+      <div class="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-2">Technical Projects</div>
       <h2 class="text-xl sm:text-2xl font-bold text-white mb-2 tracking-tight">Side Project: RetroFlux PRO</h2>
-      <p class="text-slate-400 text-xs mb-6 max-w-xl leading-relaxed">
+      <p class="text-slate-400 text-sm mb-6 max-w-xl leading-relaxed">
         A personal desktop &amp; mobile media utility developed for fast local stream remuxing and audio/video conversions.
       </p>
 
       <div class="glass-card spotlight p-5 sm:p-6 rounded-2xl reveal">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
           <div>
-            <div class="text-white font-semibold text-base">RetroFlux PRO <span class="text-xs text-slate-400 font-normal ml-2 font-mono">v1.3.0</span></div>
-            <div class="text-xs text-slate-400 mt-0.5">Desktop &amp; Android media conversion utility</div>
+            <div class="text-white font-semibold text-lg">RetroFlux PRO <span class="text-sm text-slate-400 font-normal ml-2 font-mono">v1.3.0</span></div>
+            <div class="text-sm text-slate-400 mt-0.5">Desktop &amp; Android media conversion utility</div>
           </div>
           <div class="flex items-center gap-2">
-            <a href="https://github.com/bonnokush/RetroFlux" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-slate-200 hover:text-white text-xs font-medium transition-all transform active:scale-95">
+            <a href="https://github.com/bonnokush/RetroFlux" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-slate-200 hover:text-white text-sm font-medium transition-all transform active:scale-95">
               <span>GitHub Repo</span>
               <i data-lucide="external-link" class="w-3 h-3"></i>
             </a>
-            <a href="/retroflux/" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 text-xs font-medium transition-all transform active:scale-95">
+            <a href="/retroflux/" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 text-sm font-medium transition-all transform active:scale-95">
               <i data-lucide="monitor" class="w-3 h-3"></i>
               <span>Product Page</span>
             </a>
           </div>
         </div>
 
-        <p class="text-slate-300 text-xs leading-relaxed mb-4">
+        <p class="text-slate-300 text-sm leading-relaxed mb-4">
           Developed as a lightweight, offline local utility featuring lossless stream copying (<code class="text-indigo-300 font-mono">-c copy</code> in ~1.2s), GPU acceleration support (NVIDIA NVENC, Intel QSV, AMD AMF), and single-device offline cryptographic licensing.
         </p>
 
-        <div class="flex flex-wrap gap-1.5 text-xs text-slate-400 font-mono">
+        <div class="flex flex-wrap gap-1.5 text-sm text-slate-400 font-mono">
           <span class="px-2 py-0.5 rounded bg-white/[0.03]">Python</span>
           <span class="px-2 py-0.5 rounded bg-white/[0.03]">Flutter</span>
           <span class="px-2 py-0.5 rounded bg-white/[0.03]">Embedded FFmpeg</span>
@@ -733,54 +736,54 @@
         
         <!-- Education -->
         <div>
-          <div class="text-xs font-semibold uppercase tracking-wider text-indigo-400 mb-2">Education</div>
+          <div class="text-sm font-semibold uppercase tracking-wider text-indigo-400 mb-2">Education</div>
           <h2 class="text-2xl font-bold text-white mb-6 tracking-tight">Academic History</h2>
 
           <div class="space-y-4">
             <div class="glass-card spotlight p-5 rounded-2xl reveal">
-              <div class="flex items-center justify-between text-xs text-slate-400 mb-1">
+              <div class="flex items-center justify-between text-sm text-slate-400 mb-1">
                 <span>06/2014 – 06/2018</span>
                 <span class="text-emerald-400 font-semibold">8.5 GPA</span>
               </div>
-              <h3 class="font-bold text-white text-base">Bachelor of Technology (B.Tech)</h3>
-              <div class="text-xs text-slate-300 mt-0.5">Electronics &amp; Communication Engineering</div>
-              <div class="text-xs text-slate-400 mt-2">Haldia Institute of Technology</div>
+              <h3 class="font-bold text-white text-lg">Bachelor of Technology (B.Tech)</h3>
+              <div class="text-sm text-slate-300 mt-0.5">Electronics &amp; Communication Engineering</div>
+              <div class="text-sm text-slate-400 mt-2">Haldia Institute of Technology</div>
             </div>
 
             <div class="glass-card spotlight p-5 rounded-2xl reveal">
-              <div class="flex items-center justify-between text-xs text-slate-400 mb-1">
+              <div class="flex items-center justify-between text-sm text-slate-400 mb-1">
                 <span>05/2012 – 05/2014</span>
                 <span class="text-slate-400">Science Stream</span>
               </div>
-              <h3 class="font-bold text-white text-base">Higher Secondary Education</h3>
-              <div class="text-xs text-slate-300 mt-0.5">Central Board of Secondary Education (CBSE)</div>
-              <div class="text-xs text-slate-400 mt-2">Kendriya Vidyalaya IOC Haldia</div>
+              <h3 class="font-bold text-white text-lg">Higher Secondary Education</h3>
+              <div class="text-sm text-slate-300 mt-0.5">Central Board of Secondary Education (CBSE)</div>
+              <div class="text-sm text-slate-400 mt-2">Kendriya Vidyalaya IOC Haldia</div>
             </div>
           </div>
         </div>
 
         <!-- Qualifications & Passions -->
         <div>
-          <div class="text-xs font-semibold uppercase tracking-wider text-indigo-400 mb-2">Credentials &amp; Passions</div>
+          <div class="text-sm font-semibold uppercase tracking-wider text-indigo-400 mb-2">Credentials &amp; Passions</div>
           <h2 class="text-2xl font-bold text-white mb-6 tracking-tight">Certificates &amp; Languages</h2>
 
           <div class="space-y-4">
             <!-- EF SET -->
             <div class="glass-card spotlight p-5 rounded-2xl reveal">
-              <div class="flex items-center justify-between text-xs text-slate-400 mb-1">
+              <div class="flex items-center justify-between text-sm text-slate-400 mb-1">
                 <span>Issued 08/2024</span>
                 <span class="text-indigo-400 font-semibold">Standardized Test</span>
               </div>
-              <h3 class="font-bold text-white text-base">EF SET Standard English Certificate</h3>
-              <p class="text-xs text-slate-300 mt-1">
+              <h3 class="font-bold text-white text-lg">EF SET Standard English Certificate</h3>
+              <p class="text-sm text-slate-300 mt-1">
                 Certifying advanced international English proficiency for cross-border operations and client communication.
               </p>
             </div>
 
             <!-- Languages -->
             <div class="glass-card spotlight p-5 rounded-2xl reveal">
-              <div class="text-xs font-semibold text-white mb-3">Language Proficiencies</div>
-              <div class="grid grid-cols-2 gap-2 text-xs">
+              <div class="text-sm font-semibold text-white mb-3">Language Proficiencies</div>
+              <div class="grid grid-cols-2 gap-2 text-sm">
                 <div class="p-2 rounded-lg bg-white/[0.03]">
                   <div class="font-medium text-white">English</div>
                   <div class="text-[11px] text-slate-400">Native / Bilingual</div>
@@ -802,8 +805,8 @@
 
             <!-- Interests -->
             <div class="glass-card spotlight p-4 rounded-2xl reveal">
-              <div class="text-xs font-semibold text-white mb-2">Personal Interests</div>
-              <div class="flex flex-wrap gap-2 text-xs text-slate-300">
+              <div class="text-sm font-semibold text-white mb-2">Personal Interests</div>
+              <div class="flex flex-wrap gap-2 text-sm text-slate-300">
                 <span class="px-2.5 py-1 rounded bg-white/[0.04]">Motorsports &amp; Formula 1</span>
                 <span class="px-2.5 py-1 rounded bg-white/[0.04]">Astrophile</span>
                 <span class="px-2.5 py-1 rounded bg-white/[0.04]">Technological Advancements</span>
@@ -823,9 +826,9 @@
   <section id="contact" class="py-24 px-4 sm:px-6 relative z-10 border-t border-white/[0.06]">
     <div class="max-w-3xl mx-auto text-center">
       
-      <div class="text-xs font-semibold uppercase tracking-wider text-indigo-400 mb-2">Contact</div>
+      <div class="text-sm font-semibold uppercase tracking-wider text-indigo-400 mb-2">Contact</div>
       <h2 class="text-3xl sm:text-5xl font-bold text-white mb-4 tracking-tight">Let's Connect</h2>
-      <p class="text-slate-400 text-base max-w-lg mx-auto mb-10">
+      <p class="text-slate-400 text-lg max-w-lg mx-auto mb-10">
         Whether you have an operations leadership opportunity or want to discuss Amazon e-commerce strategy, feel free to reach out.
       </p>
 
@@ -837,10 +840,10 @@
             <i data-lucide="mail" class="w-5 h-5"></i>
           </div>
           <div class="my-auto">
-            <div class="text-xs text-slate-400 font-medium">Email Address</div>
-            <div class="text-sm font-semibold text-white mt-1 break-all">bikashkmalik@gmail.com</div>
+            <div class="text-sm text-slate-400 font-medium">Email Address</div>
+            <div class="text-base font-semibold text-white mt-1 break-all">bikashkmalik@gmail.com</div>
           </div>
-          <div class="text-xs text-indigo-400 mt-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.06] group-hover:border-indigo-500/30 transition-all">
+          <div class="text-sm text-indigo-400 mt-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.06] group-hover:border-indigo-500/30 transition-all">
             <i data-lucide="copy" class="w-3 h-3"></i>
             <span>Click to copy</span>
           </div>
@@ -852,10 +855,10 @@
             <i data-lucide="phone" class="w-5 h-5"></i>
           </div>
           <div class="my-auto">
-            <div class="text-xs text-slate-400 font-medium">Phone &amp; WhatsApp</div>
-            <div class="text-sm font-semibold text-white mt-1">+91 8972157104</div>
+            <div class="text-sm text-slate-400 font-medium">Phone &amp; WhatsApp</div>
+            <div class="text-base font-semibold text-white mt-1">+91 8972157104</div>
           </div>
-          <div class="text-xs text-indigo-400 mt-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.06] group-hover:border-indigo-500/30 transition-all">
+          <div class="text-sm text-indigo-400 mt-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.06] group-hover:border-indigo-500/30 transition-all">
             <i data-lucide="copy" class="w-3 h-3"></i>
             <span>Click to copy</span>
           </div>
@@ -869,10 +872,10 @@
             </svg>
           </div>
           <div class="my-auto">
-            <div class="text-xs text-slate-400 font-medium">LinkedIn Profile</div>
-            <div class="text-sm font-semibold text-white mt-1">/in/bonnokush</div>
+            <div class="text-sm text-slate-400 font-medium">LinkedIn Profile</div>
+            <div class="text-base font-semibold text-white mt-1">/in/bonnokush</div>
           </div>
-          <div class="text-xs text-indigo-400 mt-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.06] group-hover:border-indigo-500/30 transition-all">
+          <div class="text-sm text-indigo-400 mt-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.06] group-hover:border-indigo-500/30 transition-all">
             <i data-lucide="external-link" class="w-3 h-3"></i>
             <span>Connect online</span>
           </div>
@@ -883,10 +886,10 @@
       <!-- CV Download Box -->
       <div class="glass-card p-6 rounded-2xl max-w-lg mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <div class="text-left">
-          <div class="text-white font-semibold text-sm">Download Verified Resume</div>
-          <div class="text-xs text-slate-400 mt-0.5">Updated PDF with full chronology &amp; references.</div>
+          <div class="text-white font-semibold text-base">Download Verified Resume</div>
+          <div class="text-sm text-slate-400 mt-0.5">Updated PDF with full chronology &amp; references.</div>
         </div>
-        <a href="Bikash_Kumar_Malik_Resume.pdf" download="Bikash_Kumar_Malik_Resume.pdf" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-white hover:bg-slate-200 text-black font-semibold text-xs transition-all transform hover:scale-[1.02] active:scale-[0.97]">
+        <a href="Bikash_Kumar_Malik_Resume.pdf" download="Bikash_Kumar_Malik_Resume.pdf" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-white hover:bg-slate-200 text-black font-semibold text-sm transition-all transform hover:scale-[1.02] active:scale-[0.97]">
           <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
           <span>Download PDF</span>
         </a>
@@ -896,7 +899,7 @@
   </section>
 
   <!-- ================= FOOTER ================= -->
-  <footer class="py-8 px-4 border-t border-white/[0.06] text-center text-xs text-slate-500">
+  <footer class="py-8 px-4 border-t border-white/[0.06] text-center text-sm text-slate-500">
     <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
       <div>
         &copy; 2026 Bikash Kumar Malik &bull; All Rights Reserved
@@ -915,7 +918,7 @@
 
   <!-- ================= MINIMAL TOAST ================= -->
   <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
-    <div class="glass-card px-4 py-2.5 rounded-full border border-white/20 text-white text-xs flex items-center gap-2 shadow-2xl bg-black/80">
+    <div class="glass-card px-4 py-2.5 rounded-full border border-white/20 text-white text-sm flex items-center gap-2 shadow-2xl bg-black/80">
       <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i>
       <span id="toastMessage">Copied to clipboard</span>
     </div>
