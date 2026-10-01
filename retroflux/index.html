@@ -183,6 +183,30 @@
     html[data-theme="retro"] #liquid-glass-bg {
       display: none !important;
     }
+    
+    /* Reverse inversion on images and videos in Light Theme */
+    html[data-theme="light"] img,
+    html[data-theme="light"] video,
+    html[data-theme="light"] .video-container {
+      filter: invert(1) hue-rotate(-180deg) !important;
+    }
+    
+    /* Fix active tab button in Retro mode */
+    html[data-theme="retro"] button.bg-white {
+      background: #00ff66 !important;
+      color: #000000 !important;
+      text-shadow: none !important;
+    }
+    
+    /* Fix pricing badges */
+    html[data-theme="retro"] .bg-\[\#30d158\],
+    html[data-theme="retro"] .bg-\[\#ffd60a\] {
+      background: #00ff66 !important;
+      color: #000000 !important;
+      text-shadow: none !important;
+      border: 1px solid #000000 !important;
+    }
+
     /* Ensure icons inside text blocks don't disappear */
     html[data-theme="retro"] svg {
       stroke: #00ff66 !important;
@@ -593,14 +617,12 @@
           <button id="tabCrtBtn" onclick="switchGallery('crt')" class="px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-slate-200 hover:text-white">
             📟 Retro CRT
           </button>
-          <button id="tabMobileBtn" onclick="switchGallery('mobile')" class="px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-slate-200 hover:text-white">
-            📱 Mobile Edition
-          </button>
+
         </div>
       </div>
 
       <!-- Screenshot Display Canvas -->
-      <div class="max-w-5xl mx-auto">
+      <div class="max-w-4xl mx-auto">
         
         <!-- View 1: Desktop Workstation Modern Dark -->
         <div id="galleryDesktop" class="space-y-6 transition-all duration-300">
@@ -695,26 +717,7 @@
           </div>
         </div>
 
-        <!-- View 4: Mobile Edition (Android) -->
-        <div id="galleryMobile" class="space-y-6 transition-all duration-300 hidden">
-          <div class="max-w-md mx-auto glass-panel rounded-3xl p-3 sm:p-4 border border-white/15 shadow-[0_30px_90px_rgba(0,0,0,0.8)] overflow-hidden">
-            <img src="assets/screenshot-mobile-app.jpg" alt="RetroFlux Mobile Android Edition" class="w-full h-auto rounded-2xl object-cover shadow-2xl mx-auto" />
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
-            <div class="glass-panel rounded-2xl p-5">
-              <div class="text-[#30d158] font-bold text-sm mb-1">📱 MediaCodec GPU Acceleration</div>
-              <p class="text-xs text-slate-200 leading-relaxed">Leverages Qualcomm Snapdragon Adreno and MediaTek GPU hardware for mobile speed.</p>
-            </div>
-            <div class="glass-panel rounded-2xl p-5">
-              <div class="text-[#ffd60a] font-bold text-sm mb-1">📁 Drag & Drop File Import</div>
-              <p class="text-xs text-slate-200 leading-relaxed">Instant system file picker integration to batch process phone video recordings.</p>
-            </div>
-            <div class="glass-panel rounded-2xl p-5">
-              <div class="text-[#2997ff] font-bold text-sm mb-1">🔒 100% On-Device Privacy</div>
-              <p class="text-xs text-slate-200 leading-relaxed">Zero cellular data usage. Converts directly on your Android phone's local storage.</p>
-            </div>
-          </div>
-        </div>
+        
 
       </div>
 
@@ -1370,12 +1373,12 @@
       var demo = document.getElementById('galleryDemo');
       var l = document.getElementById('galleryLight');
       var c = document.getElementById('galleryCrt');
-      var m = document.getElementById('galleryMobile');
+      
       var btnD = document.getElementById('tabDesktopBtn');
       var btnDemo = document.getElementById('tabDemoBtn');
       var btnL = document.getElementById('tabLightBtn');
       var btnC = document.getElementById('tabCrtBtn');
-      var btnM = document.getElementById('tabMobileBtn');
+      
       var vid = document.getElementById('workflowVideo');
 
       var activeClass = 'px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-black shadow-md';
@@ -1385,12 +1388,12 @@
       if (demo) demo.classList.add('hidden');
       if (l) l.classList.add('hidden');
       if (c) c.classList.add('hidden');
-      m.classList.add('hidden');
+      
       btnD.className = inactiveClass;
       if (btnDemo) btnDemo.className = inactiveClass;
       if (btnL) btnL.className = inactiveClass;
       if (btnC) btnC.className = inactiveClass;
-      btnM.className = inactiveClass;
+      
 
       if (vid) vid.pause();
 
