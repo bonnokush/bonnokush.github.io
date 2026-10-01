@@ -174,10 +174,21 @@
     html[data-theme="retro"] span,
     html[data-theme="retro"] a,
     html[data-theme="retro"] div,
-    html[data-theme="retro"] li {
+    html[data-theme="retro"] li,
+    html[data-theme="retro"] input {
       color: #00ff66 !important;
-      text-shadow: 0 0 2px rgba(0, 255, 102, 0.3);
+      text-shadow: 0 0 5px rgba(0, 255, 102, 0.8) !important;
+      font-weight: 600 !important;
     }
+    html[data-theme="retro"] #liquid-glass-bg {
+      display: none !important;
+    }
+    /* Ensure icons inside text blocks don't disappear */
+    html[data-theme="retro"] svg {
+      stroke: #00ff66 !important;
+      fill: none !important;
+    }
+    
     
     html[data-theme="retro"] .glass-card,
     html[data-theme="retro"] header,
@@ -205,6 +216,8 @@
     html[data-theme="retro"] button:hover *,
     html[data-theme="retro"] a:hover * {
       color: #000000 !important;
+      text-shadow: none !important;
+      stroke: #000000 !important;
     }
     
     html[data-theme="retro"] .text-emerald-400,
@@ -233,10 +246,16 @@
 
 <body class="selection:bg-white selection:text-black relative">
 
-  <!-- Ambient Light Orbs -->
-  <div class="ambient-glow-1 animate-float-slow"></div>
-  <div class="ambient-glow-2 animate-float-reverse"></div>
-  <div class="ambient-glow-3 animate-float-slow"></div>
+  <!-- Dynamic Noise Grain Overlay -->
+  <div class="fixed inset-0 z-[-1] pointer-events-none opacity-[0.04]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
+  
+  <!-- iOS Liquid Glass Fluid Background -->
+  <div id="liquid-glass-bg" class="fixed inset-0 z-[-2] overflow-hidden pointer-events-none transition-all duration-1000" style="filter: blur(120px); opacity: 0.85;">
+    <div class="absolute top-[-20%] left-[-10%] w-[70%] h-[70%] bg-fuchsia-600 rounded-full mix-blend-screen animate-pulse" style="animation-duration: 10s; transform: scale(1.2);"></div>
+    <div class="absolute bottom-[-20%] right-[-20%] w-[60%] h-[80%] bg-cyan-600 rounded-full mix-blend-screen animate-pulse" style="animation-duration: 14s; animation-delay: 2s; transform: scale(1.4);"></div>
+    <div class="absolute top-[10%] left-[50%] w-[60%] h-[60%] bg-indigo-600 rounded-full mix-blend-screen animate-pulse" style="animation-duration: 16s; animation-delay: 4s; transform: scale(1.3);"></div>
+    <div class="absolute bottom-[20%] left-[-10%] w-[50%] h-[50%] bg-rose-600 rounded-full mix-blend-screen animate-pulse" style="animation-duration: 12s; animation-delay: 6s; transform: scale(1.5);"></div>
+  </div>
 
   <!-- ================= TOP NAVIGATION ================= -->
   <header class="sticky top-0 z-50 backdrop-blur-2xl bg-black/75 border-b border-white/[0.08] transition-all">
@@ -251,12 +270,12 @@
         </div>
         <div class="flex items-center gap-2">
           <span class="font-semibold text-base sm:text-lg tracking-tight text-white">RetroFlux</span>
-          <span class="px-2 py-0.5 rounded-full text-[11px] font-medium bg-white/10 text-white/80 border border-white/15">v1.3.0</span>
+          <span class="px-2 py-0.5 rounded-full text-[11px] font-medium bg-white/10 text-white border border-white/15">v1.3.0</span>
         </div>
       </a>
 
       <!-- Navigation Links -->
-      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-[#86868b]">
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-200">
         <a href="#features" class="hover:text-white transition-colors">Features</a>
         <a href="#screenshots" class="hover:text-white transition-colors">Screenshots</a>
         <a href="#editions" class="hover:text-white transition-colors">Pricing</a>
@@ -287,7 +306,7 @@
     <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
 
       <!-- Badge Pill -->
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/15 text-xs sm:text-sm text-white/80 font-medium mb-8 backdrop-blur-md">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/15 text-xs sm:text-sm text-white font-medium mb-8 backdrop-blur-md">
         <span class="w-2 h-2 rounded-full bg-[#30d158] animate-pulse"></span>
         <span>Standalone Local Workstation • Instant GPU Acceleration</span>
       </div>
@@ -298,7 +317,7 @@
       </h1>
 
       <!-- Subtitle -->
-      <p class="text-lg sm:text-xl md:text-2xl text-[#86868b] max-w-2xl mx-auto font-normal leading-relaxed mb-10">
+      <p class="text-lg sm:text-xl md:text-2xl text-slate-200 max-w-2xl mx-auto font-normal leading-relaxed mb-10">
         The ultimate media converter and remuxer for Windows and Android. Convert gigabytes in 1.5 seconds with zero cloud lag and zero monthly fees.
       </p>
 
@@ -323,7 +342,7 @@
             <span class="w-3 h-3 rounded-full bg-[#ffbd2e]/90 border border-[#ffbd2e]"></span>
             <span class="w-3 h-3 rounded-full bg-[#27c93f]/90 border border-[#27c93f]"></span>
             <span class="ml-3 text-xs font-semibold text-white/90">RetroFlux PRO</span>
-            <span class="text-[11px] text-[#86868b]">v1.3.0 — Local Workstation</span>
+            <span class="text-[11px] text-slate-200">v1.3.0 — Local Workstation</span>
           </div>
           <div class="flex items-center gap-2">
             <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-[#30d158]/10 text-[#30d158] border border-[#30d158]/30">
@@ -338,21 +357,21 @@
 
           <!-- Presets Toolbar -->
           <div class="flex flex-wrap items-center gap-2 pb-4 border-b border-white/[0.06]">
-            <span class="text-xs text-[#86868b] mr-1 hidden sm:inline">Engine Presets:</span>
+            <span class="text-xs text-slate-200 mr-1 hidden sm:inline">Engine Presets:</span>
             <div class="px-3 py-1.5 rounded-xl bg-white text-black text-xs font-bold flex items-center gap-1.5 shadow-sm">
               <span>⚡ Fast Remux (-c copy)</span>
               <span class="text-[10px] px-1.5 py-0.2 rounded bg-black/10 text-black/80 font-mono">1.5s</span>
             </div>
-            <div class="px-3 py-1.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] text-white/80 text-xs font-medium border border-white/10 transition-colors">
+            <div class="px-3 py-1.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] text-white text-xs font-medium border border-white/10 transition-colors">
               H.264 / HEVC (NVENC)
             </div>
-            <div class="px-3 py-1.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] text-white/80 text-xs font-medium border border-white/10 transition-colors hidden sm:block">
+            <div class="px-3 py-1.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] text-white text-xs font-medium border border-white/10 transition-colors hidden sm:block">
               Intel QuickSync (QSV)
             </div>
-            <div class="px-3 py-1.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] text-white/80 text-xs font-medium border border-white/10 transition-colors hidden md:block">
+            <div class="px-3 py-1.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] text-white text-xs font-medium border border-white/10 transition-colors hidden md:block">
               WebM VP9 High-Bitrate
             </div>
-            <div class="px-3 py-1.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] text-white/80 text-xs font-medium border border-white/10 transition-colors">
+            <div class="px-3 py-1.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] text-white text-xs font-medium border border-white/10 transition-colors">
               Audio Extract (MP3)
             </div>
           </div>
@@ -370,10 +389,10 @@
                   <div>
                     <div class="text-sm font-semibold text-white tracking-tight flex items-center gap-2">
                       <span>4K_Cinematic_Sequence_RAW.mkv</span>
-                      <span class="text-[#86868b] text-xs">➔</span>
+                      <span class="text-slate-200 text-xs">➔</span>
                       <span class="text-[#30d158]">Sequence.mp4</span>
                     </div>
-                    <div class="text-[11px] text-[#86868b]">3.84 GB • 3840×2160 @ 60fps • 5.1 Surround Passthrough</div>
+                    <div class="text-[11px] text-slate-200">3.84 GB • 3840×2160 @ 60fps • 5.1 Surround Passthrough</div>
                   </div>
                 </div>
                 <div class="flex items-center gap-2 self-start sm:self-auto">
@@ -388,8 +407,8 @@
                 <div class="w-full h-full bg-[#30d158] rounded-full"></div>
               </div>
 
-              <div class="flex items-center justify-between mt-2 text-[10px] sm:text-[11px] text-[#86868b]">
-                <span class="text-white/80 font-mono">Speed: 2,450 FPS (Zero CPU Encoding Overhead)</span>
+              <div class="flex items-center justify-between mt-2 text-[10px] sm:text-[11px] text-slate-200">
+                <span class="text-white font-mono">Speed: 2,450 FPS (Zero CPU Encoding Overhead)</span>
                 <span class="text-[#30d158] font-medium">100% Lossless Bit-for-Bit Copy</span>
               </div>
             </div>
@@ -404,10 +423,10 @@
                   <div>
                     <div class="text-sm font-semibold text-white tracking-tight flex items-center gap-2">
                       <span>Sony_FX3_Podcast_Studio.mov</span>
-                      <span class="text-[#86868b] text-xs">➔</span>
+                      <span class="text-slate-200 text-xs">➔</span>
                       <span class="text-white">Podcast_Master.mp4</span>
                     </div>
-                    <div class="text-[11px] text-[#86868b]">6.20 GB • 4K Rec.709 • NVIDIA NVENC Hardware Pipeline</div>
+                    <div class="text-[11px] text-slate-200">6.20 GB • 4K Rec.709 • NVIDIA NVENC Hardware Pipeline</div>
                   </div>
                 </div>
                 <div class="flex items-center gap-2 self-start sm:self-auto">
@@ -419,8 +438,8 @@
               <div class="w-full h-1.5 rounded-full bg-white/10 overflow-hidden relative">
                 <div class="w-full h-full bg-[#2997ff] rounded-full"></div>
               </div>
-              <div class="flex items-center justify-between mt-2 text-[10px] sm:text-[11px] text-[#86868b]">
-                <span class="text-white/80 font-mono">Output: H.264 High Profile • 45 Mbps</span>
+              <div class="flex items-center justify-between mt-2 text-[10px] sm:text-[11px] text-slate-200">
+                <span class="text-white font-mono">Output: H.264 High Profile • 45 Mbps</span>
                 <span class="text-[#2997ff] font-medium">GPU VRAM: 1.8 GB Active</span>
               </div>
             </div>
@@ -428,7 +447,7 @@
           </div>
 
           <!-- Bottom Telemetry Tray -->
-          <div class="pt-3 border-t border-white/[0.06] flex flex-wrap items-center justify-between gap-3 text-[11px] text-[#86868b]">
+          <div class="pt-3 border-t border-white/[0.06] flex flex-wrap items-center justify-between gap-3 text-[11px] text-slate-200">
             <div class="flex items-center gap-2">
               <span class="w-2 h-2 rounded-full bg-[#30d158]"></span>
               <span class="text-white/90 font-medium">Privacy Status:</span>
@@ -456,7 +475,7 @@
         <h2 class="headline-gradient text-3xl sm:text-5xl font-bold tracking-tight mb-4">
           Engineered for Pure Performance
         </h2>
-        <p class="text-[#86868b] text-base sm:text-lg">
+        <p class="text-slate-200 text-base sm:text-lg">
           Daily audio & video conversion with zero cloud lag, zero data harvesting, and zero recurring fees.
         </p>
       </div>
@@ -469,11 +488,11 @@
           <div>
             <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-xl mb-6">⚡</div>
             <h3 class="text-2xl sm:text-3xl font-bold text-white mb-3 tracking-tight">Instant Stream Copy (-c copy)</h3>
-            <p class="text-[#86868b] text-base leading-relaxed max-w-xl">
+            <p class="text-slate-200 text-base leading-relaxed max-w-xl">
               Change container formats (e.g. MKV to MP4, MOV to MKV) in 1 to 2 seconds. Zero re-encoding, zero CPU burn, and 100% lossless bit-for-bit fidelity.
             </p>
           </div>
-          <div class="mt-8 pt-6 border-t border-white/[0.06] flex items-center gap-3 text-xs text-white/70">
+          <div class="mt-8 pt-6 border-t border-white/[0.06] flex items-center gap-3 text-xs text-white/90">
             <span class="px-3 py-1 rounded-full bg-white/10 text-white font-mono">1.5s Execution</span>
             <span>•</span>
             <span>Zero Quality Loss</span>
@@ -485,11 +504,11 @@
           <div>
             <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-xl mb-6">🔒</div>
             <h3 class="text-2xl font-bold text-white mb-3 tracking-tight">100% Air-Gapped Privacy</h3>
-            <p class="text-[#86868b] text-base leading-relaxed">
+            <p class="text-slate-200 text-base leading-relaxed">
               No files are ever uploaded to a remote server. Your confidential media remains strictly stored on your own local hard drive.
             </p>
           </div>
-          <div class="mt-8 pt-6 border-t border-white/[0.06] text-xs text-white/70">
+          <div class="mt-8 pt-6 border-t border-white/[0.06] text-xs text-white/90">
             <span>Zero Telemetry or Cloud Tracking</span>
           </div>
         </div>
@@ -499,11 +518,11 @@
           <div>
             <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-xl mb-6">🚀</div>
             <h3 class="text-2xl font-bold text-white mb-3 tracking-tight">Hardware Acceleration</h3>
-            <p class="text-[#86868b] text-base leading-relaxed">
+            <p class="text-slate-200 text-base leading-relaxed">
               Native auto-probing for NVIDIA NVENC, Intel QuickSync (QSV), AMD AMF, and Android MediaCodec GPU pipelines.
             </p>
           </div>
-          <div class="mt-8 pt-6 border-t border-white/[0.06] text-xs text-white/70">
+          <div class="mt-8 pt-6 border-t border-white/[0.06] text-xs text-white/90">
             <span>Up to 12x Faster Encoding</span>
           </div>
         </div>
@@ -513,11 +532,11 @@
           <div>
             <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-xl mb-6">📦</div>
             <h3 class="text-2xl font-bold text-white mb-3 tracking-tight">Universal Codec Suite</h3>
-            <p class="text-[#86868b] text-base leading-relaxed">
+            <p class="text-slate-200 text-base leading-relaxed">
               Export to MP4, MKV, MOV, WebM, high-bitrate MP3, WAV, AAC, and optimized 2-pass Lanczos animated GIFs.
             </p>
           </div>
-          <div class="mt-8 pt-6 border-t border-white/[0.06] text-xs text-white/70">
+          <div class="mt-8 pt-6 border-t border-white/[0.06] text-xs text-white/90">
             <span>Embedded Standalone FFmpeg</span>
           </div>
         </div>
@@ -527,11 +546,11 @@
           <div>
             <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-xl mb-6">♾️</div>
             <h3 class="text-2xl font-bold text-white mb-3 tracking-tight">Unlimited Batch Queues</h3>
-            <p class="text-[#86868b] text-base leading-relaxed">
+            <p class="text-slate-200 text-base leading-relaxed">
               Process hundreds of videos and audio tracks in continuous batch queues. No artificial daily caps or file size ceilings.
             </p>
           </div>
-          <div class="mt-8 pt-6 border-t border-white/[0.06] text-xs text-white/70">
+          <div class="mt-8 pt-6 border-t border-white/[0.06] text-xs text-white/90">
             <span>Multi-Core Parallel Queue</span>
           </div>
         </div>
@@ -547,14 +566,14 @@
       
       <!-- Section Header -->
       <div class="text-center max-w-2xl mx-auto mb-12">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/15 text-xs text-white/80 font-medium mb-4 backdrop-blur-md">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/15 text-xs text-white font-medium mb-4 backdrop-blur-md">
           <span class="w-2 h-2 rounded-full bg-[#30d158]"></span>
           <span>Native Desktop & Mobile Interfaces</span>
         </div>
         <h2 class="headline-gradient text-3xl sm:text-5xl font-bold tracking-tight mb-4">
           Experience the Interface
         </h2>
-        <p class="text-[#86868b] text-base sm:text-lg">
+        <p class="text-slate-200 text-base sm:text-lg">
           Designed with minimalist precision and dark titanium aesthetics. Explore the native desktop workstation, GPU pipeline configuration, and Android mobile companion.
         </p>
       </div>
@@ -565,16 +584,16 @@
           <button id="tabDesktopBtn" onclick="switchGallery('desktop')" class="px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-black shadow-md">
             🖥️ Modern Dark
           </button>
-          <button id="tabDemoBtn" onclick="switchGallery('demo')" class="px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-[#86868b] hover:text-white">
+          <button id="tabDemoBtn" onclick="switchGallery('demo')" class="px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-slate-200 hover:text-white">
             🎬 Live Demo
           </button>
-          <button id="tabLightBtn" onclick="switchGallery('light')" class="px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-[#86868b] hover:text-white">
+          <button id="tabLightBtn" onclick="switchGallery('light')" class="px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-slate-200 hover:text-white">
             ☀️ Modern Light
           </button>
-          <button id="tabCrtBtn" onclick="switchGallery('crt')" class="px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-[#86868b] hover:text-white">
+          <button id="tabCrtBtn" onclick="switchGallery('crt')" class="px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-slate-200 hover:text-white">
             📟 Retro CRT
           </button>
-          <button id="tabMobileBtn" onclick="switchGallery('mobile')" class="px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-[#86868b] hover:text-white">
+          <button id="tabMobileBtn" onclick="switchGallery('mobile')" class="px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-slate-200 hover:text-white">
             📱 Mobile Edition
           </button>
         </div>
@@ -591,15 +610,15 @@
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
             <div class="glass-panel rounded-2xl p-5">
               <div class="text-[#30d158] font-bold text-sm mb-1">⚡ Instant Stream Remux</div>
-              <p class="text-xs text-[#86868b] leading-relaxed">Changes 4K MKV to MP4 in 1.4 seconds with zero re-encoding or bit-for-bit quality degradation.</p>
+              <p class="text-xs text-slate-200 leading-relaxed">Changes 4K MKV to MP4 in 1.4 seconds with zero re-encoding or bit-for-bit quality degradation.</p>
             </div>
             <div class="glass-panel rounded-2xl p-5">
               <div class="text-[#ffd60a] font-bold text-sm mb-1">🚀 Multi-GPU Pipelines</div>
-              <p class="text-xs text-[#86868b] leading-relaxed">Auto-routes tasks to NVIDIA GeForce RTX NVENC, Intel QSV, or AMD AMF hardware.</p>
+              <p class="text-xs text-slate-200 leading-relaxed">Auto-routes tasks to NVIDIA GeForce RTX NVENC, Intel QSV, or AMD AMF hardware.</p>
             </div>
             <div class="glass-panel rounded-2xl p-5">
               <div class="text-[#2997ff] font-bold text-sm mb-1">♾️ Unlimited Queues</div>
-              <p class="text-xs text-[#86868b] leading-relaxed">Batch convert hundreds of heavy audio and video files in continuous background workers.</p>
+              <p class="text-xs text-slate-200 leading-relaxed">Batch convert hundreds of heavy audio and video files in continuous background workers.</p>
             </div>
           </div>
         </div>
@@ -621,15 +640,15 @@
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
             <div class="glass-panel rounded-2xl p-5">
               <div class="text-[#30d158] font-bold text-sm mb-1">⚡ Real-Time Transcoding</div>
-              <p class="text-xs text-[#86868b] leading-relaxed">Watch GPU-accelerated video conversions execute with live frame-by-frame progress telemetry.</p>
+              <p class="text-xs text-slate-200 leading-relaxed">Watch GPU-accelerated video conversions execute with live frame-by-frame progress telemetry.</p>
             </div>
             <div class="glass-panel rounded-2xl p-5">
               <div class="text-[#ffd60a] font-bold text-sm mb-1">🎨 Seamless Theme Switching</div>
-              <p class="text-xs text-[#86868b] leading-relaxed">Instant 1-click toggling between Titanium Dark, Studio Light, and Retro CRT modes.</p>
+              <p class="text-xs text-slate-200 leading-relaxed">Instant 1-click toggling between Titanium Dark, Studio Light, and Retro CRT modes.</p>
             </div>
             <div class="glass-panel rounded-2xl p-5">
               <div class="text-[#2997ff] font-bold text-sm mb-1">🛡️ 100% Local Pipeline</div>
-              <p class="text-xs text-[#86868b] leading-relaxed">Embedded static FFmpeg engine running entirely on your machine with zero cloud uploads.</p>
+              <p class="text-xs text-slate-200 leading-relaxed">Embedded static FFmpeg engine running entirely on your machine with zero cloud uploads.</p>
             </div>
           </div>
         </div>
@@ -642,15 +661,15 @@
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
             <div class="glass-panel rounded-2xl p-5">
               <div class="text-[#30d158] font-bold text-sm mb-1">☀️ High-Contrast Daylight Mode</div>
-              <p class="text-xs text-[#86868b] leading-relaxed">Engineered for bright environments with sharp slate typography and fluid pill controls.</p>
+              <p class="text-xs text-slate-200 leading-relaxed">Engineered for bright environments with sharp slate typography and fluid pill controls.</p>
             </div>
             <div class="glass-panel rounded-2xl p-5">
               <div class="text-[#ffd60a] font-bold text-sm mb-1">🎛️ Universal Codec Presets</div>
-              <p class="text-xs text-[#86868b] leading-relaxed">One-click toggles for MP4 H.264, MKV HEVC H.265, WebM VP9, and animated GIFs.</p>
+              <p class="text-xs text-slate-200 leading-relaxed">One-click toggles for MP4 H.264, MKV HEVC H.265, WebM VP9, and animated GIFs.</p>
             </div>
             <div class="glass-panel rounded-2xl p-5">
               <div class="text-[#2997ff] font-bold text-sm mb-1">🔍 Automatic Hardware Probing</div>
-              <p class="text-xs text-[#86868b] leading-relaxed">Instant detection of installed dedicated graphics cards with seamless CPU fallback.</p>
+              <p class="text-xs text-slate-200 leading-relaxed">Instant detection of installed dedicated graphics cards with seamless CPU fallback.</p>
             </div>
           </div>
         </div>
@@ -663,15 +682,15 @@
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
             <div class="glass-panel rounded-2xl p-5">
               <div class="text-[#30d158] font-bold text-sm mb-1">📟 Cyberpunk CRT Terminal</div>
-              <p class="text-xs text-[#86868b] leading-relaxed">Vintage phosphor green terminal aesthetics with live stream diagnostics and telemetry.</p>
+              <p class="text-xs text-slate-200 leading-relaxed">Vintage phosphor green terminal aesthetics with live stream diagnostics and telemetry.</p>
             </div>
             <div class="glass-panel rounded-2xl p-5">
               <div class="text-[#ffd60a] font-bold text-sm mb-1">🛡️ Standalone Embedded Engine</div>
-              <p class="text-xs text-[#86868b] leading-relaxed">Embedded static FFmpeg engine running 100% offline with zero cloud tracking.</p>
+              <p class="text-xs text-slate-200 leading-relaxed">Embedded static FFmpeg engine running 100% offline with zero cloud tracking.</p>
             </div>
             <div class="glass-panel rounded-2xl p-5">
               <div class="text-[#af52de] font-bold text-sm mb-1">🎵 Studio Audio Extraction</div>
-              <p class="text-xs text-[#86868b] leading-relaxed">Variable bitrate audio extraction up to 320 kbps MP3, WAV passthrough, and AAC.</p>
+              <p class="text-xs text-slate-200 leading-relaxed">Variable bitrate audio extraction up to 320 kbps MP3, WAV passthrough, and AAC.</p>
             </div>
           </div>
         </div>
@@ -684,15 +703,15 @@
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
             <div class="glass-panel rounded-2xl p-5">
               <div class="text-[#30d158] font-bold text-sm mb-1">📱 MediaCodec GPU Acceleration</div>
-              <p class="text-xs text-[#86868b] leading-relaxed">Leverages Qualcomm Snapdragon Adreno and MediaTek GPU hardware for mobile speed.</p>
+              <p class="text-xs text-slate-200 leading-relaxed">Leverages Qualcomm Snapdragon Adreno and MediaTek GPU hardware for mobile speed.</p>
             </div>
             <div class="glass-panel rounded-2xl p-5">
               <div class="text-[#ffd60a] font-bold text-sm mb-1">📁 Drag & Drop File Import</div>
-              <p class="text-xs text-[#86868b] leading-relaxed">Instant system file picker integration to batch process phone video recordings.</p>
+              <p class="text-xs text-slate-200 leading-relaxed">Instant system file picker integration to batch process phone video recordings.</p>
             </div>
             <div class="glass-panel rounded-2xl p-5">
               <div class="text-[#2997ff] font-bold text-sm mb-1">🔒 100% On-Device Privacy</div>
-              <p class="text-xs text-[#86868b] leading-relaxed">Zero cellular data usage. Converts directly on your Android phone's local storage.</p>
+              <p class="text-xs text-slate-200 leading-relaxed">Zero cellular data usage. Converts directly on your Android phone's local storage.</p>
             </div>
           </div>
         </div>
@@ -710,7 +729,7 @@
         <h2 class="headline-gradient text-3xl sm:text-5xl font-bold tracking-tight mb-4">
           Why Local Beats Cloud
         </h2>
-        <p class="text-[#86868b] text-base sm:text-lg">
+        <p class="text-slate-200 text-base sm:text-lg">
           Cloud converters compromise your privacy, throttle bandwidth, and charge recurring fees.
         </p>
       </div>
@@ -720,7 +739,7 @@
           
           <!-- Column 1: Feature -->
           <div class="p-6 sm:p-8 space-y-6 bg-white/[0.01]">
-            <div class="text-xs font-semibold text-[#86868b] tracking-wider uppercase">Comparison Metric</div>
+            <div class="text-xs font-semibold text-slate-200 tracking-wider uppercase">Comparison Metric</div>
             <div class="space-y-6 text-sm sm:text-base font-medium text-white/90">
               <div class="h-10 flex items-center">Privacy & Data Security</div>
               <div class="h-10 flex items-center">Conversion Speed</div>
@@ -733,7 +752,7 @@
           <!-- Column 2: Cloud -->
           <div class="p-6 sm:p-8 space-y-6 bg-white/[0.01]">
             <div class="text-xs font-semibold text-rose-400 tracking-wider uppercase">Cloud Converters</div>
-            <div class="space-y-6 text-sm sm:text-base text-[#86868b]">
+            <div class="space-y-6 text-sm sm:text-base text-slate-200">
               <div class="h-10 flex items-center text-rose-300">Uploaded to third-party servers</div>
               <div class="h-10 flex items-center">Slow (Upload + Queue + Download)</div>
               <div class="h-10 flex items-center">Capped at 50MB – 100MB</div>
@@ -769,7 +788,7 @@
         <h2 class="headline-gradient text-3xl sm:text-5xl font-bold tracking-tight mb-4">
           Choose Your Edition
         </h2>
-        <p class="text-[#86868b] text-base sm:text-lg">
+        <p class="text-slate-200 text-base sm:text-lg">
           Start with the Free Community Edition or unlock Lifetime PRO. Zero recurring fees.
         </p>
       </div>
@@ -780,21 +799,21 @@
         <!-- Tier 0: Free Community -->
         <div class="glass-panel rounded-3xl p-6 sm:p-7 flex flex-col justify-between">
           <div>
-            <div class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-white/10 text-white/80 border border-white/15 mb-4">
+            <div class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-white/10 text-white border border-white/15 mb-4">
               Free Forever
             </div>
             <h3 class="text-xl font-bold text-white mb-2">Community Edition</h3>
             
             <div class="flex items-baseline gap-1.5 mb-4">
               <span class="text-4xl font-extrabold text-white font-mono">$0</span>
-              <span class="text-xs text-[#86868b]">/ ₹0</span>
+              <span class="text-xs text-slate-200">/ ₹0</span>
             </div>
             
-            <p class="text-xs text-[#86868b] mb-6 leading-relaxed">
+            <p class="text-xs text-slate-200 mb-6 leading-relaxed">
               Standalone offline build for casual daily tasks. No registration or credit cards required.
             </p>
 
-            <ul class="space-y-3 text-xs text-white/80 mb-8 border-t border-white/[0.08] pt-6">
+            <ul class="space-y-3 text-xs text-white mb-8 border-t border-white/[0.08] pt-6">
               <li class="flex items-center gap-2">
                 <span class="text-[#30d158] font-bold">✓</span>
                 <span>Windows 64-bit Portable (.exe)</span>
@@ -807,7 +826,7 @@
                 <span class="text-[#30d158] font-bold">✓</span>
                 <span>Instant Stream Copy (-c copy)</span>
               </li>
-              <li class="flex items-center gap-2 text-[#86868b]">
+              <li class="flex items-center gap-2 text-slate-200">
                 <span class="text-amber-400 font-bold">•</span>
                 <span>2-file queue limit per session</span>
               </li>
@@ -819,7 +838,7 @@
               ⬇ Download Free (.exe)
             </a>
             <div class="text-center pt-2.5">
-              <a href="https://github.com/bonnokush/retroflux-releases/releases/download/v1.3.0/RetroFlux-v1.3.0-release.apk" class="text-[11px] text-[#86868b] hover:text-white transition-colors underline font-medium">
+              <a href="https://github.com/bonnokush/retroflux-releases/releases/download/v1.3.0/RetroFlux-v1.3.0-release.apk" class="text-[11px] text-slate-200 hover:text-white transition-colors underline font-medium">
                 Android APK available (.apk) →
               </a>
             </div>
@@ -829,21 +848,21 @@
         <!-- Tier 1: Mobile Edition -->
         <div class="glass-panel rounded-3xl p-6 sm:p-7 flex flex-col justify-between">
           <div>
-            <div class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-white/10 text-white/80 border border-white/15 mb-4">
+            <div class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-white/10 text-white border border-white/15 mb-4">
               Mobile Device
             </div>
             <h3 class="text-xl font-bold text-white mb-2">Mobile Edition</h3>
             
             <div class="flex items-baseline gap-1.5 mb-4">
               <span class="text-4xl font-extrabold text-white font-mono">$3.99</span>
-              <span class="text-xs text-[#86868b]">/ ₹299</span>
+              <span class="text-xs text-slate-200">/ ₹299</span>
             </div>
             
-            <p class="text-xs text-[#86868b] mb-6 leading-relaxed">
+            <p class="text-xs text-slate-200 mb-6 leading-relaxed">
               For Android smartphones and tablets. Hardware video transcoding on the go.
             </p>
 
-            <ul class="space-y-3 text-xs text-white/80 mb-8 border-t border-white/[0.08] pt-6">
+            <ul class="space-y-3 text-xs text-white mb-8 border-t border-white/[0.08] pt-6">
               <li class="flex items-center gap-2">
                 <span class="text-[#30d158] font-bold">✓</span>
                 <span>Android Release APK (API 24+)</span>
@@ -868,7 +887,7 @@
               ⚡ Buy Mobile — ₹299 / $3.99
             </button>
             <div class="text-center pt-2.5">
-              <span class="text-[11px] text-[#86868b]">1 Android Device Seat</span>
+              <span class="text-[11px] text-slate-200">1 Android Device Seat</span>
             </div>
           </div>
         </div>
@@ -887,10 +906,10 @@
             
             <div class="flex items-baseline gap-1.5 mb-4">
               <span class="text-4xl font-extrabold text-white font-mono">$8.99</span>
-              <span class="text-xs text-[#86868b]">/ ₹699</span>
+              <span class="text-xs text-slate-200">/ ₹699</span>
             </div>
             
-            <p class="text-xs text-[#86868b] mb-6 leading-relaxed">
+            <p class="text-xs text-slate-200 mb-6 leading-relaxed">
               Complete standalone media workstation for Windows 10 & 11 PCs.
             </p>
 
@@ -923,7 +942,7 @@
               ⚡ Buy Desktop — ₹699 / $8.99
             </button>
             <div class="text-center pt-2.5">
-              <span class="text-[11px] text-[#86868b]">1 Windows PC Hardware Seat</span>
+              <span class="text-[11px] text-slate-200">1 Windows PC Hardware Seat</span>
             </div>
           </div>
         </div>
@@ -942,10 +961,10 @@
             
             <div class="flex items-baseline gap-1.5 mb-4">
               <span class="text-4xl font-extrabold text-white font-mono">$11.99</span>
-              <span class="text-xs text-[#86868b]">/ ₹899</span>
+              <span class="text-xs text-slate-200">/ ₹899</span>
             </div>
             
-            <p class="text-xs text-[#86868b] mb-6 leading-relaxed">
+            <p class="text-xs text-slate-200 mb-6 leading-relaxed">
               Complete dual-platform package. Both PC & Android apps with master key.
             </p>
 
@@ -974,7 +993,7 @@
               ⚡ Get Bundle — ₹899 / $11.99
             </button>
             <div class="text-center pt-2.5">
-              <span class="text-[11px] text-[#86868b]">Dual Platform (1 PC + 1 Mobile)</span>
+              <span class="text-[11px] text-slate-200">Dual Platform (1 PC + 1 Mobile)</span>
             </div>
           </div>
         </div>
@@ -985,12 +1004,12 @@
       <div class="mt-20 glass-panel rounded-3xl overflow-hidden p-6 sm:p-8">
         <div class="text-center mb-8">
           <h3 class="text-2xl font-bold text-white mb-1">Edition Comparison Matrix</h3>
-          <p class="text-xs sm:text-sm text-[#86868b]">Compare capabilities across all 4 tiers</p>
+          <p class="text-xs sm:text-sm text-slate-200">Compare capabilities across all 4 tiers</p>
         </div>
 
         <div class="overflow-x-auto">
           <table class="w-full text-left text-xs sm:text-sm">
-            <thead class="text-[#86868b] border-b border-white/[0.08]">
+            <thead class="text-slate-200 border-b border-white/[0.08]">
               <tr>
                 <th class="py-4 px-4 font-medium">Feature</th>
                 <th class="py-4 px-4 font-semibold text-white">Free Community</th>
@@ -1001,49 +1020,49 @@
             </thead>
             <tbody class="divide-y divide-white/[0.06] text-white/90">
               <tr>
-                <td class="py-4 px-4 text-[#86868b]">Price</td>
+                <td class="py-4 px-4 text-slate-200">Price</td>
                 <td class="py-4 px-4 font-semibold">$0 / ₹0</td>
                 <td class="py-4 px-4 font-semibold">$3.99 / ₹299</td>
                 <td class="py-4 px-4 font-semibold text-[#30d158]">$8.99 / ₹699</td>
                 <td class="py-4 px-4 font-semibold text-[#ffd60a]">$11.99 / ₹899</td>
               </tr>
               <tr>
-                <td class="py-4 px-4 text-[#86868b]">Platforms</td>
+                <td class="py-4 px-4 text-slate-200">Platforms</td>
                 <td class="py-4 px-4">Windows + Android</td>
                 <td class="py-4 px-4">Android Only</td>
                 <td class="py-4 px-4">Windows PC Only</td>
                 <td class="py-4 px-4 font-semibold text-white">Both Windows + Android</td>
               </tr>
               <tr>
-                <td class="py-4 px-4 text-[#86868b]">Queue Limit</td>
+                <td class="py-4 px-4 text-slate-200">Queue Limit</td>
                 <td class="py-4 px-4 text-amber-300">2 files per session</td>
                 <td class="py-4 px-4 font-semibold text-[#30d158]">Unlimited</td>
                 <td class="py-4 px-4 font-semibold text-[#30d158]">Unlimited</td>
                 <td class="py-4 px-4 font-semibold text-[#30d158]">Unlimited</td>
               </tr>
               <tr>
-                <td class="py-4 px-4 text-[#86868b]">Fast Remux (-c copy)</td>
+                <td class="py-4 px-4 text-slate-200">Fast Remux (-c copy)</td>
                 <td class="py-4 px-4 text-[#30d158]">✓ 1.5s</td>
                 <td class="py-4 px-4 text-[#30d158]">✓ Included</td>
                 <td class="py-4 px-4 text-[#30d158]">✓ Included</td>
                 <td class="py-4 px-4 text-[#30d158]">✓ Included</td>
               </tr>
               <tr>
-                <td class="py-4 px-4 text-[#86868b]">Hardware Acceleration</td>
+                <td class="py-4 px-4 text-slate-200">Hardware Acceleration</td>
                 <td class="py-4 px-4">Basic GPU</td>
                 <td class="py-4 px-4">MediaCodec GPU</td>
                 <td class="py-4 px-4 text-[#30d158]">NVENC, QSV, AMF</td>
                 <td class="py-4 px-4 text-[#ffd60a]">All GPU Engines</td>
               </tr>
               <tr>
-                <td class="py-4 px-4 text-[#86868b]">Device Seats</td>
-                <td class="py-4 px-4 text-[#86868b]">—</td>
+                <td class="py-4 px-4 text-slate-200">Device Seats</td>
+                <td class="py-4 px-4 text-slate-200">—</td>
                 <td class="py-4 px-4">1 Mobile Seat</td>
                 <td class="py-4 px-4">1 PC Hardware Seat</td>
                 <td class="py-4 px-4 font-semibold text-[#ffd60a]">1 PC + 1 Mobile Seat</td>
               </tr>
               <tr>
-                <td class="py-4 px-4 text-[#86868b]">Action</td>
+                <td class="py-4 px-4 text-slate-200">Action</td>
                 <td class="py-4 px-4">
                   <a href="#free-download" class="inline-block px-3.5 py-1.5 rounded-full bg-white text-black hover:bg-[#eaeaea] text-xs font-bold active:scale-95 transition-all shadow-sm">⬇ Free (.exe)</a>
                 </td>
@@ -1073,7 +1092,7 @@
         <h2 class="headline-gradient text-3xl sm:text-5xl font-bold tracking-tight mb-4">
           Frequently Asked Questions
         </h2>
-        <p class="text-[#86868b] text-base">Clear answers to common questions about licensing and usage.</p>
+        <p class="text-slate-200 text-base">Clear answers to common questions about licensing and usage.</p>
       </div>
 
       <div class="space-y-4">
@@ -1081,9 +1100,9 @@
         <details class="glass-panel group rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
           <summary class="flex items-center justify-between font-semibold text-base sm:text-lg text-white">
             <span>Is this really a one-time purchase?</span>
-            <span class="ml-4 transition-transform group-open:rotate-180 text-[#86868b]">▾</span>
+            <span class="ml-4 transition-transform group-open:rotate-180 text-slate-200">▾</span>
           </summary>
-          <p class="mt-4 text-sm text-[#86868b] leading-relaxed">
+          <p class="mt-4 text-sm text-slate-200 leading-relaxed">
             Yes. There are zero subscriptions, zero recurring monthly fees, and zero hidden costs. You own your license key permanently for the life of the version.
           </p>
         </details>
@@ -1091,9 +1110,9 @@
         <details class="glass-panel group rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
           <summary class="flex items-center justify-between font-semibold text-base sm:text-lg text-white">
             <span>Can I transfer my license to a new PC?</span>
-            <span class="ml-4 transition-transform group-open:rotate-180 text-[#86868b]">▾</span>
+            <span class="ml-4 transition-transform group-open:rotate-180 text-slate-200">▾</span>
           </summary>
-          <p class="mt-4 text-sm text-[#86868b] leading-relaxed">
+          <p class="mt-4 text-sm text-slate-200 leading-relaxed">
             Yes. Simply click "[ DEACTIVATE KEY ]" inside RetroFlux before switching computers. This releases your hardware seat so you can activate on your new device immediately.
           </p>
         </details>
@@ -1101,9 +1120,9 @@
         <details class="glass-panel group rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
           <summary class="flex items-center justify-between font-semibold text-base sm:text-lg text-white">
             <span>Does it require an internet connection to run?</span>
-            <span class="ml-4 transition-transform group-open:rotate-180 text-[#86868b]">▾</span>
+            <span class="ml-4 transition-transform group-open:rotate-180 text-slate-200">▾</span>
           </summary>
-          <p class="mt-4 text-sm text-[#86868b] leading-relaxed">
+          <p class="mt-4 text-sm text-slate-200 leading-relaxed">
             No. RetroFlux operates 100% offline. After initial activation, your license is verified locally using a machine-bound cryptographic token. It never uploads data or phones home.
           </p>
         </details>
@@ -1111,9 +1130,9 @@
         <details class="glass-panel group rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
           <summary class="flex items-center justify-between font-semibold text-base sm:text-lg text-white">
             <span>Do I need to install FFmpeg or Python separately?</span>
-            <span class="ml-4 transition-transform group-open:rotate-180 text-[#86868b]">▾</span>
+            <span class="ml-4 transition-transform group-open:rotate-180 text-slate-200">▾</span>
           </summary>
-          <p class="mt-4 text-sm text-[#86868b] leading-relaxed">
+          <p class="mt-4 text-sm text-slate-200 leading-relaxed">
             No. The Desktop Edition is a single, self-contained standalone executable (<code class="text-white font-mono">RetroFlux.exe</code>) with the complete Python runtime and embedded FFmpeg binary bundled inside.
           </p>
         </details>
@@ -1124,7 +1143,7 @@
   </section>
 
   <!-- ================= FOOTER ================= -->
-  <footer class="py-16 border-t border-white/[0.08] text-xs text-[#86868b]">
+  <footer class="py-16 border-t border-white/[0.08] text-xs text-slate-200">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
       <div>
         <div class="font-semibold text-white text-sm mb-1">RetroFlux PRO Workstation</div>
@@ -1156,9 +1175,9 @@
           <h3 id="modalTierTitle" class="text-2xl font-bold text-white tracking-tight">Desktop Edition</h3>
           <div class="flex items-baseline gap-2 mt-1">
             <span id="modalInrPrice" class="text-2xl font-extrabold text-[#30d158] font-mono">₹699 INR</span>
-            <span class="text-xs text-[#86868b]">/</span>
-            <span id="modalUsdPrice" class="text-sm font-medium text-[#86868b] font-mono">$8.99 USD</span>
-            <span class="text-xs text-[#86868b] ml-1">(One-time lifetime)</span>
+            <span class="text-xs text-slate-200">/</span>
+            <span id="modalUsdPrice" class="text-sm font-medium text-slate-200 font-mono">$8.99 USD</span>
+            <span class="text-xs text-slate-200 ml-1">(One-time lifetime)</span>
           </div>
         </div>
 
@@ -1167,7 +1186,7 @@
           <button id="tabRzpBtn" onclick="switchTab('rzp')" class="py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-black shadow-md">
             ⚡ UPI & Cards (INR)
           </button>
-          <button id="tabPaypalBtn" onclick="switchTab('paypal')" class="py-2.5 px-3 rounded-xl text-xs sm:text-sm font-medium transition-all text-[#86868b] hover:text-white">
+          <button id="tabPaypalBtn" onclick="switchTab('paypal')" class="py-2.5 px-3 rounded-xl text-xs sm:text-sm font-medium transition-all text-slate-200 hover:text-white">
             🌐 PayPal (USD)
           </button>
         </div>
@@ -1179,20 +1198,20 @@
               
               <div class="flex items-center justify-between p-3.5 sm:p-4 rounded-xl bg-black/60 border border-white/10">
                 <div>
-                  <div class="text-[10px] text-[#86868b] uppercase tracking-wider">Plan Selected</div>
+                  <div class="text-[10px] text-slate-200 uppercase tracking-wider">Plan Selected</div>
                   <div id="rzpModalTierTitle" class="text-sm font-bold text-white">Desktop Edition</div>
                 </div>
                 <div class="text-right">
-                  <div class="text-[10px] text-[#86868b] uppercase tracking-wider">Locked Price</div>
+                  <div class="text-[10px] text-slate-200 uppercase tracking-wider">Locked Price</div>
                   <div id="rzpModalInrBadge" class="text-xl sm:text-2xl font-extrabold text-[#30d158] font-mono">₹699</div>
                 </div>
               </div>
 
               <form id="rzpOrderForm" onsubmit="startRazorpayCheckout(event)" class="space-y-4">
                 <div>
-                  <label class="block text-xs font-medium text-[#86868b] mb-1.5">Email address for license delivery:</label>
+                  <label class="block text-xs font-medium text-slate-200 mb-1.5">Email address for license delivery:</label>
                   <input type="email" id="rzpEmail" required placeholder="you@example.com" class="w-full px-3.5 py-2.5 rounded-xl bg-black/70 border border-white/15 text-white text-sm focus:border-[#30d158] focus:outline-none transition-colors" />
-                  <p class="text-[11px] text-[#86868b] mt-1.5">Your genuine PRO license key will be displayed on screen immediately upon payment.</p>
+                  <p class="text-[11px] text-slate-200 mt-1.5">Your genuine PRO license key will be displayed on screen immediately upon payment.</p>
                 </div>
 
                 <button type="submit" id="rzpPayBtn" class="cursor-pointer w-full py-3.5 sm:py-4 px-4 rounded-2xl bg-[#30d158] hover:bg-[#34e260] text-black font-bold text-sm tracking-wide active:scale-[0.98] transition-all shadow-[0_10px_30px_rgba(48,209,88,0.3)] flex items-center justify-center gap-2">
@@ -1200,7 +1219,7 @@
                 </button>
               </form>
 
-              <div class="pt-3 border-t border-white/[0.06] text-[11px] text-[#86868b] flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-center">
+              <div class="pt-3 border-t border-white/[0.06] text-[11px] text-slate-200 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-center">
                 <span>🔒 256-Bit SSL</span>
                 <span>•</span>
                 <span>1-Tap UPI (GPay, PhonePe, Paytm, CRED)</span>
@@ -1209,7 +1228,7 @@
               </div>
 
               <!-- Optional Manual QR Fallback -->
-              <details class="text-xs text-[#86868b] text-center cursor-pointer pt-2 border-t border-white/[0.06]">
+              <details class="text-xs text-slate-200 text-center cursor-pointer pt-2 border-t border-white/[0.06]">
                 <summary class="hover:text-white transition-colors font-medium text-[11px]">Prefer direct manual transfer via personal UPI / QR?</summary>
                 <div class="mt-3 p-3 bg-black/60 rounded-2xl border border-white/10 text-center space-y-2">
                   <div class="inline-block p-2 bg-white rounded-xl">
@@ -1225,7 +1244,7 @@
                     </a>
                   </div>
                   <form id="upiOrderForm" onsubmit="submitOrder(event, 'upi')" class="space-y-2 pt-2 border-t border-white/[0.06] text-left">
-                    <div class="text-[11px] text-[#86868b] font-medium">Enter UTR reference from bank receipt:</div>
+                    <div class="text-[11px] text-slate-200 font-medium">Enter UTR reference from bank receipt:</div>
                     <input type="text" id="upiUtr" placeholder="12-digit UPI UTR" class="w-full px-3 py-1.5 rounded-lg bg-black border border-white/15 text-white text-xs font-mono focus:border-[#30d158] focus:outline-none" />
                     <button type="submit" id="upiSubmitBtn" class="w-full py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-xs transition-all">
                       Claim Key with UTR
@@ -1240,20 +1259,20 @@
           <!-- TAB 2: PAYPAL CONTENT -->
           <div id="paypalTabContent" class="space-y-4 hidden">
             <div class="p-5 sm:p-6 rounded-2xl bg-white/[0.02] border border-white/10 text-center space-y-4">
-              <div class="text-xs text-[#86868b] uppercase tracking-wider">Pay via PayPal (Cards / Balance)</div>
+              <div class="text-xs text-slate-200 uppercase tracking-wider">Pay via PayPal (Cards / Balance)</div>
               <div class="text-xl font-bold text-white">Send: <span id="paypalAmountText" class="text-[#ffd60a] font-mono">$8.99 USD</span></div>
               <a id="paypalDirectLink" href="https://paypal.me/bonnokush/8.99USD" target="_blank" rel="noopener noreferrer" class="inline-block w-full py-3.5 rounded-2xl bg-[#ffd60a] text-black font-bold text-sm hover:brightness-110 active:scale-[0.98] transition-all shadow-[0_10px_25px_rgba(255,214,10,0.25)]">
                 👉 Open PayPal to Complete Payment
               </a>
-              <p class="text-xs text-[#86868b]">Recipient: <strong class="text-white font-mono">bonnokush</strong></p>
+              <p class="text-xs text-slate-200">Recipient: <strong class="text-white font-mono">bonnokush</strong></p>
 
               <form id="paypalOrderForm" onsubmit="submitOrder(event, 'paypal')" class="space-y-3 pt-3 border-t border-white/[0.06] text-left">
                 <div>
-                  <label class="block text-xs font-medium text-[#86868b] mb-1">Your Email Address:</label>
+                  <label class="block text-xs font-medium text-slate-200 mb-1">Your Email Address:</label>
                   <input type="email" id="paypalEmail" required placeholder="you@example.com" class="w-full px-3 py-2 rounded-xl bg-black/60 border border-white/15 text-white text-xs focus:border-[#ffd60a] focus:outline-none" />
                 </div>
                 <div>
-                  <label class="block text-xs font-medium text-[#86868b] mb-1">PayPal Transaction ID:</label>
+                  <label class="block text-xs font-medium text-slate-200 mb-1">PayPal Transaction ID:</label>
                   <input type="text" id="paypalTxnId" required placeholder="e.g. 9XX123456789" class="w-full px-3 py-2 rounded-xl bg-black/60 border border-white/15 text-white text-xs font-mono focus:border-[#ffd60a] focus:outline-none" />
                 </div>
                 <button type="submit" id="paypalSubmitBtn" class="w-full py-3 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs transition-all">
@@ -1269,7 +1288,7 @@
 
         <!-- Self-Service Order Lookup -->
         <div class="mt-4 pt-3 border-t border-white/[0.06] text-center">
-          <details class="text-xs text-[#86868b] cursor-pointer">
+          <details class="text-xs text-slate-200 cursor-pointer">
             <summary class="hover:text-white transition-colors font-medium">Already paid? Check order & retrieve license key</summary>
             <div class="mt-3 flex gap-2">
               <input type="text" id="lookupRefInput" placeholder="Enter Payment ID, UTR, or Txn ID" class="flex-1 px-3 py-2 rounded-xl bg-black/60 border border-white/15 text-white text-xs font-mono focus:outline-none focus:border-[#30d158]" />
@@ -1281,11 +1300,11 @@
 
         <!-- Back to Store Action -->
         <div class="mt-6 text-center">
-          <button type="button" onclick="closeCheckout()" class="cursor-pointer text-xs text-[#86868b] hover:text-white transition-colors underline font-medium">
+          <button type="button" onclick="closeCheckout()" class="cursor-pointer text-xs text-slate-200 hover:text-white transition-colors underline font-medium">
             ← Cancel and Return to Store
           </button>
           <div class="mt-4">
-            <a href="mailto:retroflux.support@gmail.com" class="text-[11px] text-[#86868b] hover:text-[#30d158] transition-colors">
+            <a href="mailto:retroflux.support@gmail.com" class="text-[11px] text-slate-200 hover:text-[#30d158] transition-colors">
               Need help? Contact Support
             </a>
           </div>
@@ -1360,7 +1379,7 @@
       var vid = document.getElementById('workflowVideo');
 
       var activeClass = 'px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-black shadow-md';
-      var inactiveClass = 'px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-[#86868b] hover:text-white';
+      var inactiveClass = 'px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all text-slate-200 hover:text-white';
 
       d.classList.add('hidden');
       if (demo) demo.classList.add('hidden');
@@ -1407,12 +1426,12 @@
         rzpTab.classList.remove('hidden');
         paypalTab.classList.add('hidden');
         tabRzpBtn.className = 'py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-black shadow-md';
-        tabPaypalBtn.className = 'py-2.5 px-3 rounded-xl text-xs sm:text-sm font-medium transition-all text-[#86868b] hover:text-white';
+        tabPaypalBtn.className = 'py-2.5 px-3 rounded-xl text-xs sm:text-sm font-medium transition-all text-slate-200 hover:text-white';
       } else {
         rzpTab.classList.add('hidden');
         paypalTab.classList.remove('hidden');
         tabPaypalBtn.className = 'py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-[#ffd60a] text-black shadow-md';
-        tabRzpBtn.className = 'py-2.5 px-3 rounded-xl text-xs sm:text-sm font-medium transition-all text-[#86868b] hover:text-white';
+        tabRzpBtn.className = 'py-2.5 px-3 rounded-xl text-xs sm:text-sm font-medium transition-all text-slate-200 hover:text-white';
       }
     }
 
@@ -1514,11 +1533,11 @@
             '<div class="flex items-center gap-2 text-[#30d158] font-bold text-lg">' +
               '<span>✓</span><span>Payment Confirmed & License Activated!</span>' +
             '</div>' +
-            '<p class="text-xs text-[#86868b]">' +
+            '<p class="text-xs text-slate-200">' +
               'Thank you! Your ' + currentCheckout.title + ' license has been generated instantaneously.' +
             '</p>' +
             '<div class="p-4 bg-black rounded-xl border border-white/20 text-center space-y-2">' +
-              '<div class="text-xs text-[#86868b] uppercase tracking-wider">Your RetroFlux PRO License Key:</div>' +
+              '<div class="text-xs text-slate-200 uppercase tracking-wider">Your RetroFlux PRO License Key:</div>' +
               '<div id="activeKeyBox" class="text-xl sm:text-2xl font-mono font-extrabold text-[#30d158] select-all tracking-wider break-all py-1">' +
                 data.license_key +
               '</div>' +
@@ -1526,13 +1545,13 @@
                 '📋 Click to Copy License Key' +
               '</button>' +
             '</div>' +
-            '<div class="space-y-1.5 text-xs text-[#86868b] pt-3 border-t border-white/10">' +
+            '<div class="space-y-1.5 text-xs text-slate-200 pt-3 border-t border-white/10">' +
               '<div><strong class="text-white">Payment ID:</strong> <span class="font-mono text-white/90">' + rzpResponse.razorpay_payment_id + '</span></div>' +
               '<div><strong class="text-white">Delivery Email:</strong> ' + email + '</div>' +
               '<div class="pt-2"><strong class="text-white">How to activate:</strong> Launch <strong class="text-white">RetroFlux</strong>, click <strong class="text-[#30d158]">[ Enter License Key ]</strong> on the startup window or bottom status bar, paste this key, and press Unlock PRO.</div>' +
             '</div>' +
             '<div class="pt-3 border-t border-white/10 text-center space-y-2">' +
-              '<div class="text-[11px] text-[#86868b] uppercase tracking-wider">Download Official PRO Installer:</div>' +
+              '<div class="text-[11px] text-slate-200 uppercase tracking-wider">Download Official PRO Installer:</div>' +
               '<div class="flex flex-wrap items-center justify-center gap-2">' +
                 '<a href="https://github.com/bonnokush/retroflux-releases/releases/download/v1.3.0/RetroFlux.exe" class="px-4 py-2 rounded-full bg-white text-black font-bold text-xs shadow hover:bg-[#eaeaea] transition-all">⬇ Download Windows (.exe)</a>' +
                 '<a href="https://github.com/bonnokush/retroflux-releases/releases/download/v1.3.0/RetroFlux-v1.3.0-release.apk" class="px-4 py-2 rounded-full bg-white/10 text-white font-semibold text-xs hover:bg-white/20 transition-all border border-white/15">⬇ Download Android (.apk)</a>' +
@@ -1610,11 +1629,11 @@
             '<div class="flex items-center gap-2 text-[#30d158] font-bold text-lg">' +
               '<span>✓</span><span>Order Registered & License Activated!</span>' +
             '</div>' +
-            '<p class="text-xs text-[#86868b]">' +
+            '<p class="text-xs text-slate-200">' +
               'Thank you! Your ' + currentCheckout.title + ' license has been generated instantaneously.' +
             '</p>' +
             '<div class="p-4 bg-black rounded-xl border border-white/20 text-center space-y-2">' +
-              '<div class="text-xs text-[#86868b] uppercase tracking-wider">Your RetroFlux PRO License Key:</div>' +
+              '<div class="text-xs text-slate-200 uppercase tracking-wider">Your RetroFlux PRO License Key:</div>' +
               '<div id="activeKeyBox" class="text-xl sm:text-2xl font-mono font-extrabold text-[#30d158] select-all tracking-wider break-all py-1">' +
                 data.license_key +
               '</div>' +
@@ -1622,7 +1641,7 @@
                 '📋 Click to Copy License Key' +
               '</button>' +
             '</div>' +
-            '<div class="space-y-1.5 text-xs text-[#86868b] pt-3 border-t border-white/10">' +
+            '<div class="space-y-1.5 text-xs text-slate-200 pt-3 border-t border-white/10">' +
               '<div><strong class="text-white">Transaction Reference:</strong> <span class="font-mono text-white/90">' + txnRef + '</span></div>' +
               '<div><strong class="text-white">Delivery Email:</strong> ' + email + '</div>' +
               '<div class="pt-2"><strong class="text-white">How to activate:</strong> Launch <strong class="text-white">RetroFlux</strong>, click <strong class="text-[#30d158]">[ Enter License Key ]</strong> on the startup window or bottom status bar, paste this key, and press Unlock PRO.</div>' +
@@ -1671,7 +1690,7 @@
         } else if (data.status === 'approved') {
           resEl.innerHTML = '<span class="text-[#30d158] font-bold">✓ Payment Verified!</span><br>' +
             '<span class="text-white">License Key:</span> <code class="text-[#30d158] font-mono font-bold bg-white/10 px-2 py-0.5 rounded select-all">' + data.license_key + '</code><br>' +
-            '<span class="text-xs text-[#86868b] mt-1 block">Enter this key into RetroFlux to unlock PRO immediately.</span>';
+            '<span class="text-xs text-slate-200 mt-1 block">Enter this key into RetroFlux to unlock PRO immediately.</span>';
         } else {
           resEl.innerHTML = '<span class="text-amber-400 font-bold">⏳ ' + data.message + '</span>';
         }
