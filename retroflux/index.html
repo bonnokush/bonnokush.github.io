@@ -181,12 +181,17 @@
       </a>
 
       <!-- Navigation Links -->
-      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-[#86868b]">
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-[#86868b]">
         <a href="#features" class="hover:text-white transition-colors">Features</a>
         <a href="#screenshots" class="hover:text-white transition-colors">Screenshots</a>
-        <a href="#comparison" class="hover:text-white transition-colors">Vs Cloud</a>
-        <a href="#editions" class="hover:text-white transition-colors">Pricing & Editions</a>
-        <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+        <a href="#editions" class="hover:text-white transition-colors">Pricing</a>
+        
+        <!-- Theme Toggles -->
+        <div class="flex items-center gap-1.5 ml-2 p-1 bg-white/[0.05] border border-white/10 rounded-full">
+          <button onclick="setTheme('dark')" class="w-6 h-6 rounded-full bg-black border border-white/20 hover:border-white text-[10px] flex items-center justify-center transition-all" title="Dark Mode">🌙</button>
+          <button onclick="setTheme('light')" class="w-6 h-6 rounded-full bg-white border border-black/20 hover:border-[#30d158] text-[10px] flex items-center justify-center transition-all shadow-sm" title="Light Mode">☀️</button>
+          <button onclick="setTheme('retro')" class="w-6 h-6 rounded-full bg-amber-900 border border-amber-500/50 hover:border-amber-400 text-[10px] flex items-center justify-center transition-all text-amber-200" title="Retro Mode">📺</button>
+        </div>
       </nav>
 
       <!-- Action Buttons -->
@@ -735,11 +740,11 @@
           </div>
 
           <div>
-            <a href="https://github.com/bonnoxkush/retroflux-releases/releases/download/v1.3.0/RetroFlux.exe" class="cursor-pointer block text-center w-full py-3.5 px-4 rounded-full bg-white text-black text-xs sm:text-sm font-bold active:scale-95 transition-all shadow-[0_10px_30px_rgba(255,255,255,0.25)] hover:bg-[#eaeaea]">
+            <a href="https://github.com/bonnokush/retroflux-releases/releases/download/v1.3.0/RetroFlux.exe" class="cursor-pointer block text-center w-full py-3.5 px-4 rounded-full bg-white text-black text-xs sm:text-sm font-bold active:scale-95 transition-all shadow-[0_10px_30px_rgba(255,255,255,0.25)] hover:bg-[#eaeaea]">
               ⬇ Download Free (.exe)
             </a>
             <div class="text-center pt-2.5">
-              <a href="https://github.com/bonnoxkush/retroflux-releases/releases/download/v1.3.0/RetroFlux-v1.3.0-release.apk" class="text-[11px] text-[#86868b] hover:text-white transition-colors underline font-medium">
+              <a href="https://github.com/bonnokush/retroflux-releases/releases/download/v1.3.0/RetroFlux-v1.3.0-release.apk" class="text-[11px] text-[#86868b] hover:text-white transition-colors underline font-medium">
                 Android APK available (.apk) →
               </a>
             </div>
@@ -1054,7 +1059,7 @@
         <a href="#editions" class="hover:text-white transition-colors">Editions</a>
         <a href="#features" class="hover:text-white transition-colors">Features</a>
         <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
-        <a href="https://github.com/bonnoxkush/retroflux-releases" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Releases</a>
+        <a href="https://github.com/bonnokush/retroflux-releases" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Releases</a>
       </div>
     </div>
   </footer>
@@ -1204,6 +1209,11 @@
           <button type="button" onclick="closeCheckout()" class="cursor-pointer text-xs text-[#86868b] hover:text-white transition-colors underline font-medium">
             ← Cancel and Return to Store
           </button>
+          <div class="mt-4">
+            <a href="mailto:retroflux.support@gmail.com" class="text-[11px] text-[#86868b] hover:text-[#30d158] transition-colors">
+              Need help? Contact Support
+            </a>
+          </div>
         </div>
 
       </div>
@@ -1219,8 +1229,8 @@
       inr: '699'
     };
 
-    var SUPABASE_URL = "https://jfwfepmrasssefcobwoz.supabase.co";
-    var SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impmd2ZlcG1yYXNzc2VmY29id296Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg4NzQ1NDQsImV4cCI6MjEwNDQ1MDU0NH0.2xK5APNDDptRV4FD-an7ohWOy8jrekYVq6JVby-aDG4";
+    var SUPABASE_URL = "https://wqeeawdzpjffuozlazme.supabase.co";
+    var SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndxZWVhd2R6cGpmZnVvemxhem1lIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA4MjQ0NzAsImV4cCI6MjEwNjQwMDQ3MH0.7SCOQAA_gvM1MPTugxl1eSkckQbWz2FknRryw-EOH9M";
 
     function openCheckout(tier, title, usd, inr) {
       currentCheckout = { tier: tier, title: title, usd: usd, inr: inr };
@@ -1409,7 +1419,7 @@
       document.getElementById('checkoutTabs').classList.add('hidden');
       document.getElementById('tabContentsContainer').classList.add('hidden');
 
-      fetch('https://jfwfepmrasssefcobwoz.supabase.co/functions/v1/razorpay-checkout', {
+      fetch('https://wqeeawdzpjffuozlazme.supabase.co/functions/v1/razorpay-checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -1449,8 +1459,8 @@
             '<div class="pt-3 border-t border-white/10 text-center space-y-2">' +
               '<div class="text-[11px] text-[#86868b] uppercase tracking-wider">Download Official PRO Installer:</div>' +
               '<div class="flex flex-wrap items-center justify-center gap-2">' +
-                '<a href="https://github.com/bonnoxkush/retroflux-releases/releases/download/v1.3.0/RetroFlux.exe" class="px-4 py-2 rounded-full bg-white text-black font-bold text-xs shadow hover:bg-[#eaeaea] transition-all">⬇ Download Windows (.exe)</a>' +
-                '<a href="https://github.com/bonnoxkush/retroflux-releases/releases/download/v1.3.0/RetroFlux-v1.3.0-release.apk" class="px-4 py-2 rounded-full bg-white/10 text-white font-semibold text-xs hover:bg-white/20 transition-all border border-white/15">⬇ Download Android (.apk)</a>' +
+                '<a href="https://github.com/bonnokush/retroflux-releases/releases/download/v1.3.0/RetroFlux.exe" class="px-4 py-2 rounded-full bg-white text-black font-bold text-xs shadow hover:bg-[#eaeaea] transition-all">⬇ Download Windows (.exe)</a>' +
+                '<a href="https://github.com/bonnokush/retroflux-releases/releases/download/v1.3.0/RetroFlux-v1.3.0-release.apk" class="px-4 py-2 rounded-full bg-white/10 text-white font-semibold text-xs hover:bg-white/20 transition-all border border-white/15">⬇ Download Android (.apk)</a>' +
               '</div>' +
             '</div>';
         } else {
@@ -1595,7 +1605,26 @@
         resEl.innerHTML = '<span class="text-red-400">✗ Network error.</span>';
       });
     }
+    // Theme Switcher Logic (Uses CSS Filters to avoid rewriting Tailwind classes)
+    function setTheme(theme) {
+      if (theme === 'light') {
+        document.documentElement.style.filter = 'invert(1) hue-rotate(180deg)';
+        document.documentElement.style.backgroundColor = '#ffffff';
+      } else if (theme === 'retro') {
+        document.documentElement.style.filter = 'sepia(0.85) hue-rotate(-30deg) contrast(1.15) saturate(1.4)';
+        document.documentElement.style.backgroundColor = '#2c1e0e';
+      } else {
+        document.documentElement.style.filter = '';
+        document.documentElement.style.backgroundColor = '';
+      }
+      localStorage.setItem('rf_theme', theme);
+    }
+    
+    // Load saved theme on boot
+    var savedTheme = localStorage.getItem('rf_theme');
+    if (savedTheme) {
+      setTheme(savedTheme);
+    }
   </script>
-
 </body>
 </html>
