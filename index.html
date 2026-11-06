@@ -289,52 +289,46 @@
     <div class="absolute bottom-10 -left-48 w-[34rem] h-[34rem] bg-emerald-600/5 rounded-full blur-[160px]"></div>
   </div>
 
-  <!-- ================= APPLE-STYLE FLOATING PILL NAVBAR ================= -->
+  <!-- ================= REDESIGNED MINIMAL GLASS NAVBAR ================= -->
   <header class="fixed top-0 inset-x-0 z-50 transition-all duration-300" id="navbar">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 py-4">
-      <nav class="glass-card rounded-full px-5 py-2.5 flex items-center justify-between shadow-[0_8px_30px_rgb(0,0,0,0.3)] border border-white/[0.08]">
+      <nav class="glass-card rounded-full px-4 sm:px-5 py-2.5 flex items-center justify-between shadow-[0_8px_30px_rgb(0,0,0,0.35)] border border-white/[0.1] backdrop-blur-2xl bg-black/60">
         
         <!-- Brand / Identity -->
-        <a href="#hero" class="flex items-center gap-3 group">
-          <img src="profile.jpg" alt="Bikash Kumar Malik" class="w-8 h-8 rounded-full object-cover ring-1 ring-white/20 group-hover:ring-white/50 transition-all" />
-          <div class="flex items-center gap-2">
-            <span class="font-semibold text-base tracking-tight text-white group-hover:text-indigo-300 transition-colors">Bikash K. Malik</span>
-            <span class="hidden sm:inline-block text-sm text-slate-400 font-normal">/ SME &amp; Operations</span>
+        <a href="#hero" class="flex items-center gap-3 group shrink-0">
+          <div class="relative">
+            <img src="profile.jpg" alt="Bikash Kumar Malik" class="w-8 h-8 rounded-full object-cover ring-1 ring-white/20 group-hover:ring-indigo-400/60 group-hover:scale-105 transition-all shadow-sm" />
+            <span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-400 ring-2 ring-[#0a0b10]"></span>
           </div>
+          <span class="font-semibold text-sm sm:text-base tracking-tight text-white group-hover:text-indigo-300 transition-colors">Bikash Kumar Malik</span>
         </a>
 
         <!-- Desktop Navigation Links with Active Spy -->
-        <div class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300" id="desktopNavLinks">
-          <a href="#about" class="nav-item hover:text-white transition-colors py-1 px-2 rounded-full">About</a>
-          <a href="#experience" class="nav-item hover:text-white transition-colors py-1 px-2 rounded-full">Experience &amp; Workflows</a>
-          <a href="#skills" class="nav-item hover:text-white transition-colors py-1 px-2 rounded-full">Skills</a>
-          <a href="#education" class="nav-item hover:text-white transition-colors py-1 px-2 rounded-full">Education</a>
-          <a href="#contact" class="nav-item hover:text-white transition-colors py-1 px-2 rounded-full">Contact</a>
+        <div class="hidden md:flex items-center gap-1 lg:gap-1.5 text-sm font-medium text-slate-300" id="desktopNavLinks">
+          <a href="#about" class="nav-item hover:text-white transition-all py-1.5 px-3.5 rounded-full hover:bg-white/[0.06]">About</a>
+          <a href="#experience" class="nav-item hover:text-white transition-all py-1.5 px-3.5 rounded-full hover:bg-white/[0.06]">Experience</a>
+          <a href="#skills" class="nav-item hover:text-white transition-all py-1.5 px-3.5 rounded-full hover:bg-white/[0.06]">Skills</a>
+          <a href="#projects" class="nav-item hover:text-white transition-all py-1.5 px-3.5 rounded-full hover:bg-white/[0.06]">Projects</a>
+          <a href="#education" class="nav-item hover:text-white transition-all py-1.5 px-3.5 rounded-full hover:bg-white/[0.06]">Education</a>
+          <a href="#contact" class="nav-item hover:text-white transition-all py-1.5 px-4 rounded-full bg-white/[0.06] hover:bg-white/15 text-white border border-white/10 hover:border-white/20 ml-1">Contact</a>
         </div>
 
-        <!-- Download Resume Button -->
-        <div class="flex items-center gap-3">
-          <a href="Bikash_Kumar_Malik_Resume.pdf" download="Bikash_Kumar_Malik_Resume.pdf" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white hover:bg-slate-200 text-black font-semibold text-sm transition-all transform hover:scale-[1.03] active:scale-[0.97] shadow-sm">
-            <i data-lucide="download" class="w-3.5 h-3.5"></i>
-            <span>Resume</span>
-          </a>
-
-          <!-- Mobile Toggle -->
-          <button id="mobileBtn" aria-label="Toggle menu" class="md:hidden p-1.5 text-slate-300 hover:text-white">
-            <i data-lucide="menu" class="w-5 h-5"></i>
-          </button>
-        </div>
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobileBtn" aria-label="Toggle menu" class="md:hidden w-8 h-8 rounded-full flex items-center justify-center bg-white/[0.06] hover:bg-white/[0.12] text-slate-300 hover:text-white border border-white/10 transition-all">
+          <i data-lucide="menu" class="w-4 h-4"></i>
+        </button>
       </nav>
     </div>
 
-    <!-- Mobile Drawer -->
+    <!-- Mobile Navigation Drawer -->
     <div id="mobileMenu" class="hidden md:hidden max-w-5xl mx-auto px-4 mt-2">
-      <div class="glass-card p-4 rounded-2xl flex flex-col gap-2.5 text-base font-medium text-slate-300">
-        <a href="#about" class="mobile-link py-2 px-3 rounded-lg hover:bg-white/5 hover:text-white">About</a>
-        <a href="#experience" class="mobile-link py-2 px-3 rounded-lg hover:bg-white/5 hover:text-white">Experience &amp; Workflows</a>
-        <a href="#skills" class="mobile-link py-2 px-3 rounded-lg hover:bg-white/5 hover:text-white">Skills</a>
-        <a href="#education" class="mobile-link py-2 px-3 rounded-lg hover:bg-white/5 hover:text-white">Education</a>
-        <a href="#contact" class="mobile-link py-2 px-3 rounded-lg hover:bg-white/5 hover:text-white">Contact</a>
+      <div class="glass-card p-4 rounded-2xl flex flex-col gap-1 text-sm font-medium text-slate-300 border border-white/10 shadow-2xl backdrop-blur-2xl bg-black/85">
+        <a href="#about" class="mobile-link py-2.5 px-3.5 rounded-xl hover:bg-white/5 hover:text-white transition-colors">About</a>
+        <a href="#experience" class="mobile-link py-2.5 px-3.5 rounded-xl hover:bg-white/5 hover:text-white transition-colors">Experience &amp; Workflows</a>
+        <a href="#skills" class="mobile-link py-2.5 px-3.5 rounded-xl hover:bg-white/5 hover:text-white transition-colors">Skills &amp; Tooling</a>
+        <a href="#projects" class="mobile-link py-2.5 px-3.5 rounded-xl hover:bg-white/5 hover:text-white transition-colors">Side Projects</a>
+        <a href="#education" class="mobile-link py-2.5 px-3.5 rounded-xl hover:bg-white/5 hover:text-white transition-colors">Education &amp; Credentials</a>
+        <a href="#contact" class="mobile-link py-2.5 px-3.5 rounded-xl bg-white/[0.08] hover:bg-white/15 text-white font-semibold transition-colors mt-1">Get in Touch</a>
       </div>
     </div>
   </header>
